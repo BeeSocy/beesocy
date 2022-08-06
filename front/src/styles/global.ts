@@ -1,9 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+    :root {
+        font-size: 62.5%;
+    }
+    
     body {
         background: ${props => props.theme.colors.primary};
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
     }
     
     * {
