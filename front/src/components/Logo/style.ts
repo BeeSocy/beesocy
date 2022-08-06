@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 export const Container = styled(Link)`
   display: flex;
-  gap: 5px;
+  gap: 0.4rem;
+  align-items: center;
 
   font-size: 2.8rem;
   font-weight: 700;
