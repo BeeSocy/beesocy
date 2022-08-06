@@ -9,6 +9,7 @@ import { IconContext } from 'react-icons';
 import { BrowserRouter } from 'react-router-dom';
 import { useTheme } from './context/ThemeProvider/useTheme';
 import { Router } from './routes/Router';
+import { MenuProvider } from './context/MenuProvider';
 
 export function App() {
   const defaultTheme = dark;
@@ -19,7 +20,9 @@ export function App() {
     <StyledThemeProvider theme={theme ?? defaultTheme}>
       <BrowserRouter>
         <IconContext.Provider value={{ size: '28' }}>
-          <Router />
+          <MenuProvider>
+            <Router />
+          </MenuProvider>
         </IconContext.Provider>
 
         <GlobalStyle />
