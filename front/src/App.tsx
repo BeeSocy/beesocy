@@ -18,7 +18,7 @@ export function App() {
   return (
     <StyledThemeProvider theme={theme ?? defaultTheme}>
       <BrowserRouter>
-        <IconContext.Provider value={{ size: '24' }}>
+        <IconContext.Provider value={{ size: '28' }}>
           <Router />
         </IconContext.Provider>
 
