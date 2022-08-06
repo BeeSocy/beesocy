@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { IButton } from '.';
+import { breakpoint } from '../../hooks/useMobile';
 
 export const ButtonStyle = css`
   display: flex;
@@ -11,10 +12,16 @@ export const ButtonStyle = css`
 
   padding: 0.8rem;
 
-  transition: background 0.5s;
+  transition: background 0.3s;
 
   &:active {
     background: ${props => props.theme.colors.light};
+  }
+
+  @media (min-width: ${breakpoint}) {
+    &:hover {
+      background: ${props => props.theme.colors.light};
+    }
   }
 `;
 
