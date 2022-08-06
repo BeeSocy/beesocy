@@ -32,6 +32,21 @@ export default createGlobalStyle`
         -webkit-touch-callout: none;               
         -webkit-text-size-adjust: none;          
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        &::-webkit-scrollbar-track {
+            background-color: ${props => props.theme.colors.primary};
+        }
+
+        &::-webkit-scrollbar {
+            width: 1rem;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: ${props => props.theme.colors.light};
+            border-radius: 1.6rem;
+            border: 0.3rem solid transparent;
+            background-clip: content-box;
+        }
     }
 
     button:hover {
