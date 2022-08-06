@@ -24,7 +24,7 @@ export default createGlobalStyle`
         text-decoration: none;
         list-style: none;
 
-        transition: background 0.5s, color 0.5s;
+        transition: background 0.3s, color 0.3s, border 0.3s;
 
         -webkit-touch-callout: none;               
         -webkit-text-size-adjust: none;          
