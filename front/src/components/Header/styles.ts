@@ -9,8 +9,8 @@ export const HeaderContainer = styled.header`
   z-index: 100;
 
   width: 100vw;
-  padding: 1rem;
-  padding-right: 3rem;
+  padding: 0.8rem;
+  padding-right: 1.6rem;
 
   background: ${props => props.theme.colors.primary};
 

@@ -2,6 +2,7 @@ import { HeaderContainer, SubmitButton } from './styles';
 
 import {
   MdMenu,
+  MdClose,
   MdSearch,
   MdAccountCircle,
   MdLightMode,
@@ -14,9 +15,12 @@ import { SearchBar } from '../SearchBar';
 
 import { useMobile } from '../../hooks/useMobile';
 import { useTheme } from '../../context/ThemeProvider/useTheme';
+import { useMenu } from '../../context/MenuProvider/useMenu';
 
 export function Header() {
   const { isMobile } = useMobile();
+
+  const menu = useMenu();
 
   const { handleChangeTheme, title } = useTheme();
 
@@ -24,8 +28,8 @@ export function Header() {
     <HeaderContainer>
       <section className="left">
         {!isMobile && (
-          <Button rounded>
-            <MdMenu />
+          <Button rounded onClick={menu.handleToggleMenu}>
+            {menu.open ? <MdClose /> : <MdMenu />}
           </Button>
         )}
 
