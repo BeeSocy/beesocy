@@ -1,8 +1,9 @@
 import { useMedia } from 'react-use';
 
+export const breakpoint = '768px';
+
 export function useMobile() {
-  const breakpoint = 768;
-  const isMobile = useMedia(`(max-width: ${breakpoint}px)`);
+  const isMobile = useMedia(`(max-width: ${breakpoint})`);
   return {
     isMobile
   };
