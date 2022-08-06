@@ -13,14 +13,12 @@ import { Button } from '../Button';
 import { SearchBar } from '../SearchBar';
 
 import { useMobile } from '../../hooks/useMobile';
+import { useTheme } from '../../context/ThemeProvider/useTheme';
 
-interface IHeader {
-  handleChangeTheme(): void;
-  themeTitle: string;
-}
-
-export function Header({ handleChangeTheme, themeTitle }: IHeader) {
+export function Header() {
   const { isMobile } = useMobile();
+
+  const { handleChangeTheme, title } = useTheme();
 
   return (
     <HeaderContainer>
@@ -46,7 +44,7 @@ export function Header({ handleChangeTheme, themeTitle }: IHeader) {
         )}
 
         <Button rounded onClick={handleChangeTheme}>
-          {themeTitle === 'dark' ? <MdLightMode /> : <MdDarkMode />}
+          {title === 'dark' ? <MdLightMode /> : <MdDarkMode />}
         </Button>
 
         <Button rounded>
