@@ -22,7 +22,7 @@ export const Container = styled.div`
     font-size: 1.8rem;
 
     position: absolute;
-    padding-left: 3rem;
+    padding-left: 3.6rem;
 
     &::placeholder {
       color: ${props => props.theme.colors.light};
