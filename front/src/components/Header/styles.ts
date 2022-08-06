@@ -6,10 +6,11 @@ export const HeaderContainer = styled.header`
   flex: 1;
 
   position: fixed;
-  z-index: 2;
+  z-index: 100;
 
   width: 100vw;
   padding: 1rem;
+  padding-right: 3rem;
 
   background: ${props => props.theme.colors.primary};
 

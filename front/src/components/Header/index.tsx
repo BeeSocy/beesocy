@@ -23,9 +23,11 @@ export function Header() {
   return (
     <HeaderContainer>
       <section className="left">
-        <Button rounded>
-          <MdMenu />
-        </Button>
+        {!isMobile && (
+          <Button rounded>
+            <MdMenu />
+          </Button>
+        )}
 
         <Logo to="/" titleIsVisible={!isMobile} />
       </section>
