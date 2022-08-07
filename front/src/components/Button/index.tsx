@@ -8,7 +8,13 @@ export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
 }
 
-export function Button({ rounded, children, wrap, full, ...props }: IButton) {
+export function Button({
+  rounded,
+  children,
+  wrap,
+  full = true,
+  ...props
+}: IButton) {
   return (
     <Container full={full} rounded={rounded} wrap={wrap} {...props}>
       {children}

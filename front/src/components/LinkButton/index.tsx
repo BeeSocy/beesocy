@@ -13,17 +13,17 @@ export function LinkButton({
   rounded,
   children,
   wrap,
-  full,
+  full = true,
   ...props
 }: ILinkButton) {
   return (
     <Container
       {...props}
-      full={full}
       style={{
         borderRadius: rounded ? '100%' : '0',
         flexDirection: wrap ? 'column' : 'row',
-        gap: wrap ? '0' : '2rem'
+        gap: wrap ? '0' : '2rem',
+        width: full ? '100%' : 'fit-content'
       }}
     >
       {children}

@@ -5,6 +5,4 @@ import { ILinkButton } from '.';
 
 export const Container = styled(Link)<ILinkButton>`
   ${ButtonStyle}
-
-  width: ${props => (props.full ? '100%' : 'fit-content')};
 `;
