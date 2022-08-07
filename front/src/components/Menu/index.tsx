@@ -107,61 +107,61 @@ export function Menu() {
       hasVerticalScroll={hasVerticalScroll}
       ref={menuRef}
     >
-      <LinkButton to="/">
+      <LinkButton to="/" aria-label="Página Início">
         {pathname === '/' ? <MdHome /> : <MdOutlineHome />}
         <span>Início</span>
       </LinkButton>
 
-      <LinkButton to="/music">
+      <LinkButton to="/music" aria-label="Página Músicas">
         {pathname === '/music' ? <MdMusicNote /> : <MdOutlineMusicNote />}
         <span>Músicas</span>
       </LinkButton>
 
-      <LinkButton to="/image">
+      <LinkButton to="/image" aria-label="Página Imagens">
         {pathname === '/image' ? <MdImage /> : <MdOutlineImage />}
         <span>Imagens</span>
       </LinkButton>
 
-      <LinkButton to="/code">
+      <LinkButton to="/code" aria-label="Página Código">
         <MdCode />
         <span>Códigos</span>
       </LinkButton>
 
       <Line />
 
-      <LinkButton to="/list/save">
+      <LinkButton to="/list/save" aria-label="Postagens salvas">
         {pathname === '/list/save' ? <MdBookmark /> : <MdBookmarkBorder />}
         <span>Salvos</span>
       </LinkButton>
 
-      <LinkButton to="/list/history">
+      <LinkButton to="/list/history" aria-label="Postagens vistas">
         {pathname === '/list/history' ? <MdHistory /> : <MdOutlineHistory />}
         <span>Histórico</span>
       </LinkButton>
 
-      <LinkButton to="/list/like">
+      <LinkButton to="/list/like" aria-label="Postagens curtidas">
         {pathname === '/list/like' ? <MdFavorite /> : <MdFavoriteBorder />}
         <span>Curtidos</span>
       </LinkButton>
 
-      <LinkButton to="/chat">
+      <LinkButton to="/chat" aria-label="Abrir chat">
         {pathname === '/chat' ? <MdChat /> : <MdOutlineChat />}
         <span>Chat</span>
       </LinkButton>
 
-      <LinkButton to="/jobs">
+      <LinkButton to="/jobs" aria-label="Página Trabalhos">
         {pathname === '/jobs' ? <MdWork /> : <MdWorkOutline />}
         <span>Vagas</span>
       </LinkButton>
 
-      <LinkButton to="/learn">
+      <LinkButton to="/learn" aria-label="Página Aulas">
         {pathname === '/learn' ? <MdSchool /> : <MdOutlineSchool />}
         <span>Aulas</span>
       </LinkButton>
 
       <Line />
 
-      <LinkButton to="/follow">
+      <LinkButton to="/follow" aria-label="Seguindo">
         {pathname === '/follow' ? (
           <MdPermIdentity />
         ) : (
@@ -173,12 +173,23 @@ export function Menu() {
 
       {followUsers.map((user, index) => {
         if (isShowMoreFollowing ? index >= 0 : index <= 2) {
-          return <UserCard key={user.id} user={user} />;
+          return (
+            <UserCard
+              key={user.id}
+              user={user}
+              aria-label={`Perfil de ${user.name}`}
+            />
+          );
         }
       })}
 
       {followUsers.length > 2 && (
-        <Button onClick={handleShowMoreFollowing}>
+        <Button
+          aria-label={`${
+            isShowMoreFollowing ? 'Mostrar menos' : 'Mostrar mais'
+          } seguidores`}
+          onClick={handleShowMoreFollowing}
+        >
           {isShowMoreFollowing ? (
             <>
               <MdExpandLess />

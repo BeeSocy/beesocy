@@ -28,7 +28,12 @@ export function Header() {
     <HeaderContainer>
       <section className="left">
         {!isMobile && (
-          <Button full={false} rounded onClick={menu.handleToggleMenu}>
+          <Button
+            full={false}
+            rounded
+            onClick={menu.handleToggleMenu}
+            aria-label={`${menu.open ? 'Fechar' : 'Abrir'} menu lateral`}
+          >
             {menu.open ? <MdClose /> : <MdMenu />}
           </Button>
         )}
@@ -38,22 +43,27 @@ export function Header() {
 
       {!isMobile && (
         <section className="center">
-          <SearchBar />
+          <SearchBar aria-label="Pesquisar" />
         </section>
       )}
 
       <section className="right">
         {isMobile && (
-          <Button full={false} rounded>
+          <Button full={false} rounded aria-label="Pesquisar">
             <MdSearch />
           </Button>
         )}
 
-        <Button full={false} rounded onClick={handleChangeTheme}>
+        <Button
+          full={false}
+          rounded
+          onClick={handleChangeTheme}
+          aria-label="Trocar tema"
+        >
           {title === 'dark' ? <MdLightMode /> : <MdDarkMode />}
         </Button>
 
-        <Button full={false} rounded>
+        <Button full={false} rounded aria-label="Seu perfil">
           <MdAccountCircle />
         </Button>
 

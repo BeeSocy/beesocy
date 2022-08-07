@@ -81,65 +81,80 @@ export function MobileMenu() {
   return (
     <>
       <MainContainer>
-        <LinkButton full={false} to="/" wrap rounded>
+        <LinkButton to="/" aria-label="Página Início" full={false} rounded>
           {pathname === '/' ? <MdHome /> : <MdOutlineHome />}
         </LinkButton>
 
-        <LinkButton full={false} to="/music" wrap rounded>
+        <LinkButton
+          to="/music"
+          aria-label="Página Músicas"
+          full={false}
+          rounded
+        >
           {pathname === '/music' ? <MdMusicNote /> : <MdOutlineMusicNote />}
         </LinkButton>
 
-        <Button full={false} rounded onClick={handleToggleMenu}>
+        <Button
+          full={false}
+          rounded
+          onClick={handleToggleMenu}
+          aria-label={`${open ? 'Fechar' : 'Abrir'} menu auxiliar`}
+        >
           {open ? <MdClose /> : <MdMenu />}
         </Button>
 
-        <LinkButton full={false} to="/image" wrap rounded>
+        <LinkButton
+          to="/image"
+          aria-label="Página Imagens"
+          full={false}
+          rounded
+        >
           {pathname === '/image' ? <MdImage /> : <MdOutlineImage />}
         </LinkButton>
 
-        <LinkButton full={false} to="/code" wrap rounded>
+        <LinkButton to="/code" aria-label="Página Código" full={false} rounded>
           <MdCode />
         </LinkButton>
       </MainContainer>
 
       <MenuContainer open={open}>
-        <Button onClick={handleToggleMenu}>
+        <Button onClick={handleToggleMenu} aria-label="Fechar menu auxiliar">
           <MdClose />
         </Button>
 
-        <LinkButton to="/list/save">
+        <LinkButton to="/list/save" aria-label="Postagens salvas">
           {pathname === '/list/save' ? <MdBookmark /> : <MdBookmarkBorder />}
           <span>Salvos</span>
         </LinkButton>
 
-        <LinkButton to="/list/history">
+        <LinkButton to="/list/history" aria-label="Postagens vistas">
           {pathname === '/list/history' ? <MdHistory /> : <MdOutlineHistory />}
           <span>Histórico</span>
         </LinkButton>
 
-        <LinkButton to="/list/like">
+        <LinkButton to="/list/like" aria-label="Postagens curtidas">
           {pathname === '/list/like' ? <MdFavorite /> : <MdFavoriteBorder />}
           <span>Curtidos</span>
         </LinkButton>
 
-        <LinkButton to="/chat">
+        <LinkButton to="/chat" aria-label="Abrir chat">
           {pathname === '/chat' ? <MdChat /> : <MdOutlineChat />}
           <span>Chat</span>
         </LinkButton>
 
-        <LinkButton to="/jobs">
+        <LinkButton to="/jobs" aria-label="Página Trabalhos">
           {pathname === '/jobs' ? <MdWork /> : <MdWorkOutline />}
           <span>Vagas</span>
         </LinkButton>
 
-        <LinkButton to="/learn">
+        <LinkButton to="/learn" aria-label="Página Aulas">
           {pathname === '/learn' ? <MdSchool /> : <MdOutlineSchool />}
           <span>Aulas</span>
         </LinkButton>
 
         <Line />
 
-        <LinkButton to="/follow">
+        <LinkButton to="/follow" aria-label="Seguindo">
           {pathname === '/follow' ? (
             <MdPermIdentity />
           ) : (
@@ -151,12 +166,23 @@ export function MobileMenu() {
 
         {followUsers.map((user, index) => {
           if (isShowMoreFollowing ? index >= 0 : index <= 2) {
-            return <UserCard key={user.id} user={user} />;
+            return (
+              <UserCard
+                key={user.id}
+                user={user}
+                aria-label={`Perfil de ${user.name}`}
+              />
+            );
           }
         })}
 
         {followUsers.length > 2 && (
-          <Button onClick={handleShowMoreFollowing}>
+          <Button
+            aria-label={`${
+              isShowMoreFollowing ? 'Mostrar menos' : 'Mostrar mais'
+            } seguidores`}
+            onClick={handleShowMoreFollowing}
+          >
             {isShowMoreFollowing ? (
               <>
                 <MdExpandLess />

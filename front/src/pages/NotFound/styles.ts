@@ -41,7 +41,9 @@ export const Title = styled.span`
 
   color: ${props => props.theme.colors.bee};
 
-  text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+  filter: contrast(0.9);
+
+  /*   text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2); */
 `;
 
 export const BackButton = styled(LinkButton)`
