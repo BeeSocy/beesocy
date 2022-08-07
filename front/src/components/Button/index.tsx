@@ -1,9 +1,9 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { Container } from './styles';
 
 export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   rounded?: boolean;
-  children?: JSX.Element;
+  children?: ReactNode;
 }
 
 export function Button({ rounded, children, ...props }: IButton) {
