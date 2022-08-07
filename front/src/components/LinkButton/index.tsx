@@ -4,12 +4,13 @@ import { Container } from './styles';
 
 export interface ILinkButton extends LinkProps {
   rounded?: boolean;
+  wrap?: boolean;
   children?: ReactNode;
 }
 
-export function LinkButton({ rounded, children, ...props }: ILinkButton) {
+export function LinkButton({ rounded, children, wrap, ...props }: ILinkButton) {
   return (
-    <Container {...props} style={{ borderRadius: rounded ? 200 : 0 }}>
+    <Container {...props} wrap={wrap} rounded={rounded}>
       {children}
     </Container>
   );

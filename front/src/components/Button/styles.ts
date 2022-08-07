@@ -27,5 +27,10 @@ export const ButtonStyle = css`
 
 export const Container = styled.button<IButton>`
   ${ButtonStyle}
+
   border-radius: ${props => props.rounded && `100%`};
+
+  flex-direction: ${props => (props.wrap ? 'column' : 'row')};
+
+  gap: ${props => (props.wrap ? '0rem' : '2rem')};
 `;
