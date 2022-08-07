@@ -33,4 +33,6 @@ export const Container = styled.button<IButton>`
   flex-direction: ${props => (props.wrap ? 'column' : 'row')};
 
   gap: ${props => (props.wrap ? '0rem' : '2rem')};
+
+  width: ${props => (props.full ? '100%' : 'fit-content')};
 `;

@@ -4,12 +4,13 @@ import { Container } from './styles';
 export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   rounded?: boolean;
   wrap?: boolean;
+  full?: boolean;
   children?: ReactNode;
 }
 
-export function Button({ rounded, children, wrap, ...props }: IButton) {
+export function Button({ rounded, children, wrap, full, ...props }: IButton) {
   return (
-    <Container rounded={rounded} wrap={wrap} {...props}>
+    <Container full={full} rounded={rounded} wrap={wrap} {...props}>
       {children}
     </Container>
   );
