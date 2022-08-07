@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import dark from '../../styles/themes/dark';
+
 export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
@@ -9,7 +11,7 @@ export const HeaderContainer = styled.header`
   z-index: 100;
 
   width: 100vw;
-  padding: 0.8rem;
+  padding: 0.8rem 0.6rem;
   padding-right: 1.6rem;
 
   background: ${props => props.theme.colors.primary};
@@ -46,7 +48,7 @@ export const SubmitButton = styled.button`
 
   position: relative;
 
-  color: #f7f7f7;
+  color: ${dark.colors.text};
 
   &:before {
     display: flex;
