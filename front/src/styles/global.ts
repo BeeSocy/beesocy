@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import light from './themes/light';
+
 export default createGlobalStyle`
     :root {
         font-size: 62.5%;
@@ -47,6 +49,13 @@ export default createGlobalStyle`
             border: 0.3rem solid transparent;
             background-clip: content-box;
         }
+
+        &::selection {
+            background: ${props => props.theme.colors.bee};
+            color: ${light.colors.text};
+        }
+
+        scrollbar-width: thin;
     }
 
     button:hover {
