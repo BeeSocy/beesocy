@@ -29,6 +29,7 @@ export const Container = styled.div`
     }
 
     &:focus {
+      outline: none;
       border-color: ${props => props.theme.colors.text};
 
       + label {

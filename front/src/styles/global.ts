@@ -15,6 +15,8 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         font-size: 1.6rem;
         font-weight: 400;
+
+        overflow: overlay;
     }
     
     * {
@@ -29,7 +31,7 @@ export default createGlobalStyle`
         text-decoration: none;
         list-style: none;
         
-        transition: background 0.3s, color 0.3s, border 0.3s;
+        transition: background 0.3s, color 0.3s, border 0.3s, outline 0.3s;
 
         -webkit-touch-callout: none;               
         -webkit-text-size-adjust: none;          
@@ -50,12 +52,25 @@ export default createGlobalStyle`
             background-clip: content-box;
         }
 
+        scrollbar-width: thin;
+
         &::selection {
             background: ${props => props.theme.colors.bee};
             color: ${light.colors.text};
         }
 
-        scrollbar-width: thin;
+        &:focus { 
+            outline: 1px solid ${props => props.theme.colors.text} 
+        }
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        &:focus-visible {  
+            outline: 2px solid ${props => props.theme.colors.text}  
+        }
+        
     }
 
     button:hover {
