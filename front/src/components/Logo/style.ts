@@ -11,7 +11,7 @@ export const Container = styled(Link)`
   font-weight: 700;
 
   img {
-    height: 4rem;
-    width: 4rem;
+    height: 4.4rem;
+    width: 4.4rem;
   }
 `;
