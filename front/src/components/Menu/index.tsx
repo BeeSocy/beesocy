@@ -32,10 +32,13 @@ import { useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button';
 import { UserCard } from '../UserCard';
+import { useUtils } from '../../hooks/useUtils';
 
 export function Menu() {
   const [hasVerticalScroll, setHasVerticalScroll] = useState<boolean>();
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
+
+  const { elementHasVerticalScroll } = useUtils();
 
   const { open } = useMenu();
 
@@ -75,12 +78,6 @@ export function Menu() {
 
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const elementHasVerticalScroll = (
-    scrollHeight: number,
-    clientHeight: number
-  ) => {
-    return scrollHeight > clientHeight;
-  };
   useEffect(() => {
     if (menuRef.current) {
       setHasVerticalScroll(

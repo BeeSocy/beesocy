@@ -90,7 +90,7 @@ export function MobileMenu() {
         </LinkButton>
 
         <Button full={false} rounded onClick={handleToggleMenu}>
-          <MdMenu />
+          {open ? <MdClose /> : <MdMenu />}
         </Button>
 
         <LinkButton full={false} to="/image" wrap rounded>

@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+export const maxMobileMenuHeight = 7.0;
+
 const MenuStyles = css`
   display: flex;
   flex: 1;
@@ -10,7 +12,7 @@ const MenuStyles = css`
 
   width: 100vw;
 
-  padding-block: 0.4rem;
+  padding-block: 0.8rem;
 
   background: ${props => props.theme.colors.primary};
 `;
@@ -40,4 +42,5 @@ export const MenuContainer = styled.nav<StyledMenu>`
   transition: all 0.1s;
 
   overflow-y: auto;
+  z-index: 80;
 `;
