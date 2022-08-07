@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Button } from '../Button';
 import { LinkButton } from '../LinkButton';
 import { MainContainer, MenuContainer } from './styles';
@@ -25,88 +27,149 @@ import {
   MdPermIdentity,
   MdSchool,
   MdWork,
-  MdWorkOutline
+  MdWorkOutline,
+  MdExpandLess,
+  MdExpandMore
 } from 'react-icons/md';
 
 import { useLocation } from 'react-router-dom';
+
 import { Line } from '../Menu/styles';
 
 import { useMenu } from '../../context/MenuProvider/useMenu';
+import { UserCard } from '../UserCard';
 
 export function MobileMenu() {
+  const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
+
   const { pathname } = useLocation();
 
   const { open, handleToggleMenu } = useMenu();
 
+  function handleShowMoreFollowing() {
+    setIsShowMoreFollowing(state => !state);
+  }
+
+  const followUsers = [
+    {
+      id: 45,
+      name: 'Jorge na gaita afaf af af af a f',
+      img: 'https://source.unsplash.com/random'
+    },
+    {
+      id: 6,
+      name: 'Jorge na gaita afaf af af af a f',
+      img: 'https://source.unsplash.com/random'
+    },
+    {
+      id: 7,
+      name: 'Jorge na gaita afaf af af af a f',
+      img: 'https://source.unsplash.com/random'
+    },
+    {
+      id: 8,
+      name: 'Jorge na gaita afaf af af af a faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      img: 'https://source.unsplash.com/random'
+    },
+    {
+      id: 3,
+      name: 'Marcelão',
+      img: 'https://source.unsplash.com/random'
+    }
+  ];
+
   return (
     <>
       <MainContainer>
-        <LinkButton to="/" wrap rounded>
+        <LinkButton full={false} to="/" wrap rounded>
           {pathname === '/' ? <MdHome /> : <MdOutlineHome />}
         </LinkButton>
 
-        <LinkButton to="/music" wrap rounded>
+        <LinkButton full={false} to="/music" wrap rounded>
           {pathname === '/music' ? <MdMusicNote /> : <MdOutlineMusicNote />}
         </LinkButton>
 
-        <Button rounded onClick={handleToggleMenu}>
+        <Button full={false} rounded onClick={handleToggleMenu}>
           <MdMenu />
         </Button>
 
-        <LinkButton to="/image" wrap rounded>
+        <LinkButton full={false} to="/image" wrap rounded>
           {pathname === '/image' ? <MdImage /> : <MdOutlineImage />}
         </LinkButton>
 
-        <LinkButton to="/code" wrap rounded>
+        <LinkButton full={false} to="/code" wrap rounded>
           <MdCode />
         </LinkButton>
       </MainContainer>
 
       <MenuContainer open={open}>
-        <Button full onClick={handleToggleMenu}>
+        <Button onClick={handleToggleMenu}>
           <MdClose />
         </Button>
 
-        <LinkButton to="/list/save" full>
+        <LinkButton to="/list/save">
           {pathname === '/list/save' ? <MdBookmark /> : <MdBookmarkBorder />}
           <span>Salvos</span>
         </LinkButton>
 
-        <LinkButton to="/list/history" full>
+        <LinkButton to="/list/history">
           {pathname === '/list/history' ? <MdHistory /> : <MdOutlineHistory />}
           <span>Histórico</span>
         </LinkButton>
 
-        <LinkButton to="/list/like" full>
+        <LinkButton to="/list/like">
           {pathname === '/list/like' ? <MdFavorite /> : <MdFavoriteBorder />}
           <span>Curtidos</span>
         </LinkButton>
 
-        <LinkButton to="/chat" full>
+        <LinkButton to="/chat">
           {pathname === '/chat' ? <MdChat /> : <MdOutlineChat />}
           <span>Chat</span>
         </LinkButton>
 
-        <LinkButton to="/jobs" full>
+        <LinkButton to="/jobs">
           {pathname === '/jobs' ? <MdWork /> : <MdWorkOutline />}
           <span>Vagas</span>
         </LinkButton>
 
-        <LinkButton to="/learn" full>
+        <LinkButton to="/learn">
           {pathname === '/learn' ? <MdSchool /> : <MdOutlineSchool />}
           <span>Aulas</span>
         </LinkButton>
 
         <Line />
 
-        <LinkButton to="/follow" full>
+        <LinkButton to="/follow">
           {pathname === '/follow' ? (
             <MdPermIdentity />
           ) : (
             <MdOutlinePermIdentity />
           )}
           <span>Seguindo</span>
+          <span>{followUsers.length}</span>
         </LinkButton>
+
+        {followUsers.map((user, index) => {
+          if (isShowMoreFollowing ? index >= 0 : index <= 2) {
+            return <UserCard key={user.id} user={user} />;
+          }
+        })}
+
+        {followUsers.length > 2 && (
+          <Button onClick={handleShowMoreFollowing}>
+            {isShowMoreFollowing ? (
+              <>
+                <MdExpandLess />
+                <span>Mostrar menos</span>
+              </>
+            ) : (
+              <>
+                <MdExpandMore />
+                <span>Mostrar mais</span>
+              </>
+            )}
+          </Button>
+        )}
       </MenuContainer>
     </>
   );

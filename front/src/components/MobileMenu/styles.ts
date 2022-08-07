@@ -38,4 +38,6 @@ export const MenuContainer = styled.nav<StyledMenu>`
   height: ${props => (props.open ? '100vh' : '0')};
 
   transition: all 0.1s;
+
+  overflow-y: auto;
 `;

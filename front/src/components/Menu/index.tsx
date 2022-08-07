@@ -45,6 +45,34 @@ export function Menu() {
     setIsShowMoreFollowing(state => !state);
   }
 
+  const followUsers = [
+    {
+      id: 45,
+      name: 'Jorge na gaita afaf af af af a f',
+      img: 'https://source.unsplash.com/random'
+    },
+    {
+      id: 6,
+      name: 'Jorge na gaita afaf af af af a f',
+      img: 'https://source.unsplash.com/random'
+    },
+    {
+      id: 7,
+      name: 'Jorge na gaita afaf af af af a f',
+      img: 'https://source.unsplash.com/random'
+    },
+    {
+      id: 8,
+      name: 'Jorge na gaita afaf af af af a f',
+      img: 'https://source.unsplash.com/random'
+    },
+    {
+      id: 3,
+      name: 'Marcelão',
+      img: 'https://source.unsplash.com/random'
+    }
+  ];
+
   const menuRef = useRef<HTMLDivElement>(null);
 
   const elementHasVerticalScroll = (
@@ -74,34 +102,6 @@ export function Menu() {
       }
     });
   }, []);
-
-  const followUsers = [
-    {
-      id: 45,
-      name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      id: 6,
-      name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      id: 7,
-      name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      id: 8,
-      name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      id: 3,
-      name: 'Marcelão',
-      img: 'https://source.unsplash.com/random'
-    }
-  ];
 
   return (
     <Container
@@ -171,11 +171,12 @@ export function Menu() {
           <MdOutlinePermIdentity />
         )}
         <span>Seguindo</span>
+        <span>{followUsers.length}</span>
       </LinkButton>
 
       {followUsers.map((user, index) => {
         if (isShowMoreFollowing ? index >= 0 : index <= 2) {
-          return <UserCard user={user} />;
+          return <UserCard key={user.id} user={user} />;
         }
       })}
 

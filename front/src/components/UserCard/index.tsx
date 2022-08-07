@@ -4,11 +4,12 @@ import { FollowCard } from './styles';
 
 interface IUserCard {
   user: IUser;
+  full?: boolean;
 }
 
-export function UserCard({ user }: IUserCard) {
+export function UserCard({ user, full }: IUserCard) {
   return (
-    <LinkButton key={user.id} to={`/profile/${user.id}`}>
+    <LinkButton key={user.id} to={`/profile/${user.id}`} full={full}>
       <FollowCard>
         <img alt={`Foto de perfil de ${user.name}`} src={user.img} />
         <span>{user.name}</span>
