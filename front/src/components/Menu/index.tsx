@@ -55,8 +55,8 @@ export function Menu() {
       id: 6,
       name: 'Jorge na gaita afaf af af af a f',
       img: 'https://source.unsplash.com/random'
-    },
-    {
+    }
+    /*     {
       id: 7,
       name: 'Jorge na gaita afaf af af af a f',
       img: 'https://source.unsplash.com/random'
@@ -70,7 +70,7 @@ export function Menu() {
       id: 3,
       name: 'Marcelão',
       img: 'https://source.unsplash.com/random'
-    }
+    } */
   ];
 
   const menuRef = useRef<HTMLDivElement>(null);

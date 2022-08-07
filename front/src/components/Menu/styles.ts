@@ -22,8 +22,8 @@ export const Container = styled.nav<StyledMenu>`
     props.open
       ? '20rem'
       : props.hasVerticalScroll || props.isShowMoreFollowing
-      ? '6.5rem'
-      : '5.5rem'};
+      ? '7.0rem'
+      : '6.5rem'};
   height: 100vh;
 
   overflow-y: auto;
