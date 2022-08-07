@@ -1,10 +1,10 @@
-import { ComponentProps } from 'react';
+import { ReactNode } from 'react';
 import { LinkProps } from 'react-router-dom';
 import { Container } from './styles';
 
 export interface ILinkButton extends LinkProps {
   rounded?: boolean;
-  children?: JSX.Element;
+  children?: ReactNode;
 }
 
 export function LinkButton({ rounded, children, ...props }: ILinkButton) {
