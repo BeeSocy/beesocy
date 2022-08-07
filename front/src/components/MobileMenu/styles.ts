@@ -33,7 +33,7 @@ export const MenuContainer = styled.nav<StyledMenu>`
   align-items: flex-start;
   justify-content: flex-start;
 
-  padding-block: ${props => (props.open ? '5.8rem' : '0')};
+  padding-block: ${props => (props.open ? '6.8rem' : '0')};
 
   height: ${props => (props.open ? '100vh' : '0')};
 

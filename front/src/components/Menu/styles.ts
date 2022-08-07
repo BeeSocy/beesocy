@@ -29,7 +29,7 @@ export const Container = styled.nav<StyledMenu>`
   overflow-y: auto;
   overflow-x: hidden;
 
-  padding-top: 6rem;
+  padding-top: 7.2rem;
 
   svg {
     min-width: 4rem;

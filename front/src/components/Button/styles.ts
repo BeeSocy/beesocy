@@ -10,7 +10,7 @@ export const ButtonStyle = css`
   background: none;
   outline: none;
 
-  padding: 0.8rem;
+  padding: 1.2rem;
 
   transition: background 0.3s;
 
