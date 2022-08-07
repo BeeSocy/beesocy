@@ -28,7 +28,7 @@ export function Header() {
     <HeaderContainer>
       <section className="left">
         {!isMobile && (
-          <Button rounded onClick={menu.handleToggleMenu}>
+          <Button full={false} rounded onClick={menu.handleToggleMenu}>
             {menu.open ? <MdClose /> : <MdMenu />}
           </Button>
         )}
@@ -44,16 +44,16 @@ export function Header() {
 
       <section className="right">
         {isMobile && (
-          <Button rounded>
+          <Button full={false} rounded>
             <MdSearch />
           </Button>
         )}
 
-        <Button rounded onClick={handleChangeTheme}>
+        <Button full={false} rounded onClick={handleChangeTheme}>
           {title === 'dark' ? <MdLightMode /> : <MdDarkMode />}
         </Button>
 
-        <Button rounded>
+        <Button full={false} rounded>
           <MdAccountCircle />
         </Button>
 
