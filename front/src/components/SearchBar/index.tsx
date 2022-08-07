@@ -7,7 +7,7 @@ export function SearchBar() {
     <Container>
       <input id="search-bar" type="text" placeholder="Digite sua busca"></input>
       <label htmlFor="search-bar">
-        <MdSearch />
+        <MdSearch size={'24'} />
       </label>
     </Container>
   );

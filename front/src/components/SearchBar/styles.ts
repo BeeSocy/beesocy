@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
 
-  height: 100%;
+  height: 80%;
 
   width: 100%;
 
@@ -19,7 +19,7 @@ export const Container = styled.div`
     border: 2px solid ${props => props.theme.colors.light};
     border-radius: 0.8rem;
 
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 
     position: absolute;
     padding-left: 3.6rem;
