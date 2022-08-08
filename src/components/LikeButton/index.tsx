@@ -17,7 +17,15 @@ export function LikeButton({ postId }: ILikeButton) {
   }
 
   return (
-    <Container full={false} rounded isLiked={isLiked} onClick={handleLike}>
+    <Container
+      full={false}
+      rounded
+      isLiked={isLiked}
+      onClick={handleLike}
+      aria-label="Curtir"
+      title="Curtir"
+      aria-checked={isLiked}
+    >
       {isLiked ? <MdFavorite /> : <MdFavoriteBorder />}
     </Container>
   );
