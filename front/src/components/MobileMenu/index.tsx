@@ -38,6 +38,7 @@ import { Line } from '../Menu/styles';
 
 import { useMenu } from '../../context/MenuProvider/useMenu';
 import { UserCard } from '../UserCard';
+import { useTheme } from '../../context/ThemeProvider/useTheme';
 
 export function MobileMenu() {
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
@@ -49,6 +50,8 @@ export function MobileMenu() {
   function handleShowMoreFollowing() {
     setIsShowMoreFollowing(state => !state);
   }
+
+  const themes = useTheme();
 
   const followUsers = [
     {
@@ -78,11 +81,27 @@ export function MobileMenu() {
     }
   ];
 
+  function handleChangeRoute() {
+    if (open) {
+      handleToggleMenu();
+    }
+  }
+
   return (
     <>
       <MainContainer>
-        <LinkButton to="/" aria-label="Página Início" full={false} rounded>
-          {pathname === '/' ? <MdHome /> : <MdOutlineHome />}
+        <LinkButton
+          to="/"
+          aria-label="Página Início"
+          full={false}
+          rounded
+          onClick={handleChangeRoute}
+        >
+          {pathname === '/' ? (
+            <MdHome style={{ fill: themes.colors.bee }} />
+          ) : (
+            <MdOutlineHome />
+          )}
         </LinkButton>
 
         <LinkButton
@@ -90,8 +109,13 @@ export function MobileMenu() {
           aria-label="Página Músicas"
           full={false}
           rounded
+          onClick={handleChangeRoute}
         >
-          {pathname === '/music' ? <MdMusicNote /> : <MdOutlineMusicNote />}
+          {pathname === '/music' ? (
+            <MdMusicNote style={{ fill: themes.colors.bee }} />
+          ) : (
+            <MdOutlineMusicNote />
+          )}
         </LinkButton>
 
         <Button
@@ -100,7 +124,11 @@ export function MobileMenu() {
           onClick={handleToggleMenu}
           aria-label={`${open ? 'Fechar' : 'Abrir'} menu auxiliar`}
         >
-          {open ? <MdClose /> : <MdMenu />}
+          {open ? (
+            <MdClose style={{ transform: 'scale(1.25)' }} />
+          ) : (
+            <MdMenu style={{ transform: 'scale(1.25)' }} />
+          )}
         </Button>
 
         <LinkButton
@@ -108,55 +136,134 @@ export function MobileMenu() {
           aria-label="Página Imagens"
           full={false}
           rounded
+          onClick={handleChangeRoute}
         >
-          {pathname === '/image' ? <MdImage /> : <MdOutlineImage />}
+          {pathname === '/image' ? (
+            <MdImage style={{ fill: themes.colors.bee }} />
+          ) : (
+            <MdOutlineImage />
+          )}
         </LinkButton>
 
-        <LinkButton to="/code" aria-label="Página Código" full={false} rounded>
-          <MdCode />
+        <LinkButton
+          to="/code"
+          aria-label="Página Código"
+          full={false}
+          rounded
+          onClick={handleChangeRoute}
+        >
+          <MdCode
+            style={{
+              fill:
+                pathname === '/code' ? themes.colors.bee : themes.colors.text
+            }}
+          />
         </LinkButton>
       </MainContainer>
 
       <MenuContainer open={open}>
-        <Button onClick={handleToggleMenu} aria-label="Fechar menu auxiliar">
+        <Button
+          onClick={handleToggleMenu}
+          aria-label="Fechar menu auxiliar"
+          tabIndex={open ? 0 : -1}
+        >
           <MdClose />
         </Button>
 
-        <LinkButton to="/list/save" aria-label="Postagens salvas">
-          {pathname === '/list/save' ? <MdBookmark /> : <MdBookmarkBorder />}
+        <LinkButton
+          to="/list/save"
+          aria-label="Postagens salvas"
+          tabIndex={open ? 0 : -1}
+          onClick={handleChangeRoute}
+        >
+          {pathname === '/list/save' ? (
+            <MdBookmark style={{ fill: themes.colors.bee }} />
+          ) : (
+            <MdBookmarkBorder />
+          )}
           <span>Salvos</span>
         </LinkButton>
 
-        <LinkButton to="/list/history" aria-label="Postagens vistas">
-          {pathname === '/list/history' ? <MdHistory /> : <MdOutlineHistory />}
+        <LinkButton
+          to="/list/history"
+          aria-label="Postagens vistas"
+          tabIndex={open ? 0 : -1}
+          onClick={handleChangeRoute}
+        >
+          {pathname === '/list/history' ? (
+            <MdHistory style={{ fill: themes.colors.bee }} />
+          ) : (
+            <MdOutlineHistory />
+          )}
           <span>Histórico</span>
         </LinkButton>
 
-        <LinkButton to="/list/like" aria-label="Postagens curtidas">
-          {pathname === '/list/like' ? <MdFavorite /> : <MdFavoriteBorder />}
+        <LinkButton
+          to="/list/like"
+          aria-label="Postagens curtidas"
+          tabIndex={open ? 0 : -1}
+          onClick={handleChangeRoute}
+        >
+          {pathname === '/list/like' ? (
+            <MdFavorite style={{ fill: themes.colors.bee }} />
+          ) : (
+            <MdFavoriteBorder />
+          )}
           <span>Curtidos</span>
         </LinkButton>
 
-        <LinkButton to="/chat" aria-label="Abrir chat">
-          {pathname === '/chat' ? <MdChat /> : <MdOutlineChat />}
+        <LinkButton
+          to="/chat"
+          aria-label="Abrir chat"
+          tabIndex={open ? 0 : -1}
+          onClick={handleChangeRoute}
+        >
+          {pathname === '/chat' ? (
+            <MdChat style={{ fill: themes.colors.bee }} />
+          ) : (
+            <MdOutlineChat />
+          )}
           <span>Chat</span>
         </LinkButton>
 
-        <LinkButton to="/jobs" aria-label="Página Trabalhos">
-          {pathname === '/jobs' ? <MdWork /> : <MdWorkOutline />}
+        <LinkButton
+          to="/jobs"
+          aria-label="Página Trabalhos"
+          tabIndex={open ? 0 : -1}
+          onClick={handleChangeRoute}
+        >
+          {pathname === '/jobs' ? (
+            <MdWork style={{ fill: themes.colors.bee }} />
+          ) : (
+            <MdWorkOutline />
+          )}
           <span>Vagas</span>
         </LinkButton>
 
-        <LinkButton to="/learn" aria-label="Página Aulas">
-          {pathname === '/learn' ? <MdSchool /> : <MdOutlineSchool />}
+        <LinkButton
+          to="/learn"
+          aria-label="Página Aulas"
+          tabIndex={open ? 0 : -1}
+          onClick={handleChangeRoute}
+        >
+          {pathname === '/learn' ? (
+            <MdSchool style={{ fill: themes.colors.bee }} />
+          ) : (
+            <MdOutlineSchool />
+          )}
           <span>Aulas</span>
         </LinkButton>
 
         <Line />
 
-        <LinkButton to="/follow" aria-label="Seguindo">
+        <LinkButton
+          to="/follow"
+          aria-label="Seguindo"
+          tabIndex={open ? 0 : -1}
+          onClick={handleChangeRoute}
+        >
           {pathname === '/follow' ? (
-            <MdPermIdentity />
+            <MdPermIdentity style={{ fill: themes.colors.bee }} />
           ) : (
             <MdOutlinePermIdentity />
           )}
@@ -171,6 +278,7 @@ export function MobileMenu() {
                 key={user.id}
                 user={user}
                 aria-label={`Perfil de ${user.name}`}
+                tabIndex={open ? 0 : -1}
               />
             );
           }
@@ -182,6 +290,7 @@ export function MobileMenu() {
               isShowMoreFollowing ? 'Mostrar menos' : 'Mostrar mais'
             } seguidores`}
             onClick={handleShowMoreFollowing}
+            tabIndex={open ? 0 : -1}
           >
             {isShowMoreFollowing ? (
               <>

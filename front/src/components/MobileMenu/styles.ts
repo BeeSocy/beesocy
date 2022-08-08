@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-export const maxMobileMenuHeight = 7.0;
-
 const MenuStyles = css`
   display: flex;
   flex: 1;
