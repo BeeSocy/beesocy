@@ -1,8 +1,10 @@
+import { AnchorHTMLAttributes } from 'react';
+import { LinkProps } from 'react-router-dom';
 import { IUser } from '../../types/user';
 import { LinkButton } from '../LinkButton';
 import { FollowCard } from './styles';
 
-interface IUserCard {
+interface IUserCard extends AnchorHTMLAttributes<HTMLAnchorElement> {
   user: IUser;
   full?: boolean;
 }

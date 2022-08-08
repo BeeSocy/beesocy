@@ -16,6 +16,6 @@ export default {
     typescript: '#0074c3',
     dart: '#00aba0',
     ruby: '#b31d17',
-    java: '#d6181b',
-  },
+    java: '#d6181b'
+  }
 };
