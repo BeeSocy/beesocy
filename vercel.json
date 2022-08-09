@@ -1,4 +1,16 @@
 {
+  "headers": [
+    {
+      "source": "/404",
+      "headers" : [
+        {
+          "key" : "Cache-Control",
+          "value" : "public, max-age=99999, must-revalidate"
+        }
+      ]
+    }
+  ],
+
   "rewrites":  [
     {"source": "/(.*)", "destination": "/"}
   ]

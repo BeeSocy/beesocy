@@ -11,7 +11,7 @@ export function Router() {
         <Route path="/" element={<GlobalFeed />} />
         <Route path="/image" element={<ImageFeed />} />
         <Route path="/404" element={<NotFound />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to={'/404'} replace />} />
       </Route>
     </Routes>
   );
