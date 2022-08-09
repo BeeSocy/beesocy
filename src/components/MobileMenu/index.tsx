@@ -168,6 +168,7 @@ export function MobileMenu() {
           tabIndex={open ? 0 : -1}
         >
           <MdClose />
+          <span>Fechar</span>
         </Button>
 
         <LinkButton

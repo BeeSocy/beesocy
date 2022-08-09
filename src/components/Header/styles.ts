@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakpoint } from '../../hooks/useMobile';
 
 import dark from '../../styles/themes/dark';
 
@@ -11,8 +12,12 @@ export const HeaderContainer = styled.header`
   z-index: 100;
 
   width: 100vw;
-  padding: 0.8rem 0.6rem;
-  padding-right: 1.6rem;
+  padding: 0.8rem;
+  padding-right: 2rem;
+
+  @media (max-width: ${breakpoint}) {
+    padding-inline: 2rem;
+  }
 
   background: ${props => props.theme.colors.primary};
 

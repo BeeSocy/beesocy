@@ -8,25 +8,25 @@ export interface ILikeButton {
   postId?: number;
 }
 
-export function LikeButton({ postId }: ILikeButton) {
-  const [isLiked, setIsLiked] = useState(false);
+export function LikeButton({ postId, isLiked }: ILikeButton) {
+  const [isLikedState, setIsLikedState] = useState(false);
 
   function handleLike() {
     //backend
-    setIsLiked(state => !state);
+    setIsLikedState(state => !state);
   }
 
   return (
     <Container
       full={false}
       rounded
-      isLiked={isLiked}
+      isLiked={isLikedState || isLiked}
       onClick={handleLike}
       aria-label="Curtir"
       title="Curtir"
-      aria-checked={isLiked}
+      aria-checked={isLikedState || isLiked}
     >
-      {isLiked ? <MdFavorite /> : <MdFavoriteBorder />}
+      {isLikedState || isLiked ? <MdFavorite /> : <MdFavoriteBorder />}
     </Container>
   );
 }
