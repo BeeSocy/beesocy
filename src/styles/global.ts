@@ -43,6 +43,7 @@ export default createGlobalStyle`
 
         &::-webkit-scrollbar {
             width: 1rem;
+            height: 1rem;
         }
 
         &::-webkit-scrollbar-thumb {

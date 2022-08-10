@@ -12,23 +12,23 @@ export interface IImageCard extends IImagePost {
   large?: boolean;
 }
 
-export function ImageCard({ large, img, description }: IImageCard) {
-  /*
-  TODO:
-  - Like ao dar double click
-  - Navegar para a imagem a clicar único
-  - Contexto para o like com um estado e uma função de dar like pelo post id
-  */
-
+export function ImageCard({
+  large,
+  img,
+  description,
+  isLiked,
+  isSaved,
+  isReported
+}: IImageCard) {
   return (
     <Container large={large}>
       <img src={img} alt={description} />
       <Toolbar>
-        <SaveButton />
+        <SaveButton isSaved={isSaved} />
         <ShareButton />
-        <LikeButton />
+        <LikeButton isLiked={isLiked} />
         <CommentButton />
-        <ReportButton />
+        <ReportButton isReported={isReported} />
       </Toolbar>
     </Container>
   );

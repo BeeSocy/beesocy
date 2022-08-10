@@ -26,6 +26,10 @@ export const FollowCard = styled.div`
   span {
     max-width: 11.2rem;
 
+    @media (max-width: ${breakpoint}) {
+      max-width: 20rem;
+    }
+
     white-space: nowrap;
 
     overflow: hidden;

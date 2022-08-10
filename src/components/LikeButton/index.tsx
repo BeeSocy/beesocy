@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 
 import { Container } from './styles';
@@ -8,25 +8,33 @@ export interface ILikeButton {
   postId?: number;
 }
 
+export function handleLike(postId?: number) {
+  //backend
+}
+
 export function LikeButton({ postId, isLiked }: ILikeButton) {
   const [isLikedState, setIsLikedState] = useState(false);
 
-  function handleLike() {
-    //backend
+  function handleClickLike() {
+    handleLike();
     setIsLikedState(state => !state);
   }
+
+  useEffect(() => {
+    setIsLikedState(isLiked ?? false);
+  }, []);
 
   return (
     <Container
       full={false}
       rounded
-      isLiked={isLikedState || isLiked}
-      onClick={handleLike}
+      isLiked={isLikedState}
+      onClick={handleClickLike}
       aria-label="Curtir"
       title="Curtir"
-      aria-checked={isLikedState || isLiked}
+      aria-checked={isLikedState}
     >
-      {isLikedState || isLiked ? <MdFavorite /> : <MdFavoriteBorder />}
+      {isLikedState ? <MdFavorite /> : <MdFavoriteBorder />}
     </Container>
   );
 }

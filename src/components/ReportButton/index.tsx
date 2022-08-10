@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdOutlineFlag, MdFlag } from 'react-icons/md';
 
 import { Container } from './styles';
@@ -8,25 +8,29 @@ export interface IReportButton {
   postId?: number;
 }
 
-export function ReportButton({ postId }: IReportButton) {
-  const [isReported, setIsReported] = useState(false);
+export function ReportButton({ postId, isReported }: IReportButton) {
+  const [isReportedState, setIsReportedState] = useState(false);
 
   function handleReport() {
     //backend
-    setIsReported(state => !state);
+    setIsReportedState(state => !state);
   }
+
+  useEffect(() => {
+    setIsReportedState(isReported ?? false);
+  }, []);
 
   return (
     <Container
       full={false}
       rounded
-      isReported={isReported}
+      isReported={isReportedState}
       onClick={handleReport}
       aria-label="Denunciar"
       title="Denunciar"
-      aria-checked={isReported}
+      aria-checked={isReportedState}
     >
-      {isReported ? <MdFlag /> : <MdOutlineFlag />}
+      {isReportedState ? <MdFlag /> : <MdOutlineFlag />}
     </Container>
   );
 }

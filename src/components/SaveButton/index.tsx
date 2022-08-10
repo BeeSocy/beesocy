@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdBookmark, MdBookmarkBorder } from 'react-icons/md';
 
 import { Container } from './styles';
@@ -8,25 +8,29 @@ export interface ISaveButton {
   postId?: number;
 }
 
-export function SaveButton({ postId }: ISaveButton) {
-  const [isSaved, setIsSaved] = useState(false);
+export function SaveButton({ postId, isSaved }: ISaveButton) {
+  const [isSavedState, setIsSavedState] = useState(false);
 
   function handleSave() {
     //backend
-    setIsSaved(state => !state);
+    setIsSavedState(state => !state);
   }
+
+  useEffect(() => {
+    setIsSavedState(isSaved ?? false);
+  }, []);
 
   return (
     <Container
       full={false}
       rounded
-      isSaved={isSaved}
+      isSaved={isSavedState}
       onClick={handleSave}
       aria-label="Salvar"
       title="Salvar"
-      aria-checked={isSaved}
+      aria-checked={isSavedState}
     >
-      {isSaved ? <MdBookmark /> : <MdBookmarkBorder />}
+      {isSavedState ? <MdBookmark /> : <MdBookmarkBorder />}
     </Container>
   );
 }
