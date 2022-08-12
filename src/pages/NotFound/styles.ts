@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LinkButton } from '../../components/LinkButton';
+import { LinkButton } from '../../components/Widgets/Buttons/LinkButton';
 import dark from '../../styles/themes/dark';
 import light from '../../styles/themes/light';
 
