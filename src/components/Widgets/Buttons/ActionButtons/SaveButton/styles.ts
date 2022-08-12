@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 import { ISaveButton } from '.';
 
-import { Button } from '../Button';
+import { Button } from '../../Button';
 
 export const Container = styled(Button)<ISaveButton>`
   svg {

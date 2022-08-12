@@ -1,7 +1,7 @@
 import { AnchorHTMLAttributes } from 'react';
 import { LinkProps } from 'react-router-dom';
-import { IUser } from '../../types/user';
-import { LinkButton } from '../LinkButton';
+import { IUser } from '../../../types/user';
+import { LinkButton } from '../../Widgets/Buttons/LinkButton';
 import { FollowCard } from './styles';
 
 interface IUserCard extends AnchorHTMLAttributes<HTMLAnchorElement> {

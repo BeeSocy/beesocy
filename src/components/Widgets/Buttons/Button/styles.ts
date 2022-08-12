@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { IButton } from '.';
-import { breakpoint } from '../../hooks/useMobile';
+import { breakpoint } from '../../../../hooks/useMobile';
 
 export const ButtonStyle = css`
   display: flex;

@@ -1,6 +1,6 @@
 import { Container, Line } from './styles';
 
-import { LinkButton } from '../LinkButton';
+import { LinkButton } from '../../Widgets/Buttons/LinkButton';
 
 import {
   MdHome,
@@ -27,19 +27,18 @@ import {
   MdExpandMore,
   MdExpandLess
 } from 'react-icons/md';
-import { useMenu } from '../../context/MenuProvider/useMenu';
+import { useMenu } from '../../../context/MenuProvider/useMenu';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-import { Button } from '../Button';
-import { UserCard } from '../UserCard';
-import { useUtils } from '../../hooks/useUtils';
-import { useTheme } from '../../context/ThemeProvider/useTheme';
+import { Button } from '../../Widgets/Buttons/Button';
+import { UserCard } from '../../Widgets/UserCard';
+import { useScroll } from '../../../hooks/useScroll';
+import { useTheme } from '../../../context/ThemeProvider/useTheme';
 
 export function Menu() {
-  const [hasVerticalScroll, setHasVerticalScroll] = useState<boolean>();
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
 
-  const { elementHasVerticalScroll } = useUtils();
+  const { elementRef: menuRef, hasVerticalScroll } = useScroll();
 
   const { open } = useMenu();
 
@@ -78,30 +77,6 @@ export function Menu() {
       img: 'https://source.unsplash.com/random'
     } */
   ];
-
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (menuRef.current) {
-      setHasVerticalScroll(
-        elementHasVerticalScroll(
-          menuRef.current.scrollHeight,
-          menuRef.current.clientHeight
-        )
-      );
-    }
-
-    window.addEventListener('resize', () => {
-      if (menuRef.current) {
-        setHasVerticalScroll(
-          elementHasVerticalScroll(
-            menuRef.current.scrollHeight,
-            menuRef.current.clientHeight
-          )
-        );
-      }
-    });
-  }, []);
 
   return (
     <Container

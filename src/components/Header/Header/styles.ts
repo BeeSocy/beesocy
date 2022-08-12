@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { breakpoint } from '../../hooks/useMobile';
+import { breakpoint } from '../../../hooks/useMobile';
 
-import dark from '../../styles/themes/dark';
+import dark from '../../../styles/themes/dark';
 
 export const HeaderContainer = styled.header`
   display: flex;

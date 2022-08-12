@@ -1,10 +1,10 @@
-import { IImagePost } from '../../types/imagePost';
+import { IImagePost } from '../../../types/imagePost';
 
-import { LikeButton } from '../LikeButton';
-import { ReportButton } from '../ReportButton';
-import { CommentButton } from '../CommentButton';
-import { SaveButton } from '../SaveButton';
-import { ShareButton } from '../ShareButton';
+import { LikeButton } from '../../Widgets/Buttons/ActionButtons/LikeButton';
+import { ReportButton } from '../../Widgets/Buttons/ActionButtons/ReportButton';
+import { CommentButton } from '../../Widgets/Buttons/ActionButtons/CommentButton';
+import { SaveButton } from '../../Widgets/Buttons/ActionButtons/SaveButton';
+import { ShareButton } from '../../Widgets/Buttons/ActionButtons/ShareButton';
 
 import { Container, Toolbar } from './styles';
 

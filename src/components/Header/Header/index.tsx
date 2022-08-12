@@ -10,12 +10,12 @@ import {
 } from 'react-icons/md';
 
 import { Logo } from '../Logo';
-import { Button } from '../Button';
+import { Button } from '../../Widgets/Buttons/Button';
 import { SearchBar } from '../SearchBar';
 
-import { useMobile } from '../../hooks/useMobile';
-import { useTheme } from '../../context/ThemeProvider/useTheme';
-import { useMenu } from '../../context/MenuProvider/useMenu';
+import { useMobile } from '../../../hooks/useMobile';
+import { useTheme } from '../../../context/ThemeProvider/useTheme';
+import { useMenu } from '../../../context/MenuProvider/useMenu';
 
 export function Header() {
   const { isMobile } = useMobile();

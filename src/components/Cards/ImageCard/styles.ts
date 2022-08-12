@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { breakpoint } from '../../hooks/useMobile';
+import { breakpoint } from '../../../hooks/useMobile';
 
 interface StyledImageCard {
   large?: boolean;

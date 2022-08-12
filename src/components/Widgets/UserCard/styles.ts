@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoint } from '../../hooks/useMobile';
+import { breakpoint } from '../../../hooks/useMobile';
 
 export const FollowCard = styled.div`
   display: inherit;

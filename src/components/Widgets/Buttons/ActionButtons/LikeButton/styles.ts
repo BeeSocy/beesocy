@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 import { ILikeButton } from '.';
 
-import { Button } from '../Button';
+import { Button } from '../../Button';
 
 const Pulse = keyframes`
   0% {

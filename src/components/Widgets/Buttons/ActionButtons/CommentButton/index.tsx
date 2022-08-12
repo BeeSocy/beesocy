@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { MdOutlineComment } from 'react-icons/md';
 
-import { Button } from '../Button';
+import { Button } from '../../Button';
 
 export interface ICommentButton {
   postId?: number;

@@ -1,6 +1,6 @@
 import { Container } from './style';
 
-import LogoSrc from '../../assets/logo.webp';
+import LogoSrc from '../../../assets/logo.webp';
 
 import { LinkProps } from 'react-router-dom';
 

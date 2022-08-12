@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Button } from '../Button';
-import { LinkButton } from '../LinkButton';
+import { Button } from '../../Widgets/Buttons/Button';
+import { LinkButton } from '../../Widgets/Buttons/LinkButton';
 import { MainContainer, MenuContainer } from './styles';
 
 import {
@@ -36,9 +36,9 @@ import { useLocation } from 'react-router-dom';
 
 import { Line } from '../Menu/styles';
 
-import { useMenu } from '../../context/MenuProvider/useMenu';
-import { UserCard } from '../UserCard';
-import { useTheme } from '../../context/ThemeProvider/useTheme';
+import { useMenu } from '../../../context/MenuProvider/useMenu';
+import { UserCard } from '../../Widgets/UserCard';
+import { useTheme } from '../../../context/ThemeProvider/useTheme';
 
 export function MobileMenu() {
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
