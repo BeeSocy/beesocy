@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "deps": "rm -rf node_modules/.vite/deps",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

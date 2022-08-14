@@ -1,5 +1,5 @@
 export interface IPost {
-  identity: number;
+  id: number;
   description: string;
   isLiked?: boolean;
   isSaved?: boolean;

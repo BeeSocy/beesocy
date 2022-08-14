@@ -6,11 +6,17 @@ import { CommentButton } from '../../Widgets/Buttons/ActionButtons/CommentButton
 import { SaveButton } from '../../Widgets/Buttons/ActionButtons/SaveButton';
 import { ShareButton } from '../../Widgets/Buttons/ActionButtons/ShareButton';
 
-import { Container, Toolbar } from './styles';
-import { HTMLAttributes } from 'react';
+import { CenterElementContainer, Container, Toolbar } from './styles';
+import { HTMLAttributes, ReactNode } from 'react';
 
-export interface IImageCard extends IImagePost, HTMLAttributes<HTMLDivElement> {
+export interface IImageCard extends HTMLAttributes<HTMLDivElement> {
   large?: boolean;
+  isLiked: boolean;
+  isSaved: boolean;
+  isReported: boolean;
+  description: string;
+  img: string;
+  centerElement?: ReactNode;
 }
 
 export function ImageCard({
@@ -20,11 +26,13 @@ export function ImageCard({
   isLiked,
   isSaved,
   isReported,
+  centerElement,
   ...props
 }: IImageCard) {
   return (
-    <Container large={large} {...props}>
-      <img src={img} alt={description} />
+    <Container large={large}>
+      <CenterElementContainer>{centerElement}</CenterElementContainer>
+      <img src={img} alt={description} {...props} />
       <Toolbar>
         <SaveButton isSaved={isSaved} />
         <ShareButton />

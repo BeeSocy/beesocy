@@ -17,9 +17,15 @@ export const Container = styled.div<StyledImageCard>`
 
   background: ${props => props.theme.colors.primary};
 
+  position: relative;
+
   img {
     width: 100%;
     height: 40rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   @media (min-width: ${breakpoint}) {
@@ -40,4 +46,17 @@ export const Toolbar = styled.section`
   align-items: center;
 
   height: fit-content;
+`;
+
+export const CenterElementContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
 `;
