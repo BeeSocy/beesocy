@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
+
 import { breakpoint } from '../../../hooks/useMobile';
+import { scaleUpAnimation } from '../GlobalCard/styles';
 
 interface StyledImageCard {
   large?: boolean;
@@ -7,6 +9,7 @@ interface StyledImageCard {
 
 export const Container = styled.div<StyledImageCard>`
   width: 100%;
+  max-width: 82rem;
 
   border-radius: 2rem;
 
@@ -26,6 +29,8 @@ export const Container = styled.div<StyledImageCard>`
         grid-column: span 2;
       `}
   }
+
+  ${scaleUpAnimation}
 `;
 
 export const Toolbar = styled.section`

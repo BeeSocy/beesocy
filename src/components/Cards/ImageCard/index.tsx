@@ -7,8 +7,9 @@ import { SaveButton } from '../../Widgets/Buttons/ActionButtons/SaveButton';
 import { ShareButton } from '../../Widgets/Buttons/ActionButtons/ShareButton';
 
 import { Container, Toolbar } from './styles';
+import { HTMLAttributes } from 'react';
 
-export interface IImageCard extends IImagePost {
+export interface IImageCard extends IImagePost, HTMLAttributes<HTMLDivElement> {
   large?: boolean;
 }
 
@@ -18,10 +19,11 @@ export function ImageCard({
   description,
   isLiked,
   isSaved,
-  isReported
+  isReported,
+  ...props
 }: IImageCard) {
   return (
-    <Container large={large}>
+    <Container large={large} {...props}>
       <img src={img} alt={description} />
       <Toolbar>
         <SaveButton isSaved={isSaved} />
