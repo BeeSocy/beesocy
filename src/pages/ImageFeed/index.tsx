@@ -7,11 +7,7 @@ import { Container } from './styles';
 
 import { useNavigate } from 'react-router-dom';
 import { ImageCategoryCarousel } from '../../components/General/ImageCategoryCarousel';
-
-interface IAnimationState {
-  id: number;
-  visible: boolean;
-}
+import { LikeAnimation } from '../../components/General/LikeAnimation';
 
 export const ImageFeed = React.memo(() => {
   const fetchedPosts: IImagePost[] = [
@@ -83,12 +79,23 @@ export const ImageFeed = React.memo(() => {
   ];
 
   const [posts, setPosts] = useState<IImagePost[]>(fetchedPosts);
-  const [likeAnimationState, setLikeAnimationState] =
-    useState<IAnimationState[]>();
+  const [isAnimationId, setIsAnimationId] = useState<number>();
 
   const navigate = useNavigate();
 
-  function handleDoubleClick(postId: number) {}
+  function handleDoubleClick(postId: number) {
+    posts.map(post => {
+      if (post.id === postId) {
+        if (!post.isLiked) {
+          //backend like
+        }
+      }
+    });
+    setIsAnimationId(postId);
+    setTimeout(() => {
+      setIsAnimationId(0);
+    }, 900);
+  }
 
   function handleSingleClick(postId: number) {
     return navigate(`/image/post/${postId}`, { replace: true });
@@ -116,7 +123,7 @@ export const ImageFeed = React.memo(() => {
     <>
       <ImageCategoryCarousel data={imageCategory} />
       <Container>
-        {posts.map((post, index) => {
+        {posts.map(post => {
           return (
             <ImageCard
               key={post.id}
@@ -127,6 +134,7 @@ export const ImageFeed = React.memo(() => {
               isSaved={post.isSaved ?? false}
               isReported={post.isReported ?? false}
               onClick={() => handlePostClick(post.id)}
+              centerElement={isAnimationId === post.id && <LikeAnimation />}
             />
           );
         })}
