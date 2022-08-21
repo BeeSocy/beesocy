@@ -1,3 +1,5 @@
+import dark from './dark';
+
 export default {
   title: 'light',
 
@@ -7,15 +9,15 @@ export default {
     light: '#cecece',
     text: '#0f0f0f',
 
-    bee: '#ffc834',
-    javascript: '#ffe000',
-    html: '#ff4e1d',
-    php: '#767cb6',
-    css: '#299fd7',
-    python: '#3571a1',
-    typescript: '#0074c3',
-    dart: '#00aba0',
-    ruby: '#b31d17',
-    java: '#d6181b'
+    bee: dark.colors.bee,
+    javascript: dark.colors.javascript,
+    html: dark.colors.html,
+    php: dark.colors.php,
+    css: dark.colors.css,
+    python: dark.colors.python,
+    typescript: dark.colors.typescript,
+    dart: dark.colors.dart,
+    ruby: dark.colors.ruby,
+    java: dark.colors.java
   }
 };

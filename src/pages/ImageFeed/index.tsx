@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useState
+} from 'react';
 import { ImageCard } from '../../components/Cards/ImageCard';
 import { IImageCategory } from '../../types/imageCategory';
 import { IImagePost } from '../../types/imagePost';
@@ -78,9 +83,6 @@ export const ImageFeed = React.memo(() => {
     }
   ];
 
-  const [posts, setPosts] = useState<IImagePost[]>(fetchedPosts);
-  const [isAnimationId, setIsAnimationId] = useState<number>();
-
   const navigate = useNavigate();
 
   function handleDoubleClick(postId: number) {
@@ -119,17 +121,30 @@ export const ImageFeed = React.memo(() => {
     }
   }
 
+  function handleSetRandomLargePosts(): boolean[] {
+    let largePosts: boolean[] = [];
+    posts.map((post, index) => {
+      largePosts[index] = Boolean(Math.floor(Math.random() * 2));
+    });
+
+    return largePosts;
+  }
+
+  const [posts, setPosts] = useState<IImagePost[]>(fetchedPosts);
+  const [isAnimationId, setIsAnimationId] = useState<number>();
+  const [randomLargePosts] = useState<boolean[]>(handleSetRandomLargePosts());
+
   return (
     <>
       <ImageCategoryCarousel data={imageCategory} />
       <Container>
-        {posts.map(post => {
+        {posts.map((post, index) => {
           return (
             <ImageCard
               key={post.id}
               description={post.description}
               img={post.img}
-              large={Boolean(Math.floor(Math.random() * 2))}
+              large={randomLargePosts[index]}
               isLiked={post.isLiked ?? false}
               isSaved={post.isSaved ?? false}
               isReported={post.isReported ?? false}

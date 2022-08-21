@@ -51,8 +51,8 @@ export const Container = styled.div`
 
   @keyframes shockwaveAnimation {
     100% {
-      width: 60rem;
-      height: 60rem;
+      width: 120rem;
+      height: 120rem;
       border-width: 0.1rem;
       opacity: 1;
     }
