@@ -11,7 +11,7 @@ import { IImagePost } from '../../types/imagePost';
 import { Container } from './styles';
 
 import { useNavigate } from 'react-router-dom';
-import { ImageCategoryCarousel } from '../../components/General/ImageCategoryCarousel';
+import { ImageCategoryCarousel } from '../../components/ImageFeed/ImageCategoryCarousel';
 import { LikeAnimation } from '../../components/General/LikeAnimation';
 
 export const ImageFeed = React.memo(() => {

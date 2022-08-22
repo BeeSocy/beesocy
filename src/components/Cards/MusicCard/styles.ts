@@ -1,9 +1,13 @@
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
+import { breakpoint } from '../../../hooks/useMobile';
 import { Button } from '../../Widgets/Buttons/Button';
 import { ButtonStyle } from '../../Widgets/Buttons/Button/styles';
 import { scaleUpAnimation } from '../GlobalCard/styles';
+
+import light from '../../../styles/themes/light';
+import { Title } from '../../General/Title';
 
 interface IStyledMusicCardProps extends HTMLAttributes<HTMLDivElement> {
   large?: boolean;
@@ -23,9 +27,10 @@ export const Container = styled.div<IStyledMusicCardProps>`
 
   border-radius: 2rem;
 
-  background: ${props => props.theme.colors.primary};
-
   ${scaleUpAnimation};
+  ${ButtonStyle};
+
+  background: ${props => props.theme.colors.primary};
 `;
 
 export const Wrapper = styled.div`
@@ -66,17 +71,47 @@ export const Controls = styled.div`
 
   align-items: flex-end;
 
-  height: 100%;
-
   position: absolute;
 
-  width: ${wrapperWidth};
+  padding: 0.4rem;
 
-  padding: 0.8rem;
+  width: ${wrapperWidth};
+  height: ${wrapperWidth};
+
+  border-radius: inherit;
+
+  &:active {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  @media (min-width: ${breakpoint}) {
+    div[role='button'] {
+      opacity: 0;
+      transition: all 0.5s;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.5);
+
+      div[role='button'] {
+        opacity: 1;
+      }
+    }
+  }
 `;
 
 export const PlayButton = styled(Button)`
   align-self: center;
+
+  &:active {
+    background: ${light.colors.light}75;
+  }
+
+  @media (min-width: ${breakpoint}) {
+    &:hover {
+      background: ${light.colors.light}75;
+    }
+  }
 `;
 
 export const DropdownTrigger = styled.div`
@@ -85,6 +120,18 @@ export const DropdownTrigger = styled.div`
   width: fit-content;
 
   border-radius: 100%;
+
+  cursor: pointer;
+
+  &:active {
+    background: ${light.colors.light}75;
+  }
+
+  @media (min-width: ${breakpoint}) {
+    &:hover {
+      background: ${light.colors.light}75;
+    }
+  }
 `;
 
 export const BottomContainer = styled.section`
@@ -96,6 +143,13 @@ export const BottomContainer = styled.section`
   max-width: inherit;
 
   gap: 0.4rem;
+`;
+
+export const MusicName = styled(Title)`
+  max-width: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export const Details = styled.section`

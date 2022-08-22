@@ -7,6 +7,8 @@ import { Title } from '../../General/Title';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
+import dark from '../../../styles/themes/dark';
+
 import {
   Container,
   TopContainer,
@@ -15,8 +17,10 @@ import {
   DropdownTrigger,
   Controls,
   PlayButton,
-  Wrapper
+  Wrapper,
+  MusicName
 } from './styles';
+import { MusicMenu } from '../../MusicFeed/MusicMenu';
 
 interface IMusicCardProps extends IMusicPost {
   large?: boolean;
@@ -37,6 +41,7 @@ export function MusicCard({
 }: IMusicCardProps) {
   function handleMusicCardClick() {
     //play player
+    console.log('alo');
   }
 
   function formatArtists(artists: string[]): string {
@@ -67,17 +72,24 @@ export function MusicCard({
                 <DropdownMenuPrimitive.Root>
                   <DropdownMenuPrimitive.Trigger style={{ all: 'unset' }}>
                     <DropdownTrigger role={'button'}>
-                      <MdMoreVert />
+                      <MdMoreVert style={{ fill: dark.colors.text }} />
                     </DropdownTrigger>
                   </DropdownMenuPrimitive.Trigger>
 
-                  <DropdownMenuPrimitive.Content sideOffset={5}>
-                    <h1>Olá mundo!</h1>
+                  <DropdownMenuPrimitive.Content
+                    sideOffset={5}
+                    style={{ zIndex: 110 }}
+                  >
+                    <MusicMenu />
                   </DropdownMenuPrimitive.Content>
                 </DropdownMenuPrimitive.Root>
 
                 <PlayButton rounded full={false}>
-                  {playing ? <MdPause size={52} /> : <MdPlayArrow size={52} />}
+                  {playing ? (
+                    <MdPause size={52} style={{ fill: dark.colors.text }} />
+                  ) : (
+                    <MdPlayArrow size={52} style={{ fill: dark.colors.text }} />
+                  )}
                 </PlayButton>
               </Controls>
 
@@ -85,7 +97,7 @@ export function MusicCard({
             </TopContainer>
 
             <BottomContainer>
-              <Title>{name}</Title>
+              <MusicName>{name}</MusicName>
               <Details title={formatArtists(artists)}>
                 <span>{explicit && <MdExplicit size={20} />}</span>
                 <span>{playlist ? 'Playlist' : 'Single'}</span>
@@ -97,8 +109,8 @@ export function MusicCard({
         </Container>
       </ContextMenuPrimitive.Trigger>
 
-      <ContextMenuPrimitive.Content>
-        <h1>Hello world!</h1>
+      <ContextMenuPrimitive.Content hideWhenDetached style={{ zIndex: 110 }}>
+        <MusicMenu />
       </ContextMenuPrimitive.Content>
     </ContextMenuPrimitive.Root>
   );
