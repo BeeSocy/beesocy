@@ -109,7 +109,7 @@ export function MusicCard({
         </Container>
       </ContextMenuPrimitive.Trigger>
 
-      <ContextMenuPrimitive.Content hideWhenDetached style={{ zIndex: 110 }}>
+      <ContextMenuPrimitive.Content style={{ zIndex: 110 }}>
         <MusicMenu />
       </ContextMenuPrimitive.Content>
     </ContextMenuPrimitive.Root>

@@ -22,8 +22,7 @@ export const Container = styled.div<IStyledMusicCardProps>`
   padding: 1.6rem;
 
   height: fit-content;
-  width: 100%;
-  min-width: 22.4rem;
+  width: 22.4rem;
 
   border-radius: 2rem;
 
@@ -31,6 +30,12 @@ export const Container = styled.div<IStyledMusicCardProps>`
   ${ButtonStyle};
 
   background: ${props => props.theme.colors.primary};
+
+  &:hover {
+    div[role='button'] {
+      opacity: 1;
+    }
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -92,10 +97,6 @@ export const Controls = styled.div`
 
     &:hover {
       background: rgba(0, 0, 0, 0.5);
-
-      div[role='button'] {
-        opacity: 1;
-      }
     }
   }
 `;

@@ -1,27 +1,3 @@
-/* 
-
-(single)
-play next
-add to playlist
-go to artist
-add to queue
-like
-share
-save
-report
-
-(playlist)
-play next
-add to playlist
-go to creator
-add to queue
-like
-share
-save
-report
-
-*/
-
 import {
   MdPlaylistPlay,
   MdPlaylistAdd,
@@ -40,6 +16,7 @@ import { Button } from '../../Widgets/Buttons/Button';
 import { Container } from './styles';
 
 import dark from '../../../styles/themes/dark';
+import { useEffect, useRef, useState } from 'react';
 
 interface IContextMenuProps {
   playlist?: boolean;
@@ -54,8 +31,21 @@ export function MusicMenu({
   saved,
   reported
 }: IContextMenuProps) {
+  const musicMenuRef = useRef<HTMLDivElement>(null);
+
+  const [musicMenuHeight, setMusicMenuHeight] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      if (musicMenuRef) {
+        console.log(musicMenuRef.current?.clientHeight);
+        console.log(window.innerHeight);
+      }
+    });
+  }, []);
+
   return (
-    <Container>
+    <Container ref={musicMenuRef}>
       <Button>
         <MdPlaylistPlay />
         <span>Tocar a seguir</span>
@@ -68,7 +58,7 @@ export function MusicMenu({
 
       <Button>
         <MdOutlinePersonAdd />
-        <span>Ir para o artista</span>
+        <span>{playlist ? 'Ir para o artista' : 'Ir para o criador'}</span>
       </Button>
 
       <Button>

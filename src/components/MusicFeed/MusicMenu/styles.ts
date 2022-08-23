@@ -7,5 +7,8 @@ export const Container = styled.div`
 
   border: 0.1rem solid ${props => props.theme.colors.light};
 
+  height: 100vh;
+  max-height: 41.8rem;
+
   overflow: auto;
 `;
