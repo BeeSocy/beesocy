@@ -58,7 +58,7 @@ export function MusicMenu({
 
       <Button>
         <MdOutlinePersonAdd />
-        <span>{playlist ? 'Ir para o artista' : 'Ir para o criador'}</span>
+        <span>{playlist ? 'Ir para o criador' : 'Ir para o artista'}</span>
       </Button>
 
       <Button>

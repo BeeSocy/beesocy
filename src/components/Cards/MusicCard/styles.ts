@@ -15,14 +15,15 @@ interface IStyledMusicCardProps extends HTMLAttributes<HTMLDivElement> {
 
 const wrapperWidth = '18rem';
 
-export const Container = styled.div<IStyledMusicCardProps>`
+export const Container = styled.div`
+  max-width: 22.4rem;
+`;
+
+export const Card = styled.div<IStyledMusicCardProps>`
   display: flex;
   justify-content: center;
 
-  padding: 1.6rem;
-
   height: fit-content;
-  width: 22.4rem;
 
   border-radius: 2rem;
 

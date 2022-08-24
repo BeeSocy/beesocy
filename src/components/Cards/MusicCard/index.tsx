@@ -18,11 +18,13 @@ import {
   Controls,
   PlayButton,
   Wrapper,
-  MusicName
+  MusicName,
+  Card
 } from './styles';
 import { MusicMenu } from '../../MusicFeed/MusicMenu';
 import { useMobile } from '../../../hooks/useMobile';
 import { useState } from 'react';
+import { useTheme } from '../../../context/ThemeProvider/useTheme';
 
 interface IMusicCardProps extends IMusicPost {
   large?: boolean;
@@ -69,79 +71,87 @@ export function MusicCard({
 
   const { isMobile } = useMobile();
 
+  const { colors } = useTheme();
+
   const [isMobileSheetOpen, setIsMobileSheetOpen] = useState<boolean>(false);
 
   return (
     <>
-      <ContextMenuPrimitive.Root onOpenChange={handleToggleMobileSheetIsOpen}>
-        <ContextMenuPrimitive.Trigger>
-          <Container onClick={handleMusicCardClick} large={large}>
-            <Wrapper>
-              <TopContainer>
-                <Controls>
-                  <DropdownMenuPrimitive.Root
-                    onOpenChange={handleToggleMobileSheetIsOpen}
-                  >
-                    <DropdownMenuPrimitive.Trigger style={{ all: 'unset' }}>
-                      <DropdownTrigger role={'button'}>
-                        <MdMoreVert style={{ fill: dark.colors.text }} />
-                      </DropdownTrigger>
-                    </DropdownMenuPrimitive.Trigger>
-
-                    <DropdownMenuPrimitive.Content
-                      sideOffset={5}
-                      style={{ zIndex: 110 }}
+      <Container>
+        <ContextMenuPrimitive.Root onOpenChange={handleToggleMobileSheetIsOpen}>
+          <ContextMenuPrimitive.Trigger>
+            <Card onClick={handleMusicCardClick} large={large}>
+              <Wrapper>
+                <TopContainer>
+                  <Controls>
+                    <DropdownMenuPrimitive.Root
+                      onOpenChange={handleToggleMobileSheetIsOpen}
                     >
-                      {!isMobile && <MusicMenu />}
-                    </DropdownMenuPrimitive.Content>
-                  </DropdownMenuPrimitive.Root>
+                      <DropdownMenuPrimitive.Trigger style={{ all: 'unset' }}>
+                        <DropdownTrigger role={'button'}>
+                          <MdMoreVert style={{ fill: dark.colors.text }} />
+                        </DropdownTrigger>
+                      </DropdownMenuPrimitive.Trigger>
 
-                  <PlayButton rounded full={false}>
-                    {playing ? (
-                      <MdPause size={52} style={{ fill: dark.colors.text }} />
-                    ) : (
-                      <MdPlayArrow
-                        size={52}
-                        style={{ fill: dark.colors.text }}
-                      />
-                    )}
-                  </PlayButton>
-                </Controls>
+                      <DropdownMenuPrimitive.Content
+                        sideOffset={5}
+                        style={{ zIndex: 110 }}
+                      >
+                        {!isMobile && <MusicMenu />}
+                      </DropdownMenuPrimitive.Content>
+                    </DropdownMenuPrimitive.Root>
 
-                <img src={imageUrl} alt={`Capa da música ${name}`} />
-              </TopContainer>
+                    <PlayButton rounded full={false}>
+                      {playing ? (
+                        <MdPause size={52} style={{ fill: dark.colors.text }} />
+                      ) : (
+                        <MdPlayArrow
+                          size={52}
+                          style={{ fill: dark.colors.text }}
+                        />
+                      )}
+                    </PlayButton>
+                  </Controls>
 
-              <BottomContainer>
-                <MusicName>{name}</MusicName>
-                <Details title={formatArtists(artists)}>
-                  <span>{explicit && <MdExplicit size={20} />}</span>
-                  <span>{playlist ? 'Playlist' : 'Single'}</span>
-                  <span>&bull;</span>
-                  <span>{formatArtists(artists)}</span>
-                </Details>
-              </BottomContainer>
-            </Wrapper>
-          </Container>
-        </ContextMenuPrimitive.Trigger>
+                  <img src={imageUrl} alt={`Capa da música ${name}`} />
+                </TopContainer>
 
-        <ContextMenuPrimitive.Content style={{ zIndex: 110 }}>
-          {!isMobile && <MusicMenu />}
-        </ContextMenuPrimitive.Content>
-      </ContextMenuPrimitive.Root>
+                <BottomContainer>
+                  <MusicName>{name}</MusicName>
+                  <Details title={formatArtists(artists)}>
+                    <span>{explicit && <MdExplicit size={20} />}</span>
+                    <span>{playlist ? 'Playlist' : 'Single'}</span>
+                    <span>&bull;</span>
+                    <span>{formatArtists(artists)}</span>
+                  </Details>
+                </BottomContainer>
+              </Wrapper>
+            </Card>
+          </ContextMenuPrimitive.Trigger>
 
-      <Sheet
-        isOpen={isMobileSheetOpen}
-        onClose={() => setIsMobileSheetOpen(false)}
-      >
-        <Sheet.Container>
-          <Sheet.Header />
-          <Sheet.Content>
-            <MusicMenu />
-          </Sheet.Content>
-        </Sheet.Container>
+          <ContextMenuPrimitive.Content style={{ zIndex: 110 }}>
+            {!isMobile && <MusicMenu />}
+          </ContextMenuPrimitive.Content>
+        </ContextMenuPrimitive.Root>
+      </Container>
 
-        <Sheet.Backdrop />
-      </Sheet>
+      {isMobile && (
+        <Sheet
+          isOpen={isMobileSheetOpen}
+          onClose={() => setIsMobileSheetOpen(false)}
+        >
+          <Sheet.Container
+            style={{ background: colors.primary, height: 'fit-content' }}
+          >
+            <Sheet.Header style={{ color: colors.light }} />
+            <Sheet.Content>
+              <MusicMenu />
+            </Sheet.Content>
+          </Sheet.Container>
+
+          <Sheet.Backdrop />
+        </Sheet>
+      )}
     </>
   );
 }
