@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   overflow: auto;
 
-  @media (min-with: ${breakpoint}) {
+  @media (min-width: ${breakpoint}) {
     border: 0.1rem solid ${props => props.theme.colors.light};
     border-radius: 2rem;
   }

@@ -25,11 +25,30 @@ import { MusicMenu } from '../../MusicFeed/MusicMenu';
 import { useMobile } from '../../../hooks/useMobile';
 import { useState } from 'react';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
+import { MusicInfo } from '../../MusicFeed/MusicInfo';
 
 interface IMusicCardProps extends IMusicPost {
   large?: boolean;
   playing?: boolean;
   showDuration?: boolean;
+}
+
+export function formatArtists(artists: string[]): string {
+  let formattedString = '';
+  if (artists.length > 1) {
+    artists.map((value, index) => {
+      formattedString += value;
+      if (index == artists.length - 2) {
+        formattedString += ' e ';
+      } else if (index != artists.length - 1) {
+        formattedString += ', ';
+      }
+    });
+  } else {
+    formattedString = artists[0];
+  }
+
+  return formattedString;
 }
 
 export function MusicCard({
@@ -45,24 +64,6 @@ export function MusicCard({
 }: IMusicCardProps) {
   function handleMusicCardClick() {
     //play player
-  }
-
-  function formatArtists(artists: string[]): string {
-    let formattedString = '';
-    if (artists.length > 1) {
-      artists.map((value, index) => {
-        formattedString += value;
-        if (index == artists.length - 2) {
-          formattedString += ' e ';
-        } else if (index != artists.length - 1) {
-          formattedString += ', ';
-        }
-      });
-    } else {
-      formattedString = artists[0];
-    }
-
-    return formattedString;
   }
 
   function handleToggleMobileSheetIsOpen() {
@@ -145,6 +146,7 @@ export function MusicCard({
           >
             <Sheet.Header style={{ color: colors.light }} />
             <Sheet.Content>
+              <MusicInfo name={name} artists={artists} imageUrl={imageUrl} />
               <MusicMenu />
             </Sheet.Content>
           </Sheet.Container>

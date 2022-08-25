@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 
 interface IStyledTitle {
-  large?: boolean;
+  size?: 'large' | 'medium' | 'small';
 }
 
 export const Title = styled.span<IStyledTitle>`
   font-weight: 700;
 
-  font-size: ${props => (props.large ? '4rem' : '2rem')};
+  font-size: ${props => {
+    if (props.size === 'large') {
+      return '4rem';
+    } else if (props.size === 'medium') {
+      return '2rem';
+    } else {
+      return '1.6rem';
+    }
+  }};
 `;

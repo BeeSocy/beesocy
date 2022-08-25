@@ -33,17 +33,6 @@ export function MusicMenu({
 }: IContextMenuProps) {
   const musicMenuRef = useRef<HTMLDivElement>(null);
 
-  const [musicMenuHeight, setMusicMenuHeight] = useState(0);
-
-  useEffect(() => {
-    window.addEventListener('resize', () => {
-      if (musicMenuRef) {
-        console.log(musicMenuRef.current?.clientHeight);
-        console.log(window.innerHeight);
-      }
-    });
-  }, []);
-
   return (
     <Container ref={musicMenuRef}>
       <Button>
