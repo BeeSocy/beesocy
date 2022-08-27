@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { IMusicPost } from '../../../types/musicPost';
 import { formatArtists } from '../../Cards/MusicCard';
 import { Title } from '../../General/Title';
-import { Container, Details } from './styles';
+import { Container, Details, MusicTitle, Artists } from './styles';
 
 interface IMusicInfoProps {
   name: string;
@@ -15,42 +16,51 @@ export function MusicInfo({ name, artists, imageUrl }: IMusicInfoProps) {
   const TitleSpanRef = useRef<HTMLSpanElement>(null);
   const ArtistSpanRef = useRef<HTMLSpanElement>(null);
 
-  const ArtistSpanHasOverflow = useRef<boolean>(false);
-  const TitleSpanHasOverflow = useRef<boolean>(false);
+  const [artistSpanOverflowIsGreaterZero, setArtistSpanOverflowIsGreaterZero] =
+    useState<boolean>(false);
+  const [titleSpanOverflowIsGreaterZero, setTitleSpanOverflowIsGreaterZero] =
+    useState<boolean>(false);
 
   useEffect(() => {
-    if (
-      TitleSpanRef.current &&
-      DetailsContainerRef.current &&
-      ArtistSpanRef.current
-    ) {
-      if (
-        TitleSpanRef.current?.scrollWidth >
-        DetailsContainerRef.current?.offsetWidth
-      ) {
-        TitleSpanHasOverflow.current = true;
-      }
-
+    if (DetailsContainerRef.current && ArtistSpanRef.current) {
       if (
         ArtistSpanRef.current?.scrollWidth >
         DetailsContainerRef.current?.offsetWidth
       ) {
-        ArtistSpanHasOverflow.current = true;
+        let invertScroll = true;
+
         setInterval(() => {
-          ArtistSpanRef.current?.scrollTo({
-            left: (ArtistSpanRef.current.scrollLeft += 1),
-            behavior: 'smooth'
-          });
-          console.log(
-            ArtistSpanRef.current?.scrollLeft,
-            ArtistSpanRef.current?.scrollWidth
-          );
+          if (invertScroll) {
+            ArtistSpanRef.current?.scrollTo({
+              left: (ArtistSpanRef.current.scrollLeft -= 1),
+              behavior: 'smooth'
+            });
+          } else {
+            ArtistSpanRef.current?.scrollTo({
+              left: (ArtistSpanRef.current.scrollLeft += 1),
+              behavior: 'smooth'
+            });
+          }
+
+          if (ArtistSpanRef.current && ArtistSpanRef.current.scrollLeft == 0) {
+            setTimeout(() => {
+              invertScroll = false;
+            }, 2000);
+          }
+
           if (
             ArtistSpanRef.current &&
-            ArtistSpanRef.current?.scrollLeft >=
-              ArtistSpanRef.current?.scrollWidth - 140
+            ArtistSpanRef.current.offsetWidth +
+              Math.round(ArtistSpanRef.current.scrollLeft) ==
+              ArtistSpanRef.current.scrollWidth
           ) {
-            ArtistSpanRef.current?.scrollTo({ left: 0 });
+            invertScroll = true;
+          }
+
+          if (ArtistSpanRef.current && ArtistSpanRef.current.scrollLeft > 0) {
+            setArtistSpanOverflowIsGreaterZero(true);
+          } else {
+            setArtistSpanOverflowIsGreaterZero(false);
           }
         }, 50);
       }
@@ -62,13 +72,15 @@ export function MusicInfo({ name, artists, imageUrl }: IMusicInfoProps) {
       <img src={imageUrl} />
 
       <Details ref={DetailsContainerRef}>
-        <Title ref={TitleSpanRef} size={'small'}>
+        <MusicTitle ref={TitleSpanRef} size={'small'}>
           {name}
-        </Title>
-        <span ref={ArtistSpanRef}>
-          {formatArtists(artists)}{' '}
-          {ArtistSpanHasOverflow && `ㅤㅤㅤ${formatArtists(artists)}`}
-        </span>
+        </MusicTitle>
+        <Artists
+          ref={ArtistSpanRef}
+          overflowIsGreaterZero={artistSpanOverflowIsGreaterZero}
+        >
+          {formatArtists(artists)}
+        </Artists>
       </Details>
     </Container>
   );

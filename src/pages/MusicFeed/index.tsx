@@ -6,11 +6,7 @@ export function MusicFeed() {
     <Container>
       <MusicCard
         name={'Londres Freestyle'}
-        artists={[
-          'Veigh',
-          'Nagalli',
-          'Supernova Entaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaas'
-        ]}
+        artists={['Veigh', 'Nagalli', 'Supernova Ent']}
         duration={0}
         imageUrl={
           'https://lh3.googleusercontent.com/Tm4BCNzluBcawAzvLYFxVvTna5wkWxpd-dUpuBjzpNPvaq-T4F1mqnDWUn2d_OMbTPJS27t5EB8YpmUN=w544-h544-l90-rj'
