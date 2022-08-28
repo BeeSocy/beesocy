@@ -1,16 +1,23 @@
 import styled from 'styled-components';
-import { Title } from '../../General/Title';
+import { breakpoint } from '../../../hooks/useMobile';
+import { Title as TitleComponent } from '../../General/Title';
 
 const distanceBetweenText = '1.4rem';
 
-export const Container = styled(Title)`
+export const Container = styled.div``;
+
+export const Title = styled(TitleComponent)`
   display: flex;
 
   align-items: center;
 
   gap: 0.4rem;
 
-  padding-block: 1.8rem;
+  padding-bottom: 1.8rem;
+
+  @media (min-width: ${breakpoint}) {
+    white-space: nowrap;
+  }
 
   &::after,
   &::before {
@@ -30,5 +37,22 @@ export const Container = styled(Title)`
 
   &::after {
     margin-left: ${distanceBetweenText};
+  }
+`;
+
+export const Subtitle = styled.span`
+  display: flex;
+
+  text-transform: uppercase;
+
+  margin-left: 5rem;
+
+  letter-spacing: 0.2rem;
+
+  opacity: 0.6;
+
+  @media (max-width: ${breakpoint}) {
+    justify-content: center;
+    margin: 0;
   }
 `;
