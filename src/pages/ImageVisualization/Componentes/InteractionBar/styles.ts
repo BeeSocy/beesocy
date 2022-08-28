@@ -6,18 +6,23 @@ export const BodyBar = styled.div`
 
     right: 2rem;
 
-    width: 8rem;
-    height: 40rem;
 
     border-radius: 2rem;
 
-    background: red;
+    background: ${(props) => props.theme.colors.primary};
 
     display: flex;
     flex-direction: column;
 
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    gap: 0.8rem;
+
+    padding: 0.8rem 0.8rem;
+    overflow: hidden;
+    button {
+        justify-content: center;
+    }
 
 
 
