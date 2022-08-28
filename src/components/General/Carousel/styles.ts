@@ -31,8 +31,10 @@ export const Container = styled.div<IStyledContainer>`
 `;
 
 interface IStyledArrow {
-  leftPosition: number[];
-  rightPosition: number[];
+  $leftPosition: number[];
+  $rightPosition: number[];
+  $inStart: boolean;
+  $inEnd: boolean;
 }
 
 export const Arrow = styled(ReactSVG)<IStyledArrow>`
@@ -60,13 +62,31 @@ export const Arrow = styled(ReactSVG)<IStyledArrow>`
   }
 
   &:nth-child(1) {
-    transform: translateY(${props => props.leftPosition[0]}rem) rotate(180deg);
-    right: ${props => props.leftPosition[1]}rem;
+    transform: translateY(${props => props.$leftPosition[0]}rem) rotate(180deg);
+    right: ${props => props.$leftPosition[1]}rem;
+
+    ${props =>
+      props.$inStart &&
+      css`
+        svg {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      `}
   }
 
   &:last-child {
-    transform: translateY(${props => props.rightPosition[0]}rem);
-    right: ${props => props.rightPosition[1]}rem;
+    transform: translateY(${props => props.$rightPosition[0]}rem);
+    right: ${props => props.$rightPosition[1]}rem;
+
+    ${props =>
+      props.$inEnd &&
+      css`
+        svg {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      `}
   }
 `;
 

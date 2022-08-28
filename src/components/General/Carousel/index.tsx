@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Arrow, Container, Content } from './styles';
 
 import LightArrowSrc from '../../../assets/icons/light_arrow.svg';
@@ -52,6 +52,36 @@ export function Carousel({
     }
   }
 
+  useEffect(() => {
+    if (ContainerRef.current) {
+      ContainerRef.current.addEventListener('scroll', () => {
+        if (ContainerRef.current) {
+          if (ContainerRef.current.scrollLeft > 0) {
+            setCarouselOverflowInStart(false);
+          } else {
+            setCarouselOverflowInStart(true);
+          }
+
+          if (
+            ContainerRef.current.offsetWidth +
+              Math.round(ContainerRef.current.scrollLeft) ==
+            ContainerRef.current.scrollWidth
+          ) {
+            setCarouselOverflowInEnd(true);
+          } else {
+            setCarouselOverflowInEnd(false);
+          }
+        }
+      });
+    }
+  }, []);
+
+  const [carouselOverflowInStart, setCarouselOverflowInStart] =
+    useState<boolean>(true);
+
+  const [carouselOverflowInEnd, setCarouselOverflowInEnd] =
+    useState<boolean>(false);
+
   const { title } = useTheme();
 
   const ContainerRef = useRef<HTMLDivElement>(null);
@@ -66,8 +96,10 @@ export function Carousel({
           src={title === 'light' ? DarkArrowSrc : LightArrowSrc}
           role={'button'}
           onClick={() => handleMoveCarousel('right', distance)}
-          leftPosition={leftArrowPosition}
-          rightPosition={rightArrowPosition}
+          $leftPosition={leftArrowPosition}
+          $rightPosition={rightArrowPosition}
+          $inStart={carouselOverflowInStart}
+          $inEnd={carouselOverflowInEnd}
         />
       )}
 
@@ -78,8 +110,10 @@ export function Carousel({
           src={title === 'light' ? DarkArrowSrc : LightArrowSrc}
           role={'button'}
           onClick={() => handleMoveCarousel('left', distance)}
-          leftPosition={leftArrowPosition}
-          rightPosition={rightArrowPosition}
+          $leftPosition={leftArrowPosition}
+          $rightPosition={rightArrowPosition}
+          $inStart={carouselOverflowInStart}
+          $inEnd={carouselOverflowInEnd}
         />
       )}
     </Container>
