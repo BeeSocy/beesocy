@@ -17,7 +17,7 @@ export const Container = styled(Title)`
     content: '';
 
     width: 100%;
-    height: 0.05rem;
+    height: 0.1rem;
 
     background-color: ${props => props.theme.colors.text};
   }
