@@ -16,8 +16,6 @@ export const Container = styled.div<IStyledContainer>`
 
   scrollbar-width: none;
 
-  position: relative;
-
   scroll-snap-type: x mandatory;
 
   ${props =>
@@ -39,7 +37,7 @@ interface IStyledArrow {
 }
 
 export const Arrow = styled(ReactSVG)<IStyledArrow>`
-  position: fixed;
+  position: absolute;
 
   z-index: 1;
 

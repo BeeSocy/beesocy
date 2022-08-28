@@ -61,6 +61,7 @@ export const TopContainer = styled.section`
 
   img {
     width: ${wrapperWidth};
+    height: ${wrapperWidth};
 
     border-radius: inherit;
   }

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -10,7 +10,19 @@ export const Container = styled.div`
 
 export const AlgorithmContainer = styled.div``;
 
-export const AlgorithmContent = styled.div`
+interface IAlgorithmContent {
+  $multiLines: boolean;
+}
+
+export const AlgorithmContent = styled.div<IAlgorithmContent>`
   display: flex;
   gap: 1.8rem;
+
+  ${props =>
+    props.$multiLines &&
+    css`
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      grid-auto-flow: column;
+    `};
 `;

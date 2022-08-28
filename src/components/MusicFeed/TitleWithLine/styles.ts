@@ -4,7 +4,9 @@ import { Title as TitleComponent } from '../../General/Title';
 
 const distanceBetweenText = '1.4rem';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  z-index: 0;
+`;
 
 export const Title = styled(TitleComponent)`
   display: flex;

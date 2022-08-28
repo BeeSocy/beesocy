@@ -50,6 +50,7 @@ export const TopContainer = styled.section`
 
   img {
     width: 4.8rem;
+    height: 4.8rem;
 
     border-radius: 0.4rem;
   }
@@ -144,6 +145,7 @@ export const Details = styled.section`
     gap: inherit;
 
     span:nth-child(4) {
+      width: ${wrapperWidth};
       max-width: inherit;
       overflow: hidden;
       text-overflow: ellipsis;
