@@ -11,7 +11,8 @@ interface IStyledContainer {
 export const Container = styled.div<IStyledContainer>`
   display: flex;
 
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
 
   scrollbar-width: none;
 

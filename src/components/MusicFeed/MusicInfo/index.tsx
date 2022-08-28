@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { IMusicPost } from '../../../types/musicPost';
 import { formatArtists } from '../../Cards/MusicCard';
-import { Title } from '../../General/Title';
 import { Container, Details, MusicTitle, Artists } from './styles';
 
 interface IMusicInfoProps {
@@ -54,7 +52,9 @@ export function MusicInfo({ name, artists, imageUrl }: IMusicInfoProps) {
               Math.round(ArtistSpanRef.current.scrollLeft) ==
               ArtistSpanRef.current.scrollWidth
           ) {
-            invertScroll = true;
+            setTimeout(() => {
+              invertScroll = true;
+            }, 1000);
           }
 
           if (ArtistSpanRef.current && ArtistSpanRef.current.scrollLeft > 0) {

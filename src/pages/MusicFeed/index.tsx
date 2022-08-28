@@ -11,6 +11,7 @@ export function MusicFeed() {
       title: 'Seus favoritos',
       subtitle: 'Relembre o passado',
       halfContainer: false,
+      largeContent: true,
       tracks: [
         {
           id: 1,
@@ -59,6 +60,7 @@ export function MusicFeed() {
       title: 'Lançamentos',
       subtitle: 'Novidade no seu fone',
       halfContainer: false,
+      largeContent: false,
       tracks: [
         {
           id: 1,
@@ -104,6 +106,7 @@ export function MusicFeed() {
                       fileUrl={track.fileUrl}
                       description={track.description}
                       explicit={track.explicit}
+                      large={algorithm.largeContent}
                     />
                   );
                 })}

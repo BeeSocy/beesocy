@@ -1,26 +1,21 @@
 import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { breakpoint } from '../../../hooks/useMobile';
-import { Button } from '../../Widgets/Buttons/Button';
-import { ButtonStyle } from '../../Widgets/Buttons/Button/styles';
-import { scaleUpAnimation } from '../GlobalCard/styles';
+import { breakpoint } from '../../../../hooks/useMobile';
+import { Button } from '../../../Widgets/Buttons/Button';
+import { ButtonStyle } from '../../../Widgets/Buttons/Button/styles';
+import { scaleUpAnimation } from '../../GlobalCard/styles';
 
-import light from '../../../styles/themes/light';
-import { Title } from '../../General/Title';
+import light from '../../../../styles/themes/light';
+import { Title } from '../../../General/Title';
 
-interface IStyledMusicCardProps extends HTMLAttributes<HTMLDivElement> {
-  large?: boolean;
-}
-
-const wrapperWidth = '18rem';
+const wrapperWidth = '20rem';
 
 export const Container = styled.div`
-  max-width: 22.4rem;
+  width: 32rem;
 `;
 
-export const Card = styled.div<IStyledMusicCardProps>`
+export const Card = styled.div`
   display: flex;
-  justify-content: center;
 
   height: fit-content;
 
@@ -30,18 +25,11 @@ export const Card = styled.div<IStyledMusicCardProps>`
   ${ButtonStyle};
 
   background: ${props => props.theme.colors.primary};
-
-  &:hover {
-    div[role='button'] {
-      opacity: 1;
-    }
-  }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.8rem;
 
   border-radius: inherit;
 
@@ -52,10 +40,7 @@ export const TopContainer = styled.section`
   display: flex;
   flex-direction: column;
 
-  justify-content: space-evenly;
   align-items: center;
-
-  padding: 0.4rem;
 
   border-radius: inherit;
 
@@ -64,9 +49,9 @@ export const TopContainer = styled.section`
   max-width: inherit;
 
   img {
-    width: ${wrapperWidth};
+    width: 4.8rem;
 
-    border-radius: inherit;
+    border-radius: 0.4rem;
   }
 `;
 
@@ -74,35 +59,24 @@ export const Controls = styled.div`
   display: flex;
   flex-direction: column;
 
+  justify-content: center;
+
   align-items: flex-end;
 
   position: absolute;
 
   padding: 0.4rem;
 
-  width: ${wrapperWidth};
-  height: ${wrapperWidth};
+  width: 4.8rem;
+  height: 4.8rem;
 
   border-radius: inherit;
-
-  &:active {
-    background: rgba(0, 0, 0, 0.5);
-  }
-
-  @media (min-width: ${breakpoint}) {
-    div[role='button'] {
-      opacity: 0;
-      transition: all 0.5s;
-    }
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.5);
-    }
-  }
 `;
 
 export const PlayButton = styled(Button)`
   align-self: center;
+
+  padding: 0.4rem;
 
   &:active {
     background: ${light.colors.light}75;
@@ -122,6 +96,8 @@ export const DropdownTrigger = styled.div`
 
   border-radius: 100%;
 
+  padding: 0.8rem;
+
   cursor: pointer;
 
   &:active {
@@ -137,9 +113,10 @@ export const DropdownTrigger = styled.div`
 
 export const BottomContainer = styled.section`
   display: flex;
-  flex-direction: column;
 
   align-items: center;
+
+  justify-content: space-between;
 
   max-width: inherit;
 
@@ -156,14 +133,21 @@ export const MusicName = styled(Title)`
 export const Details = styled.section`
   display: flex;
 
+  flex-direction: column;
+
   gap: 0.4rem;
 
   max-width: inherit;
 
-  span:nth-child(4) {
-    max-width: inherit;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  section {
+    display: flex;
+    gap: inherit;
+
+    span:nth-child(4) {
+      max-width: inherit;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 `;
