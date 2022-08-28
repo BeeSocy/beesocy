@@ -5,8 +5,8 @@ export const Container = styled.div`
   background-color: ${props => props.theme.colors.primary};
 
   height: 100vh;
-  max-height: 41.8rem;
 
+  max-height: 47.2rem;
   overflow: auto;
 
   @media (min-width: ${breakpoint}) {

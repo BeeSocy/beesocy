@@ -21,6 +21,7 @@ export const ButtonStyle = css`
   @media (min-width: ${breakpoint}) {
     &:hover {
       background: ${props => props.theme.colors.light};
+      cursor: pointer;
     }
   }
 `;

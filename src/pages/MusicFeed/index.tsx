@@ -1,9 +1,12 @@
 import { MusicCard } from '../../components/Cards/MusicCard';
+import { Carousel } from '../../components/General/Carousel';
+import { TitleWithLine } from '../../components/MusicFeed/TitleWithLine';
 import { Container } from './styles';
 
 export function MusicFeed() {
   return (
     <Container>
+      <TitleWithLine>Teste</TitleWithLine>
       <MusicCard
         name={'Londres Freestyle'}
         artists={['Veigh', 'Nagalli', 'Supernova Ent']}
@@ -16,6 +19,9 @@ export function MusicFeed() {
         description={'Londres Freestyle'}
         explicit
       />
+      <Carousel>
+        <></>
+      </Carousel>
     </Container>
   );
 }
