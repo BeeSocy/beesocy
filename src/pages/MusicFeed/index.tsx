@@ -2,6 +2,7 @@ import { ArtistCard } from '../../components/Cards/ArtistCard';
 import { MusicCard } from '../../components/Cards/MusicCard';
 import { Carousel } from '../../components/General/Carousel';
 import { TitleWithLine } from '../../components/MusicFeed/TitleWithLine';
+import { IArtist } from '../../types/artist';
 import { IMusicAlgorithm } from '../../types/musicAlgorithm';
 import { IMusicPost } from '../../types/musicPost';
 import { IProfile } from '../../types/profile';
@@ -14,7 +15,8 @@ export function MusicFeed() {
       subtitle: 'Relembre o passado',
       halfContainer: false,
       largeContent: true,
-      data: [
+      dataType: 'music',
+      tracks: [
         {
           id: 1,
           name: 'Londres Freestyle',
@@ -63,7 +65,8 @@ export function MusicFeed() {
       subtitle: 'Novidade no seu fone',
       halfContainer: false,
       largeContent: false,
-      data: [
+      dataType: 'music',
+      tracks: [
         {
           id: 1,
           name: 'Londres Freestyle',
@@ -104,6 +107,17 @@ export function MusicFeed() {
           fileUrl: 'https://voca.ro/1bM9Aan9ksSd',
           description: 'Sem pressa',
           explicit: true
+        },
+        {
+          id: 4,
+          name: 'ye',
+          artists: ['Japa'],
+          duration: 167,
+          imageUrl:
+            'https://lh3.googleusercontent.com/iIzdFZnT4bq9RN9Y3UvhGIil8NrJKuIVmkTfB3KvCHrH8Grzv2e2RayIs1_f5hn80TqJK-WA1z2d1j0=w544-h544-l90-rj',
+          fileUrl: 'https://voca.ro/1gPDauBkdbX5',
+          description: 'ye',
+          explicit: true
         }
       ] as IMusicPost[]
     },
@@ -111,7 +125,8 @@ export function MusicFeed() {
       title: 'Artistas recomendados',
       halfContainer: false,
       largeContent: true,
-      data: [
+      dataType: 'artists',
+      artists: [
         {
           id: 1,
           name: 'Julio at Gaita',
@@ -121,7 +136,7 @@ export function MusicFeed() {
           imageUrl:
             'https://images.unsplash.com/photo-1660329268855-38348f36d82e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MTcxNzg1Nw&ixlib=rb-1.2.1&q=80&w=1080'
         }
-      ] as IProfile[]
+      ] as IArtist[]
     }
   ];
 
@@ -144,19 +159,30 @@ export function MusicFeed() {
                 key={index + 3}
                 $multiLines={!algorithm.largeContent}
               >
-                {algorithm.data.map((data: IMusicPost) => {
+                {algorithm.tracks?.map((track: IMusicPost) => {
                   return (
                     <MusicCard
-                      key={data.id}
-                      id={data.id}
-                      name={data.name}
-                      artists={data.artists}
-                      duration={data.duration}
-                      imageUrl={data.imageUrl}
-                      fileUrl={data.fileUrl}
-                      description={data.description}
-                      explicit={data.explicit}
+                      key={track.id}
+                      id={track.id}
+                      name={track.name}
+                      artists={track.artists}
+                      duration={track.duration}
+                      imageUrl={track.imageUrl}
+                      fileUrl={track.fileUrl}
+                      description={track.description}
+                      explicit={track.explicit}
                       large={algorithm.largeContent}
+                    />
+                  );
+                })}
+                {algorithm.artists?.map((artist: IArtist) => {
+                  return (
+                    <ArtistCard
+                      key={artist.id}
+                      name={artist.name}
+                      followers={artist.followers}
+                      color={artist.color}
+                      imageUrl={artist.imageUrl}
                     />
                   );
                 })}
