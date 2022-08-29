@@ -2,12 +2,11 @@ import {
   Container,
   DescriptionContent,
   Interaction,
-  ContentInteraction,
+  Publish,
   TitleDescription
 } from './style';
 import { fetchedPost } from '../../index';
-import { Button } from '../../../../components/Widgets/Buttons/Button';
-import { MdFavoriteBorder } from 'react-icons/md';
+import { ContentInteraction } from '../ContentInteraction';
 export function Description() {
   return (
     <Container>
@@ -16,12 +15,9 @@ export function Description() {
       </strong>
       <DescriptionContent>{fetchedPost.description}</DescriptionContent>
       <Interaction>
-        <ContentInteraction>
-          <Button rounded>
-            <MdFavoriteBorder size={16} />
-          </Button>
-        </ContentInteraction>
+        <ContentInteraction></ContentInteraction>
       </Interaction>
+      <Publish>Publicado em: 23 de junho de 2020</Publish>
     </Container>
   );
 }

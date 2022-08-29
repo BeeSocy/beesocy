@@ -9,6 +9,10 @@ import {
 } from 'react-icons/md';
 import { IconProfile } from '../IconProfile';
 import { Button } from '../../../../components/Widgets/Buttons/Button';
+import { LikeButton } from '../../../../components/Widgets/Buttons/ActionButtons/LikeButton';
+import { IconContext } from 'react-icons';
+import { SaveButton } from '../../../../components/Widgets/Buttons/ActionButtons/SaveButton';
+import { ReportButton } from '../../../../components/Widgets/Buttons/ActionButtons/ReportButton';
 
 export function InteractionBar() {
   const { isMobile } = useMobile();
@@ -18,21 +22,17 @@ export function InteractionBar() {
         <BodyBar>
           <IconProfile />
 
-          <Button rounded>
-            <MdFavoriteBorder size={40} />
-          </Button>
-          <Button rounded>
-            <MdOutlineChat size={40} />
-          </Button>
-          <Button rounded>
-            <MdOutlineShare size={40} />
-          </Button>
-          <Button rounded>
-            <MdBookmarkBorder size={40} />
-          </Button>
-          <Button rounded>
-            <MdOutlinedFlag size={40} />
-          </Button>
+          <IconContext.Provider value={{ size: '40' }}>
+            <LikeButton />
+            <Button rounded>
+              <MdOutlineChat />
+            </Button>
+            <Button rounded>
+              <MdOutlineShare />
+            </Button>
+            <SaveButton />
+            <ReportButton />
+          </IconContext.Provider>
         </BodyBar>
       )}
     </>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 120rem;
+    width: 92rem;
 `;
 export const ContainerChat = styled.div`
     width: 100%;

@@ -6,6 +6,7 @@ export const ContentBottom = styled.div`
     display: flex;
     flex-wrap: wrap-reverse;
     justify-content: center;
+    align-items: start;
 
     gap: 4rem;
 

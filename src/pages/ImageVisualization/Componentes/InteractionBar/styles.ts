@@ -6,7 +6,7 @@ export const BodyBar = styled.div`
 
     position: fixed;
 
-    right: 2rem;
+    right: 4rem;
     top: 10rem;
 
 
