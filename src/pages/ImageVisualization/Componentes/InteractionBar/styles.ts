@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { breakpoint } from "../../../../hooks/useMobile";
 
 export const BodyBar = styled.div`
+    z-index: 10;
+
     position: fixed;
 
     right: 2rem;
@@ -21,6 +23,7 @@ export const BodyBar = styled.div`
 
     padding: 0.8rem 0.8rem;
     overflow: hidden;
+    border: 1px solid ${(props) => props.theme.colors.light};
     button {
         justify-content: center;
     }

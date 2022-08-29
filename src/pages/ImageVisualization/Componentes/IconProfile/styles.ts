@@ -2,8 +2,8 @@ import * as HoverCard from '@radix-ui/react-hover-card';
 import styled from 'styled-components';
 
 export const CardIconProfile = styled.div`
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
 
   border-radius: 50%;
 

@@ -3,6 +3,8 @@ import { IImagePost } from '../../types/imagePost';
 import { Chat } from './Componentes/Chat';
 import { Carousel } from './Componentes/Carousel';
 import { InteractionBar } from './Componentes/InteractionBar';
+import { Description } from './Componentes/Description';
+import { ContentBottom } from './style';
 
 export const fetchedPost: IImagePost = {
   id: 1651,
@@ -23,7 +25,10 @@ export function ImageVisualization() {
     <div>
       <Carousel />
       <InteractionBar />
-      <Chat />
+      <ContentBottom>
+        <Chat />
+        <Description />
+      </ContentBottom>
     </div>
   );
 }
