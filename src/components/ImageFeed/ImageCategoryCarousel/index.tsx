@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react';
 import { MdClose } from 'react-icons/md';
 import { useCategory } from '../../../context/CategoryProvider/useCategory';
 import { useScroll } from '../../../hooks/useScroll';
-import { IImageCategory } from '../../../types/imageCategory';
+import { ICategory } from '../../../types/category';
 import { CategoryTab } from '../../General/CategoryTab';
 
 import { FilterClearButton, CategoryContainer } from './styles';
 
-interface IImageCategoryCarousel {
-  data: IImageCategory[];
+interface ICategoryCarousel {
+  data: ICategory[];
 }
 
-export function ImageCategoryCarousel({ data }: IImageCategoryCarousel) {
+export function ImageCategoryCarousel({ data }: ICategoryCarousel) {
   const { elementRef: CategoryContainerRef, hasHorizontalScroll } = useScroll();
 
   const {
@@ -98,8 +98,14 @@ export function ImageCategoryCarousel({ data }: IImageCategoryCarousel) {
               key={category.id}
               img={category.img}
               title={category.name}
-              onClick={() => handleToggleCategoryActive(category.id, 'image')}
-              active={activeCategories.id.includes(category.id)}
+              onClick={() => {
+                handleToggleCategoryActive(category.id, 'image');
+                console.log(activeCategories);
+              }}
+              active={
+                activeCategories.type == 'image' &&
+                activeCategories.id.includes(category.id)
+              }
             />
           );
         })}

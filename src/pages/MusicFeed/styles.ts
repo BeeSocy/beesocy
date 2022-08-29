@@ -24,5 +24,6 @@ export const AlgorithmContent = styled.div<IAlgorithmContent>`
       display: grid;
       grid-template-rows: repeat(4, 1fr);
       grid-auto-flow: column;
+      padding: 0.4rem;
     `};
 `;

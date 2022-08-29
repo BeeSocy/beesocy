@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
 import { ArtistCard } from '../../components/Cards/ArtistCard';
 import { MusicCard } from '../../components/Cards/MusicCard';
 import { Carousel } from '../../components/General/Carousel';
+import { CategoryTab } from '../../components/General/CategoryTab';
 import { TitleWithLine } from '../../components/MusicFeed/TitleWithLine';
+import { useCategory } from '../../context/CategoryProvider/useCategory';
 import { IArtist } from '../../types/artist';
+import { ICategory } from '../../types/category';
 import { IMusicAlgorithm } from '../../types/musicAlgorithm';
 import { IMusicPost } from '../../types/musicPost';
 import { IProfile } from '../../types/profile';
@@ -125,7 +129,7 @@ export function MusicFeed() {
       title: 'Artistas recomendados',
       halfContainer: false,
       largeContent: true,
-      dataType: 'artists',
+      dataType: 'artist',
       artists: [
         {
           id: 1,
@@ -137,8 +141,43 @@ export function MusicFeed() {
             'https://images.unsplash.com/photo-1660329268855-38348f36d82e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MTcxNzg1Nw&ixlib=rb-1.2.1&q=80&w=1080'
         }
       ] as IArtist[]
+    },
+    {
+      title: 'Categorias',
+      halfContainer: false,
+      largeContent: false,
+      dataType: 'category',
+      categories: [
+        {
+          id: 1,
+          img: 'https://lh3.googleusercontent.com/Tm4BCNzluBcawAzvLYFxVvTna5wkWxpd-dUpuBjzpNPvaq-T4F1mqnDWUn2d_OMbTPJS27t5EB8YpmUN=w544-h544-l90-rj',
+          name: 'Freestyle '
+        },
+        {
+          id: 2,
+          img: 'https://lh3.googleusercontent.com/oT8cJ_TwsnTjYsnFM85SUGrQBAy4aX_-SILaIcpCr7yCuMgAFhYUdlv7EB41s1idApyptUT0HUnyoBWV=w60-h60-l90-rj',
+          name: 'Acústico'
+        },
+        {
+          id: 3,
+          img: 'https://lh3.googleusercontent.com/jIq8vQe0_Z8j5XmgExJxkqewVrEhKMzrBmJz9jjLCxDxggH5So12rPOMYVIRydqkzp3akA67MhCTcx4=w544-h544-l90-rj',
+          name: 'Funk'
+        },
+        {
+          id: 4,
+          img: 'https://lh3.googleusercontent.com/iIzdFZnT4bq9RN9Y3UvhGIil8NrJKuIVmkTfB3KvCHrH8Grzv2e2RayIs1_f5hn80TqJK-WA1z2d1j0=w544-h544-l90-rj',
+          name: 'Trap'
+        }
+      ] as ICategory[]
     }
   ];
+
+  const { activeCategories, handleSetCategoryId, handleToggleCategoryActive } =
+    useCategory();
+
+  useEffect(() => {
+    handleSetCategoryId('music');
+  }, []);
 
   return (
     <Container>
@@ -183,6 +222,15 @@ export function MusicFeed() {
                       followers={artist.followers}
                       color={artist.color}
                       imageUrl={artist.imageUrl}
+                    />
+                  );
+                })}
+                {algorithm.categories?.map((category: ICategory) => {
+                  return (
+                    <CategoryTab
+                      key={category.id}
+                      title={category.name}
+                      img={category.img}
                     />
                   );
                 })}
