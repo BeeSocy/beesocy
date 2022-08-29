@@ -9,7 +9,16 @@ export const CardIconProfile = styled.div`
 
   overflow: hidden;
 
-  cursor: pointer;
+  flex: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    user-select: none;
+    object-fit: cover;
+
+  }
 `;
 export const StyledContent = styled(HoverCard.Content)`
 
@@ -36,14 +45,6 @@ export const Profile = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-
-`;
-export const Img = styled.img`
-    width: 100%;
-    height: 100%;
-
-    user-select: none;
-    object-fit: cover;
 
 `;
 
@@ -101,10 +102,7 @@ export const DownContainer = styled.div`
   justify-content: space-between;
 
   padding: 0 2rem;
-`;
-export const Following = styled.span`
-  font-size: 1.4rem;
-`;
-export const Followers = styled.span`
-  font-size: 1.4rem;
+  span {
+    font-size: 1.4rem;
+  }
 `;

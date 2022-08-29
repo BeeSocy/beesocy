@@ -9,15 +9,12 @@ import {
   CardIconProfile,
   StyledContent,
   Profile,
-  Img,
   UserName,
   Actions,
   TopContainer,
   NickName,
   Description,
-  DownContainer,
-  Following,
-  Followers
+  DownContainer
 } from './styles';
 
 /*
@@ -37,7 +34,7 @@ export function IconProfile() {
         */}
         <Link to={`/${fetchedPost.id}`}>
           <CardIconProfile>
-            <Img
+            <img
               src="https://images.unsplash.com/photo-1659292482339-4fe111483d1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MTYzOTA2OA&ixlib=rb-1.2.1&q=80&w=1080"
               alt="NotFound"
             />
@@ -53,7 +50,7 @@ export function IconProfile() {
           <TopContainer>
             <Profile>
               <CardIconProfile>
-                <Img
+                <img
                   src="https://images.unsplash.com/photo-1659292482339-4fe111483d1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MTYzOTA2OA&ixlib=rb-1.2.1&q=80&w=1080"
                   alt="NotFound"
                 />
@@ -73,12 +70,12 @@ export function IconProfile() {
           </TopContainer>
           <Description>`${fetchedPost.description}`</Description>
           <DownContainer>
-            <Followers>
+            <span>
               <strong>321</strong> seguidores
-            </Followers>
-            <Following>
+            </span>
+            <span>
               <strong>123</strong> seguindo
-            </Following>
+            </span>
           </DownContainer>
           {/* card */}
         </StyledContent>

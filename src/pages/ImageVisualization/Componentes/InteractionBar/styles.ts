@@ -5,6 +5,7 @@ export const BodyBar = styled.div`
     position: fixed;
 
     right: 2rem;
+    top: 10rem;
 
 
     border-radius: 2rem;

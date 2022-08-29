@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { IImagePost } from '../../types/imagePost';
+import { Chat } from './Componentes/Chat';
+import { Carousel } from './Componentes/Carousel';
 import { InteractionBar } from './Componentes/InteractionBar';
 
 export const fetchedPost: IImagePost = {
@@ -19,7 +21,9 @@ export function ImageVisualization() {
 
   return (
     <div>
+      <Carousel />
       <InteractionBar />
+      <Chat />
     </div>
   );
 }
