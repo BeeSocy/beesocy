@@ -4,12 +4,12 @@ import { MusicCard } from '../../components/Cards/MusicCard';
 import { Carousel } from '../../components/General/Carousel';
 import { CategoryTab } from '../../components/General/CategoryTab';
 import { TitleWithLine } from '../../components/MusicFeed/TitleWithLine';
-import { useCategory } from '../../context/CategoryProvider/useCategory';
+
 import { IArtist } from '../../types/artist';
 import { ICategory } from '../../types/category';
 import { IMusicAlgorithm } from '../../types/musicAlgorithm';
 import { IMusicPost } from '../../types/musicPost';
-import { IProfile } from '../../types/profile';
+
 import { AlgorithmContainer, AlgorithmContent, Container } from './styles';
 
 export function MusicFeed() {
@@ -29,7 +29,8 @@ export function MusicFeed() {
           imageUrl:
             'https://lh3.googleusercontent.com/Tm4BCNzluBcawAzvLYFxVvTna5wkWxpd-dUpuBjzpNPvaq-T4F1mqnDWUn2d_OMbTPJS27t5EB8YpmUN=w544-h544-l90-rj',
 
-          fileUrl: 'https://voca.ro/1iVr3db8zEgX',
+          fileUrl:
+            'https://audio.jukehost.co.uk/kRgsjbaMBaB7ZDoDm4QZRDuqGx05j8c9',
           description: 'Londres Freestyle',
           explicit: true
         },
@@ -40,7 +41,8 @@ export function MusicFeed() {
           duration: 212,
           imageUrl:
             'https://lh3.googleusercontent.com/oT8cJ_TwsnTjYsnFM85SUGrQBAy4aX_-SILaIcpCr7yCuMgAFhYUdlv7EB41s1idApyptUT0HUnyoBWV=w60-h60-l90-rj',
-          fileUrl: 'https://voca.ro/194RfvTcivXt',
+          fileUrl:
+            'https://audio.jukehost.co.uk/yh03xpsgkuEIZ04ogpInYUhvPhYVW5gQ',
           description: 'Facilitei L7',
           explicit: false
         },
@@ -58,7 +60,8 @@ export function MusicFeed() {
           duration: 307,
           imageUrl:
             'https://lh3.googleusercontent.com/jIq8vQe0_Z8j5XmgExJxkqewVrEhKMzrBmJz9jjLCxDxggH5So12rPOMYVIRydqkzp3akA67MhCTcx4=w544-h544-l90-rj',
-          fileUrl: 'https://voca.ro/1bM9Aan9ksSd',
+          fileUrl:
+            'https://audio.jukehost.co.uk/DXXwxHGjLq2DHh63tPWxj4TwJBSbrFTJ',
           description: 'Sem pressa',
           explicit: true
         }
@@ -79,7 +82,8 @@ export function MusicFeed() {
           imageUrl:
             'https://lh3.googleusercontent.com/Tm4BCNzluBcawAzvLYFxVvTna5wkWxpd-dUpuBjzpNPvaq-T4F1mqnDWUn2d_OMbTPJS27t5EB8YpmUN=w544-h544-l90-rj',
 
-          fileUrl: 'https://voca.ro/1iVr3db8zEgX',
+          fileUrl:
+            'https://audio.jukehost.co.uk/kRgsjbaMBaB7ZDoDm4QZRDuqGx05j8c9',
           description: 'Londres Freestyle',
           explicit: true
         },
@@ -90,7 +94,8 @@ export function MusicFeed() {
           duration: 212,
           imageUrl:
             'https://lh3.googleusercontent.com/oT8cJ_TwsnTjYsnFM85SUGrQBAy4aX_-SILaIcpCr7yCuMgAFhYUdlv7EB41s1idApyptUT0HUnyoBWV=w60-h60-l90-rj',
-          fileUrl: 'https://voca.ro/194RfvTcivXt',
+          fileUrl:
+            'https://audio.jukehost.co.uk/yh03xpsgkuEIZ04ogpInYUhvPhYVW5gQ',
           description: 'Facilitei L7',
           explicit: false
         },
@@ -108,7 +113,8 @@ export function MusicFeed() {
           duration: 307,
           imageUrl:
             'https://lh3.googleusercontent.com/jIq8vQe0_Z8j5XmgExJxkqewVrEhKMzrBmJz9jjLCxDxggH5So12rPOMYVIRydqkzp3akA67MhCTcx4=w544-h544-l90-rj',
-          fileUrl: 'https://voca.ro/1bM9Aan9ksSd',
+          fileUrl:
+            'https://audio.jukehost.co.uk/DXXwxHGjLq2DHh63tPWxj4TwJBSbrFTJ',
           description: 'Sem pressa',
           explicit: true
         },
@@ -119,7 +125,8 @@ export function MusicFeed() {
           duration: 167,
           imageUrl:
             'https://lh3.googleusercontent.com/iIzdFZnT4bq9RN9Y3UvhGIil8NrJKuIVmkTfB3KvCHrH8Grzv2e2RayIs1_f5hn80TqJK-WA1z2d1j0=w544-h544-l90-rj',
-          fileUrl: 'https://voca.ro/1gPDauBkdbX5',
+          fileUrl:
+            'https://audio.jukehost.co.uk/BW8KB0iBaQMWXx478ZLYbWLovkddazD2',
           description: 'ye',
           explicit: true
         }
@@ -171,13 +178,6 @@ export function MusicFeed() {
       ] as ICategory[]
     }
   ];
-
-  const { activeCategories, handleSetCategoryId, handleToggleCategoryActive } =
-    useCategory();
-
-  useEffect(() => {
-    handleSetCategoryId('music');
-  }, []);
 
   return (
     <Container>
