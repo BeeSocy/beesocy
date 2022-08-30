@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { useTheme } from './context/ThemeProvider/useTheme';
 import { Router } from './routes/Router';
 import { MenuProvider } from './context/MenuProvider';
-import { ImageCategoryProvider } from './context/ImageCategoryProvider';
+import { CategoryProvider } from './context/CategoryProvider';
 
 export function App() {
   const defaultTheme = dark;
@@ -22,9 +22,9 @@ export function App() {
       <BrowserRouter>
         <IconContext.Provider value={{ size: '28' }}>
           <MenuProvider>
-            <ImageCategoryProvider>
+            <CategoryProvider>
               <Router />
-            </ImageCategoryProvider>
+            </CategoryProvider>
           </MenuProvider>
         </IconContext.Provider>
 

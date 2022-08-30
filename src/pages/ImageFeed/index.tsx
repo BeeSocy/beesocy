@@ -5,7 +5,7 @@ import React, {
   useState
 } from 'react';
 import { ImageCard } from '../../components/Cards/ImageCard';
-import { IImageCategory } from '../../types/imageCategory';
+import { ICategory } from '../../types/category';
 import { IImagePost } from '../../types/imagePost';
 
 import { Container } from './styles';
@@ -45,7 +45,7 @@ export const ImageFeed = React.memo(() => {
     }
   ];
 
-  const imageCategory: IImageCategory[] = [
+  const imageCategory: ICategory[] = [
     {
       id: 1,
       name: 'amarelo',

@@ -14,6 +14,8 @@ export const ButtonStyle = css`
 
   transition: background 0.3s;
 
+  cursor: pointer;
+
   &:active {
     background: ${props => props.theme.colors.light};
   }

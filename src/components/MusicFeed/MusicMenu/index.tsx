@@ -1,4 +1,5 @@
 import {
+  MdGraphicEq,
   MdPlaylistPlay,
   MdPlaylistAdd,
   MdOutlinePersonAdd,
@@ -35,6 +36,11 @@ export function MusicMenu({
 
   return (
     <Container ref={musicMenuRef}>
+      <Button>
+        <MdGraphicEq />
+        <span>Iniciar radio</span>
+      </Button>
+
       <Button>
         <MdPlaylistPlay />
         <span>Tocar a seguir</span>

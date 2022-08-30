@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
+import { Title } from '../../General/Title';
 
 const cornerFadeStyles = css`
   content: '';
 
-  position: absolute;
+  position: fixed;
 
-  height: 100%;
+  height: 2rem;
   width: 8rem;
 
   background: linear-gradient(
@@ -31,36 +32,56 @@ export const Container = styled.div`
     height: 4rem;
     border-radius: 0.8rem;
   }
-
-  span {
-    max-width: 80vw;
-
-    white-space: nowrap;
-
-    overflow: auto;
-
-    position: relative;
-
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  &::after {
-    ${cornerFadeStyles};
-    right: 0;
-  }
-
-  &::before {
-    left: 0;
-    transform: translateX(5.8rem);
-    z-index: 1;
-  }
 `;
 
 export const Details = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const MusicTitle = styled(Title)`
+  max-width: 80vw;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+`;
+
+interface IStyledArtists {
+  overflowIsGreaterZero: boolean;
+}
+
+export const Artists = styled.span<IStyledArtists>`
+  position: relative;
+
+  max-width: 80vw;
+
+  white-space: nowrap;
+
+  overflow: auto;
+
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  ${props =>
+    props.overflowIsGreaterZero &&
+    css`
+      &::before {
+        ${cornerFadeStyles};
+        left: 0;
+        z-index: 1;
+
+        transform: translateX(5.8rem) rotate(180deg);
+      }
+    `}
+
+  &::after {
+    ${cornerFadeStyles};
+    right: 0;
+  }
 `;

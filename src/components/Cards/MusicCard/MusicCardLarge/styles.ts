@@ -1,17 +1,12 @@
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { breakpoint } from '../../../hooks/useMobile';
-import { Button } from '../../Widgets/Buttons/Button';
-import { ButtonStyle } from '../../Widgets/Buttons/Button/styles';
-import { scaleUpAnimation } from '../GlobalCard/styles';
+import { breakpoint } from '../../../../hooks/useMobile';
+import { Button } from '../../../Widgets/Buttons/Button';
+import { ButtonStyle } from '../../../Widgets/Buttons/Button/styles';
+import { scaleUpAnimation } from '../../GlobalCard/styles';
 
-import light from '../../../styles/themes/light';
-import { Title } from '../../General/Title';
-
-interface IStyledMusicCardProps extends HTMLAttributes<HTMLDivElement> {
-  large?: boolean;
-}
+import light from '../../../../styles/themes/light';
+import { Title } from '../../../General/Title';
 
 const wrapperWidth = '18rem';
 
@@ -19,7 +14,7 @@ export const Container = styled.div`
   max-width: 22.4rem;
 `;
 
-export const Card = styled.div<IStyledMusicCardProps>`
+export const Card = styled.div`
   display: flex;
   justify-content: center;
 
@@ -66,6 +61,7 @@ export const TopContainer = styled.section`
 
   img {
     width: ${wrapperWidth};
+    height: ${wrapperWidth};
 
     border-radius: inherit;
   }
