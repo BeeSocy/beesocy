@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface IMenu {
   open?: boolean;
 }
@@ -7,5 +9,5 @@ export interface IMenuContext extends IMenu {
 }
 
 export interface IMenuProvider {
-    children: JSX.Element;
+  children: ReactNode;
 }
