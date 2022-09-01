@@ -1,9 +1,5 @@
 import { MdPlayArrow, MdPause, MdMoreVert, MdExplicit } from 'react-icons/md';
 
-import { IMusicPost } from '../../../../types/musicPost';
-
-import Sheet from 'react-modal-sheet';
-
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
@@ -23,9 +19,6 @@ import {
 } from './styles';
 import { MusicMenu } from '../../../MusicFeed/MusicMenu';
 import { useMobile } from '../../../../hooks/useMobile';
-import { useState } from 'react';
-import { useTheme } from '../../../../context/ThemeProvider/useTheme';
-import { MusicInfo } from '../../../MusicFeed/MusicInfo';
 import { formatArtists, handleMusicCardClick, IMusicCardProps } from '..';
 
 export function MusicCardSmall({
@@ -36,20 +29,12 @@ export function MusicCardSmall({
   playing,
   imageUrl
 }: IMusicCardProps) {
-  function handleToggleMobileSheetIsOpen() {
-    setIsMobileSheetOpen(state => !state);
-  }
-
   const { isMobile } = useMobile();
-
-  const { colors } = useTheme();
-
-  const [isMobileSheetOpen, setIsMobileSheetOpen] = useState<boolean>(false);
 
   return (
     <>
       <Container>
-        <ContextMenuPrimitive.Root onOpenChange={handleToggleMobileSheetIsOpen}>
+        <ContextMenuPrimitive.Root>
           <ContextMenuPrimitive.Trigger>
             <Card onClick={handleMusicCardClick}>
               <Wrapper>
@@ -81,9 +66,7 @@ export function MusicCardSmall({
                     </section>
                   </Details>
 
-                  <DropdownMenuPrimitive.Root
-                    onOpenChange={handleToggleMobileSheetIsOpen}
-                  >
+                  <DropdownMenuPrimitive.Root>
                     <DropdownMenuPrimitive.Trigger style={{ all: 'unset' }}>
                       <DropdownTrigger role={'button'}>
                         <MdMoreVert />
@@ -107,25 +90,6 @@ export function MusicCardSmall({
           </ContextMenuPrimitive.Content>
         </ContextMenuPrimitive.Root>
       </Container>
-
-      {isMobile && (
-        <Sheet
-          isOpen={isMobileSheetOpen}
-          onClose={() => setIsMobileSheetOpen(false)}
-        >
-          <Sheet.Container
-            style={{ background: colors.primary, height: 'fit-content' }}
-          >
-            <Sheet.Header style={{ color: colors.light }} />
-            <Sheet.Content>
-              <MusicInfo name={name} artists={artists} imageUrl={imageUrl} />
-              <MusicMenu />
-            </Sheet.Content>
-          </Sheet.Container>
-
-          <Sheet.Backdrop />
-        </Sheet>
-      )}
     </>
   );
 }

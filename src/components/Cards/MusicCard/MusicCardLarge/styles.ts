@@ -28,7 +28,7 @@ export const Card = styled.div`
   background: ${props => props.theme.colors.primary};
 
   &:hover {
-    div[role='button'] {
+    *[role='button'] {
       opacity: 1;
     }
   }
@@ -87,7 +87,7 @@ export const Controls = styled.div`
   }
 
   @media (min-width: ${breakpoint}) {
-    div[role='button'] {
+    *[role='button'] {
       opacity: 0;
       transition: all 0.5s;
     }
