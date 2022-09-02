@@ -19,26 +19,49 @@ import {
 } from './styles';
 import { MusicMenu } from '../../../MusicFeed/MusicMenu';
 import { useMobile } from '../../../../hooks/useMobile';
-import { formatArtists, handleMusicCardClick, IMusicCardProps } from '..';
-import { MusicBottomSheet } from '../MusicBottomSheet';
-import { IMusicPost } from '../../../../types/musicPost';
-import { Button } from '../../../Widgets/Buttons/Button';
+import {
+  formatArtists,
+  handleMusicCardClick,
+  IMusicCardProps,
+  longPressOptions
+} from '..';
+import { useState } from 'react';
+import { useTheme } from '../../../../context/ThemeProvider/useTheme';
+
+import Sheet from 'react-modal-sheet';
+import { MusicInfo } from '../../../MusicFeed/MusicInfo';
+import { useLongPress } from 'react-use';
 
 export function MusicCardLarge(props: IMusicCardProps) {
+  function handleSetMusicBottomSheetOpen() {
+    setMenuIsOpen(true);
+  }
+
+  function onLongPress() {
+    handleSetMusicBottomSheetOpen();
+  }
+
   const { isMobile } = useMobile();
 
-  const currentMusic: IMusicPost = props;
+  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+
+  const { colors } = useTheme();
+
+  const longPressEvent = useLongPress(onLongPress, longPressOptions);
 
   return (
     <>
       {isMobile ? (
         <>
-          <Container>
+          <Container {...longPressEvent}>
             <Card onClick={handleMusicCardClick}>
               <Wrapper>
                 <TopContainer>
                   <Controls>
-                    <DropdownTrigger role={'button'}>
+                    <DropdownTrigger
+                      role={'button'}
+                      onClick={() => handleSetMusicBottomSheetOpen()}
+                    >
                       <MdMoreVert style={{ fill: dark.colors.text }} />
                     </DropdownTrigger>
                     <PlayButton rounded full={false}>
@@ -72,7 +95,28 @@ export function MusicCardLarge(props: IMusicCardProps) {
             </Card>
           </Container>
 
-          {isMobile && <MusicBottomSheet music={currentMusic} />}
+          <Sheet isOpen={menuIsOpen} onClose={() => setMenuIsOpen(false)}>
+            <Sheet.Container
+              style={{ background: colors.primary, height: 'fit-content' }}
+            >
+              <Sheet.Header style={{ color: colors.light }} />
+              <Sheet.Content>
+                <MusicInfo
+                  name={props.name}
+                  imageUrl={props.imageUrl}
+                  artists={props.artists}
+                />
+                <MusicMenu
+                  playlist={props.playlist}
+                  liked={props.isLiked}
+                  reported={props.isReported}
+                  saved={props.isSaved}
+                />
+              </Sheet.Content>
+            </Sheet.Container>
+
+            <Sheet.Backdrop />
+          </Sheet>
         </>
       ) : (
         <Container>

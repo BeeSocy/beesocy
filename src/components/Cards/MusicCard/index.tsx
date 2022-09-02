@@ -2,6 +2,11 @@ import { IMusicPost } from '../../../types/musicPost';
 import { MusicCardSmall } from './MusicCardSmall';
 import { MusicCardLarge } from './MusicCardLarge';
 
+export const longPressOptions = {
+  isPreventDefault: false,
+  delay: 800
+};
+
 export interface IMusicCardProps extends IMusicPost {
   large?: boolean;
   playing?: boolean;
@@ -43,6 +48,9 @@ export function MusicCard(props: IMusicCardProps) {
           id={props.id}
           description={props.description}
           explicit={props.explicit}
+          isLiked={props.isLiked}
+          isReported={props.isReported}
+          isSaved={props.isSaved}
         />
       ) : (
         <MusicCardSmall
@@ -54,6 +62,9 @@ export function MusicCard(props: IMusicCardProps) {
           id={props.id}
           description={props.description}
           explicit={props.explicit}
+          isLiked={props.isLiked}
+          isReported={props.isReported}
+          isSaved={props.isSaved}
         />
       )}
     </>

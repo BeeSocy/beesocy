@@ -32,7 +32,8 @@ export function MusicFeed() {
           fileUrl:
             'https://audio.jukehost.co.uk/kRgsjbaMBaB7ZDoDm4QZRDuqGx05j8c9',
           description: 'Londres Freestyle',
-          explicit: true
+          explicit: true,
+          isLiked: true
         },
         {
           id: 2,
@@ -44,7 +45,8 @@ export function MusicFeed() {
           fileUrl:
             'https://audio.jukehost.co.uk/yh03xpsgkuEIZ04ogpInYUhvPhYVW5gQ',
           description: 'Facilitei L7',
-          explicit: false
+          explicit: false,
+          isReported: true
         },
         {
           id: 3,
@@ -211,6 +213,10 @@ export function MusicFeed() {
                       description={track.description}
                       explicit={track.explicit}
                       large={algorithm.largeContent}
+                      playlist={track.playlist}
+                      isLiked={track.isLiked}
+                      isReported={track.isReported}
+                      isSaved={track.isSaved}
                     />
                   );
                 })}
