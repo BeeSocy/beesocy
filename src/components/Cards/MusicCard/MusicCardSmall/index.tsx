@@ -21,16 +21,12 @@ import {
 } from './styles';
 import { MusicMenu } from '../../../MusicFeed/MusicMenu';
 import { useMobile } from '../../../../hooks/useMobile';
-import {
-  formatArtists,
-  handleMusicCardClick,
-  IMusicCardProps,
-  longPressOptions
-} from '..';
+import { handleMusicCardClick, IMusicCardProps, longPressOptions } from '..';
 import { useTheme } from '../../../../context/ThemeProvider/useTheme';
 import { useState } from 'react';
 import { useLongPress } from 'react-use';
 import { MusicInfo } from '../../../MusicFeed/MusicInfo';
+import { usePlayer } from '../../../../context/PlayerProvider/usePlayer';
 
 export function MusicCardSmall(props: IMusicCardProps) {
   function handleSetMusicBottomSheetOpen() {
@@ -48,6 +44,8 @@ export function MusicCardSmall(props: IMusicCardProps) {
   const { colors } = useTheme();
 
   const longPressEvent = useLongPress(onLongPress, longPressOptions);
+
+  const { formatArtists } = usePlayer();
 
   return (
     <>

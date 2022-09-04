@@ -13,24 +13,6 @@ export interface IMusicCardProps extends IMusicPost {
   showDuration?: boolean;
 }
 
-export function formatArtists(artists: string[]): string {
-  let formattedString = '';
-  if (artists.length > 1) {
-    artists.map((value, index) => {
-      formattedString += value;
-      if (index == artists.length - 2) {
-        formattedString += ' e ';
-      } else if (index != artists.length - 1) {
-        formattedString += ', ';
-      }
-    });
-  } else {
-    formattedString = artists[0];
-  }
-
-  return formattedString;
-}
-
 export function handleMusicCardClick() {
   //play player
 }

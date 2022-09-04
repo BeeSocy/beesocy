@@ -19,18 +19,14 @@ import {
 } from './styles';
 import { MusicMenu } from '../../../MusicFeed/MusicMenu';
 import { useMobile } from '../../../../hooks/useMobile';
-import {
-  formatArtists,
-  handleMusicCardClick,
-  IMusicCardProps,
-  longPressOptions
-} from '..';
+import { handleMusicCardClick, IMusicCardProps, longPressOptions } from '..';
 import { useState } from 'react';
 import { useTheme } from '../../../../context/ThemeProvider/useTheme';
 
 import Sheet from 'react-modal-sheet';
 import { MusicInfo } from '../../../MusicFeed/MusicInfo';
 import { useLongPress } from 'react-use';
+import { usePlayer } from '../../../../context/PlayerProvider/usePlayer';
 
 export function MusicCardLarge(props: IMusicCardProps) {
   function handleSetMusicBottomSheetOpen() {
@@ -48,6 +44,8 @@ export function MusicCardLarge(props: IMusicCardProps) {
   const { colors } = useTheme();
 
   const longPressEvent = useLongPress(onLongPress, longPressOptions);
+
+  const { formatArtists } = usePlayer();
 
   return (
     <>
