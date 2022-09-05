@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from 'react';
 import { useLocalStorage } from 'react-use';
 import { IArtist } from '../../types/artist';
 import { IMusicPost } from '../../types/musicPost';
+import { shuffleArray } from '../../utils/shuffleArray';
 import { IPlayerContext, IPlayerProvider, repeatPossibilities } from './types';
 
 export const PlayerContext = createContext({} as IPlayerContext);
@@ -41,19 +42,20 @@ export function PlayerProvider({ children }: IPlayerProvider) {
   function formatArtists(artists: string[]): string {
     let formattedString = '';
 
-    if (artists.length > 1) {
-      artists.map((artist, index) => {
-        formattedString += artist;
-        if (index == artists.length - 2) {
-          formattedString += ' e ';
-        } else if (index != artists.length - 1) {
-          formattedString += ', ';
-        }
-      });
-    } else {
-      formattedString = artists[0];
+    if (artists) {
+      if (artists.length > 1) {
+        artists.map((artist, index) => {
+          formattedString += artist;
+          if (index == artists.length - 2) {
+            formattedString += ' e ';
+          } else if (index != artists.length - 1) {
+            formattedString += ', ';
+          }
+        });
+      } else {
+        formattedString = artists[0];
+      }
     }
-
     return formattedString;
   }
 
@@ -160,7 +162,7 @@ export function PlayerProvider({ children }: IPlayerProvider) {
     return currentSeconds;
   }
 
-  function getLargeState(): boolean {
+  function getLarge(): boolean {
     return large;
   }
 
@@ -229,12 +231,28 @@ export function PlayerProvider({ children }: IPlayerProvider) {
     });
   }
 
+  function removeTrackInSpecificPositionOfTrackList(position: number): void {
+    setTrackList(getTrackList().filter((value, index) => index != position));
+  }
+
+  function shuffleTrackList(): void {
+    if (getPositionOnTrackList() <= 1) {
+      setTrackInSpecificPositionOfTrackList(1, getCurrentTrack());
+      removeTrackInSpecificPositionOfTrackList(getPositionOnTrackList());
+      setPositionOnTrackList(1);
+    }
+
+    const trackListCopy = shuffleArray(getTrackList(), 2);
+
+    setTrackList(trackListCopy);
+  }
+
   return (
     <PlayerContext.Provider
       value={{
         formatArtists,
         formatSeconds,
-
+        /* 
         open,
         trackList,
         currentTrack,
@@ -245,7 +263,7 @@ export function PlayerProvider({ children }: IPlayerProvider) {
         currentSeconds,
         large,
         positionOnTrackList,
-        trackIsLoaded,
+        trackIsLoaded, */
 
         handleChangeOpen,
         handleChangePlaying,
@@ -265,7 +283,7 @@ export function PlayerProvider({ children }: IPlayerProvider) {
         getMuted,
         getRepeat,
         getCurrentSeconds,
-        getLargeState,
+        getLarge,
         getPositionOnTrackList,
         getTrackIsLoaded,
 
@@ -273,7 +291,11 @@ export function PlayerProvider({ children }: IPlayerProvider) {
         setTrackInSpecificPositionOfTrackList,
         setTrackInLastPositionOfTrackList,
         setCurrentTrack,
-        setPositionOnTrackList
+        setPositionOnTrackList,
+
+        removeTrackInSpecificPositionOfTrackList,
+
+        shuffleTrackList
       }}
     >
       {children}

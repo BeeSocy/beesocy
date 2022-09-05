@@ -5,7 +5,7 @@ import { IMusicPost } from '../../types/musicPost';
 export type repeatPossibilities = 'all' | 'single' | 'off';
 
 export interface IPlayer {
-  open?: boolean;
+  /*   open?: boolean;
   trackList: IMusicPost[] | undefined;
   currentTrack: IMusicPost | undefined;
   playing: boolean;
@@ -15,7 +15,7 @@ export interface IPlayer {
   currentSeconds: number;
   large?: boolean;
   positionOnTrackList: number;
-  trackIsLoaded?: boolean;
+  trackIsLoaded?: boolean; */
 }
 
 export interface IPlayerContext extends IPlayer {
@@ -40,7 +40,7 @@ export interface IPlayerContext extends IPlayer {
   getMuted(): boolean;
   getRepeat(): repeatPossibilities;
   getCurrentSeconds(): number;
-  getLargeState(): boolean;
+  getLarge(): boolean;
   getPositionOnTrackList(): number;
   getTrackIsLoaded(): boolean;
 
@@ -52,6 +52,10 @@ export interface IPlayerContext extends IPlayer {
   setTrackInLastPositionOfTrackList(track: IMusicPost): void;
   setCurrentTrack(track: IMusicPost): void;
   setPositionOnTrackList(position: number): void;
+
+  removeTrackInSpecificPositionOfTrackList(position: number): void;
+
+  shuffleTrackList(): void;
 }
 
 export interface IPlayerProvider {
