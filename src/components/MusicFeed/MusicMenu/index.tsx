@@ -13,11 +13,12 @@ import {
   MdFlag
 } from 'react-icons/md';
 
+import { useEffect } from 'react';
+
 import { Button } from '../../Widgets/Buttons/Button';
 import { Container } from './styles';
 
 import dark from '../../../styles/themes/dark';
-import { useEffect, useRef, useState } from 'react';
 
 interface IContextMenuProps {
   playlist?: boolean;
@@ -32,10 +33,8 @@ export function MusicMenu({
   saved,
   reported
 }: IContextMenuProps) {
-  const musicMenuRef = useRef<HTMLDivElement>(null);
-
   return (
-    <Container ref={musicMenuRef}>
+    <Container>
       <Button>
         <MdGraphicEq />
         <span>Iniciar radio</span>

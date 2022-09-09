@@ -19,7 +19,7 @@ import {
 } from './styles';
 import { MusicMenu } from '../../../MusicFeed/MusicMenu';
 import { useMobile } from '../../../../hooks/useMobile';
-import { handleMusicCardClick, IMusicCardProps, longPressOptions } from '..';
+import { IMusicCardProps, longPressOptions } from '..';
 import { useState } from 'react';
 import { useTheme } from '../../../../context/ThemeProvider/useTheme';
 
@@ -52,9 +52,9 @@ export function MusicCardLarge(props: IMusicCardProps) {
       {isMobile ? (
         <>
           <Container {...longPressEvent}>
-            <Card onClick={handleMusicCardClick}>
+            <Card>
               <Wrapper>
-                <TopContainer>
+                <TopContainer onClick={props.clickAction}>
                   <Controls>
                     <DropdownTrigger
                       role={'button'}
@@ -120,9 +120,9 @@ export function MusicCardLarge(props: IMusicCardProps) {
         <Container>
           <ContextMenuPrimitive.Root>
             <ContextMenuPrimitive.Trigger>
-              <Card onClick={handleMusicCardClick}>
+              <Card>
                 <Wrapper>
-                  <TopContainer>
+                  <TopContainer onClick={props.clickAction}>
                     <Controls>
                       <DropdownMenuPrimitive.Root>
                         <DropdownMenuPrimitive.Trigger style={{ all: 'unset' }}>

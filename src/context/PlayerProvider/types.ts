@@ -19,6 +19,8 @@ export interface IPlayer {
 }
 
 export interface IPlayerContext extends IPlayer {
+  initPlayer(track: IMusicPost): void;
+
   formatArtists(artistNames: string[]): string;
   formatSeconds(seconds: number): string;
 

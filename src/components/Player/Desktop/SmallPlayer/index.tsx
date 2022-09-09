@@ -10,8 +10,11 @@ import {
   MdRepeatOne,
   MdShuffle,
   MdSkipNext,
-  MdSkipPrevious
+  MdSkipPrevious,
+  MdVolumeOff,
+  MdVolumeUp
 } from 'react-icons/md';
+import { useEffectOnce } from 'react-use';
 
 import { usePlayer } from '../../../../context/PlayerProvider/usePlayer';
 import { useTheme } from '../../../../context/ThemeProvider/useTheme';
@@ -27,8 +30,8 @@ import {
   Wrapper,
   Specs,
   Controls,
-  ShuffleButton
-  /* TimeContainer,
+  ShuffleButton,
+  TimeContainer,
   TimeSeconds,
   TimebarSlider,
   TimebarTrack,
@@ -38,19 +41,25 @@ import {
   VolumeSlider,
   VolumeTrack,
   VolumeRange,
-  ToggleLargeButton */
+  ToggleLargeButton,
+  VolumeButton
 } from './styles';
 
 interface IPlayerProps {}
 
 export function Player({}: IPlayerProps) {
   function handleToggleRepeatMode() {
-    if (player.getRepeat() == 'off') {
-      player.handleChangeRepeat('all');
-    } else if (player.getRepeat() == 'all') {
-      player.handleChangeRepeat('single');
-    } else {
-      player.handleChangeRepeat('off');
+    if (audioElementRef.current) {
+      if (player.getRepeat() == 'off') {
+        player.handleChangeRepeat('all');
+        audioElementRef.current.loop = false;
+      } else if (player.getRepeat() == 'all') {
+        player.handleChangeRepeat('single');
+        audioElementRef.current.loop = true;
+      } else {
+        player.handleChangeRepeat('off');
+        audioElementRef.current.loop = false;
+      }
     }
   }
 
@@ -79,6 +88,17 @@ export function Player({}: IPlayerProps) {
     }
   }
 
+  function handlePlayMusic() {
+    player.handleChangePlaying(!player.getPlaying());
+    if (audioElementRef.current) {
+      if (player.getPlaying()) {
+        audioElementRef.current.pause();
+      } else {
+        audioElementRef.current.play();
+      }
+    }
+  }
+
   const audioElementRef = useRef<HTMLAudioElement>(null);
 
   const player = usePlayer();
@@ -86,136 +106,150 @@ export function Player({}: IPlayerProps) {
   const { colors } = useTheme();
 
   useEffect(() => {
-    if (audioElementRef.current && player.getCurrentSeconds()) {
-      audioElementRef.current.currentTime = player.getCurrentSeconds();
-    }
-  }, [player.getCurrentSeconds()]);
-
-  useEffect(() => {
-    if (audioElementRef.current && player.getTrackListLength() > 0) {
-      audioElementRef.current.src =
-        player.getTrackList()[player.getPositionOnTrackList() - 1].fileUrl;
-      audioElementRef.current.currentTime = 0;
-    }
-  }, [player.getPositionOnTrackList()]);
-
-  useEffect(() => {
     if (audioElementRef.current) {
-      if (player.getPlaying()) {
-        audioElementRef.current.play();
-      } else {
-        audioElementRef.current.pause();
-      }
+      console.log('salve');
     }
-  }, [player.getPlaying()]);
+  }, [audioElementRef.current?.currentTime]);
 
-  return (
-    <Container>
-      <ContextMenuPrimitive.Root>
-        <ContextMenuPrimitive.Trigger>
-          <Wrapper>
-            <MusicContainer>
-              <img src={player.getCurrentTrack()?.imageUrl} />
-              <MusicInfo>
-                <Title size="medium">{player.getCurrentTrack()?.name}</Title>
+  if (player.getOpen()) {
+    return (
+      <Container onClick={() => player.handleChangeLarge(!player.getLarge())}>
+        <ContextMenuPrimitive.Root>
+          <ContextMenuPrimitive.Trigger>
+            <Wrapper>
+              <MusicContainer>
+                <img src={player.getCurrentTrack()?.imageUrl} />
+
                 <MusicDetails>
-                  {player.getCurrentTrack()?.explicit && (
-                    <MdExplicit size={20} />
-                  )}
-                  <span>
-                    {player?.getCurrentTrack() &&
-                      player.formatArtists(player.getCurrentTrack().artists)}
-                  </span>
+                  <Title size="small">{player.getCurrentTrack()?.name}</Title>
+
+                  <MusicInfo>
+                    <span>
+                      {player.getCurrentTrack()?.explicit && (
+                        <MdExplicit size={20} />
+                      )}
+                    </span>
+
+                    <span>
+                      {player?.getCurrentTrack() &&
+                        player.formatArtists(player.getCurrentTrack().artists)}
+                    </span>
+                  </MusicInfo>
                 </MusicDetails>
-              </MusicInfo>
-            </MusicContainer>
+              </MusicContainer>
 
-            <Specs>
-              <Controls>
-                <Button onClick={handleToggleRepeatMode}>
-                  {player.getRepeat() != 'single' ? (
-                    <MdRepeat
-                      style={
-                        player.getRepeat() == 'all'
-                          ? { fill: colors.bee }
-                          : { fill: colors.text }
-                      }
-                    />
-                  ) : (
-                    <MdRepeatOne style={{ fill: colors.bee }} />
-                  )}
-                </Button>
+              <Specs>
+                <Controls>
+                  <Button onClick={handleToggleRepeatMode} rounded full={false}>
+                    {player.getRepeat() != 'single' ? (
+                      <MdRepeat
+                        style={
+                          player.getRepeat() == 'all'
+                            ? { fill: colors.bee }
+                            : { fill: colors.text }
+                        }
+                      />
+                    ) : (
+                      <MdRepeatOne style={{ fill: colors.bee }} />
+                    )}
+                  </Button>
 
-                <Button onClick={handlePreviousMusic}>
-                  <MdSkipPrevious />
-                </Button>
+                  <Button onClick={handlePreviousMusic} rounded full={false}>
+                    <MdSkipPrevious />
+                  </Button>
 
-                <Button
-                  onClick={() =>
-                    player.handleChangePlaying(!player.getPlaying())
-                  }
+                  <Button onClick={handlePlayMusic} rounded full={false}>
+                    {player.getPlaying() ? (
+                      <MdPauseCircleFilled
+                        style={{ transform: 'scale(1.5)' }}
+                      />
+                    ) : (
+                      <MdPlayCircleFilled style={{ transform: 'scale(1.5)' }} />
+                    )}
+                  </Button>
+
+                  <Button onClick={handleNextMusic} rounded full={false}>
+                    <MdSkipNext />
+                  </Button>
+
+                  <ShuffleButton
+                    onClick={player.shuffleTrackList}
+                    rounded
+                    full={false}
+                  >
+                    <MdShuffle />
+                  </ShuffleButton>
+                </Controls>
+
+                <TimeContainer>
+                  <TimeSeconds>
+                    {player.formatSeconds(player.getCurrentSeconds())}
+                  </TimeSeconds>
+
+                  <TimebarSlider
+                    max={player.getCurrentTrack().duration}
+                    onValueChange={value => {
+                      player.handleChangeCurrentSeconds(value[0]);
+                    }}
+                    value={[player.getCurrentSeconds()]}
+                  >
+                    <TimebarTrack>
+                      <TimebarRange />
+                    </TimebarTrack>
+
+                    <TimebarThumb />
+                  </TimebarSlider>
+
+                  <TimeSeconds>
+                    {player.formatSeconds(
+                      player.getCurrentTrack().duration
+                        ? player.getCurrentTrack().duration
+                        : 0
+                    )}
+                  </TimeSeconds>
+                </TimeContainer>
+              </Specs>
+
+              <ExtraControls>
+                <LikeButton />
+
+                <VolumeSlider
+                  value={[player.getVolume()]}
+                  onValueChange={value => {
+                    player.handleChangeVolume(value[0]);
+                  }}
                 >
-                  {player.getPlaying() ? (
-                    <MdPlayCircleFilled />
-                  ) : (
-                    <MdPauseCircleFilled />
-                  )}
-                </Button>
+                  <VolumeButton
+                    onClick={() => player.handleChangeMuted(!player.getMuted())}
+                  >
+                    {player.getMuted() ? <MdVolumeOff /> : <MdVolumeUp />}
+                  </VolumeButton>
 
-                <Button onClick={handleNextMusic}>
-                  <MdSkipNext />
-                </Button>
+                  <VolumeTrack>
+                    <VolumeRange />
+                  </VolumeTrack>
+                </VolumeSlider>
 
-                <ShuffleButton onClick={player.shuffleTrackList}>
-                  <MdShuffle />
-                </ShuffleButton>
-              </Controls>
+                <ToggleLargeButton
+                  active={player.getLarge()}
+                  rounded
+                  full={false}
+                >
+                  <MdArrowDropUp />
+                </ToggleLargeButton>
+              </ExtraControls>
+            </Wrapper>
+          </ContextMenuPrimitive.Trigger>
 
-              {/* <TimeContainer>
-                <TimeSeconds>
-                  {player.formatSeconds(player.getCurrentSeconds())}
-                </TimeSeconds>
+          <ContextMenuPrimitive.Content style={{ zIndex: 110 }}>
+            <MusicMenu />
+          </ContextMenuPrimitive.Content>
+        </ContextMenuPrimitive.Root>
 
-                <TimebarSlider>
-                  <TimebarTrack>
-                    <TimebarRange />
-                  </TimebarTrack>
-
-                  <TimebarThumb />
-                </TimebarSlider>
-
-                <TimeSeconds>
-                  {player.formatSeconds(player.getCurrentTrack().duration)}
-                </TimeSeconds>
-              </TimeContainer> */}
-            </Specs>
-
-            {/* <ExtraControls>
-              <LikeButton />
-
-              <VolumeSlider>
-                <VolumeTrack>
-                  <VolumeRange />
-                </VolumeTrack>
-              </VolumeSlider>
-
-              <ToggleLargeButton
-                onClick={() => player.handleChangeLarge(!player.getLarge())}
-              >
-                <MdArrowDropUp />
-              </ToggleLargeButton>
-            </ExtraControls> */}
-          </Wrapper>
-        </ContextMenuPrimitive.Trigger>
-
-        <ContextMenuPrimitive.Content style={{ zIndex: 110 }}>
-          <MusicMenu />
-        </ContextMenuPrimitive.Content>
-      </ContextMenuPrimitive.Root>
-
-      <audio ref={audioElementRef} preload="metadata">
-        <source src={player.getCurrentTrack().fileUrl} type="audio/mpeg" />
-      </audio>
-    </Container>
-  );
+        <audio ref={audioElementRef} preload="metadata">
+          <source src={player.getCurrentTrack().fileUrl} type="audio/mpeg" />
+        </audio>
+      </Container>
+    );
+  }
 }

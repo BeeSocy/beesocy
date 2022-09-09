@@ -39,6 +39,13 @@ export function PlayerProvider({ children }: IPlayerProvider) {
 
   const [trackIsLoaded, setTrackIsLoaded] = useState<boolean>(false);
 
+  function initPlayer(track: IMusicPost): void {
+    handleChangeOpen(true);
+    setCurrentTrack(track);
+    handleChangePlaying(true);
+    setCurrentSeconds(0);
+  }
+
   function formatArtists(artists: string[]): string {
     let formattedString = '';
 
@@ -72,7 +79,9 @@ export function PlayerProvider({ children }: IPlayerProvider) {
     }:`;
     let secondFormatted = second.toString().padStart(2, '0');
 
-    formattedString = `${hourFormatted}${minuteFormatted}${secondFormatted}`;
+    formattedString = `${
+      hour > 0 ? hourFormatted : ''
+    }${minuteFormatted}${secondFormatted}`;
 
     return formattedString;
   }
@@ -250,6 +259,7 @@ export function PlayerProvider({ children }: IPlayerProvider) {
   return (
     <PlayerContext.Provider
       value={{
+        initPlayer,
         formatArtists,
         formatSeconds,
         /* 
