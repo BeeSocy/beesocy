@@ -32,6 +32,11 @@ export function MusicCard(props: IMusicCardProps) {
           imageUrl={props.imageUrl}
           fileUrl={props.fileUrl}
           id={props.id}
+          playing={
+            player.getCurrentTrack().fileUrl === props.fileUrl &&
+            player.getOpen() &&
+            player.getPlaying()
+          }
           description={props.description}
           explicit={props.explicit}
           isLiked={props.isLiked}
@@ -61,6 +66,11 @@ export function MusicCard(props: IMusicCardProps) {
           imageUrl={props.imageUrl}
           fileUrl={props.fileUrl}
           id={props.id}
+          playing={
+            player.getCurrentTrack().fileUrl === props.fileUrl &&
+            player.getOpen() &&
+            player.getPlaying()
+          }
           description={props.description}
           explicit={props.explicit}
           isLiked={props.isLiked}

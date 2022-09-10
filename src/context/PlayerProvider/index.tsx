@@ -42,7 +42,6 @@ export function PlayerProvider({ children }: IPlayerProvider) {
   function initPlayer(track: IMusicPost): void {
     handleChangeOpen(true);
     setCurrentTrack(track);
-    handleChangePlaying(true);
     setCurrentSeconds(0);
   }
 
