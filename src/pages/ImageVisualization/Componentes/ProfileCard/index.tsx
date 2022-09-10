@@ -4,15 +4,21 @@ import {
   InfoProfile,
   PostDate,
   RightContainer,
-  UserProfile
+  UserProfile,
+  ViewMore
 } from './style';
 import { CardIconProfile } from '../IconProfile/styles';
+import { useRef, useState } from 'react';
+/* capaz de manipular a DOM */
 
 export type ProfileComment = {
   Comment: string;
 };
 
 export function ProfileCard(props: ProfileComment) {
+  const commentElementRef = useRef<HTMLDivElement>(null);
+  const [commentIsViewingMore, setCommentIsViewingMore] = useState(false);
+
   return (
     <Container>
       <CardIconProfile>
@@ -26,7 +32,15 @@ export function ProfileCard(props: ProfileComment) {
           <UserProfile>Júlio na Gaita</UserProfile>
           <PostDate>Há 3 segundos</PostDate>
         </InfoProfile>
-        <Comment>{props.Comment}</Comment>
+        <Comment $active={commentIsViewingMore} ref={commentElementRef}>
+          {props.Comment}
+        </Comment>
+        {commentElementRef.current &&
+          commentElementRef.current?.offsetHeight > 63 && (
+            <ViewMore onClick={() => setCommentIsViewingMore(state => !state)}>
+              {commentIsViewingMore ? 'Ver menos' : 'Ver mais'}
+            </ViewMore>
+          )}
       </RightContainer>
     </Container>
   );

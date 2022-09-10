@@ -38,5 +38,5 @@ export const Publish = styled.div`
 
     font-size: 1.6rem;
 
-    color: ${props => props.theme.colors.light};
+    color: ${props => props.theme.colors.secondaryLight};
 `;

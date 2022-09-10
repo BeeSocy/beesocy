@@ -1,9 +1,10 @@
 import * as HoverCard from '@radix-ui/react-hover-card';
 import styled from 'styled-components';
+import { breakpoint } from '../../../../hooks/useMobile';
 
 export const CardIconProfile = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 6rem;
+  height: 6rem;
 
   border-radius: 50%;
 
@@ -17,11 +18,16 @@ export const CardIconProfile = styled.div`
 
     user-select: none;
     object-fit: cover;
-
   }
+
+    @media (max-width: ${breakpoint}){
+      width: 4.8rem;
+      height: 4.8rem;
+    }
 `;
 export const StyledContent = styled(HoverCard.Content)`
 
+  z-index: 20;
   margin-top: 8rem;
 
   background-color: ${(props) => props.theme.colors.primary};
@@ -56,7 +62,7 @@ export const UserName = styled.span`
 `;
 
 export const NickName = styled.div`
-  color: ${(props) => props.theme.colors.light};
+  color: ${props => props.theme.colors.secondaryLight};
 `;
 export const Actions = styled.div`
   display: flex;
@@ -102,6 +108,7 @@ export const DownContainer = styled.div`
   justify-content: space-between;
 
   padding: 0 2rem;
+  color: ${props => props.theme.colors.secondaryLight};
   span {
     font-size: 1.4rem;
   }

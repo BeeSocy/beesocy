@@ -5,6 +5,6 @@ export const Content = styled.div`
     align-items: center;
 `;
 export const NumberValue = styled.div`
-    color: ${props => props.theme.colors.light};
+    color: ${props => props.theme.colors.secondaryLight};
     font-size: 1.6rem;
 `;

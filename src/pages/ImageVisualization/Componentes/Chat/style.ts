@@ -22,7 +22,6 @@ export const Comment = styled.div`
     gap: 2rem;
 
 
-
 `;
 export const ContainerComment = styled.label`
     border-radius: 1.2rem;
