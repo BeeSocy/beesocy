@@ -1,8 +1,5 @@
 import { MdPlayArrow, MdPause, MdMoreVert, MdExplicit } from 'react-icons/md';
 
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
-
 import Sheet from 'react-modal-sheet';
 
 import dark from '../../../../styles/themes/dark';
@@ -87,7 +84,10 @@ export function MusicCardSmall(props: IMusicCardProps) {
 
                   <DropdownTrigger
                     role={'button'}
-                    onClick={handleSetMusicBottomSheetOpen}
+                    onClick={event => {
+                      handleSetMusicBottomSheetOpen();
+                      event.stopPropagation();
+                    }}
                   >
                     <MdMoreVert />
                   </DropdownTrigger>
@@ -121,69 +121,50 @@ export function MusicCardSmall(props: IMusicCardProps) {
         </>
       ) : (
         <Container>
-          <ContextMenuPrimitive.Root>
-            <ContextMenuPrimitive.Trigger>
-              <Card>
-                <Wrapper>
-                  <TopContainer onClick={props.clickAction}>
-                    <Controls>
-                      <PlayButton rounded full={false}>
-                        {props.playing ? (
-                          <MdPause
-                            size={28}
-                            style={{ fill: dark.colors.text }}
-                          />
-                        ) : (
-                          <MdPlayArrow
-                            size={28}
-                            style={{ fill: dark.colors.text }}
-                          />
-                        )}
-                      </PlayButton>
-                    </Controls>
+          <Card>
+            <Wrapper>
+              <TopContainer onClick={props.clickAction}>
+                <Controls>
+                  <PlayButton rounded full={false}>
+                    {props.playing ? (
+                      <MdPause size={28} style={{ fill: dark.colors.text }} />
+                    ) : (
+                      <MdPlayArrow
+                        size={28}
+                        style={{ fill: dark.colors.text }}
+                      />
+                    )}
+                  </PlayButton>
+                </Controls>
 
-                    <img
-                      src={props.imageUrl}
-                      alt={`Capa da música ${props.name}`}
-                    />
-                  </TopContainer>
+                <img
+                  src={props.imageUrl}
+                  alt={`Capa da música ${props.name}`}
+                />
+              </TopContainer>
 
-                  <BottomContainer>
-                    <Details title={formatArtists(props.artists)}>
-                      <MusicName>{props.name}</MusicName>
-                      <section>
-                        <span>
-                          {props.explicit && <MdExplicit size={20} />}
-                        </span>
-                        <span>{props.playlist ? 'Playlist' : 'Single'}</span>
-                        <span>&bull;</span>
-                        <span>{formatArtists(props.artists)}</span>
-                      </section>
-                    </Details>
+              <BottomContainer>
+                <Details title={formatArtists(props.artists)}>
+                  <MusicName>{props.name}</MusicName>
+                  <section>
+                    <span>{props.explicit && <MdExplicit size={20} />}</span>
+                    <span>{props.playlist ? 'Playlist' : 'Single'}</span>
+                    <span>&bull;</span>
+                    <span>{formatArtists(props.artists)}</span>
+                  </section>
+                </Details>
 
-                    <DropdownMenuPrimitive.Root>
-                      <DropdownMenuPrimitive.Trigger style={{ all: 'unset' }}>
-                        <DropdownTrigger role={'button'}>
-                          <MdMoreVert />
-                        </DropdownTrigger>
-                      </DropdownMenuPrimitive.Trigger>
-
-                      <DropdownMenuPrimitive.Content
-                        sideOffset={5}
-                        style={{ zIndex: 110 }}
-                      >
-                        {!isMobile && <MusicMenu />}
-                      </DropdownMenuPrimitive.Content>
-                    </DropdownMenuPrimitive.Root>
-                  </BottomContainer>
-                </Wrapper>
-              </Card>
-            </ContextMenuPrimitive.Trigger>
-
-            <ContextMenuPrimitive.Content style={{ zIndex: 110 }}>
-              {!isMobile && <MusicMenu />}
-            </ContextMenuPrimitive.Content>
-          </ContextMenuPrimitive.Root>
+                <DropdownTrigger
+                  role={'button'}
+                  onClick={event => {
+                    event.stopPropagation();
+                  }}
+                >
+                  <MdMoreVert />
+                </DropdownTrigger>
+              </BottomContainer>
+            </Wrapper>
+          </Card>
         </Container>
       )}
     </>

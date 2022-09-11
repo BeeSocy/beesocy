@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
 import { useLocalStorage } from 'react-use';
-import { IArtist } from '../../types/artist';
 import { IMusicPost } from '../../types/musicPost';
 import { shuffleArray } from '../../utils/shuffleArray';
 import { IPlayerContext, IPlayerProvider, repeatPossibilities } from './types';

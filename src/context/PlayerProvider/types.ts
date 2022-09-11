@@ -4,7 +4,7 @@ import { IMusicPost } from '../../types/musicPost';
 
 export type repeatPossibilities = 'all' | 'single' | 'off';
 
-export interface IPlayer {
+interface IPlayer {
   /*   open?: boolean;
   trackList: IMusicPost[] | undefined;
   currentTrack: IMusicPost | undefined;

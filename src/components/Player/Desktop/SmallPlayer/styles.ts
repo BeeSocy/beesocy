@@ -4,7 +4,7 @@ import { Button } from '../../../Widgets/Buttons/Button';
 
 import * as SliderPrimitive from '@radix-ui/react-slider';
 
-const sidebarWidth = '6.4rem';
+export const sidebarWidth = '6.4rem';
 
 export const Container = styled.div`
   width: calc(100vw - ${sidebarWidth});

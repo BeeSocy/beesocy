@@ -12,7 +12,7 @@ export interface IMusicCardProps extends IMusicPost {
   large?: boolean;
   playing?: boolean;
   showDuration?: boolean;
-  clickAction(): void;
+  clickAction?: () => void;
 }
 
 export function MusicCard(props: IMusicCardProps) {

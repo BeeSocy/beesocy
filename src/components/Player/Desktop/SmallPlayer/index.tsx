@@ -1,4 +1,3 @@
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { useEffect, useRef } from 'react';
 import {
   MdArrowDropUp,
@@ -62,146 +61,132 @@ export function DesktopSmallPlayer() {
         event.stopPropagation();
       }}
     >
-      <ContextMenuPrimitive.Root>
-        <ContextMenuPrimitive.Trigger>
-          <Wrapper>
-            <MusicContainer>
-              <img src={player.getCurrentTrack()?.imageUrl} />
+      <Wrapper>
+        <MusicContainer>
+          <img src={player.getCurrentTrack()?.imageUrl} />
 
-              <MusicDetails>
-                <Title size="small">{player.getCurrentTrack()?.name}</Title>
+          <MusicDetails>
+            <Title size="small">{player.getCurrentTrack()?.name}</Title>
 
-                <MusicInfo>
-                  <span>
-                    {player.getCurrentTrack()?.explicit && (
-                      <MdExplicit size={20} />
-                    )}
-                  </span>
+            <MusicInfo>
+              <span>
+                {player.getCurrentTrack()?.explicit && <MdExplicit size={20} />}
+              </span>
 
-                  <span>
-                    {player?.getCurrentTrack() &&
-                      player.formatArtists(player.getCurrentTrack().artists)}
-                  </span>
-                </MusicInfo>
-              </MusicDetails>
-            </MusicContainer>
+              <span>
+                {player?.getCurrentTrack() &&
+                  player.formatArtists(player.getCurrentTrack().artists)}
+              </span>
+            </MusicInfo>
+          </MusicDetails>
+        </MusicContainer>
 
-            <Specs>
-              <Controls
-                onClick={event => {
-                  event.stopPropagation();
-                }}
-              >
-                <Button onClick={handleToggleRepeatMode} rounded full={false}>
-                  {player.getRepeat() != 'single' ? (
-                    <MdRepeat
-                      style={
-                        player.getRepeat() == 'all'
-                          ? { fill: colors.bee }
-                          : { fill: colors.text }
-                      }
-                    />
-                  ) : (
-                    <MdRepeatOne style={{ fill: colors.bee }} />
-                  )}
-                </Button>
+        <Specs>
+          <Controls
+            onClick={event => {
+              event.stopPropagation();
+            }}
+          >
+            <Button onClick={handleToggleRepeatMode} rounded full={false}>
+              {player.getRepeat() != 'single' ? (
+                <MdRepeat
+                  style={
+                    player.getRepeat() == 'all'
+                      ? { fill: colors.bee }
+                      : { fill: colors.text }
+                  }
+                />
+              ) : (
+                <MdRepeatOne style={{ fill: colors.bee }} />
+              )}
+            </Button>
 
-                <Button onClick={handlePreviousMusic} rounded full={false}>
-                  <MdSkipPrevious />
-                </Button>
+            <Button onClick={handlePreviousMusic} rounded full={false}>
+              <MdSkipPrevious />
+            </Button>
 
-                <Button onClick={handlePlayMusic} rounded full={false}>
-                  {player.getPlaying() ? (
-                    <MdPauseCircleFilled style={{ transform: 'scale(1.5)' }} />
-                  ) : (
-                    <MdPlayCircleFilled style={{ transform: 'scale(1.5)' }} />
-                  )}
-                </Button>
+            <Button onClick={handlePlayMusic} rounded full={false}>
+              {player.getPlaying() ? (
+                <MdPauseCircleFilled style={{ transform: 'scale(1.5)' }} />
+              ) : (
+                <MdPlayCircleFilled style={{ transform: 'scale(1.5)' }} />
+              )}
+            </Button>
 
-                <Button onClick={handleNextMusic} rounded full={false}>
-                  <MdSkipNext />
-                </Button>
+            <Button onClick={handleNextMusic} rounded full={false}>
+              <MdSkipNext />
+            </Button>
 
-                <ShuffleButton
-                  onClick={player.shuffleTrackList}
-                  rounded
-                  full={false}
-                >
-                  <MdShuffle />
-                </ShuffleButton>
-              </Controls>
+            <ShuffleButton
+              onClick={player.shuffleTrackList}
+              rounded
+              full={false}
+            >
+              <MdShuffle />
+            </ShuffleButton>
+          </Controls>
 
-              <TimeContainer
-                onClick={event => {
-                  event.stopPropagation();
-                }}
-              >
-                <TimeSeconds>
-                  {player.formatSeconds(player.getCurrentSeconds())}
-                </TimeSeconds>
+          <TimeContainer
+            onClick={event => {
+              event.stopPropagation();
+            }}
+          >
+            <TimeSeconds>
+              {player.formatSeconds(player.getCurrentSeconds())}
+            </TimeSeconds>
 
-                <TimebarSlider
-                  max={player.getCurrentTrack().duration}
-                  onValueChange={value => {
-                    handleChangeTimeInSlider(value[0]);
-                  }}
-                  value={[player.getCurrentSeconds()]}
-                >
-                  <TimebarTrack>
-                    <TimebarRange />
-                  </TimebarTrack>
+            <TimebarSlider
+              max={player.getCurrentTrack().duration}
+              onValueChange={value => {
+                handleChangeTimeInSlider(value[0]);
+              }}
+              value={[player.getCurrentSeconds()]}
+            >
+              <TimebarTrack>
+                <TimebarRange />
+              </TimebarTrack>
 
-                  <TimebarThumb />
-                </TimebarSlider>
+              <TimebarThumb />
+            </TimebarSlider>
 
-                <TimeSeconds>
-                  {player.formatSeconds(
-                    player.getCurrentTrack().duration
-                      ? player.getCurrentTrack().duration
-                      : 0
-                  )}
-                </TimeSeconds>
-              </TimeContainer>
-            </Specs>
+            <TimeSeconds>
+              {player.formatSeconds(
+                player.getCurrentTrack().duration
+                  ? player.getCurrentTrack().duration
+                  : 0
+              )}
+            </TimeSeconds>
+          </TimeContainer>
+        </Specs>
 
-            <ExtraControls>
-              <LikeButton />
+        <ExtraControls>
+          <LikeButton />
 
-              <VolumeSlider
-                value={[player.getVolume()]}
-                onValueChange={value => {
-                  player.handleChangeVolume(value[0]);
-                }}
-                onClick={event => {
-                  event.stopPropagation();
-                }}
-              >
-                <VolumeButton
-                  onClick={() => player.handleChangeMuted(!player.getMuted())}
-                >
-                  {player.getMuted() ? <MdVolumeOff /> : <MdVolumeUp />}
-                </VolumeButton>
+          <VolumeSlider
+            value={[player.getVolume()]}
+            onValueChange={value => {
+              player.handleChangeVolume(value[0]);
+            }}
+            onClick={event => {
+              event.stopPropagation();
+            }}
+          >
+            <VolumeButton
+              onClick={() => player.handleChangeMuted(!player.getMuted())}
+            >
+              {player.getMuted() ? <MdVolumeOff /> : <MdVolumeUp />}
+            </VolumeButton>
 
-                <VolumeTrack>
-                  <VolumeRange />
-                </VolumeTrack>
-              </VolumeSlider>
+            <VolumeTrack>
+              <VolumeRange />
+            </VolumeTrack>
+          </VolumeSlider>
 
-              <ToggleLargeButton
-                active={player.getLarge()}
-                rounded
-                full={false}
-              >
-                <MdArrowDropUp />
-              </ToggleLargeButton>
-            </ExtraControls>
-          </Wrapper>
-        </ContextMenuPrimitive.Trigger>
-
-        <ContextMenuPrimitive.Content style={{ zIndex: 110 }}>
-          <MusicMenu />
-        </ContextMenuPrimitive.Content>
-      </ContextMenuPrimitive.Root>
+          <ToggleLargeButton active={player.getLarge()} rounded full={false}>
+            <MdArrowDropUp />
+          </ToggleLargeButton>
+        </ExtraControls>
+      </Wrapper>
     </Container>
   );
 }

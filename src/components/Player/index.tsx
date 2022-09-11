@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { usePlayer } from '../../context/PlayerProvider/usePlayer';
 import { useMobile } from '../../hooks/useMobile';
+import { DesktopPlayer } from './Desktop/Player';
 import { DesktopSmallPlayer } from './Desktop/SmallPlayer';
 
 export let handleToggleRepeatMode = () => {};
@@ -41,6 +42,8 @@ export function Player() {
       ) {
         player.handleChangeCurrentSeconds(0);
         audioElementRef.current.currentTime = 0;
+        player.handleChangePlaying(true);
+        audioElementRef.current.play();
         return;
       }
 
@@ -120,7 +123,7 @@ export function Player() {
   if (player.getOpen()) {
     return (
       <>
-        {isMobile ? <></> : <DesktopSmallPlayer />}
+        {isMobile ? <></> : <DesktopPlayer />}
         <audio ref={audioElementRef} preload="metadata">
           <source src={player.getCurrentTrack().fileUrl} type="audio/mpeg" />
         </audio>
