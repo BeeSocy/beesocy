@@ -57,6 +57,7 @@ export const Container = styled.div<IStyledContainer>`
     to {
       transform: translateY(400px);
       opacity: 0;
+      visibility: hidden;
     }
   }
 `;
@@ -126,6 +127,12 @@ export const TrackListHeader = styled.div`
 `;
 
 export const Tracks = styled.div`
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.8rem;
+
   overflow-y: auto;
 
   padding: 0.8rem;

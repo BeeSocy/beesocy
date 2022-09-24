@@ -87,11 +87,7 @@ export function Player() {
       }
       player.handleChangePlaying(true);
     }
-  }, [
-    player.getCurrentTrack(),
-    player.getTrackList(),
-    player.getPositionOnTrackList()
-  ]);
+  }, [player.getCurrentTrack()]);
 
   useEffect(() => {
     if (audioElementRef.current) {

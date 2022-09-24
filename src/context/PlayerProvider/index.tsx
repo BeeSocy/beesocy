@@ -11,13 +11,13 @@ export function PlayerProvider({ children }: IPlayerProvider) {
 
   const [open, setOpen] = useState<boolean>(false);
 
-  const [trackList, setTrackListState] = useLocalStorage<IMusicPost[]>(
-    'trackList',
+  const [trackList, setTrackListState] = useState<IMusicPost[]>(
+    /*     'trackList', */
     []
   );
 
   const [currentTrack, setCurrentTrackState] =
-    useLocalStorage<IMusicPost>('currentTrack');
+    useState<IMusicPost>(/* 'currentTrack' */);
 
   const [playing, setPlaying] = useState<boolean>(false);
 
@@ -39,9 +39,10 @@ export function PlayerProvider({ children }: IPlayerProvider) {
   const [trackIsLoaded, setTrackIsLoaded] = useState<boolean>(false);
 
   function initPlayer(track: IMusicPost): void {
-    handleChangeOpen(true);
     setCurrentTrack(track);
     setCurrentSeconds(0);
+    handleChangeOpen(true);
+    setTrackList([track]);
   }
 
   function formatArtists(artists: string[]): string {
@@ -191,19 +192,25 @@ export function PlayerProvider({ children }: IPlayerProvider) {
   ): void {
     setTrackListState(state => {
       if (state && state.length > 0) {
-        if (position <= 1) {
-          return [track, ...state];
+        if (
+          state.filter(value => value.fileUrl === track.fileUrl).length <= 0
+        ) {
+          if (position <= 1) {
+            return [track, ...state];
+          }
+
+          if (position > getTrackListLength()) {
+            return [...state, track];
+          }
+
+          const trackListCopy = [...state];
+
+          trackListCopy?.splice(position - 1, 0, track);
+
+          return trackListCopy;
+        } else {
+          return state;
         }
-
-        if (position >= getTrackListLength()) {
-          return [...state, track];
-        }
-
-        const trackListCopy = [...state];
-
-        trackListCopy?.splice(position - 1, 0, track);
-
-        return trackListCopy;
       } else {
         return [track];
       }
@@ -213,7 +220,13 @@ export function PlayerProvider({ children }: IPlayerProvider) {
   function setTrackInLastPositionOfTrackList(track: IMusicPost): void {
     setTrackListState(state => {
       if (state && state.length > 0) {
-        return [...state, track];
+        if (
+          state.filter(value => value.fileUrl === track.fileUrl).length <= 0
+        ) {
+          return [...state, track];
+        } else {
+          return state;
+        }
       } else {
         return [track];
       }

@@ -15,6 +15,7 @@ export const Container = styled.div`
   z-index: 80;
 
   right: 0;
+  bottom: 0;
 
   animation: slideUp 0.5s both;
 

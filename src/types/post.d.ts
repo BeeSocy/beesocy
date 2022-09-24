@@ -4,4 +4,5 @@ export interface IPost {
   isLiked?: boolean;
   isSaved?: boolean;
   isReported?: boolean;
+  categoriesId: number[];
 }

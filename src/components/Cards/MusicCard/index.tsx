@@ -19,7 +19,11 @@ export function MusicCard(props: IMusicCardProps) {
   const player = usePlayer();
 
   function handlePlayMusic(track: IMusicPost) {
-    player.initPlayer(track);
+    if (!player.getOpen()) {
+      player.initPlayer(track);
+    } else {
+      player.setCurrentTrack(track);
+    }
   }
 
   return (

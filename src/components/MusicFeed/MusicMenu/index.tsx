@@ -13,14 +13,16 @@ import {
   MdFlag
 } from 'react-icons/md';
 
-import { useEffect } from 'react';
-
 import { Button } from '../../Widgets/Buttons/Button';
 import { Container } from './styles';
 
 import dark from '../../../styles/themes/dark';
+import { IMusicPost } from '../../../types/musicPost';
+import { usePlayer } from '../../../context/PlayerProvider/usePlayer';
+import { useAlert } from '../../../context/AlertProvider/useAlert';
 
 interface IContextMenuProps {
+  track: IMusicPost;
   playlist?: boolean;
   liked?: boolean;
   saved?: boolean;
@@ -31,8 +33,17 @@ export function MusicMenu({
   playlist,
   liked,
   saved,
-  reported
+  reported,
+  track
 }: IContextMenuProps) {
+  const player = usePlayer();
+
+  const { handleCallAlert } = useAlert();
+
+  function handleClickAction(message: string) {
+    handleCallAlert(message);
+  }
+
   return (
     <Container>
       <Button>
@@ -40,7 +51,17 @@ export function MusicMenu({
         <span>Iniciar radio</span>
       </Button>
 
-      <Button>
+      <Button
+        onClick={() => {
+          if (!player.getOpen()) {
+            player.initPlayer(track);
+            return;
+          }
+
+          handleClickAction('A música será tocada a seguir');
+          player.setTrackInSpecificPositionOfTrackList(2, track);
+        }}
+      >
         <MdPlaylistPlay />
         <span>Tocar a seguir</span>
       </Button>

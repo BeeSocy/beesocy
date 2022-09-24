@@ -1,6 +1,6 @@
 import { MdClose, MdLibraryMusic } from 'react-icons/md';
 import { usePlayer } from '../../../../context/PlayerProvider/usePlayer';
-import { MusicCardSmall } from '../../../Cards/MusicCard/MusicCardSmall';
+import { MusicCard } from '../../../Cards/MusicCard';
 import { Title } from '../../../General/Title';
 import {
   Container,
@@ -44,19 +44,24 @@ export function DesktopLargePlayer({ active }: IDesktopLargePlayer) {
         </TrackListHeader>
 
         <Tracks>
-          <MusicCardSmall
-            name={'Do crime ao funk'}
-            artists={['Bielzin', 'Mc Poze']}
-            duration={120}
-            imageUrl={
-              'https://lh3.googleusercontent.com/Tm4BCNzluBcawAzvLYFxVvTna5wkWxpd-dUpuBjzpNPvaq-T4F1mqnDWUn2d_OMbTPJS27t5EB8YpmUN=w544-h544-l90-rj'
-            }
-            fileUrl={
-              'https://audio.jukehost.co.uk/kRgsjbaMBaB7ZDoDm4QZRDuqGx05j8c9'
-            }
-            id={1}
-            description={''}
-          />
+          {player.getTrackList().map(track => (
+            <MusicCard
+              key={track.id}
+              id={track.id}
+              name={track.name}
+              artists={track.artists}
+              duration={track.duration}
+              imageUrl={track.imageUrl}
+              fileUrl={track.fileUrl}
+              description={track.description}
+              explicit={track.explicit}
+              large={false}
+              playlist={track.playlist}
+              isLiked={track.isLiked}
+              isReported={track.isReported}
+              isSaved={track.isSaved}
+            />
+          ))}
         </Tracks>
       </TrackListContainer>
     </Container>
