@@ -11,8 +11,9 @@ import { Router } from './routes/Router';
 import { MenuProvider } from './context/MenuProvider';
 import { CategoryProvider } from './context/CategoryProvider';
 import { Alert } from './components/General/Alert';
-import * as ToastPrimitive from '@radix-ui/react-toast';
 import { AlertProvider } from './context/AlertProvider';
+import { ModalProvider } from './context/ModalProvider';
+import { Modal } from './components/General/Modal';
 
 export function App() {
   const defaultTheme = dark;
@@ -23,14 +24,18 @@ export function App() {
     <StyledThemeProvider theme={theme ?? defaultTheme}>
       <BrowserRouter>
         <IconContext.Provider value={{ size: '28' }}>
-          <AlertProvider>
-            <MenuProvider>
-              <CategoryProvider>
-                <Router />
-              </CategoryProvider>
-            </MenuProvider>
-            <Alert />
-          </AlertProvider>
+          <ModalProvider>
+            <AlertProvider>
+              <MenuProvider>
+                <CategoryProvider>
+                  <Router />
+                </CategoryProvider>
+              </MenuProvider>
+
+              <Alert />
+              <Modal />
+            </AlertProvider>
+          </ModalProvider>
         </IconContext.Provider>
 
         <GlobalStyle />

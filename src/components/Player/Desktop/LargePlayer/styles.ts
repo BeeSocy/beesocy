@@ -7,6 +7,7 @@ interface IStyledContainer {
 }
 
 export const Container = styled.div<IStyledContainer>`
+  visibility: hidden;
   display: flex;
 
   justify-content: space-around;
@@ -38,11 +39,13 @@ export const Container = styled.div<IStyledContainer>`
 
   @keyframes showOn {
     from {
+      visibility: hidden;
       transform: translateY(400px);
       opacity: 0;
     }
 
     to {
+      visibility: visible;
       transform: translateY(0);
       opacity: 1;
     }
@@ -52,6 +55,7 @@ export const Container = styled.div<IStyledContainer>`
     from {
       transform: translateY(0);
       opacity: 1;
+      visibility: visible;
     }
 
     to {
