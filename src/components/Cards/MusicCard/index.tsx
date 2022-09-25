@@ -26,6 +26,38 @@ export function MusicCard(props: IMusicCardProps) {
     }
   }
 
+  function handleClickAction() {
+    const currentTrack: IMusicPost = {
+      id: props.id,
+      name: props.name,
+      artists: props.artists,
+      duration: props.duration,
+      imageUrl: props.imageUrl,
+      fileUrl: props.fileUrl,
+      description: props.description,
+      explicit: props.explicit,
+      isLiked: props.isLiked,
+      isReported: props.isReported,
+      isSaved: props.isSaved
+    };
+
+    handlePlayMusic(currentTrack);
+
+    if (
+      player
+        .getTrackList()
+        .filter(value => value.fileUrl === currentTrack.fileUrl).length > 0
+    ) {
+      player.setPositionOnTrackList(
+        player
+          .getTrackList()
+          .findIndex(value => value.fileUrl === currentTrack.fileUrl) + 1
+      );
+    } else {
+      player.setTrackList([currentTrack]);
+    }
+  }
+
   return (
     <>
       {props.large ? (
@@ -46,21 +78,7 @@ export function MusicCard(props: IMusicCardProps) {
           isLiked={props.isLiked}
           isReported={props.isReported}
           isSaved={props.isSaved}
-          clickAction={() => {
-            handlePlayMusic({
-              id: props.id,
-              name: props.name,
-              artists: props.artists,
-              duration: props.duration,
-              imageUrl: props.imageUrl,
-              fileUrl: props.fileUrl,
-              description: props.description,
-              explicit: props.explicit,
-              isLiked: props.isLiked,
-              isReported: props.isReported,
-              isSaved: props.isSaved
-            });
-          }}
+          clickAction={handleClickAction}
         />
       ) : (
         <MusicCardSmall
@@ -80,21 +98,7 @@ export function MusicCard(props: IMusicCardProps) {
           isLiked={props.isLiked}
           isReported={props.isReported}
           isSaved={props.isSaved}
-          clickAction={() => {
-            handlePlayMusic({
-              id: props.id,
-              name: props.name,
-              artists: props.artists,
-              duration: props.duration,
-              imageUrl: props.imageUrl,
-              fileUrl: props.fileUrl,
-              description: props.description,
-              explicit: props.explicit,
-              isLiked: props.isLiked,
-              isReported: props.isReported,
-              isSaved: props.isSaved
-            });
-          }}
+          clickAction={handleClickAction}
         />
       )}
     </>

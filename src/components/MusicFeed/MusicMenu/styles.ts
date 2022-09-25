@@ -10,6 +10,10 @@ export const Container = styled.div`
   max-height: 27.2rem;
   overflow: auto;
 
+  span {
+    font-size: 1.33rem;
+  }
+
   @media (min-width: ${breakpoint}) {
     border: 0.1rem solid ${props => props.theme.colors.light};
     border-radius: 2rem;
@@ -24,6 +28,6 @@ export const Container = styled.div`
   }
 
   @media (min-height: 600px) {
-    max-height: 37.2rem;
+    max-height: 30.2rem;
   }
 `;

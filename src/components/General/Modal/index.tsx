@@ -5,10 +5,11 @@ import { MdClose } from 'react-icons/md';
 import {
   StyledDialogOverlay,
   StyledDialogContent,
-  StyledDialogClose
+  StyledDialogClose,
+  StyledDialogHeader
 } from './styles';
 import { useModal } from '../../../context/ModalProvider/useModal';
-import { IModalProps } from '../../../context/ModalProvider/types';
+import { Title } from '../Title';
 
 export function Modal() {
   const { open, handleSetOpen, content, options } = useModal();
@@ -28,12 +29,15 @@ export function Modal() {
             !options.easyClose && event.preventDefault();
           }}
         >
+          <StyledDialogHeader>
+            <Title size="medium">{options.title}</Title>
+            {options.easyClose && (
+              <StyledDialogClose>
+                <MdClose size={18} />
+              </StyledDialogClose>
+            )}
+          </StyledDialogHeader>
           {content}
-          {options.easyClose && (
-            <StyledDialogClose>
-              <MdClose size={18} />
-            </StyledDialogClose>
-          )}
         </StyledDialogContent>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>

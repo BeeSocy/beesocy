@@ -20,6 +20,12 @@ import dark from '../../../styles/themes/dark';
 import { IMusicPost } from '../../../types/musicPost';
 import { usePlayer } from '../../../context/PlayerProvider/usePlayer';
 import { useAlert } from '../../../context/AlertProvider/useAlert';
+import { Modal } from '../../General/Modal';
+import { useModal } from '../../../context/ModalProvider/useModal';
+import { PlaylistCard } from '../../Cards/PlaylistCard';
+import { IProfile } from '../../../types/profile';
+import { IPlaylist } from '../../../types/playlist';
+import { PlaylistList } from '../PlaylistList';
 
 interface IContextMenuProps {
   track: IMusicPost;
@@ -40,6 +46,8 @@ export function MusicMenu({
 
   const { handleCallAlert } = useAlert();
 
+  const { handleCallModal } = useModal();
+
   function handleClickAction(message: string) {
     handleCallAlert(message);
   }
@@ -58,15 +66,27 @@ export function MusicMenu({
             return;
           }
 
-          handleClickAction('A música será tocada a seguir');
-          player.setTrackInSpecificPositionOfTrackList(2, track);
+          handleClickAction('A música será tocada a seguir.');
+          player.setTrackInSpecificPositionOfTrackList(
+            player.getPositionOnTrackList() + 1,
+            track
+          );
         }}
       >
         <MdPlaylistPlay />
         <span>Tocar a seguir</span>
       </Button>
 
-      <Button>
+      <Button
+        onClick={() => {
+          handleCallModal(<PlaylistList track={track} />, {
+            title: 'Escolha uma playlist',
+            overlay: true,
+            easyClose: true,
+            center: true
+          });
+        }}
+      >
         <MdPlaylistAdd />
         <span>Adicionar a playlist</span>
       </Button>
