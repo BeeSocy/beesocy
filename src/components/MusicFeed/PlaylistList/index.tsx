@@ -34,9 +34,9 @@ export function PlaylistList({ track }: IPlaylistListProps) {
 
   function handleClickAction(playlistName: string) {
     /* TODO: Send track to playlist (backend) */
-    handleCallAlert(
-      `**${track.name} adicionado à **${playlistName}**`
-    ); /*TODO: Create bold in alert */
+    handleCallAlert(`**${track.name}** adicionado à **${playlistName}**`);
+    //TODO: Retornar do backend se a música já está na playlist e com isso mandar essa mensagem:
+    /* handleCallAlert(`**${track.name}** já está adicionado em **${playlistName}**`);  */
     handleSetOpen(false);
   }
 

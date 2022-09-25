@@ -20,11 +20,7 @@ import dark from '../../../styles/themes/dark';
 import { IMusicPost } from '../../../types/musicPost';
 import { usePlayer } from '../../../context/PlayerProvider/usePlayer';
 import { useAlert } from '../../../context/AlertProvider/useAlert';
-import { Modal } from '../../General/Modal';
 import { useModal } from '../../../context/ModalProvider/useModal';
-import { PlaylistCard } from '../../Cards/PlaylistCard';
-import { IProfile } from '../../../types/profile';
-import { IPlaylist } from '../../../types/playlist';
 import { PlaylistList } from '../PlaylistList';
 
 interface IContextMenuProps {
@@ -66,7 +62,26 @@ export function MusicMenu({
             return;
           }
 
-          handleClickAction('A música será tocada a seguir.');
+          handleClickAction('A música será tocada a seguir');
+
+          if (
+            player
+              .getTrackList()
+              .findIndex(value => value.fileUrl === track.fileUrl) +
+              1 <
+              player.getPositionOnTrackList() &&
+            player
+              .getTrackList()
+              .filter(value => value.fileUrl === track.fileUrl).length > 0
+          ) {
+            player.setTrackInSpecificPositionOfTrackList(
+              player.getPositionOnTrackList(),
+              track
+            );
+            player.setPositionOnTrackList(player.getPositionOnTrackList() - 1);
+            return;
+          }
+
           player.setTrackInSpecificPositionOfTrackList(
             player.getPositionOnTrackList() + 1,
             track

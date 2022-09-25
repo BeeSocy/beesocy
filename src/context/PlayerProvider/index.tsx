@@ -210,7 +210,13 @@ export function PlayerProvider({ children }: IPlayerProvider) {
 
           return trackListCopy;
         } else {
-          return state;
+          const trackListCopy = [...state];
+
+          const trackListCopyWithoutRepetesMusic = trackListCopy?.filter(
+            value => value.fileUrl !== track.fileUrl
+          );
+          trackListCopyWithoutRepetesMusic?.splice(position - 1, 0, track);
+          return trackListCopyWithoutRepetesMusic;
         }
       } else {
         return [track];
@@ -226,7 +232,13 @@ export function PlayerProvider({ children }: IPlayerProvider) {
         ) {
           return [...state, track];
         } else {
-          return state;
+          const trackListCopy = [...state];
+
+          const trackListCopyWithoutRepetesMusic = trackListCopy?.filter(
+            value => value.fileUrl !== track.fileUrl
+          );
+
+          return [...trackListCopyWithoutRepetesMusic, track];
         }
       } else {
         return [track];
