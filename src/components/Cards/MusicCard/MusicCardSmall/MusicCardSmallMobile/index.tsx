@@ -114,7 +114,8 @@ export function MusicCardSmallMobile(props: IMusicCardProps) {
                 isLiked: props.isLiked,
                 isReported: props.isReported,
                 isSaved: props.isSaved,
-                playlist: props.playlist
+                playlist: props.playlist,
+                categoriesId: []
               }}
             />
           </Sheet.Content>

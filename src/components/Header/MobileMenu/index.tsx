@@ -37,7 +37,7 @@ import { useLocation } from 'react-router-dom';
 import { Line } from '../Menu/styles';
 
 import { useMenu } from '../../../context/MenuProvider/useMenu';
-import { UserCard } from '../../Widgets/UserCard';
+import { UserCard } from '../../Cards/UserCard';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
 
 export function MobileMenu() {

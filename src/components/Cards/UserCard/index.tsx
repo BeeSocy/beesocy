@@ -1,21 +1,20 @@
 import { AnchorHTMLAttributes } from 'react';
-import { LinkProps } from 'react-router-dom';
-import { IUser } from '../../../types/user';
+import { IProfile } from '../../../types/profile';
 import { LinkButton } from '../../Widgets/Buttons/LinkButton';
-import { FollowCard } from './styles';
+import { Container } from './styles';
 
 interface IUserCard extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  user: IUser;
+  user: IProfile;
   full?: boolean;
 }
 
 export function UserCard({ user, full }: IUserCard) {
   return (
     <LinkButton key={user.id} to={`/profile/${user.id}`} full={full}>
-      <FollowCard>
-        <img alt={`Foto de perfil de ${user.name}`} src={user.img} />
+      <Container>
+        <img alt={`Foto de perfil de ${user.name}`} src={user.imageUrl} />
         <span>{user.name}</span>
-      </FollowCard>
+      </Container>
     </LinkButton>
   );
 }

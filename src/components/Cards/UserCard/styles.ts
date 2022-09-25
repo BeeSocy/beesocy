@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { breakpoint } from '../../../hooks/useMobile';
 
-export const FollowCard = styled.div`
+export const Container = styled.div`
   display: inherit;
 
   @media (min-width: ${breakpoint}) {

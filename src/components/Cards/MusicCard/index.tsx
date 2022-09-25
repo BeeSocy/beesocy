@@ -38,7 +38,8 @@ export function MusicCard(props: IMusicCardProps) {
       explicit: props.explicit,
       isLiked: props.isLiked,
       isReported: props.isReported,
-      isSaved: props.isSaved
+      isSaved: props.isSaved,
+      categoriesId: props.categoriesId
     };
 
     handlePlayMusic(currentTrack);
@@ -78,6 +79,7 @@ export function MusicCard(props: IMusicCardProps) {
           isLiked={props.isLiked}
           isReported={props.isReported}
           isSaved={props.isSaved}
+          categoriesId={props.categoriesId}
           clickAction={handleClickAction}
         />
       ) : (
@@ -98,6 +100,7 @@ export function MusicCard(props: IMusicCardProps) {
           isLiked={props.isLiked}
           isReported={props.isReported}
           isSaved={props.isSaved}
+          categoriesId={props.categoriesId}
           clickAction={handleClickAction}
         />
       )}

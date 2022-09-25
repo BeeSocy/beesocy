@@ -2,8 +2,6 @@ import * as ToastPrimitive from '@radix-ui/react-toast';
 import { ReactNode } from 'react';
 import { MdClose } from 'react-icons/md';
 import { useAlert } from '../../../context/AlertProvider/useAlert';
-import { Button } from '../../Widgets/Buttons/Button';
-import { Title } from '../Title';
 import {
   StyledToastRoot,
   StyledToastViewPort,

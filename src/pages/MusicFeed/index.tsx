@@ -22,7 +22,7 @@ export function MusicFeed() {
       dataType: 'music',
       tracks: [
         {
-          id: 1,
+          id: '',
           name: 'Londres Freestyle',
           artists: ['Veigh', 'Nagalli', 'Supernova Ent'],
           duration: 136,
@@ -33,10 +33,11 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/kRgsjbaMBaB7ZDoDm4QZRDuqGx05j8c9',
           description: 'Londres Freestyle',
           explicit: true,
-          isLiked: true
+          isLiked: true,
+          categoriesId: []
         },
         {
-          id: 2,
+          id: '',
           name: 'Facilitei',
           artists: ['L7NNON', 'Ajax'],
           duration: 212,
@@ -46,10 +47,11 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/yh03xpsgkuEIZ04ogpInYUhvPhYVW5gQ',
           description: 'Facilitei L7',
           explicit: false,
-          isReported: true
+          isReported: true,
+          categoriesId: []
         },
         {
-          id: 3,
+          id: '',
           name: 'Sem pressa',
           artists: [
             'Mc Ryan SP',
@@ -65,7 +67,8 @@ export function MusicFeed() {
           fileUrl:
             'https://audio.jukehost.co.uk/DXXwxHGjLq2DHh63tPWxj4TwJBSbrFTJ',
           description: 'Sem pressa',
-          explicit: true
+          explicit: true,
+          categoriesId: []
         }
       ] as IMusicPost[]
     },
@@ -77,7 +80,7 @@ export function MusicFeed() {
       dataType: 'music',
       tracks: [
         {
-          id: 1,
+          id: '',
           name: 'Londres Freestyle',
           artists: ['Veigh', 'Nagalli', 'Supernova Ent'],
           duration: 136,
@@ -87,10 +90,11 @@ export function MusicFeed() {
           fileUrl:
             'https://audio.jukehost.co.uk/kRgsjbaMBaB7ZDoDm4QZRDuqGx05j8c9',
           description: 'Londres Freestyle',
-          explicit: true
+          explicit: true,
+          categoriesId: []
         },
         {
-          id: 2,
+          id: '',
           name: 'Facilitei',
           artists: ['L7NNON', 'Ajax'],
           duration: 212,
@@ -99,10 +103,11 @@ export function MusicFeed() {
           fileUrl:
             'https://audio.jukehost.co.uk/yh03xpsgkuEIZ04ogpInYUhvPhYVW5gQ',
           description: 'Facilitei L7',
-          explicit: false
+          explicit: false,
+          categoriesId: []
         },
         {
-          id: 3,
+          id: '',
           name: 'Sem pressa',
           artists: [
             'Mc Ryan SP',
@@ -118,10 +123,11 @@ export function MusicFeed() {
           fileUrl:
             'https://audio.jukehost.co.uk/DXXwxHGjLq2DHh63tPWxj4TwJBSbrFTJ',
           description: 'Sem pressa',
-          explicit: true
+          explicit: true,
+          categoriesId: []
         },
         {
-          id: 4,
+          id: '',
           name: 'ye',
           artists: ['Japa'],
           duration: 167,
@@ -130,7 +136,8 @@ export function MusicFeed() {
           fileUrl:
             'https://audio.jukehost.co.uk/BW8KB0iBaQMWXx478ZLYbWLovkddazD2',
           description: 'ye',
-          explicit: true
+          explicit: true,
+          categoriesId: []
         }
       ] as IMusicPost[]
     },
@@ -141,11 +148,11 @@ export function MusicFeed() {
       dataType: 'artist',
       artists: [
         {
-          id: 1,
+          id: '',
           name: 'Julio at Gaita',
           color: '#283dea',
-          followers: 89350,
-          follows: 252,
+          followers: [],
+          follows: [],
           imageUrl:
             'https://images.unsplash.com/photo-1660329268855-38348f36d82e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MTcxNzg1Nw&ixlib=rb-1.2.1&q=80&w=1080'
         }
@@ -158,22 +165,22 @@ export function MusicFeed() {
       dataType: 'category',
       categories: [
         {
-          id: 1,
+          id: '',
           img: 'https://lh3.googleusercontent.com/Tm4BCNzluBcawAzvLYFxVvTna5wkWxpd-dUpuBjzpNPvaq-T4F1mqnDWUn2d_OMbTPJS27t5EB8YpmUN=w544-h544-l90-rj',
           name: 'Freestyle '
         },
         {
-          id: 2,
+          id: '',
           img: 'https://lh3.googleusercontent.com/oT8cJ_TwsnTjYsnFM85SUGrQBAy4aX_-SILaIcpCr7yCuMgAFhYUdlv7EB41s1idApyptUT0HUnyoBWV=w60-h60-l90-rj',
           name: 'Acústico'
         },
         {
-          id: 3,
+          id: '',
           img: 'https://lh3.googleusercontent.com/jIq8vQe0_Z8j5XmgExJxkqewVrEhKMzrBmJz9jjLCxDxggH5So12rPOMYVIRydqkzp3akA67MhCTcx4=w544-h544-l90-rj',
           name: 'Funk'
         },
         {
-          id: 4,
+          id: '',
           img: 'https://lh3.googleusercontent.com/iIzdFZnT4bq9RN9Y3UvhGIil8NrJKuIVmkTfB3KvCHrH8Grzv2e2RayIs1_f5hn80TqJK-WA1z2d1j0=w544-h544-l90-rj',
           name: 'Trap'
         }
@@ -217,6 +224,7 @@ export function MusicFeed() {
                       isLiked={track.isLiked}
                       isReported={track.isReported}
                       isSaved={track.isSaved}
+                      categoriesId={track.categoriesId}
                     />
                   );
                 })}
@@ -225,7 +233,7 @@ export function MusicFeed() {
                     <ArtistCard
                       key={artist.id}
                       name={artist.name}
-                      followers={artist.followers}
+                      followers={artist.followers.length}
                       color={artist.color}
                       imageUrl={artist.imageUrl}
                     />

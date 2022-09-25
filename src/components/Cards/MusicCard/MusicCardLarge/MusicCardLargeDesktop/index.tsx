@@ -60,7 +60,8 @@ export function MusicCardLargeDesktop(props: IMusicCardProps) {
                               isLiked: props.isLiked,
                               isReported: props.isReported,
                               isSaved: props.isSaved,
-                              playlist: props.playlist
+                              playlist: props.playlist,
+                              categoriesId: []
                             }}
                           />
                         </StyledDropdownMenuItem>
@@ -114,7 +115,8 @@ export function MusicCardLargeDesktop(props: IMusicCardProps) {
                 isLiked: props.isLiked,
                 isReported: props.isReported,
                 isSaved: props.isSaved,
-                playlist: props.playlist
+                playlist: props.playlist,
+                categoriesId: []
               }}
             />
           </ContextMenuPrimitive.Item>

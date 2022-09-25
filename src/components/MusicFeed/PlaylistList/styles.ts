@@ -4,5 +4,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+  align-items: center;
+
   gap: 0.8rem;
+
+  button {
+    border-radius: 1.2rem;
+  }
 `;

@@ -1,8 +1,8 @@
 export interface IProfile {
-  id: number;
+  id: string;
   name: string;
-  follows: number;
-  followers: number;
+  follows: IProfile[];
+  followers: IProfile[];
   color: string;
   imageUrl: string;
   description?: string;

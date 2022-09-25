@@ -60,6 +60,7 @@ export function DesktopLargePlayer({ active }: IDesktopLargePlayer) {
               isLiked={track.isLiked}
               isReported={track.isReported}
               isSaved={track.isSaved}
+              categoriesId={track.categoriesId}
             />
           ))}
         </Tracks>

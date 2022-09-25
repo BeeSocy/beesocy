@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { usePlayer } from '../../context/PlayerProvider/usePlayer';
 import { useMobile } from '../../hooks/useMobile';
-import { DesktopPlayer } from './Desktop/Player';
+import { DesktopPlayer } from './Desktop/DesktopPlayer';
 import { DesktopSmallPlayer } from './Desktop/SmallPlayer';
 
 export let handleToggleRepeatMode = () => {};

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef, WheelEvent } from 'react';
 import {
   MdArrowDropUp,
   MdExplicit,
@@ -12,6 +12,7 @@ import {
   MdVolumeOff,
   MdVolumeUp
 } from 'react-icons/md';
+import { useHoverDirty, useLockBodyScroll } from 'react-use';
 import {
   handleToggleRepeatMode,
   handlePreviousMusic,
@@ -53,6 +54,18 @@ export function DesktopSmallPlayer() {
   const player = usePlayer();
 
   const { colors } = useTheme();
+
+  function checkScrollDirection(event: WheelEvent): 'down' | 'up' {
+    if (event.deltaY > 0) {
+      return 'down';
+    }
+    return 'up';
+  }
+
+  const volumeSliderRef = useRef<HTMLDivElement>(null);
+  const isHoverVolumeSlider = useHoverDirty(volumeSliderRef);
+
+  useLockBodyScroll(isHoverVolumeSlider);
 
   return (
     <Container
@@ -164,11 +177,19 @@ export function DesktopSmallPlayer() {
 
           <VolumeSlider
             value={[player.getVolume()]}
+            ref={volumeSliderRef}
             onValueChange={value => {
               player.handleChangeVolume(value[0]);
             }}
             onClick={event => {
               event.stopPropagation();
+            }}
+            onWheel={event => {
+              if (checkScrollDirection(event) === 'up') {
+                player.handleChangeVolume(player.getVolume() + 15);
+              } else {
+                player.handleChangeVolume(player.getVolume() - 15);
+              }
             }}
           >
             <VolumeButton

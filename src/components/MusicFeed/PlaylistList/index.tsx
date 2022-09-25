@@ -1,9 +1,11 @@
+import { MdAdd } from 'react-icons/md';
 import { useAlert } from '../../../context/AlertProvider/useAlert';
 import { useModal } from '../../../context/ModalProvider/useModal';
 import { IMusicPost } from '../../../types/musicPost';
 import { IPlaylist } from '../../../types/playlist';
 import { IProfile } from '../../../types/profile';
 import { PlaylistCard } from '../../Cards/PlaylistCard';
+import { Button } from '../../Widgets/Buttons/Button';
 
 import { Container } from './styles';
 
@@ -18,7 +20,7 @@ export function PlaylistList({ track }: IPlaylistListProps) {
 
   const fetchedPlaylists: IPlaylist[] = [
     {
-      id: 1,
+      id: '7f95bd63-d82c-40ab-a5f6-beb506b1786e',
       bannerUrl:
         'https://pbs.twimg.com/profile_images/2068072926/julio_400x400.jpg',
       categoriesId: [],
@@ -42,19 +44,28 @@ export function PlaylistList({ track }: IPlaylistListProps) {
 
   return (
     <Container>
-      {fetchedPlaylists.map(playlist => (
-        <PlaylistCard
-          key={playlist.id}
-          name={playlist.name}
-          bannerUrl={playlist.bannerUrl}
-          musics={playlist.musics}
-          author={playlist.author}
-          id={playlist.id}
-          description={playlist.description}
-          categoriesId={playlist.categoriesId}
-          onClickAction={() => handleClickAction(playlist.name)}
-        />
-      ))}
+      {fetchedPlaylists.length > 0 ? (
+        fetchedPlaylists.map(playlist => (
+          <PlaylistCard
+            key={playlist.id}
+            name={playlist.name}
+            bannerUrl={playlist.bannerUrl}
+            musics={playlist.musics}
+            author={playlist.author}
+            id={playlist.id}
+            description={playlist.description}
+            categoriesId={playlist.categoriesId}
+            onClickAction={() => handleClickAction(playlist.name)}
+          />
+        ))
+      ) : (
+        <span>Nenhuma playlist encontrada</span>
+      )}
+
+      <Button>
+        <MdAdd />
+        <span>Nova playlist</span>
+      </Button>
     </Container>
   );
 }

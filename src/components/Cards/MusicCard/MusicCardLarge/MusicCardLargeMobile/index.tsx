@@ -106,7 +106,8 @@ export function MusicCardLargeMobile(props: IMusicCardProps) {
                 isLiked: props.isLiked,
                 isReported: props.isReported,
                 isSaved: props.isSaved,
-                playlist: props.playlist
+                playlist: props.playlist,
+                categoriesId: []
               }}
               playlist={props.playlist}
               liked={props.isLiked}
