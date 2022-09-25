@@ -62,30 +62,33 @@ export function MusicMenu({
             return;
           }
 
-          handleClickAction('A música será tocada a seguir');
+          if (player.getCurrentTrack().fileUrl != track.fileUrl) {
+            handleClickAction(`**${track.name}** será tocado a seguir`);
+            if (
+              player
+                .getTrackList()
+                .findIndex(value => value.fileUrl === track.fileUrl) +
+                1 <
+                player.getPositionOnTrackList() &&
+              player
+                .getTrackList()
+                .filter(value => value.fileUrl === track.fileUrl).length > 0
+            ) {
+              player.setTrackInSpecificPositionOfTrackList(
+                player.getPositionOnTrackList(),
+                track
+              );
+              player.setPositionOnTrackList(
+                player.getPositionOnTrackList() - 1
+              );
+              return;
+            }
 
-          if (
-            player
-              .getTrackList()
-              .findIndex(value => value.fileUrl === track.fileUrl) +
-              1 <
-              player.getPositionOnTrackList() &&
-            player
-              .getTrackList()
-              .filter(value => value.fileUrl === track.fileUrl).length > 0
-          ) {
             player.setTrackInSpecificPositionOfTrackList(
-              player.getPositionOnTrackList(),
+              player.getPositionOnTrackList() + 1,
               track
             );
-            player.setPositionOnTrackList(player.getPositionOnTrackList() - 1);
-            return;
           }
-
-          player.setTrackInSpecificPositionOfTrackList(
-            player.getPositionOnTrackList() + 1,
-            track
-          );
         }}
       >
         <MdPlaylistPlay />
@@ -111,12 +114,28 @@ export function MusicMenu({
         <span>{playlist ? 'Ir para o criador' : 'Ir para o artista'}</span>
       </Button>
 
-      <Button>
+      <Button
+        onClick={() => {
+          if (!player.getOpen()) {
+            player.initPlayer(track);
+            return;
+          }
+
+          if (player.getCurrentTrack().fileUrl != track.fileUrl) {
+            handleClickAction(`**${track.name}** foi adicionado a fila`);
+            player.setTrackInLastPositionOfTrackList(track);
+          }
+        }}
+      >
         <MdQueueMusic />
         <span>Adicionar a fila</span>
       </Button>
 
-      <Button>
+      <Button
+        onClick={() => {
+          handleClickAction(`**${track.name}** adicionado aos curtidos`);
+        }}
+      >
         {liked ? (
           <MdFavorite style={{ fill: dark.colors.bee }} />
         ) : (
@@ -130,7 +149,11 @@ export function MusicMenu({
         <span>Compartilhar</span>
       </Button>
 
-      <Button>
+      <Button
+        onClick={() => {
+          handleClickAction(`**${track.name}** adicionado aos salvos`);
+        }}
+      >
         {saved ? (
           <MdBookmark style={{ fill: dark.colors.bee }} />
         ) : (
