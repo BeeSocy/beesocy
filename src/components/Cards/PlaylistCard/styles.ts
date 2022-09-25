@@ -25,8 +25,6 @@ export const Wrapper = styled.div`
 
   border-radius: inherit;
 
-  max-width: ${wrapperWidth};
-
   span {
     width: ${wrapperWidth};
     max-width: inherit;

@@ -116,7 +116,7 @@ export function MusicCardLargeMobile(props: IMusicCardProps) {
           </Sheet.Content>
         </Sheet.Container>
 
-        <Sheet.Backdrop />
+        <Sheet.Backdrop onTap={() => setMenuIsOpen(false)} />
       </Sheet>
     </>
   );

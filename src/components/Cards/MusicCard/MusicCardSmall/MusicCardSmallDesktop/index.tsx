@@ -18,6 +18,7 @@ import {
   MusicName,
   DropdownTrigger
 } from '../styles';
+import { StyledDropdownMenuItem } from '../../MusicCardLarge/styles';
 
 export function MusicCardSmallDesktop(props: IMusicCardProps) {
   const { formatArtists } = usePlayer();
@@ -71,7 +72,7 @@ export function MusicCardSmallDesktop(props: IMusicCardProps) {
                       style={{ zIndex: 110 }}
                       onClick={event => event.stopPropagation()}
                     >
-                      <DropdownMenuPrimitive.Item>
+                      <StyledDropdownMenuItem>
                         <MusicMenu
                           track={{
                             name: props.name,
@@ -88,7 +89,7 @@ export function MusicCardSmallDesktop(props: IMusicCardProps) {
                             playlist: props.playlist
                           }}
                         />
-                      </DropdownMenuPrimitive.Item>
+                      </StyledDropdownMenuItem>
                     </DropdownMenuPrimitive.Content>
                   </DropdownMenuPrimitive.Portal>
                 </DropdownMenuPrimitive.Root>

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { ButtonStyle } from '../../Widgets/Buttons/Button/styles';
-import { breakpoint } from '../../../hooks/useMobile';
+import { ButtonStyle } from '../../../Widgets/Buttons/Button/styles';
+import { breakpoint } from '../../../../hooks/useMobile';
 
 interface IStyledDialogOverlayProps {
   $active?: boolean;
@@ -67,13 +67,16 @@ export const StyledDialogContent = styled(
   padding: 1.2rem;
 
   position: fixed;
+
   z-index: 200;
-  bottom: 0;
+
+  top: ${props => (props.$yPos ? `${props.$yPos}px` : 0)};
+  left: ${props => (props.$xPos ? `${props.$xPos}px` : 0)};
 
   overflow: auto;
 
   max-height: 85vh;
-  width: 100vw;
+  max-width: 70rem;
 
   &[data-state='open'] {
     animation: showContentOn 0.3s both;
@@ -88,6 +91,12 @@ export const StyledDialogContent = styled(
       opacity: 0;
       visibility: hidden;
       transform: translateY(50%);
+
+      ${props =>
+        props.$center &&
+        css`
+          transform: translate(-50%, 0%);
+        `}
     }
   }
 
@@ -96,51 +105,22 @@ export const StyledDialogContent = styled(
       opacity: 0;
       visibility: hidden;
       transform: translateY(50%);
+
+      ${props =>
+        props.$center &&
+        css`
+          transform: translate(-50%, 0%);
+        `}
     }
   }
 
-  @media (min-width: ${breakpoint}) {
-    top: ${props => (props.$yPos ? `${props.$yPos}px` : 0)};
-    left: ${props => (props.$xPos ? `${props.$xPos}px` : 0)};
-
-    max-width: 70rem;
-
-    @keyframes showContentOn {
-      from {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(50%);
-
-        ${props =>
-          props.$center &&
-          css`
-            transform: translate(-50%, 0%);
-          `}
-      }
-    }
-
-    @keyframes showContentOff {
-      to {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(50%);
-
-        ${props =>
-          props.$center &&
-          css`
-            transform: translate(-50%, 0%);
-          `}
-      }
-    }
-
-    ${props =>
-      props.$center &&
-      css`
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      `};
-  }
+  ${props =>
+    props.$center &&
+    css`
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    `};
 `;
 
 export const StyledDialogHeader = styled.section`

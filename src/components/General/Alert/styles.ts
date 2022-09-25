@@ -61,6 +61,10 @@ export const StyledToastViewPort = styled(ToastPrimitive.Viewport)`
   margin: 12rem 2rem;
 
   max-width: 60vw;
+
+  @media (max-width: ${breakpoint}) {
+    max-width: 100vw;
+  }
 `;
 
 export const StyledToastClose = styled(ToastPrimitive.Close)`

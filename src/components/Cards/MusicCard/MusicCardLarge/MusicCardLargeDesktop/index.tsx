@@ -16,7 +16,8 @@ import {
   PlayButton,
   Wrapper,
   MusicName,
-  Card
+  Card,
+  StyledDropdownMenuItem
 } from '../styles';
 import { usePlayer } from '../../../../../context/PlayerProvider/usePlayer';
 
@@ -45,7 +46,7 @@ export function MusicCardLargeDesktop(props: IMusicCardProps) {
                         }}
                         onClick={event => event.stopPropagation()}
                       >
-                        <DropdownMenuPrimitive.Item>
+                        <StyledDropdownMenuItem>
                           <MusicMenu
                             track={{
                               name: props.name,
@@ -62,7 +63,7 @@ export function MusicCardLargeDesktop(props: IMusicCardProps) {
                               playlist: props.playlist
                             }}
                           />
-                        </DropdownMenuPrimitive.Item>
+                        </StyledDropdownMenuItem>
                       </DropdownMenuPrimitive.Content>
                     </DropdownMenuPrimitive.Portal>
                   </DropdownMenuPrimitive.Root>

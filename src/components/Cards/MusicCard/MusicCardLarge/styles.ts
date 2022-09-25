@@ -1,4 +1,3 @@
-import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { breakpoint } from '../../../../hooks/useMobile';
 import { Button } from '../../../Widgets/Buttons/Button';
@@ -7,6 +6,8 @@ import { scaleUpAnimation } from '../../GlobalCard/styles';
 
 import light from '../../../../styles/themes/light';
 import { Title } from '../../../General/Title';
+
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
 const wrapperWidth = '18rem';
 
@@ -162,5 +163,11 @@ export const Details = styled.section`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+`;
+
+export const StyledDropdownMenuItem = styled(DropdownMenuPrimitive.Item)`
+  &:hover {
+    outline: none;
   }
 `;
