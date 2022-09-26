@@ -7,10 +7,10 @@ import {
   CloseButton,
   TrackListContainer,
   TrackListHeader,
-  Tracks,
   MusicCover,
   Divider
 } from './styles';
+import { TracksList } from './TracksList';
 
 interface IDesktopLargePlayer {
   active?: boolean;
@@ -43,27 +43,7 @@ export function DesktopLargePlayer({ active }: IDesktopLargePlayer) {
           <Title size="small">Próximas músicas</Title>
         </TrackListHeader>
 
-        <Tracks>
-          {player.getTrackList().map(track => (
-            <MusicCard
-              key={track.id}
-              id={track.id}
-              name={track.name}
-              artists={track.artists}
-              duration={track.duration}
-              imageUrl={track.imageUrl}
-              fileUrl={track.fileUrl}
-              description={track.description}
-              explicit={track.explicit}
-              large={false}
-              playlist={track.playlist}
-              isLiked={track.isLiked}
-              isReported={track.isReported}
-              isSaved={track.isSaved}
-              categoriesId={track.categoriesId}
-            />
-          ))}
-        </Tracks>
+        <TracksList />
       </TrackListContainer>
     </Container>
   );
