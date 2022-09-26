@@ -45,6 +45,7 @@ export interface IPlayerContext extends IPlayer {
   getLarge(): boolean;
   getPositionOnTrackList(): number;
   getTrackIsLoaded(): boolean;
+  getTrackInSpecificPositionOfTrackList(position: number): IMusicPost;
 
   setTrackList(trackList: IMusicPost[]): void;
   setTrackInSpecificPositionOfTrackList(

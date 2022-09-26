@@ -41,7 +41,7 @@ export function Menu() {
 
   const { elementRef: menuRef, hasVerticalScroll } = useScroll();
 
-  const { open } = useMenu();
+  const { open, handleSetOpenMenu } = useMenu();
 
   const themes = useTheme();
 
@@ -82,6 +82,9 @@ export function Menu() {
       isShowMoreFollowing={isShowMoreFollowing}
       hasVerticalScroll={hasVerticalScroll}
       ref={menuRef}
+      onClick={() => {
+        handleSetOpenMenu(false);
+      }}
     >
       <LinkButton to="/" aria-label="Página Início">
         {pathname === '/' ? (

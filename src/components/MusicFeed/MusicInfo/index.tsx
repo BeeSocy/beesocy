@@ -10,13 +10,13 @@ interface IMusicInfoProps {
 }
 
 export function MusicInfo({ name, artists, imageUrl }: IMusicInfoProps) {
+  const { formatArtists } = usePlayer();
+
   const DetailsContainerRef = useRef<HTMLDivElement>(null);
   const ArtistSpanRef = useRef<HTMLSpanElement>(null);
 
   const [artistSpanOverflowIsGreaterZero, setArtistSpanOverflowIsGreaterZero] =
     useState<boolean>(false);
-
-  const { formatArtists } = usePlayer();
 
   useEffect(() => {
     if (DetailsContainerRef.current && ArtistSpanRef.current) {

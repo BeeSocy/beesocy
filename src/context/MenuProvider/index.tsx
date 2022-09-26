@@ -10,8 +10,12 @@ export function MenuProvider({ children }: IMenuProvider) {
     setOpen(state => !state);
   }, []);
 
+  function handleSetOpenMenu(value: boolean): void {
+    setOpen(value);
+  }
+
   return (
-    <MenuContext.Provider value={{ open, handleToggleMenu }}>
+    <MenuContext.Provider value={{ open, handleToggleMenu, handleSetOpenMenu }}>
       {children}
     </MenuContext.Provider>
   );

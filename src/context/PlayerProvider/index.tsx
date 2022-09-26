@@ -183,6 +183,10 @@ export function PlayerProvider({ children }: IPlayerProvider) {
     return trackIsLoaded;
   }
 
+  function getTrackInSpecificPositionOfTrackList(position: number): IMusicPost {
+    return getTrackList()[position - 1];
+  }
+
   function setTrackList(trackList: IMusicPost[]): void {
     setTrackListState(trackList);
   }
@@ -269,15 +273,16 @@ export function PlayerProvider({ children }: IPlayerProvider) {
   }
 
   function shuffleTrackList(): void {
-    if (getPositionOnTrackList() <= 1) {
-      setTrackInSpecificPositionOfTrackList(1, getCurrentTrack());
-      removeTrackInSpecificPositionOfTrackList(getPositionOnTrackList());
-      setPositionOnTrackList(1);
-    }
+    setPositionOnTrackList(1);
 
-    const trackListCopy = shuffleArray(getTrackList(), 2);
+    const trackListCopy = shuffleArray(
+      getTrackList().filter(
+        value => value.fileUrl !== getCurrentTrack().fileUrl
+      ),
+      0
+    );
 
-    setTrackList(trackListCopy);
+    setTrackList([getCurrentTrack(), ...trackListCopy]);
   }
 
   return (
@@ -320,6 +325,7 @@ export function PlayerProvider({ children }: IPlayerProvider) {
         getLarge,
         getPositionOnTrackList,
         getTrackIsLoaded,
+        getTrackInSpecificPositionOfTrackList,
 
         setTrackList,
         setTrackInSpecificPositionOfTrackList,

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { Button } from '../../../Widgets/Buttons/Button';
 
 import * as SliderPrimitive from '@radix-ui/react-slider';
+import { Title } from '../../../General/Title';
 
 export const sidebarWidth = '6.4rem';
 
@@ -73,9 +74,12 @@ export const MusicDetails = styled.section`
   span {
     max-width: 8rem;
 
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
+
+    &:nth-child(2) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     @media (min-width: 1024px) {
       max-width: 14rem;
@@ -93,6 +97,16 @@ export const MusicInfo = styled.div`
   width: 100%;
 
   align-content: center;
+`;
+
+export const StyledTitle = styled(Title)`
+  white-space: nowrap;
+  overflow: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Specs = styled.section`

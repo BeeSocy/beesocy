@@ -1,4 +1,4 @@
-import { useRef, WheelEvent } from 'react';
+import { useEffect, useRef, WheelEvent } from 'react';
 import {
   MdArrowDropUp,
   MdExplicit,
@@ -23,8 +23,6 @@ import {
 
 import { usePlayer } from '../../../../context/PlayerProvider/usePlayer';
 import { useTheme } from '../../../../context/ThemeProvider/useTheme';
-import { Title } from '../../../General/Title';
-import { MusicMenu } from '../../../MusicFeed/MusicMenu';
 import { LikeButton } from '../../../Widgets/Buttons/ActionButtons/LikeButton';
 import { Button } from '../../../Widgets/Buttons/Button';
 import {
@@ -47,7 +45,8 @@ import {
   VolumeTrack,
   VolumeRange,
   ToggleLargeButton,
-  VolumeButton
+  VolumeButton,
+  StyledTitle
 } from './styles';
 
 export function DesktopSmallPlayer() {
@@ -67,6 +66,51 @@ export function DesktopSmallPlayer() {
 
   useLockBodyScroll(isHoverVolumeSlider);
 
+  const DetailsContainerRef = useRef<HTMLDivElement>(null);
+  const TitleSpanRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (DetailsContainerRef.current && TitleSpanRef.current) {
+      if (
+        TitleSpanRef.current?.scrollWidth >
+        DetailsContainerRef.current?.offsetWidth
+      ) {
+        let invertScroll = true;
+
+        setInterval(() => {
+          if (invertScroll) {
+            TitleSpanRef.current?.scrollTo({
+              left: (TitleSpanRef.current.scrollLeft -= 1),
+              behavior: 'smooth'
+            });
+          } else {
+            TitleSpanRef.current?.scrollTo({
+              left: (TitleSpanRef.current.scrollLeft += 1),
+              behavior: 'smooth'
+            });
+          }
+
+          if (TitleSpanRef.current && TitleSpanRef.current.scrollLeft == 0) {
+            setTimeout(() => {
+              invertScroll = false;
+            }, 2000);
+          }
+
+          if (
+            TitleSpanRef.current &&
+            TitleSpanRef.current.offsetWidth +
+              Math.round(TitleSpanRef.current.scrollLeft) ==
+              TitleSpanRef.current.scrollWidth
+          ) {
+            setTimeout(() => {
+              invertScroll = true;
+            }, 1000);
+          }
+        }, 50);
+      }
+    }
+  }, []);
+
   return (
     <Container
       onClick={event => {
@@ -78,8 +122,10 @@ export function DesktopSmallPlayer() {
         <MusicContainer>
           <img src={player.getCurrentTrack()?.imageUrl} />
 
-          <MusicDetails>
-            <Title size="small">{player.getCurrentTrack()?.name}</Title>
+          <MusicDetails ref={DetailsContainerRef}>
+            <StyledTitle size="small" ref={TitleSpanRef}>
+              {player.getCurrentTrack()?.name}
+            </StyledTitle>
 
             <MusicInfo>
               <span>
@@ -173,7 +219,9 @@ export function DesktopSmallPlayer() {
         </Specs>
 
         <ExtraControls>
-          <LikeButton />
+          <div onClick={event => event.stopPropagation()}>
+            <LikeButton />
+          </div>
 
           <VolumeSlider
             value={[player.getVolume()]}

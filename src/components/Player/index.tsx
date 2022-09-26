@@ -2,13 +2,14 @@ import { useEffect, useRef } from 'react';
 import { usePlayer } from '../../context/PlayerProvider/usePlayer';
 import { useMobile } from '../../hooks/useMobile';
 import { DesktopPlayer } from './Desktop/DesktopPlayer';
-import { DesktopSmallPlayer } from './Desktop/SmallPlayer';
 
 export let handleToggleRepeatMode = () => {};
 
 export let handlePreviousMusic = () => {};
 
 export let handleNextMusic = () => {};
+
+export let handleEndMusic = () => {};
 
 export let handlePlayMusic = () => {};
 
@@ -47,6 +48,11 @@ export function Player() {
         return;
       }
 
+      player.setCurrentTrack(
+        player.getTrackInSpecificPositionOfTrackList(
+          player.getPositionOnTrackList() - 1
+        )
+      );
       player.setPositionOnTrackList(player.getPositionOnTrackList() - 1);
     }
   };
@@ -54,12 +60,32 @@ export function Player() {
   handleNextMusic = () => {
     if (audioElementRef.current) {
       if (player.getPositionOnTrackList() >= player.getTrackListLength()) {
+        player.setCurrentTrack(player.getTrackInSpecificPositionOfTrackList(1));
         player.setPositionOnTrackList(1);
         return;
       }
 
+      player.setCurrentTrack(
+        player.getTrackInSpecificPositionOfTrackList(
+          player.getPositionOnTrackList() + 1
+        )
+      );
       player.setPositionOnTrackList(player.getPositionOnTrackList() + 1);
+
+      player.handleChangeRepeat('all');
     }
+  };
+
+  handleEndMusic = () => {
+    if (
+      player.getRepeat() === 'off' &&
+      player.getPositionOnTrackList() >= player.getTrackListLength()
+    ) {
+      player.handleChangePlaying(false);
+      return;
+    }
+
+    return handleNextMusic();
   };
 
   handlePlayMusic = () => {
@@ -112,6 +138,11 @@ export function Player() {
           audioElementRef.current?.currentTime ?? 0
         );
       });
+
+      audioElementRef.current.addEventListener('ended', () => {
+        handleEndMusic();
+      });
+
       audioElementRef.current.volume = player.getVolume() / 100;
     }
   }, [audioElementRef.current]);
