@@ -25,7 +25,7 @@ export function MusicCardLargeDesktop(props: IMusicCardProps) {
   const { formatArtists } = usePlayer();
 
   return (
-    <Container>
+    <Container {...props}>
       <ContextMenuPrimitive.Root>
         <ContextMenuPrimitive.Trigger>
           <Card>

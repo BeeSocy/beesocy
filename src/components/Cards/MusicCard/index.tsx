@@ -2,20 +2,38 @@ import { IMusicPost } from '../../../types/musicPost';
 import { MusicCardSmall } from './MusicCardSmall';
 import { MusicCardLarge } from './MusicCardLarge';
 import { usePlayer } from '../../../context/PlayerProvider/usePlayer';
+import { HTMLAttributes } from 'react';
 
 export const longPressOptions = {
   isPreventDefault: false,
   delay: 800
 };
 
-export interface IMusicCardProps extends IMusicPost {
+export interface IMusicCardProps
+  extends IMusicPost,
+    HTMLAttributes<HTMLDivElement> {
   large?: boolean;
   playing?: boolean;
   showDuration?: boolean;
   clickAction?: () => void;
 }
 
-export function MusicCard(props: IMusicCardProps) {
+export function MusicCard({
+  name,
+  artists,
+  duration,
+  imageUrl,
+  fileUrl,
+  identification,
+  description,
+  isLiked,
+  explicit,
+  isReported,
+  isSaved,
+  categoriesId,
+  large,
+  ...props
+}: IMusicCardProps) {
   const player = usePlayer();
 
   function handlePlayMusic(track: IMusicPost) {
@@ -28,18 +46,18 @@ export function MusicCard(props: IMusicCardProps) {
 
   function handleClickAction() {
     const currentTrack: IMusicPost = {
-      identification: props.identification,
-      name: props.name,
-      artists: props.artists,
-      duration: props.duration,
-      imageUrl: props.imageUrl,
-      fileUrl: props.fileUrl,
-      description: props.description,
-      explicit: props.explicit,
-      isLiked: props.isLiked,
-      isReported: props.isReported,
-      isSaved: props.isSaved,
-      categoriesId: props.categoriesId
+      identification: identification,
+      name: name,
+      artists: artists,
+      duration: duration,
+      imageUrl: imageUrl,
+      fileUrl: fileUrl,
+      description: description,
+      explicit: explicit,
+      isLiked: isLiked,
+      isReported: isReported,
+      isSaved: isSaved,
+      categoriesId: categoriesId
     };
 
     handlePlayMusic(currentTrack);
@@ -61,47 +79,49 @@ export function MusicCard(props: IMusicCardProps) {
 
   return (
     <>
-      {props.large ? (
+      {large ? (
         <MusicCardLarge
-          name={props.name}
-          artists={props.artists}
-          duration={props.duration}
-          imageUrl={props.imageUrl}
-          fileUrl={props.fileUrl}
-          identification={props.identification}
+          name={name}
+          artists={artists}
+          duration={duration}
+          imageUrl={imageUrl}
+          fileUrl={fileUrl}
+          identification={identification}
           playing={
-            player.getCurrentTrack().fileUrl === props.fileUrl &&
+            player.getCurrentTrack().fileUrl === fileUrl &&
             player.getOpen() &&
             player.getPlaying()
           }
-          description={props.description}
-          explicit={props.explicit}
-          isLiked={props.isLiked}
-          isReported={props.isReported}
-          isSaved={props.isSaved}
-          categoriesId={props.categoriesId}
+          description={description}
+          explicit={explicit}
+          isLiked={isLiked}
+          isReported={isReported}
+          isSaved={isSaved}
+          categoriesId={categoriesId}
           clickAction={handleClickAction}
+          {...props}
         />
       ) : (
         <MusicCardSmall
-          name={props.name}
-          artists={props.artists}
-          duration={props.duration}
-          imageUrl={props.imageUrl}
-          fileUrl={props.fileUrl}
-          identification={props.identification}
+          name={name}
+          artists={artists}
+          duration={duration}
+          imageUrl={imageUrl}
+          fileUrl={fileUrl}
+          identification={identification}
           playing={
-            player.getCurrentTrack().fileUrl === props.fileUrl &&
+            player.getCurrentTrack().fileUrl === fileUrl &&
             player.getOpen() &&
             player.getPlaying()
           }
-          description={props.description}
-          explicit={props.explicit}
-          isLiked={props.isLiked}
-          isReported={props.isReported}
-          isSaved={props.isSaved}
-          categoriesId={props.categoriesId}
+          description={description}
+          explicit={explicit}
+          isLiked={isLiked}
+          isReported={isReported}
+          isSaved={isSaved}
+          categoriesId={categoriesId}
           clickAction={handleClickAction}
+          {...props}
         />
       )}
     </>

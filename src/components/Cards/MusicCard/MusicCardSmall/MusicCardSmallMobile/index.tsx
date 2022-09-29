@@ -43,7 +43,7 @@ export function MusicCardSmallMobile(props: IMusicCardProps) {
 
   return (
     <>
-      <Container>
+      <Container {...props}>
         <Card {...longPressEvent}>
           <Wrapper>
             <TopContainer onClick={props.clickAction}>

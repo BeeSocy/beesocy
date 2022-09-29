@@ -11,3 +11,9 @@ export const Container = styled.div`
 
   padding: 0.8rem;
 `;
+
+export const Item = styled.div`
+  &[data-dragging='true'] {
+    border: 3px solid red;
+  }
+`;
