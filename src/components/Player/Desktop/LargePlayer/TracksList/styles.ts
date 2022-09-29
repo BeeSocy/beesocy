@@ -13,7 +13,15 @@ export const Container = styled.div`
 `;
 
 export const Item = styled.div`
-  &[data-dragging='true'] {
-    border: 3px solid red;
+  border-top: 0.2rem solid transparent;
+
+  padding-top: 0.8rem;
+
+  /*   &[data-dragging-hover='true'] {
+    border-top-color: ${props => props.theme.colors.bee};
+  } */
+
+  &[data-dragging-over='true'] {
+    border-top-color: ${props => props.theme.colors.bee};
   }
 `;
