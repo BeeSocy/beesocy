@@ -95,16 +95,16 @@ export function ImageCategoryCarousel({ data }: ICategoryCarousel) {
         {data.map(category => {
           return (
             <CategoryTab
-              key={category.id}
+              key={category.identification}
               img={category.img}
               title={category.name}
               onClick={() => {
-                handleToggleCategoryActive(category.id, 'image');
+                handleToggleCategoryActive(category.identification, 'image');
                 console.log(activeCategories);
               }}
               active={
                 activeCategories.type == 'image' &&
-                activeCategories.id.includes(category.id)
+                activeCategories.id.includes(category.identification)
               }
             />
           );

@@ -100,7 +100,7 @@ export function MusicCardLargeMobile(props: IMusicCardProps) {
                 description: props.description,
                 duration: props.duration,
                 fileUrl: props.fileUrl,
-                id: props.id,
+                identification: props.identification,
                 imageUrl: props.imageUrl,
                 explicit: props.explicit,
                 isLiked: props.isLiked,

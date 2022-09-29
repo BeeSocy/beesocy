@@ -17,7 +17,7 @@ import { LikeAnimation } from '../../components/General/LikeAnimation';
 export const ImageFeed = React.memo(() => {
   const fetchedPosts: IImagePost[] = [
     {
-      id: '943b0dcb-ba69-4374-a525-beb3966e4ed6',
+      identification: '943b0dcb-ba69-4374-a525-beb3966e4ed6',
       description: 'Imagem no estilo grafite',
       img: 'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
       isLiked: true,
@@ -26,7 +26,7 @@ export const ImageFeed = React.memo(() => {
       categoriesId: []
     },
     {
-      id: 'fb248b1a-47fc-43ba-8da1-1c2a3d60b69d',
+      identification: 'fb248b1a-47fc-43ba-8da1-1c2a3d60b69d',
       description: 'Imagem foda',
       img: 'https://images.unsplash.com/photo-1547333590-47fae5f58d21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
       isLiked: false,
@@ -35,7 +35,7 @@ export const ImageFeed = React.memo(() => {
       categoriesId: []
     },
     {
-      id: '499b27d2-adcf-4040-9448-39b0020e6f42',
+      identification: '499b27d2-adcf-4040-9448-39b0020e6f42',
       description: 'outra foda',
       img: 'https://images.unsplash.com/photo-1617503752587-97d2103a96ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
       isLiked: true,
@@ -47,37 +47,37 @@ export const ImageFeed = React.memo(() => {
 
   const imageCategory: ICategory[] = [
     {
-      id: '0d168030-f4ed-42f7-be44-83b75870bc51',
+      identification: '0d168030-f4ed-42f7-be44-83b75870bc51',
       name: 'amarelo',
       img: 'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: '6e69e637-3818-4a04-a4d9-720be96b71df',
+      identification: '6e69e637-3818-4a04-a4d9-720be96b71df',
       name: 'superfície',
       img: 'https://images.unsplash.com/photo-1547333590-47fae5f58d21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: '556944af-d742-40d9-861c-4dd731e72abd',
+      identification: '556944af-d742-40d9-861c-4dd731e72abd',
       name: 'colorido',
       img: 'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: '6f2b4687-bf54-42ae-8c7d-c630103238fc',
+      identification: '6f2b4687-bf54-42ae-8c7d-c630103238fc',
       name: 'azul',
       img: 'https://images.unsplash.com/photo-1617503752587-97d2103a96ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: 'b2bb39a2-19ba-4f90-ae0c-103f40c211fb',
+      identification: 'b2bb39a2-19ba-4f90-ae0c-103f40c211fb',
       name: 'crítica',
       img: 'https://images.unsplash.com/photo-1547333590-47fae5f58d21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: '2905b382-6739-4631-b3da-080bdbaa1df7',
+      identification: '2905b382-6739-4631-b3da-080bdbaa1df7',
       name: 'grafite',
       img: 'https://images.unsplash.com/photo-1617503752587-97d2103a96ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: '9e7b3093-3d09-4e6c-8573-6f169f69ff67',
+      identification: '9e7b3093-3d09-4e6c-8573-6f169f69ff67',
       name: 'nonsense',
       img: 'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
     }
@@ -87,7 +87,7 @@ export const ImageFeed = React.memo(() => {
 
   function handleDoubleClick(postId: string) {
     posts.map(post => {
-      if (post.id === postId) {
+      if (post.identification === postId) {
         if (!post.isLiked) {
           //backend like
         }
@@ -141,15 +141,17 @@ export const ImageFeed = React.memo(() => {
         {posts.map((post, index) => {
           return (
             <ImageCard
-              key={post.id}
+              key={post.identification}
               description={post.description}
               img={post.img}
               large={randomLargePosts[index]}
               isLiked={post.isLiked ?? false}
               isSaved={post.isSaved ?? false}
               isReported={post.isReported ?? false}
-              onClick={() => handlePostClick(post.id)}
-              centerElement={isAnimationId === post.id && <LikeAnimation />}
+              onClick={() => handlePostClick(post.identification)}
+              centerElement={
+                isAnimationId === post.identification && <LikeAnimation />
+              }
             />
           );
         })}

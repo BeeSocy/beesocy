@@ -28,7 +28,7 @@ export function MusicCard(props: IMusicCardProps) {
 
   function handleClickAction() {
     const currentTrack: IMusicPost = {
-      id: props.id,
+      identification: props.identification,
       name: props.name,
       artists: props.artists,
       duration: props.duration,
@@ -68,7 +68,7 @@ export function MusicCard(props: IMusicCardProps) {
           duration={props.duration}
           imageUrl={props.imageUrl}
           fileUrl={props.fileUrl}
-          id={props.id}
+          identification={props.identification}
           playing={
             player.getCurrentTrack().fileUrl === props.fileUrl &&
             player.getOpen() &&
@@ -89,7 +89,7 @@ export function MusicCard(props: IMusicCardProps) {
           duration={props.duration}
           imageUrl={props.imageUrl}
           fileUrl={props.fileUrl}
-          id={props.id}
+          identification={props.identification}
           playing={
             player.getCurrentTrack().fileUrl === props.fileUrl &&
             player.getOpen() &&

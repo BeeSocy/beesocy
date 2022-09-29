@@ -53,7 +53,7 @@ export function Menu() {
 
   const followUsers: IProfile[] = [
     {
-      id: 'c475e623-552e-489a-8ee6-a2071eaf747b',
+      identification: 'c475e623-552e-489a-8ee6-a2071eaf747b',
       name: 'Jorge na gaita afaf af af af a f',
       imageUrl: 'https://source.unsplash.com/random',
       color: '#FFFFFF',
@@ -64,7 +64,7 @@ export function Menu() {
       vip: false
     },
     {
-      id: '8dc15ebc-f951-4315-b568-48f89f7ccf40',
+      identification: '8dc15ebc-f951-4315-b568-48f89f7ccf40',
       name: 'Jorge na gaita afaf af af af a f',
       imageUrl: 'https://source.unsplash.com/random',
       color: '#FFFFFF',
@@ -194,7 +194,7 @@ export function Menu() {
         if (isShowMoreFollowing ? index >= 0 : index <= 2) {
           return (
             <UserCard
-              key={user.id}
+              key={user.identification}
               user={user}
               aria-label={`Perfil de ${user.name}`}
             />

@@ -10,7 +10,11 @@ interface IUserCard extends AnchorHTMLAttributes<HTMLAnchorElement> {
 
 export function UserCard({ user, full }: IUserCard) {
   return (
-    <LinkButton key={user.id} to={`/profile/${user.id}`} full={full}>
+    <LinkButton
+      key={user.identification}
+      to={`/profile/${user.identification}`}
+      full={full}
+    >
       <Container>
         <img alt={`Foto de perfil de ${user.name}`} src={user.imageUrl} />
         <span>{user.name}</span>

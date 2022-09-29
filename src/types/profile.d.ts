@@ -1,5 +1,5 @@
 export interface IProfile {
-  id: string;
+  identification: string;
   name: string;
   follows: IProfile[];
   followers: IProfile[];

@@ -22,7 +22,7 @@ export function MusicFeed() {
       dataType: 'music',
       tracks: [
         {
-          id: '88a261d4-09ba-45fe-81cc-ff10c0eb1052',
+          identification: '88a261d4-09ba-45fe-81cc-ff10c0eb1052',
           name: 'Londres Freestyle',
           artists: ['Veigh', 'Nagalli', 'Supernova Ent'],
           duration: 136,
@@ -37,7 +37,7 @@ export function MusicFeed() {
           categoriesId: []
         },
         {
-          id: '3f8f6860-c69e-424b-adc9-2cc7119e4773',
+          identification: '3f8f6860-c69e-424b-adc9-2cc7119e4773',
           name: 'Facilitei',
           artists: ['L7NNON', 'Ajax'],
           duration: 212,
@@ -51,7 +51,7 @@ export function MusicFeed() {
           categoriesId: []
         },
         {
-          id: 'a3565ca0-d375-4cdb-ab20-0d830425de48',
+          identification: 'a3565ca0-d375-4cdb-ab20-0d830425de48',
           name: 'Sem pressa',
           artists: [
             'Mc Ryan SP',
@@ -80,7 +80,7 @@ export function MusicFeed() {
       dataType: 'music',
       tracks: [
         {
-          id: '88a261d4-09ba-45fe-81cc-ff10c0eb1052',
+          identification: '88a261d4-09ba-45fe-81cc-ff10c0eb1052',
           name: 'Londres Freestyle',
           artists: ['Veigh', 'Nagalli', 'Supernova Ent'],
           duration: 136,
@@ -94,7 +94,7 @@ export function MusicFeed() {
           categoriesId: []
         },
         {
-          id: '3f8f6860-c69e-424b-adc9-2cc7119e4773',
+          identification: '3f8f6860-c69e-424b-adc9-2cc7119e4773',
           name: 'Facilitei',
           artists: ['L7NNON', 'Ajax'],
           duration: 212,
@@ -107,7 +107,7 @@ export function MusicFeed() {
           categoriesId: []
         },
         {
-          id: 'a3565ca0-d375-4cdb-ab20-0d830425de48',
+          identification: 'a3565ca0-d375-4cdb-ab20-0d830425de48',
           name: 'Sem pressa',
           artists: [
             'Mc Ryan SP',
@@ -127,7 +127,7 @@ export function MusicFeed() {
           categoriesId: []
         },
         {
-          id: 'd2263cc1-4c70-4628-b84c-cffbc75ae10f',
+          identification: 'd2263cc1-4c70-4628-b84c-cffbc75ae10f',
           name: 'ye',
           artists: ['Japa'],
           duration: 167,
@@ -148,7 +148,7 @@ export function MusicFeed() {
       dataType: 'artist',
       artists: [
         {
-          id: '',
+          identification: '',
           name: 'Julio at Gaita',
           color: '#283dea',
           followers: [],
@@ -165,22 +165,22 @@ export function MusicFeed() {
       dataType: 'category',
       categories: [
         {
-          id: 'f17aeab0-af58-4294-af17-9359ab851648',
+          identification: 'f17aeab0-af58-4294-af17-9359ab851648',
           img: 'https://lh3.googleusercontent.com/Tm4BCNzluBcawAzvLYFxVvTna5wkWxpd-dUpuBjzpNPvaq-T4F1mqnDWUn2d_OMbTPJS27t5EB8YpmUN=w544-h544-l90-rj',
           name: 'Freestyle '
         },
         {
-          id: '33b0667a-2c56-4c2c-b0c8-81e051e0bd92',
+          identification: '33b0667a-2c56-4c2c-b0c8-81e051e0bd92',
           img: 'https://lh3.googleusercontent.com/oT8cJ_TwsnTjYsnFM85SUGrQBAy4aX_-SILaIcpCr7yCuMgAFhYUdlv7EB41s1idApyptUT0HUnyoBWV=w60-h60-l90-rj',
           name: 'Acústico'
         },
         {
-          id: '82a20e95-7640-4ced-9a5b-f20803b49843',
+          identification: '82a20e95-7640-4ced-9a5b-f20803b49843',
           img: 'https://lh3.googleusercontent.com/jIq8vQe0_Z8j5XmgExJxkqewVrEhKMzrBmJz9jjLCxDxggH5So12rPOMYVIRydqkzp3akA67MhCTcx4=w544-h544-l90-rj',
           name: 'Funk'
         },
         {
-          id: '7278cba9-24e2-447e-b053-ed1ec71c7f6e',
+          identification: '7278cba9-24e2-447e-b053-ed1ec71c7f6e',
           img: 'https://lh3.googleusercontent.com/iIzdFZnT4bq9RN9Y3UvhGIil8NrJKuIVmkTfB3KvCHrH8Grzv2e2RayIs1_f5hn80TqJK-WA1z2d1j0=w544-h544-l90-rj',
           name: 'Trap'
         }
@@ -210,8 +210,8 @@ export function MusicFeed() {
                 {algorithm.tracks?.map((track: IMusicPost) => {
                   return (
                     <MusicCard
-                      key={track.id}
-                      id={track.id}
+                      key={track.identification}
+                      identification={track.identification}
                       name={track.name}
                       artists={track.artists}
                       duration={track.duration}
@@ -231,7 +231,7 @@ export function MusicFeed() {
                 {algorithm.artists?.map((artist: IArtist) => {
                   return (
                     <ArtistCard
-                      key={artist.id}
+                      key={artist.identification}
                       name={artist.name}
                       followers={artist.followers.length}
                       color={artist.color}
@@ -242,7 +242,7 @@ export function MusicFeed() {
                 {algorithm.categories?.map((category: ICategory) => {
                   return (
                     <CategoryTab
-                      key={category.id}
+                      key={category.identification}
                       title={category.name}
                       img={category.img}
                     />

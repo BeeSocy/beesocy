@@ -1,6 +1,5 @@
 import { MdClose, MdLibraryMusic } from 'react-icons/md';
 import { usePlayer } from '../../../../context/PlayerProvider/usePlayer';
-import { MusicCard } from '../../../Cards/MusicCard';
 import { Title } from '../../../General/Title';
 import {
   Container,

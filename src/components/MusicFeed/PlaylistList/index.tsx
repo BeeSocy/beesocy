@@ -20,7 +20,7 @@ export function PlaylistList({ track }: IPlaylistListProps) {
 
   const fetchedPlaylists: IPlaylist[] = [
     {
-      id: '7f95bd63-d82c-40ab-a5f6-beb506b1786e',
+      identification: '7f95bd63-d82c-40ab-a5f6-beb506b1786e',
       bannerUrl:
         'https://pbs.twimg.com/profile_images/2068072926/julio_400x400.jpg',
       categoriesId: [],
@@ -47,12 +47,12 @@ export function PlaylistList({ track }: IPlaylistListProps) {
       {fetchedPlaylists.length > 0 ? (
         fetchedPlaylists.map(playlist => (
           <PlaylistCard
-            key={playlist.id}
+            key={playlist.identification}
             name={playlist.name}
             bannerUrl={playlist.bannerUrl}
             musics={playlist.musics}
             author={playlist.author}
-            id={playlist.id}
+            identification={playlist.identification}
             description={playlist.description}
             categoriesId={playlist.categoriesId}
             onClickAction={() => handleClickAction(playlist.name)}

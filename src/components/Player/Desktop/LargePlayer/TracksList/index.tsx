@@ -9,8 +9,8 @@ export function TracksList() {
     <Container>
       {player.getTrackList().map(track => (
         <MusicCard
-          key={track.id}
-          id={track.id}
+          key={track.identification}
+          identification={track.identification}
           name={track.name}
           artists={track.artists}
           duration={track.duration}
