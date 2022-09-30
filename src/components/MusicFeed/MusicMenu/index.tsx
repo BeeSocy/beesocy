@@ -1,4 +1,5 @@
 import {
+  MdGraphicEq,
   MdPlaylistPlay,
   MdPlaylistAdd,
   MdOutlinePersonAdd,
@@ -16,9 +17,14 @@ import { Button } from '../../Widgets/Buttons/Button';
 import { Container } from './styles';
 
 import dark from '../../../styles/themes/dark';
-import { useEffect, useRef, useState } from 'react';
+import { IMusicPost } from '../../../types/musicPost';
+import { usePlayer } from '../../../context/PlayerProvider/usePlayer';
+import { useAlert } from '../../../context/AlertProvider/useAlert';
+import { useModal } from '../../../context/ModalProvider/useModal';
+import { PlaylistList } from '../PlaylistList';
 
 interface IContextMenuProps {
+  track: IMusicPost;
   playlist?: boolean;
   liked?: boolean;
   saved?: boolean;
@@ -29,18 +35,76 @@ export function MusicMenu({
   playlist,
   liked,
   saved,
-  reported
+  reported,
+  track
 }: IContextMenuProps) {
-  const musicMenuRef = useRef<HTMLDivElement>(null);
+  const player = usePlayer();
+
+  const { handleCallAlert } = useAlert();
+
+  const { handleCallModal } = useModal();
+
+  function handleClickAction(message: string) {
+    handleCallAlert(message);
+  }
 
   return (
-    <Container ref={musicMenuRef}>
+    <Container>
       <Button>
+        <MdGraphicEq />
+        <span>Iniciar radio</span>
+      </Button>
+
+      <Button
+        onClick={() => {
+          if (!player.getOpen()) {
+            player.initPlayer(track);
+            return;
+          }
+
+          if (player.getCurrentTrack().fileUrl != track.fileUrl) {
+            handleClickAction(`**${track.name}** será tocado a seguir`);
+            if (
+              player
+                .getTrackList()
+                .findIndex(value => value.fileUrl === track.fileUrl) +
+                1 <
+                player.getPositionOnTrackList() &&
+              player
+                .getTrackList()
+                .filter(value => value.fileUrl === track.fileUrl).length > 0
+            ) {
+              player.setTrackInSpecificPositionOfTrackList(
+                player.getPositionOnTrackList(),
+                track
+              );
+              player.setPositionOnTrackList(
+                player.getPositionOnTrackList() - 1
+              );
+              return;
+            }
+
+            player.setTrackInSpecificPositionOfTrackList(
+              player.getPositionOnTrackList() + 1,
+              track
+            );
+          }
+        }}
+      >
         <MdPlaylistPlay />
         <span>Tocar a seguir</span>
       </Button>
 
-      <Button>
+      <Button
+        onClick={() => {
+          handleCallModal(<PlaylistList track={track} />, {
+            title: 'Escolha uma playlist',
+            overlay: true,
+            easyClose: true,
+            center: true
+          });
+        }}
+      >
         <MdPlaylistAdd />
         <span>Adicionar a playlist</span>
       </Button>
@@ -50,12 +114,28 @@ export function MusicMenu({
         <span>{playlist ? 'Ir para o criador' : 'Ir para o artista'}</span>
       </Button>
 
-      <Button>
+      <Button
+        onClick={() => {
+          if (!player.getOpen()) {
+            player.initPlayer(track);
+            return;
+          }
+
+          if (player.getCurrentTrack().fileUrl != track.fileUrl) {
+            handleClickAction(`**${track.name}** foi adicionado a fila`);
+            player.setTrackInLastPositionOfTrackList(track);
+          }
+        }}
+      >
         <MdQueueMusic />
         <span>Adicionar a fila</span>
       </Button>
 
-      <Button>
+      <Button
+        onClick={() => {
+          handleClickAction(`**${track.name}** adicionado aos curtidos`);
+        }}
+      >
         {liked ? (
           <MdFavorite style={{ fill: dark.colors.bee }} />
         ) : (
@@ -69,7 +149,11 @@ export function MusicMenu({
         <span>Compartilhar</span>
       </Button>
 
-      <Button>
+      <Button
+        onClick={() => {
+          handleClickAction(`**${track.name}** adicionado aos salvos`);
+        }}
+      >
         {saved ? (
           <MdBookmark style={{ fill: dark.colors.bee }} />
         ) : (

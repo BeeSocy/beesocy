@@ -1,5 +1,3 @@
-import { IImagePost } from '../../../types/imagePost';
-
 import { LikeButton } from '../../Widgets/Buttons/ActionButtons/LikeButton';
 import { ReportButton } from '../../Widgets/Buttons/ActionButtons/ReportButton';
 import { CommentButton } from '../../Widgets/Buttons/ActionButtons/CommentButton';

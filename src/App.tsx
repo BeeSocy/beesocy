@@ -1,16 +1,19 @@
-import dark from './styles/themes/dark';
-
+import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { IconContext } from 'react-icons';
+
+import dark from './styles/themes/dark';
 
 import GlobalStyle from './styles/global';
 
-import { IconContext } from 'react-icons';
-
-import { BrowserRouter } from 'react-router-dom';
 import { useTheme } from './context/ThemeProvider/useTheme';
 import { Router } from './routes/Router';
 import { MenuProvider } from './context/MenuProvider';
-import { ImageCategoryProvider } from './context/ImageCategoryProvider';
+import { CategoryProvider } from './context/CategoryProvider';
+import { Alert } from './components/General/Alert';
+import { AlertProvider } from './context/AlertProvider';
+import { ModalProvider } from './context/ModalProvider';
+import { Modal } from './components/General/Modal';
 
 export function App() {
   const defaultTheme = dark;
@@ -21,11 +24,18 @@ export function App() {
     <StyledThemeProvider theme={theme ?? defaultTheme}>
       <BrowserRouter>
         <IconContext.Provider value={{ size: '28' }}>
-          <MenuProvider>
-            <ImageCategoryProvider>
-              <Router />
-            </ImageCategoryProvider>
-          </MenuProvider>
+          <ModalProvider>
+            <AlertProvider>
+              <MenuProvider>
+                <CategoryProvider>
+                  <Router />
+                </CategoryProvider>
+              </MenuProvider>
+
+              <Alert />
+              <Modal />
+            </AlertProvider>
+          </ModalProvider>
         </IconContext.Provider>
 
         <GlobalStyle />

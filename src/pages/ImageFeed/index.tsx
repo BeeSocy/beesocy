@@ -5,7 +5,7 @@ import React, {
   useState
 } from 'react';
 import { ImageCard } from '../../components/Cards/ImageCard';
-import { IImageCategory } from '../../types/imageCategory';
+import { ICategory } from '../../types/category';
 import { IImagePost } from '../../types/imagePost';
 
 import { Container } from './styles';
@@ -17,67 +17,67 @@ import { LikeAnimation } from '../../components/General/LikeAnimation';
 export const ImageFeed = React.memo(() => {
   const fetchedPosts: IImagePost[] = [
     {
-      id: Math.floor(Math.random() * 99999),
+      identification: '943b0dcb-ba69-4374-a525-beb3966e4ed6',
       description: 'Imagem no estilo grafite',
       img: 'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
       isLiked: true,
       isSaved: true,
       isReported: false,
-      categoriesId: [1, 3, 7]
+      categoriesId: []
     },
     {
-      id: Math.floor(Math.random() * 99999),
+      identification: 'fb248b1a-47fc-43ba-8da1-1c2a3d60b69d',
       description: 'Imagem foda',
       img: 'https://images.unsplash.com/photo-1547333590-47fae5f58d21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
       isLiked: false,
       isSaved: false,
       isReported: true,
-      categoriesId: [2, 3, 5]
+      categoriesId: []
     },
     {
-      id: Math.floor(Math.random() * 99999),
+      identification: '499b27d2-adcf-4040-9448-39b0020e6f42',
       description: 'outra foda',
       img: 'https://images.unsplash.com/photo-1617503752587-97d2103a96ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
       isLiked: true,
       isSaved: true,
       isReported: true,
-      categoriesId: [4, 6]
+      categoriesId: []
     }
   ];
 
-  const imageCategory: IImageCategory[] = [
+  const imageCategory: ICategory[] = [
     {
-      id: 1,
+      identification: '0d168030-f4ed-42f7-be44-83b75870bc51',
       name: 'amarelo',
       img: 'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: 2,
+      identification: '6e69e637-3818-4a04-a4d9-720be96b71df',
       name: 'superfície',
       img: 'https://images.unsplash.com/photo-1547333590-47fae5f58d21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: 3,
+      identification: '556944af-d742-40d9-861c-4dd731e72abd',
       name: 'colorido',
       img: 'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: 4,
+      identification: '6f2b4687-bf54-42ae-8c7d-c630103238fc',
       name: 'azul',
       img: 'https://images.unsplash.com/photo-1617503752587-97d2103a96ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: 5,
+      identification: 'b2bb39a2-19ba-4f90-ae0c-103f40c211fb',
       name: 'crítica',
       img: 'https://images.unsplash.com/photo-1547333590-47fae5f58d21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: 6,
+      identification: '2905b382-6739-4631-b3da-080bdbaa1df7',
       name: 'grafite',
       img: 'https://images.unsplash.com/photo-1617503752587-97d2103a96ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
     },
     {
-      id: 7,
+      identification: '9e7b3093-3d09-4e6c-8573-6f169f69ff67',
       name: 'nonsense',
       img: 'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
     }
@@ -85,9 +85,9 @@ export const ImageFeed = React.memo(() => {
 
   const navigate = useNavigate();
 
-  function handleDoubleClick(postId: number) {
+  function handleDoubleClick(postId: string) {
     posts.map(post => {
-      if (post.id === postId) {
+      if (post.identification === postId) {
         if (!post.isLiked) {
           //backend like
         }
@@ -95,17 +95,17 @@ export const ImageFeed = React.memo(() => {
     });
     setIsAnimationId(postId);
     setTimeout(() => {
-      setIsAnimationId(0);
+      setIsAnimationId('');
     }, 900);
   }
 
-  function handleSingleClick(postId: number) {
+  function handleSingleClick(postId: string) {
     return navigate(`/image/post/${postId}`, { replace: true });
   }
 
   let clickTimeout: ReturnType<typeof setTimeout> = 0;
 
-  function handlePostClick(postId: number) {
+  function handlePostClick(postId: string) {
     if (clickTimeout !== 0) {
       //double click action
       handleDoubleClick(postId);
@@ -131,7 +131,7 @@ export const ImageFeed = React.memo(() => {
   }
 
   const [posts, setPosts] = useState<IImagePost[]>(fetchedPosts);
-  const [isAnimationId, setIsAnimationId] = useState<number>();
+  const [isAnimationId, setIsAnimationId] = useState<string>();
   const [randomLargePosts] = useState<boolean[]>(handleSetRandomLargePosts());
 
   return (
@@ -141,15 +141,17 @@ export const ImageFeed = React.memo(() => {
         {posts.map((post, index) => {
           return (
             <ImageCard
-              key={post.id}
+              key={post.identification}
               description={post.description}
               img={post.img}
               large={randomLargePosts[index]}
               isLiked={post.isLiked ?? false}
               isSaved={post.isSaved ?? false}
               isReported={post.isReported ?? false}
-              onClick={() => handlePostClick(post.id)}
-              centerElement={isAnimationId === post.id && <LikeAnimation />}
+              onClick={() => handlePostClick(post.identification)}
+              centerElement={
+                isAnimationId === post.identification && <LikeAnimation />
+              }
             />
           );
         })}

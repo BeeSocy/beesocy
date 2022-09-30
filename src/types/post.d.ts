@@ -1,8 +1,8 @@
 export interface IPost {
-  id: number;
+  identification: string;
   description: string;
   isLiked?: boolean;
   isSaved?: boolean;
   isReported?: boolean;
-  authorId?: number;
+  categoriesId: string[];
 }

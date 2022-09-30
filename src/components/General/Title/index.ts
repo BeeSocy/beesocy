@@ -11,7 +11,7 @@ export const Title = styled.span<IStyledTitle>`
     if (props.size === 'large') {
       return '4rem';
     } else if (props.size === 'medium') {
-      return '2rem';
+      return '2.8rem';
     } else {
       return '1.6rem';
     }

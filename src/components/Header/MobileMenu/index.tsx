@@ -37,7 +37,7 @@ import { useLocation } from 'react-router-dom';
 import { Line } from '../Menu/styles';
 
 import { useMenu } from '../../../context/MenuProvider/useMenu';
-import { UserCard } from '../../Widgets/UserCard';
+import { UserCard } from '../../Cards/UserCard';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
 
 export function MobileMenu() {
@@ -55,27 +55,27 @@ export function MobileMenu() {
 
   const followUsers = [
     {
-      id: 45,
+      identification: 45,
       name: 'Jorge na gaita afaf af af af a f',
       img: 'https://source.unsplash.com/random'
     },
     {
-      id: 6,
+      identification: 6,
       name: 'Jorge na gaita afaf af af af a f',
       img: 'https://source.unsplash.com/random'
     },
     {
-      id: 7,
+      identification: 7,
       name: 'Jorge na gaita afaf af af af a f',
       img: 'https://source.unsplash.com/random'
     },
     {
-      id: 8,
+      identification: 8,
       name: 'Jorge na gaita afaf af af af a faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
       img: 'https://source.unsplash.com/random'
     },
     {
-      id: 3,
+      identification: 3,
       name: 'Marcelão',
       img: 'https://source.unsplash.com/random'
     }
@@ -201,7 +201,7 @@ export function MobileMenu() {
 
         <LinkButton
           to="/list/like"
-          aria-label="Postagens curtidas"
+          aria-label="Postagens curtidentificationas"
           tabIndex={open ? 0 : -1}
           onClick={handleChangeRoute}
         >
@@ -210,7 +210,7 @@ export function MobileMenu() {
           ) : (
             <MdFavoriteBorder />
           )}
-          <span>Curtidos</span>
+          <span>Curtidentificationos</span>
         </LinkButton>
 
         <LinkButton
@@ -276,7 +276,7 @@ export function MobileMenu() {
           if (isShowMoreFollowing ? index >= 0 : index <= 2) {
             return (
               <UserCard
-                key={user.id}
+                key={user.identification}
                 user={user}
                 aria-label={`Perfil de ${user.name}`}
                 tabIndex={open ? 0 : -1}
@@ -289,7 +289,7 @@ export function MobileMenu() {
           <Button
             aria-label={`${
               isShowMoreFollowing ? 'Mostrar menos' : 'Mostrar mais'
-            } seguidores`}
+            } seguidentificationores`}
             onClick={handleShowMoreFollowing}
             tabIndex={open ? 0 : -1}
           >

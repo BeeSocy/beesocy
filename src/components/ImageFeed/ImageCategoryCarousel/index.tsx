@@ -1,23 +1,25 @@
 import { useState, useEffect } from 'react';
 import { MdClose } from 'react-icons/md';
-import { useImageCategory } from '../../../context/ImageCategoryProvider/useImageCategory';
+import { useCategory } from '../../../context/CategoryProvider/useCategory';
 import { useScroll } from '../../../hooks/useScroll';
-import { IImageCategory } from '../../../types/imageCategory';
+import { ICategory } from '../../../types/category';
+import { CategoryTab } from '../../General/CategoryTab';
 
-import { FilterClearButton, CategoryContainer, CategoryTab } from './styles';
+import { FilterClearButton, CategoryContainer } from './styles';
 
-interface IImageCategoryCarousel {
-  data: IImageCategory[];
+interface ICategoryCarousel {
+  data: ICategory[];
 }
 
-export function ImageCategoryCarousel({ data }: IImageCategoryCarousel) {
+export function ImageCategoryCarousel({ data }: ICategoryCarousel) {
   const { elementRef: CategoryContainerRef, hasHorizontalScroll } = useScroll();
 
   const {
-    activeCategoriesId,
+    activeCategories,
+    handleSetCategoryId,
     handleToggleCategoryActive,
     handleClearCategoriesActive
-  } = useImageCategory();
+  } = useCategory();
 
   const [leftFadeIsActive, setLeftFadeIsActive] = useState<boolean>(false);
   const [rightFadeIsActive, setRightFadeIsActive] = useState<boolean>(true);
@@ -64,6 +66,8 @@ export function ImageCategoryCarousel({ data }: IImageCategoryCarousel) {
     if (CategoryContainerRef.current) {
       handleCategoryContainerAutoScroll(CategoryContainerRef.current);
     }
+
+    handleSetCategoryId('image');
   }, []);
 
   useEffect(() => {
@@ -73,8 +77,8 @@ export function ImageCategoryCarousel({ data }: IImageCategoryCarousel) {
   return (
     <>
       <FilterClearButton
-        active={activeCategoriesId.length > 0}
-        onClick={handleClearCategoriesActive}
+        active={activeCategories.id.length > 0}
+        onClick={() => handleClearCategoriesActive('image')}
       >
         <MdClose size={20} />
         <span>Limpar filtros</span>
@@ -91,15 +95,18 @@ export function ImageCategoryCarousel({ data }: IImageCategoryCarousel) {
         {data.map(category => {
           return (
             <CategoryTab
-              key={category.id}
+              key={category.identification}
               img={category.img}
+              title={category.name}
               onClick={() => {
-                handleToggleCategoryActive(category.id);
+                handleToggleCategoryActive(category.identification, 'image');
+                console.log(activeCategories);
               }}
-              active={activeCategoriesId.includes(category.id)}
-            >
-              <span>{category.name}</span>
-            </CategoryTab>
+              active={
+                activeCategories.type == 'image' &&
+                activeCategories.id.includes(category.identification)
+              }
+            />
           );
         })}
       </CategoryContainer>

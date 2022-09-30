@@ -31,16 +31,17 @@ import { useMenu } from '../../../context/MenuProvider/useMenu';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../Widgets/Buttons/Button';
-import { UserCard } from '../../Widgets/UserCard';
+import { UserCard } from '../../Cards/UserCard';
 import { useScroll } from '../../../hooks/useScroll';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
+import { IProfile } from '../../../types/profile';
 
 export function Menu() {
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
 
   const { elementRef: menuRef, hasVerticalScroll } = useScroll();
 
-  const { open } = useMenu();
+  const { open, handleSetOpenMenu } = useMenu();
 
   const themes = useTheme();
 
@@ -50,32 +51,29 @@ export function Menu() {
     setIsShowMoreFollowing(state => !state);
   }
 
-  const followUsers = [
+  const followUsers: IProfile[] = [
     {
-      id: 45,
+      identification: 'c475e623-552e-489a-8ee6-a2071eaf747b',
       name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
+      imageUrl: 'https://source.unsplash.com/random',
+      color: '#FFFFFF',
+      followers: [],
+      follows: [],
+      description: '',
+      verified: false,
+      vip: false
     },
     {
-      id: 6,
+      identification: '8dc15ebc-f951-4315-b568-48f89f7ccf40',
       name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
+      imageUrl: 'https://source.unsplash.com/random',
+      color: '#FFFFFF',
+      followers: [],
+      follows: [],
+      description: '',
+      verified: false,
+      vip: false
     }
-    /*     {
-      id: 7,
-      name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      id: 8,
-      name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      id: 3,
-      name: 'Marcelão',
-      img: 'https://source.unsplash.com/random'
-    } */
   ];
 
   return (
@@ -84,6 +82,9 @@ export function Menu() {
       isShowMoreFollowing={isShowMoreFollowing}
       hasVerticalScroll={hasVerticalScroll}
       ref={menuRef}
+      onClick={() => {
+        handleSetOpenMenu(false);
+      }}
     >
       <LinkButton to="/" aria-label="Página Início">
         {pathname === '/' ? (
@@ -193,7 +194,7 @@ export function Menu() {
         if (isShowMoreFollowing ? index >= 0 : index <= 2) {
           return (
             <UserCard
-              key={user.id}
+              key={user.identification}
               user={user}
               aria-label={`Perfil de ${user.name}`}
             />

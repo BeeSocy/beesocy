@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-
 import { Outlet } from 'react-router-dom';
 
 import { Header } from '../../components/Header/Header';
 import { Menu } from '../../components/Header/Menu';
 import { MobileMenu } from '../../components/Header/MobileMenu';
+import { Player } from '../../components/Player';
 
 import { useMobile } from '../../hooks/useMobile';
 import { useScroll } from '../../hooks/useScroll';
@@ -25,6 +24,8 @@ export function GlobalLayout() {
       <Container hasVerticalScroll={hasVerticalScroll}>
         <Outlet />
       </Container>
+
+      <Player />
     </>
   );
 }
