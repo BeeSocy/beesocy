@@ -22,10 +22,13 @@ import {
 */
 import { fetchedPost } from '../../../pages/ImageVisualization/index';
 import { Button } from '../../Widgets/Buttons/Button';
+import { IProfile } from '../../../types/profile';
 
-interface IIconProfileProps {}
+interface IIconProfileProps {
+  user: IProfile;
+}
 
-export function IconProfile() {
+export function IconProfile({ user }: IIconProfileProps) {
   return (
     <HoverCard.Root>
       {/*  */}
@@ -34,12 +37,9 @@ export function IconProfile() {
         {/*
           aqui eu vou pegar o Id dentro de fetched dentro de ImagesVisualization para entrar no perfil
         */}
-        <Link to={`/${fetchedPost.id}`}>
+        <Link to={`/user/${user.identification}}`}>
           <CardIconProfile>
-            <img
-              src="https://images.unsplash.com/photo-1659292482339-4fe111483d1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MTYzOTA2OA&ixlib=rb-1.2.1&q=80&w=1080"
-              alt="NotFound"
-            />
+            <img src={user.imageUrl} alt={`Foto de perfil de ${user.name}`} />
           </CardIconProfile>
         </Link>
       </HoverCard.Trigger>
@@ -53,12 +53,12 @@ export function IconProfile() {
             <Profile>
               <CardIconProfile>
                 <img
-                  src="https://images.unsplash.com/photo-1659292482339-4fe111483d1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MTYzOTA2OA&ixlib=rb-1.2.1&q=80&w=1080"
-                  alt="NotFound"
+                  src={user.imageUrl}
+                  alt={`Foto de perfil de ${user.name}`}
                 />
               </CardIconProfile>
-              <UserName>Júlio na Gaita na Gaita</UserName>
-              <NickName>@Julio</NickName>
+              <UserName>{user.name}</UserName>
+              <NickName>@{user.name.split(' ').join('')}</NickName>
               {/*TODO: verificação se é vip */}
             </Profile>
             <Actions>
@@ -70,13 +70,14 @@ export function IconProfile() {
               </Button>
             </Actions>
           </TopContainer>
-          <Description>`${fetchedPost.description}`</Description>
+          <Description>{user.description}</Description>
           <BottomContainer>
             <span>
-              <strong>321</strong> seguidores
+              <strong>{user.followers.length}</strong> seguidor
+              {user.followers.length != 1 && 'es'}
             </span>
             <span>
-              <strong>123</strong> seguindo
+              <strong>{user.follows.length}</strong> seguindo
             </span>
           </BottomContainer>
           {/* card */}

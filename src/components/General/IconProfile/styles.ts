@@ -28,7 +28,8 @@ export const CardIconProfile = styled.div`
 export const StyledContent = styled(HoverCard.Content)`
 
   z-index: 130;
-  transform: translateY(10rem);
+
+  margin-top: 10rem;
 
   border: 0.1rem solid ${props => props.theme.colors.light};
 

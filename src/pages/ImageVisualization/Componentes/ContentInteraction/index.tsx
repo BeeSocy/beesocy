@@ -1,5 +1,8 @@
 import { IconContext } from 'react-icons';
+import { CommentButton } from '../../../../components/Widgets/Buttons/ActionButtons/CommentButton';
 import { LikeButton } from '../../../../components/Widgets/Buttons/ActionButtons/LikeButton';
+import { SaveButton } from '../../../../components/Widgets/Buttons/ActionButtons/SaveButton';
+import { ShareButton } from '../../../../components/Widgets/Buttons/ActionButtons/ShareButton';
 import { Content, NumberValue } from './style';
 
 export function ContentInteraction() {
@@ -9,12 +12,14 @@ export function ContentInteraction() {
         <LikeButton />
         <NumberValue>1,0 mil</NumberValue>
       </Content>
+
       <Content>
-        <LikeButton />
+        <SaveButton />
         <NumberValue>1,0 mil</NumberValue>
       </Content>
+
       <Content>
-        <LikeButton />
+        <CommentButton />
         <NumberValue>1,0 mil</NumberValue>
       </Content>
     </IconContext.Provider>

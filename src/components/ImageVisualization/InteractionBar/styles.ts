@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { Button } from "../../../../components/Widgets/Buttons/Button";
-import { breakpoint } from "../../../../hooks/useMobile";
+import { Button } from "../../Widgets/Buttons/Button";
+import { breakpoint } from "../../../hooks/useMobile";
 
 export const BodyBar = styled.div`
     z-index: 10;

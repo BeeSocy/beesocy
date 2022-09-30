@@ -37,9 +37,9 @@ export const ContainerComment = styled.label`
 `;
 export const InputComment = styled.textarea`
     &:focus{
-    outline: none;
-
+        outline: none;
     }
+
     background: none;
 
     padding: 1rem;
