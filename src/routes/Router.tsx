@@ -12,7 +12,7 @@ export function Router() {
       <Route path="/" element={<GlobalLayout />}>
         <Route path="/" element={<GlobalFeed />} />
         <Route path="/image" element={<ImageFeed />} />
-        <Route path="/image/view/:id" element={<ImageVisualization />} />
+        <Route path="/image/post/:id" element={<ImageVisualization />} />
         <Route path="/music" element={<MusicFeed />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />

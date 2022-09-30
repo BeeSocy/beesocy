@@ -1,7 +1,7 @@
 import { useMobile } from '../../../../hooks/useMobile';
 import { Bar, BodyBar, ButtonBar, ContentUnBodyBar, LikeBar } from './styles';
 import { MdChevronLeft, MdOutlineChat, MdOutlineShare } from 'react-icons/md';
-import { IconProfile } from '../IconProfile';
+import { IconProfile } from '../../../../components/General/IconProfile';
 import { Button } from '../../../../components/Widgets/Buttons/Button';
 import { LikeButton } from '../../../../components/Widgets/Buttons/ActionButtons/LikeButton';
 import { IconContext } from 'react-icons';

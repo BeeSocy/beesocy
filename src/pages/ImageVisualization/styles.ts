@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-export const ContentBottom = styled.div`
-    width: 100%;
-
+export const BottomContainer = styled.div`
     display: flex;
     flex-wrap: wrap-reverse;
+
     justify-content: center;
     align-items: start;
 

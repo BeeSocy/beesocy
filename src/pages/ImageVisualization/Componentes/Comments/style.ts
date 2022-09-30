@@ -5,7 +5,8 @@ export const Container = styled.div`
     justify-content: space-between;
     width: 92rem;
 `;
-export const ContainerChat = styled.div`
+
+export const Wrapper = styled.div`
     width: 100%;
 
     background: ${(props) => props.theme.colors.primary};

@@ -1,10 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { IImagePost } from '../../types/imagePost';
-import { Chat } from './Componentes/Chat';
-import { Carousel } from './Componentes/Carousel';
 import { InteractionBar } from './Componentes/InteractionBar';
 import { Description } from './Componentes/Description';
-import { ContentBottom } from './style';
+import { BottomContainer } from './styles';
+import { Comments } from './Componentes/Comments';
 
 export const fetchedPost: IImagePost = {
   id: 1651,
@@ -19,16 +18,17 @@ export const fetchedPost: IImagePost = {
 };
 
 export function ImageVisualization() {
-  const { id } = useParams();
+  const { imageId } = useParams();
 
   return (
-    <div>
-      <Carousel />
+    <>
+      {/*       <Carousel /> */}
       <InteractionBar />
-      <ContentBottom>
-        <Chat />
+
+      <BottomContainer>
+        <Comments />
         <Description />
-      </ContentBottom>
-    </div>
+      </BottomContainer>
+    </>
   );
 }

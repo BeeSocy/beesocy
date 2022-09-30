@@ -1,6 +1,6 @@
 import * as HoverCard from '@radix-ui/react-hover-card';
 import styled from 'styled-components';
-import { breakpoint } from '../../../../hooks/useMobile';
+import { breakpoint } from '../../../hooks/useMobile';
 
 export const CardIconProfile = styled.div`
   width: 6rem;
@@ -20,24 +20,30 @@ export const CardIconProfile = styled.div`
     object-fit: cover;
   }
 
-    @media (max-width: ${breakpoint}){
-      width: 4.8rem;
-      height: 4.8rem;
-    }
+  @media (max-width: ${breakpoint}){
+    width: 4.8rem;
+    height: 4.8rem;
+  }
 `;
 export const StyledContent = styled(HoverCard.Content)`
 
-  z-index: 20;
-  margin-top: 8rem;
+  z-index: 130;
+  transform: translateY(10rem);
+
+  border: 0.1rem solid ${props => props.theme.colors.light};
 
   background-color: ${(props) => props.theme.colors.primary};
+
+  -webkit-box-shadow: 0px 15px 37px 3px rgba(0,0,0,0.19);
+  -moz-box-shadow: 0px 15px 37px 3px rgba(0,0,0,0.19);
+  box-shadow: 0px 15px 37px 3px rgba(0,0,0,0.19);
 
   border-radius: 2rem;
   padding: 2rem;
 
-  animation: starting .5s;
+  animation: showUp .5s;
 
-  @keyframes starting {
+  @keyframes showUp {
     from{
       opacity: 0;
       transform: translateY(10px);
@@ -64,25 +70,30 @@ export const UserName = styled.span`
 export const NickName = styled.div`
   color: ${props => props.theme.colors.secondaryLight};
 `;
+
 export const Actions = styled.div`
   display: flex;
   flex-direction: column;
+
   svg {
     width: 4rem;
     height: 4rem;
   }
+
   button{
     padding: .8rem;
   }
 `;
+
 export const TopContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
 
 `;
+
 export const Description = styled.div`
-  width: 300px;
+  width: 30rem;
   display: -webkit-box;
   display: -moz-box;
 
@@ -101,7 +112,7 @@ export const Description = styled.div`
 `;
 
 
-export const DownContainer = styled.div`
+export const BottomContainer = styled.div`
   margin-top: 2.8rem;
 
   display: flex;
@@ -109,6 +120,7 @@ export const DownContainer = styled.div`
 
   padding: 0 2rem;
   color: ${props => props.theme.colors.secondaryLight};
+
   span {
     font-size: 1.4rem;
   }

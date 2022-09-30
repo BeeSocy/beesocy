@@ -2,8 +2,8 @@ import * as HoverCard from '@radix-ui/react-hover-card';
 import { Link } from 'react-router-dom';
 
 import { ReactSVG } from 'react-svg';
-import addIcon from '../../../../assets/icons/add.svg';
-import sendIcon from '../../../../assets/icons/send.svg';
+import addIcon from '../../../assets/icons/Add.svg';
+import sendIcon from '../../../assets/icons/send.svg';
 
 import {
   CardIconProfile,
@@ -14,14 +14,16 @@ import {
   TopContainer,
   NickName,
   Description,
-  DownContainer
+  BottomContainer
 } from './styles';
 
 /*
   vou usar para quando clicar na foto ir pro profile do amigão
 */
-import { fetchedPost } from '../../index';
-import { Button } from '../../../../components/Widgets/Buttons/Button';
+import { fetchedPost } from '../../../pages/ImageVisualization/index';
+import { Button } from '../../Widgets/Buttons/Button';
+
+interface IIconProfileProps {}
 
 export function IconProfile() {
   return (
@@ -69,14 +71,14 @@ export function IconProfile() {
             </Actions>
           </TopContainer>
           <Description>`${fetchedPost.description}`</Description>
-          <DownContainer>
+          <BottomContainer>
             <span>
               <strong>321</strong> seguidores
             </span>
             <span>
               <strong>123</strong> seguindo
             </span>
-          </DownContainer>
+          </BottomContainer>
           {/* card */}
         </StyledContent>
       </HoverCard.Portal>

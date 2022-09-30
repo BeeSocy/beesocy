@@ -7,12 +7,12 @@ import {
   UserProfile,
   ViewMore
 } from './style';
-import { CardIconProfile } from '../IconProfile/styles';
+import { CardIconProfile } from '../../../../components/General/IconProfile/styles';
 import { useRef, useState } from 'react';
 /* capaz de manipular a DOM */
 
 export type ProfileComment = {
-  Comment: string;
+  comment: string;
 };
 
 export function ProfileCard(props: ProfileComment) {
