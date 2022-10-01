@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { ReactSVG } from 'react-svg';
 import VerifiedSvg from '../../assets/icons/Verified.svg';
 import { Container } from '../../components/Profile/Container';
+import { useLayout } from '../../context/LayoutProvider/useLayout';
 import { useMobile } from '../../hooks/useMobile';
 import { IProfile } from '../../types/profile';
 
@@ -20,6 +22,12 @@ export const user: IProfile = {
 };
 export function Profile() {
   const { isMobile } = useMobile();
+  const { handleChangePaddingActive } = useLayout();
+
+  useEffect(() => {
+    handleChangePaddingActive(false);
+  });
+
   return (
     <>
       {/* <ReactSVG src={VerifiedSvg} /> */}
