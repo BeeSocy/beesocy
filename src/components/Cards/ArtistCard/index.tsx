@@ -1,13 +1,9 @@
+import { IProfile } from '../../../types/profile';
 import { formatNumber } from '../../../utils/formatNumber';
 import { Title } from '../../General/Title';
 import { Card, Container, Wrapper, ColorBar } from './styles';
 
-interface IArtistCardProps {
-  name: string;
-  imageUrl: string;
-  followers: number;
-  color: string;
-}
+interface IArtistCardProps extends IProfile {}
 
 export function ArtistCard({
   name,
@@ -21,7 +17,7 @@ export function ArtistCard({
         <Wrapper>
           <img src={imageUrl} />
           <Title size="medium">{name}</Title>
-          <span>{formatNumber(followers)} seguidores</span>
+          <span>{formatNumber(followers.length)} seguidores</span>
           <ColorBar $color={color} />
         </Wrapper>
       </Card>

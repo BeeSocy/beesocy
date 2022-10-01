@@ -20,28 +20,34 @@ export const ImageFeed = React.memo(() => {
       identification: '943b0dcb-ba69-4374-a525-beb3966e4ed6',
       description: 'Imagem no estilo grafite',
       img: 'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-      isLiked: true,
-      isSaved: true,
-      isReported: false,
-      categoriesId: []
+      usersHasLiked: [],
+      usersHasSaved: [],
+      usersHasReported: [],
+      categoriesId: [],
+      comments: [],
+      createdAt: new Date(2022, 10, 1, 15, 30, 0)
     },
     {
       identification: 'fb248b1a-47fc-43ba-8da1-1c2a3d60b69d',
       description: 'Imagem foda',
       img: 'https://images.unsplash.com/photo-1547333590-47fae5f58d21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-      isLiked: false,
-      isSaved: false,
-      isReported: true,
-      categoriesId: []
+      usersHasLiked: [],
+      usersHasSaved: [],
+      usersHasReported: [],
+      categoriesId: [],
+      comments: [],
+      createdAt: new Date(2022, 10, 1, 15, 30, 0)
     },
     {
       identification: '499b27d2-adcf-4040-9448-39b0020e6f42',
       description: 'outra foda',
       img: 'https://images.unsplash.com/photo-1617503752587-97d2103a96ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-      isLiked: true,
-      isSaved: true,
-      isReported: true,
-      categoriesId: []
+      usersHasLiked: [],
+      usersHasSaved: [],
+      usersHasReported: [],
+      categoriesId: [],
+      comments: [],
+      createdAt: new Date(2022, 10, 1, 15, 30, 0)
     }
   ];
 
@@ -88,7 +94,7 @@ export const ImageFeed = React.memo(() => {
   function handleDoubleClick(postId: string) {
     posts.map(post => {
       if (post.identification === postId) {
-        if (!post.isLiked) {
+        if (/* !post.isLiked */ false) {
           //backend like
         }
       }
@@ -145,9 +151,9 @@ export const ImageFeed = React.memo(() => {
               description={post.description}
               img={post.img}
               large={randomLargePosts[index]}
-              isLiked={post.isLiked ?? false}
-              isSaved={post.isSaved ?? false}
-              isReported={post.isReported ?? false}
+              isLiked={false}
+              isSaved={false}
+              isReported={false}
               onClick={() => handlePostClick(post.identification)}
               centerElement={
                 isAnimationId === post.identification && <LikeAnimation />

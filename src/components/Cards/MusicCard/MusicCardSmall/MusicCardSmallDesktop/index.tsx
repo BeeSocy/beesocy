@@ -83,11 +83,13 @@ export function MusicCardSmallDesktop(props: IMusicCardProps) {
                             identification: props.identification,
                             imageUrl: props.imageUrl,
                             explicit: props.explicit,
-                            isLiked: props.isLiked,
-                            isReported: props.isReported,
-                            isSaved: props.isSaved,
+                            usersHasLiked: props.usersHasLiked,
+                            usersHasReported: props.usersHasReported,
+                            usersHasSaved: props.usersHasSaved,
                             playlist: props.playlist,
-                            categoriesId: []
+                            categoriesId: props.categoriesId,
+                            comments: props.comments,
+                            createdAt: props.createdAt
                           }}
                         />
                       </StyledDropdownMenuItem>
@@ -111,11 +113,13 @@ export function MusicCardSmallDesktop(props: IMusicCardProps) {
                 identification: props.identification,
                 imageUrl: props.imageUrl,
                 explicit: props.explicit,
-                isLiked: props.isLiked,
-                isReported: props.isReported,
-                isSaved: props.isSaved,
+                usersHasLiked: props.usersHasLiked,
+                usersHasReported: props.usersHasReported,
+                usersHasSaved: props.usersHasSaved,
                 playlist: props.playlist,
-                categoriesId: []
+                categoriesId: props.categoriesId,
+                comments: props.comments,
+                createdAt: props.createdAt
               }}
             />
           </ContextMenuPrimitive.Item>

@@ -58,7 +58,7 @@ export function IconProfile({ user }: IIconProfileProps) {
                 />
               </CardIconProfile>
               <UserName>{user.name}</UserName>
-              <NickName>@{user.name.split(' ').join('')}</NickName>
+              <NickName>@{user.nickname}</NickName>
               {/*TODO: verificação se é vip */}
             </Profile>
             <Actions>
@@ -73,11 +73,14 @@ export function IconProfile({ user }: IIconProfileProps) {
           <Description>{user.description}</Description>
           <BottomContainer>
             <span>
-              <strong>{user.followers.length}</strong> seguidor
-              {user.followers.length != 1 && 'es'}
+              <strong>{user.followers ? user.followers.length : 0}</strong>{' '}
+              seguidor
+              {user.followers && user.followers.length != 1 && 'es'}
+              {!user.followers && 'es'}
             </span>
             <span>
-              <strong>{user.follows.length}</strong> seguindo
+              <strong>{user.followers ? user.follows.length : 0}</strong>{' '}
+              seguindo
             </span>
           </BottomContainer>
           {/* card */}

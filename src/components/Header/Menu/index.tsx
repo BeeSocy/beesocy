@@ -54,6 +54,7 @@ export function Menu() {
   const followUsers: IProfile[] = [
     {
       identification: 'c475e623-552e-489a-8ee6-a2071eaf747b',
+      nickname: '@jorge',
       name: 'Jorge na gaita afaf af af af a f',
       imageUrl: 'https://source.unsplash.com/random',
       color: '#FFFFFF',
@@ -65,6 +66,7 @@ export function Menu() {
     },
     {
       identification: '8dc15ebc-f951-4315-b568-48f89f7ccf40',
+      nickname: '@jorge',
       name: 'Jorge na gaita afaf af af af a f',
       imageUrl: 'https://source.unsplash.com/random',
       color: '#FFFFFF',

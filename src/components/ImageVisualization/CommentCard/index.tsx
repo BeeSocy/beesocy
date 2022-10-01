@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import {
   Comment,
   Container,
@@ -7,8 +8,6 @@ import {
   UserProfile,
   ViewMore
 } from './style';
-import { CardIconProfile } from '../../../components/General/IconProfile/styles';
-import { useRef, useState } from 'react';
 import { IComment } from '../../../types/comment';
 import { IProfile } from '../../../types/profile';
 import { IconProfile } from '../../General/IconProfile';

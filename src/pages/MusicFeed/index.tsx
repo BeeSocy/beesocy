@@ -34,7 +34,12 @@ export function MusicFeed() {
           description: 'Londres Freestyle',
           explicit: true,
           isLiked: true,
-          categoriesId: []
+          categoriesId: [],
+          usersHasLiked: [],
+          usersHasSaved: [],
+          usersHasReported: [],
+          comments: [],
+          createdAt: new Date(2022, 10, 5, 14, 32, 0)
         },
         {
           identification: '3f8f6860-c69e-424b-adc9-2cc7119e4773',
@@ -48,7 +53,12 @@ export function MusicFeed() {
           description: 'Facilitei L7',
           explicit: false,
           isReported: true,
-          categoriesId: []
+          categoriesId: [],
+          usersHasLiked: [],
+          usersHasSaved: [],
+          usersHasReported: [],
+          comments: [],
+          createdAt: new Date(2022, 10, 5, 14, 32, 0)
         },
         {
           identification: 'a3565ca0-d375-4cdb-ab20-0d830425de48',
@@ -68,7 +78,12 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/DXXwxHGjLq2DHh63tPWxj4TwJBSbrFTJ',
           description: 'Sem pressa',
           explicit: true,
-          categoriesId: []
+          categoriesId: [],
+          usersHasLiked: [],
+          usersHasSaved: [],
+          usersHasReported: [],
+          comments: [],
+          createdAt: new Date(2022, 10, 5, 14, 32, 0)
         }
       ] as IMusicPost[]
     },
@@ -91,7 +106,12 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/kRgsjbaMBaB7ZDoDm4QZRDuqGx05j8c9',
           description: 'Londres Freestyle',
           explicit: true,
-          categoriesId: []
+          categoriesId: [],
+          usersHasLiked: [],
+          usersHasSaved: [],
+          usersHasReported: [],
+          comments: [],
+          createdAt: new Date(2022, 10, 5, 14, 32, 0)
         },
         {
           identification: '3f8f6860-c69e-424b-adc9-2cc7119e4773',
@@ -104,7 +124,12 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/yh03xpsgkuEIZ04ogpInYUhvPhYVW5gQ',
           description: 'Facilitei L7',
           explicit: false,
-          categoriesId: []
+          categoriesId: [],
+          usersHasLiked: [],
+          usersHasSaved: [],
+          usersHasReported: [],
+          comments: [],
+          createdAt: new Date(2022, 10, 5, 14, 32, 0)
         },
         {
           identification: 'a3565ca0-d375-4cdb-ab20-0d830425de48',
@@ -124,7 +149,12 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/DXXwxHGjLq2DHh63tPWxj4TwJBSbrFTJ',
           description: 'Sem pressa',
           explicit: true,
-          categoriesId: []
+          categoriesId: [],
+          usersHasLiked: [],
+          usersHasSaved: [],
+          usersHasReported: [],
+          comments: [],
+          createdAt: new Date(2022, 10, 5, 14, 32, 0)
         },
         {
           identification: 'd2263cc1-4c70-4628-b84c-cffbc75ae10f',
@@ -137,7 +167,12 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/BW8KB0iBaQMWXx478ZLYbWLovkddazD2',
           description: 'ye',
           explicit: true,
-          categoriesId: []
+          categoriesId: [],
+          usersHasLiked: [],
+          usersHasSaved: [],
+          usersHasReported: [],
+          comments: [],
+          createdAt: new Date(2022, 10, 5, 14, 32, 0)
         }
       ] as IMusicPost[]
     },
@@ -149,6 +184,7 @@ export function MusicFeed() {
       artists: [
         {
           identification: '',
+          nickname: 'juliocomgaita',
           name: 'Julio at Gaita',
           color: '#283dea',
           followers: [],
@@ -221,10 +257,12 @@ export function MusicFeed() {
                       explicit={track.explicit}
                       large={algorithm.largeContent}
                       playlist={track.playlist}
-                      isLiked={track.isLiked}
-                      isReported={track.isReported}
-                      isSaved={track.isSaved}
+                      usersHasLiked={track.usersHasLiked}
+                      usersHasReported={track.usersHasReported}
+                      usersHasSaved={track.usersHasSaved}
                       categoriesId={track.categoriesId}
+                      comments={track.comments}
+                      createdAt={track.createdAt}
                     />
                   );
                 })}
@@ -233,9 +271,12 @@ export function MusicFeed() {
                     <ArtistCard
                       key={artist.identification}
                       name={artist.name}
-                      followers={artist.followers.length}
+                      followers={artist.followers}
                       color={artist.color}
                       imageUrl={artist.imageUrl}
+                      identification={''}
+                      nickname={''}
+                      follows={[]}
                     />
                   );
                 })}

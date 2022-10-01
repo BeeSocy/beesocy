@@ -15,7 +15,7 @@ export function Description() {
       </strong>
       <DescriptionContent>{fetchedPost.description}</DescriptionContent>
       <Interaction>
-        <ContentInteraction></ContentInteraction>
+        <ContentInteraction post={fetchedPost} />
       </Interaction>
       <Publish>Publicado em: 23 de junho de 2020</Publish>
     </Container>

@@ -20,52 +20,46 @@ export const CardIconProfile = styled.div`
     object-fit: cover;
   }
 
-  @media (max-width: ${breakpoint}){
+  @media (max-width: ${breakpoint}) {
     width: 4.8rem;
     height: 4.8rem;
   }
 `;
 export const StyledContent = styled(HoverCard.Content)`
-
   z-index: 130;
 
   margin-top: 10rem;
 
   border: 0.1rem solid ${props => props.theme.colors.light};
 
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${props => props.theme.colors.primary};
 
-  -webkit-box-shadow: 0px 15px 37px 3px rgba(0,0,0,0.19);
-  -moz-box-shadow: 0px 15px 37px 3px rgba(0,0,0,0.19);
-  box-shadow: 0px 15px 37px 3px rgba(0,0,0,0.19);
+  -webkit-box-shadow: 0px 15px 37px 3px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0px 15px 37px 3px rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 15px 37px 3px rgba(0, 0, 0, 0.19);
 
   border-radius: 2rem;
   padding: 2rem;
 
-  animation: showUp .5s;
+  animation: showUp 0.5s;
 
   @keyframes showUp {
-    from{
+    from {
       opacity: 0;
       transform: translateY(10px);
     }
   }
-
 `;
 
 export const Profile = styled.div`
-
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-
 `;
 
 export const UserName = styled.span`
-
   font-size: 2rem;
   font-weight: bold;
-
 `;
 
 export const NickName = styled.div`
@@ -76,13 +70,17 @@ export const Actions = styled.div`
   display: flex;
   flex-direction: column;
 
-  svg {
+  svg,
+  svg *,
+  button > div {
     width: 4rem;
     height: 4rem;
   }
 
-  button{
-    padding: .8rem;
+  button {
+    padding: 0.8rem;
+    width: fit-content;
+    height: fit-content;
   }
 `;
 
@@ -90,7 +88,6 @@ export const TopContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-
 `;
 
 export const Description = styled.div`
@@ -98,7 +95,7 @@ export const Description = styled.div`
   display: -webkit-box;
   display: -moz-box;
 
-  margin-top: .8rem;
+  margin-top: 0.8rem;
 
   -webkit-line-clamp: 4;
 
@@ -111,7 +108,6 @@ export const Description = styled.div`
 
   text-overflow: ellipsis;
 `;
-
 
 export const BottomContainer = styled.div`
   margin-top: 2.8rem;

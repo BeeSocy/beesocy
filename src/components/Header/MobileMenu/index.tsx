@@ -39,6 +39,7 @@ import { Line } from '../Menu/styles';
 import { useMenu } from '../../../context/MenuProvider/useMenu';
 import { UserCard } from '../../Cards/UserCard';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
+import { IProfile } from '../../../types/profile';
 
 export function MobileMenu() {
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
@@ -53,31 +54,30 @@ export function MobileMenu() {
 
   const themes = useTheme();
 
-  const followUsers = [
+  const followUsers: IProfile[] = [
     {
-      identification: 45,
+      identification: 'c475e623-552e-489a-8ee6-a2071eaf747b',
+      nickname: '@jorge',
       name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
+      imageUrl: 'https://source.unsplash.com/random',
+      color: '#FFFFFF',
+      followers: [],
+      follows: [],
+      description: '',
+      verified: false,
+      vip: false
     },
     {
-      identification: 6,
+      identification: '8dc15ebc-f951-4315-b568-48f89f7ccf40',
+      nickname: '@jorge',
       name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      identification: 7,
-      name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      identification: 8,
-      name: 'Jorge na gaita afaf af af af a faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      identification: 3,
-      name: 'Marcelão',
-      img: 'https://source.unsplash.com/random'
+      imageUrl: 'https://source.unsplash.com/random',
+      color: '#FFFFFF',
+      followers: [],
+      follows: [],
+      description: '',
+      verified: false,
+      vip: false
     }
   ];
 
@@ -210,7 +210,7 @@ export function MobileMenu() {
           ) : (
             <MdFavoriteBorder />
           )}
-          <span>Curtidentificationos</span>
+          <span>Curtidos</span>
         </LinkButton>
 
         <LinkButton

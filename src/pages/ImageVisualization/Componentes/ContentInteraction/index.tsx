@@ -3,24 +3,30 @@ import { CommentButton } from '../../../../components/Widgets/Buttons/ActionButt
 import { LikeButton } from '../../../../components/Widgets/Buttons/ActionButtons/LikeButton';
 import { SaveButton } from '../../../../components/Widgets/Buttons/ActionButtons/SaveButton';
 import { ShareButton } from '../../../../components/Widgets/Buttons/ActionButtons/ShareButton';
+import { IImagePost } from '../../../../types/imagePost';
+import { formatNumber } from '../../../../utils/formatNumber';
 import { Content, NumberValue } from './style';
 
-export function ContentInteraction() {
+interface IContentInteractionProps {
+  post: IImagePost;
+}
+
+export function ContentInteraction({ post }: IContentInteractionProps) {
   return (
     <IconContext.Provider value={{ size: '20' }}>
       <Content>
         <LikeButton />
-        <NumberValue>1,0 mil</NumberValue>
+        <NumberValue>{formatNumber(post.usersHasLiked.length)}</NumberValue>
       </Content>
 
       <Content>
         <SaveButton />
-        <NumberValue>1,0 mil</NumberValue>
+        <NumberValue>{formatNumber(post.usersHasSaved.length)}</NumberValue>
       </Content>
 
       <Content>
         <CommentButton />
-        <NumberValue>1,0 mil</NumberValue>
+        <NumberValue>{formatNumber(post.comments.length)}</NumberValue>
       </Content>
     </IconContext.Provider>
   );

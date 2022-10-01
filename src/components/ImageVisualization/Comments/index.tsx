@@ -25,6 +25,7 @@ export function Comments() {
       user: {
         identification: '3d2e6d35-590c-48fc-b78b-bf7ff09ce9c9',
         name: 'Julio',
+        nickname: 'juliao43',
         imageUrl:
           'https://images.unsplash.com/photo-1664207251296-569bacae6f04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
         follows: [],
@@ -43,6 +44,7 @@ export function Comments() {
       user: {
         identification: 'b3977e8c-4ebb-4570-a93b-c048baa74e59',
         name: 'Marcelasso',
+        nickname: 'marcelocria254346',
         imageUrl:
           'https://images.unsplash.com/photo-1664498016501-ff1dcd0bb463?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80',
         follows: [],
@@ -60,6 +62,7 @@ export function Comments() {
   const loggedUser: IProfile = {
     identification: '4c897582-dfcf-4b3e-b6e1-a77321d558d7',
     name: 'Rogério',
+    nickname: 'rogeriofps',
     imageUrl:
       'https://images.unsplash.com/photo-1664206626597-2c158e274a96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
     follows: [],

@@ -26,12 +26,14 @@ export function MusicCard({
   fileUrl,
   identification,
   description,
-  isLiked,
+  usersHasLiked,
+  usersHasReported,
+  usersHasSaved,
   explicit,
-  isReported,
-  isSaved,
   categoriesId,
   large,
+  comments,
+  createdAt,
   ...props
 }: IMusicCardProps) {
   const player = usePlayer();
@@ -54,10 +56,12 @@ export function MusicCard({
       fileUrl: fileUrl,
       description: description,
       explicit: explicit,
-      isLiked: isLiked,
-      isReported: isReported,
-      isSaved: isSaved,
-      categoriesId: categoriesId
+      usersHasLiked: usersHasLiked,
+      usersHasReported: usersHasReported,
+      usersHasSaved: usersHasSaved,
+      categoriesId: categoriesId,
+      createdAt: createdAt,
+      comments: comments
     };
 
     handlePlayMusic(currentTrack);
@@ -94,11 +98,13 @@ export function MusicCard({
           }
           description={description}
           explicit={explicit}
-          isLiked={isLiked}
-          isReported={isReported}
-          isSaved={isSaved}
+          usersHasLiked={usersHasLiked}
+          usersHasReported={usersHasReported}
+          usersHasSaved={usersHasSaved}
           categoriesId={categoriesId}
           clickAction={handleClickAction}
+          comments={comments}
+          createdAt={createdAt}
           {...props}
         />
       ) : (
@@ -116,11 +122,13 @@ export function MusicCard({
           }
           description={description}
           explicit={explicit}
-          isLiked={isLiked}
-          isReported={isReported}
-          isSaved={isSaved}
+          usersHasLiked={usersHasLiked}
+          usersHasReported={usersHasReported}
+          usersHasSaved={usersHasSaved}
           categoriesId={categoriesId}
           clickAction={handleClickAction}
+          comments={comments}
+          createdAt={createdAt}
           {...props}
         />
       )}
