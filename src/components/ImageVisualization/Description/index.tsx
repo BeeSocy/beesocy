@@ -7,9 +7,9 @@ import {
   Publish,
   TitleDescription
 } from './style';
-import { fetchedPost } from '../../index';
+import { fetchedPost } from '../../../pages/ImageVisualization/index';
 import { ContentInteraction } from '../ContentInteraction';
-import { IImagePost } from '../../../../types/imagePost';
+import { IImagePost } from '../../../types/imagePost';
 
 interface IDescriptionProps {
   post: IImagePost;
@@ -18,7 +18,7 @@ interface IDescriptionProps {
 export function Description({ post }: IDescriptionProps) {
   const createdAtDateFormatted = format(
     post.createdAt,
-    "EEEE' • 'd' de 'MMMM' • 'k'h'mm",
+    "d' de 'MMMM' de 'yyyy'",
     {
       locale: ptBR
     }
@@ -33,7 +33,7 @@ export function Description({ post }: IDescriptionProps) {
       <Interaction>
         <ContentInteraction post={fetchedPost} />
       </Interaction>
-      <Publish>Publicado em: 23 de junho de 2020</Publish>
+      <Publish>Publicado em: {createdAtDateFormatted}</Publish>
     </Container>
   );
 }

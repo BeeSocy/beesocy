@@ -1,6 +1,7 @@
 import * as HoverCard from '@radix-ui/react-hover-card';
 import styled from 'styled-components';
 import { breakpoint } from '../../../hooks/useMobile';
+import { LinkTitle } from '../LinkTitle';
 
 export const CardIconProfile = styled.div`
   width: 6rem;
@@ -57,12 +58,12 @@ export const Profile = styled.div`
   gap: 0.8rem;
 `;
 
-export const UserName = styled.span`
+export const UserName = styled(LinkTitle)`
   font-size: 2rem;
   font-weight: bold;
 `;
 
-export const NickName = styled.div`
+export const NickName = styled(LinkTitle)`
   color: ${props => props.theme.colors.secondaryLight};
 `;
 

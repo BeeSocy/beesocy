@@ -57,8 +57,12 @@ export function IconProfile({ user }: IIconProfileProps) {
                   alt={`Foto de perfil de ${user.name}`}
                 />
               </CardIconProfile>
-              <UserName>{user.name}</UserName>
-              <NickName>@{user.nickname}</NickName>
+              <UserName to={`/profile/${user.identification}`}>
+                {user.name}
+              </UserName>
+              <NickName to={`/profile/${user.identification}`}>
+                @{user.nickname}
+              </NickName>
               {/*TODO: verificação se é vip */}
             </Profile>
             <Actions>

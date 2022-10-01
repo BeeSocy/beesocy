@@ -1,9 +1,9 @@
 import { IconContext } from 'react-icons';
-import { CommentButton } from '../../../../components/Widgets/Buttons/ActionButtons/CommentButton';
-import { LikeButton } from '../../../../components/Widgets/Buttons/ActionButtons/LikeButton';
-import { SaveButton } from '../../../../components/Widgets/Buttons/ActionButtons/SaveButton';
-import { IImagePost } from '../../../../types/imagePost';
-import { formatNumber } from '../../../../utils/formatNumber';
+import { CommentButton } from '../../Widgets/Buttons/ActionButtons/CommentButton';
+import { LikeButton } from '../../Widgets/Buttons/ActionButtons/LikeButton';
+import { SaveButton } from '../../Widgets/Buttons/ActionButtons/SaveButton';
+import { IImagePost } from '../../../types/imagePost';
+import { formatNumber } from '../../../utils/formatNumber';
 import { Content, NumberValue } from './style';
 
 interface IContentInteractionProps {

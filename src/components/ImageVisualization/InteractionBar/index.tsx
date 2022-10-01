@@ -1,5 +1,12 @@
 import { useMobile } from '../../../hooks/useMobile';
-import { Bar, BodyBar, ButtonBar, ContentUnBodyBar, LikeBar } from './styles';
+import {
+  Bar,
+  Actions,
+  BodyBar,
+  ButtonBar,
+  ContentUnBodyBar,
+  LikeBar
+} from './styles';
 import { MdChevronLeft, MdOutlineChat, MdOutlineShare } from 'react-icons/md';
 import { IconProfile } from '../../General/IconProfile';
 import { Button } from '../../Widgets/Buttons/Button';
@@ -47,7 +54,7 @@ export function InteractionBar() {
           </IconContext.Provider>
         </BodyBar>
       ) : (
-        <div>
+        <>
           <Bar $active={interactionBarActive}>
             {/*  */}
             <ContentUnBodyBar>
@@ -57,7 +64,7 @@ export function InteractionBar() {
                 <MdChevronLeft size={20} />
               </ButtonBar>
 
-              <div>
+              <Actions>
                 <IconContext.Provider value={{ size: '32' }}>
                   <IconProfile user={user} />
                   <Button full={false} rounded>
@@ -69,14 +76,14 @@ export function InteractionBar() {
                   <SaveButton />
                   <ReportButton />
                 </IconContext.Provider>
-              </div>
+              </Actions>
             </ContentUnBodyBar>
           </Bar>
 
           <LikeBar>
             <LikeButton />
           </LikeBar>
-        </div>
+        </>
       )}
     </>
   );
