@@ -6,6 +6,7 @@ export interface IProfile {
   followers: IProfile[];
   color: string;
   imageUrl: string;
+  bannerUrl?: string;
   description?: string;
   vip?: boolean;
   verified?: boolean;
