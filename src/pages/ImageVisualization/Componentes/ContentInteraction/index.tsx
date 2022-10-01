@@ -2,7 +2,6 @@ import { IconContext } from 'react-icons';
 import { CommentButton } from '../../../../components/Widgets/Buttons/ActionButtons/CommentButton';
 import { LikeButton } from '../../../../components/Widgets/Buttons/ActionButtons/LikeButton';
 import { SaveButton } from '../../../../components/Widgets/Buttons/ActionButtons/SaveButton';
-import { ShareButton } from '../../../../components/Widgets/Buttons/ActionButtons/ShareButton';
 import { IImagePost } from '../../../../types/imagePost';
 import { formatNumber } from '../../../../utils/formatNumber';
 import { Content, NumberValue } from './style';

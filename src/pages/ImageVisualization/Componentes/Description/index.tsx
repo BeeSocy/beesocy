@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 import {
   Container,
   DescriptionContent,
@@ -7,11 +9,25 @@ import {
 } from './style';
 import { fetchedPost } from '../../index';
 import { ContentInteraction } from '../ContentInteraction';
-export function Description() {
+import { IImagePost } from '../../../../types/imagePost';
+
+interface IDescriptionProps {
+  post: IImagePost;
+}
+
+export function Description({ post }: IDescriptionProps) {
+  const createdAtDateFormatted = format(
+    post.createdAt,
+    "EEEE' • 'd' de 'MMMM' • 'k'h'mm",
+    {
+      locale: ptBR
+    }
+  );
+
   return (
     <Container>
       <strong>
-        <TitleDescription>Banza do Gorila Roxo</TitleDescription>
+        <TitleDescription>{post.name}</TitleDescription>
       </strong>
       <DescriptionContent>{fetchedPost.description}</DescriptionContent>
       <Interaction>

@@ -7,6 +7,7 @@ import { Comments } from '../../components/ImageVisualization/Comments';
 
 export const fetchedPost: IImagePost = {
   identification: '8c44a7f8-83df-4cdc-9f9c-f78cc3175ba8',
+  name: 'Gorilasso Roxo',
   categoriesId: [],
   description:
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint corporis odit exercitationem. Ea, mollitia laborum? Mollitia sunt odit numquam nihil, incidunt nostrum. In repellat esse beatae illum eaque, ea eos.',
@@ -28,7 +29,7 @@ export function ImageVisualization() {
 
       <BottomContainer>
         <Comments />
-        <Description />
+        <Description post={fetchedPost} />
       </BottomContainer>
     </>
   );
