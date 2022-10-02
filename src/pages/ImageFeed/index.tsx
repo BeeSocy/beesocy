@@ -20,7 +20,9 @@ export const ImageFeed = React.memo(() => {
       identification: '943b0dcb-ba69-4374-a525-beb3966e4ed6',
       name: 'Grafitasso',
       description: 'Imagem no estilo grafite',
-      img: 'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+      img: [
+        'https://images.unsplash.com/flagged/photo-1573803625411-9edf9a6ae3b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZHJhd2luZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
+      ],
       usersHasLiked: [],
       usersHasSaved: [],
       usersHasReported: [],
@@ -32,7 +34,10 @@ export const ImageFeed = React.memo(() => {
       identification: 'fb248b1a-47fc-43ba-8da1-1c2a3d60b69d',
       name: 'Essa memo',
       description: 'Imagem foda',
-      img: 'https://images.unsplash.com/photo-1547333590-47fae5f58d21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+      img: [
+        'https://images.unsplash.com/photo-1547333590-47fae5f58d21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+        'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1631d294-6e9b-4201-a5a8-2c1aa40baed7/dfc7cmz-5b8db738-57cb-4a39-9edc-1d555250ce85.jpg/v1/fit/w_414,h_311,q_70,strp/commission___57_by_lulusama_dfc7cmz-414w.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTYwIiwicGF0aCI6IlwvZlwvMTYzMWQyOTQtNmU5Yi00MjAxLWE1YTgtMmMxYWE0MGJhZWQ3XC9kZmM3Y216LTViOGRiNzM4LTU3Y2ItNGEzOS05ZWRjLTFkNTU1MjUwY2U4NS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.sJcN-we0asGOIcGUXH_anCytwyZTsJgQRnIyOSz1K20'
+      ],
       usersHasLiked: [],
       usersHasSaved: [],
       usersHasReported: [],
@@ -44,7 +49,9 @@ export const ImageFeed = React.memo(() => {
       identification: '499b27d2-adcf-4040-9448-39b0020e6f42',
       name: 'Revolução',
       description: 'outra foda',
-      img: 'https://images.unsplash.com/photo-1617503752587-97d2103a96ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+      img: [
+        'https://images.unsplash.com/photo-1617503752587-97d2103a96ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
+      ],
       usersHasLiked: [],
       usersHasSaved: [],
       usersHasReported: [],
@@ -109,7 +116,7 @@ export const ImageFeed = React.memo(() => {
   }
 
   function handleSingleClick(postId: string) {
-    return navigate(`/image/post/${postId}`, { replace: true });
+    return navigate(`/image/post/${postId}`);
   }
 
   let clickTimeout: ReturnType<typeof setTimeout> = 0;
@@ -152,7 +159,7 @@ export const ImageFeed = React.memo(() => {
             <ImageCard
               key={post.identification}
               description={post.description}
-              img={post.img}
+              img={post.img[0]}
               large={randomLargePosts[index]}
               isLiked={false}
               isSaved={false}
@@ -161,6 +168,7 @@ export const ImageFeed = React.memo(() => {
               centerElement={
                 isAnimationId === post.identification && <LikeAnimation />
               }
+              multiple={post.img.length > 1}
             />
           );
         })}
