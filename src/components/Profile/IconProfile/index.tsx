@@ -12,7 +12,7 @@ export function IconProfile(props: IIconProfileProps) {
       <Container>
         <Icon color={props.color} src={user.imageUrl} alt={user.name} />
         {user.vip && (
-          <Vip>
+          <Vip color={props.color}>
             <MdStar size={20}></MdStar>
           </Vip>
         )}

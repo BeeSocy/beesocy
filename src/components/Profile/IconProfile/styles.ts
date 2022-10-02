@@ -1,24 +1,40 @@
 import styled from "styled-components";
 import { IIconProfileProps } from ".";
+import { breakpoint } from "../../../hooks/useMobile";
 
 export const Container = styled.div`
     position: relative;
+    width: fit-content;
 `;
-export const Icon = styled.img<IIconProfileProps>`
+
+interface IIconProps {
+    color: string;
+}
+
+export const Icon = styled.img<IIconProps>`
     height: 10rem;
     width: 10rem;
 
     border-radius: 50%;
     border: 0.4rem solid ${props => props.color};
 
+
     padding: .8rem;
+    @media(max-width: ${breakpoint}){
+        padding: 0;
+        border: 0.8rem solid ${props => props.theme.colors.secondary};
+    }
 
 `;
 
+
+interface IVipProps {
+    color: string;
+}
 export const Vip = styled.div`
-    width: 3.6rem;
-    height: 3.6rem;
-    background: ${props => props.theme.colors.bee};
+    width: 4rem;
+    height: 4rem;
+    background: ${props => props.color};
 
     position: absolute;
 

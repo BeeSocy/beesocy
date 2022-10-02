@@ -66,11 +66,3 @@ export const ButtonSend = styled.div`
     right: 0;
     bottom: 0;
 `;
-export const Divider = styled.div`
-    width: 100%;
-    /* height: 1px; */
-    border-top: 0.1rem solid ${props => props.theme.colors.light};
-
-    /* background: ${props => props.theme.colors.light}; */
-    margin: 2rem 0;
-`;

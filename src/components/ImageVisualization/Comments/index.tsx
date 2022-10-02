@@ -5,7 +5,6 @@ import {
   Container,
   Wrapper,
   ContainerComment,
-  Divider,
   InputComment
 } from './style';
 
@@ -16,6 +15,7 @@ import { CommentCard } from '../CommentCard/index';
 import { IProfile } from '../../../types/profile';
 import { IComment } from '../../../types/comment';
 import { IconProfile } from '../../General/IconProfile';
+import { Divider } from '../../General/Divider';
 
 export function Comments() {
   const fetchedComments: IComment[] = [
@@ -89,7 +89,7 @@ export function Comments() {
           </ContainerComment>
         </Comment>
 
-        <Divider />
+        <Divider isColumn={false} />
 
         {fetchedComments.map(value => (
           <CommentCard

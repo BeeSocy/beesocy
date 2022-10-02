@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Button } from "../../Widgets/Buttons/Button";
 
 export const Content = styled(Button)`
-    width: 90%;
+    width: 100%;
     height: 4rem;
 
     display: flex;

@@ -7,7 +7,7 @@ export const Container = styled.a`
     margin: 0.4rem;
 
     border: .2rem solid ${(props) => props.theme.colors.light};
-    border-radius: 2rem;
+    border-radius: 50%;
 
     padding: 0.8rem;
     width: fit-content;
