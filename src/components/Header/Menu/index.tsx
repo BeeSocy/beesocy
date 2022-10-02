@@ -35,6 +35,8 @@ import { UserCard } from '../../Cards/UserCard';
 import { useScroll } from '../../../hooks/useScroll';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
 import { IProfile } from '../../../types/profile';
+import { useModal } from '../../../context/ModalProvider/useModal';
+import { ModalChat } from '../../Chat/ModalChat';
 
 export function Menu() {
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
@@ -77,6 +79,13 @@ export function Menu() {
       vip: false
     }
   ];
+
+const {handleCallModal, handleSetOpen, open:modalOpen} = useModal()
+
+  const handleOpenChat = ()=> {
+  handleSetOpen (!modalOpen)
+    //handleCallModal( <ModalChat/> ,{easyClose:true, overlay:true, title:"Chat", positionX:105, positionY:83 })
+  }
 
   return (
     <Container
@@ -153,14 +162,14 @@ export function Menu() {
         <span>Curtidos</span>
       </LinkButton>
 
-      <LinkButton to="/chat" aria-label="Abrir chat">
+      <Button onClick={()=>{handleOpenChat()}} aria-label="Abrir chat">
         {pathname === '/chat' ? (
           <MdChat style={{ fill: themes.colors.bee }} />
         ) : (
           <MdOutlineChat />
         )}
         <span>Chat</span>
-      </LinkButton>
+      </Button>
 
       <LinkButton to="/jobs" aria-label="Página Trabalhos">
         {pathname === '/jobs' ? (
