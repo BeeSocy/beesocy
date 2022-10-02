@@ -1,35 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Button } from '../../Widgets/Buttons/Button';
 import { breakpoint } from '../../../hooks/useMobile';
-
-export const BodyBar = styled.div`
-  z-index: 10;
-
-  position: fixed;
-
-  right: 4rem;
-  top: 10rem;
-
-  border-radius: 2rem;
-
-  background: ${props => props.theme.colors.primary};
-
-  display: flex;
-  flex-direction: column;
-
-  justify-content: space-between;
-  align-items: center;
-
-  gap: 0.8rem;
-  padding: 0.8rem 0.8rem;
-
-  overflow: hidden;
-  border: 1px solid ${props => props.theme.colors.light};
-
-  button {
-    justify-content: center;
-  }
-`;
+import { Button } from '../../Widgets/Buttons/Button';
 interface IStyledBar {
   $active: boolean;
 }
@@ -66,33 +37,50 @@ export const Bar = styled.div<IStyledBar>`
             transform: rotate(0deg);
           }
         `}
+
+  @media (max-height: 490px) {
+    & section > button:nth-child(2) {
+      display: none;
+    }
+
+    & section > button:nth-child(4) {
+      order: 2;
+    }
+  }
+
+  @media (max-height: 490px) and (min-width: ${breakpoint}) {
+    top: 4rem;
+  }
 `;
 
 export const ContentUnBodyBar = styled.div`
   display: flex;
   align-items: center;
 
+  height: fit-content;
+
   gap: 0.4rem;
   padding: 0.4rem;
-  padding-right: 1.2rem;
+  padding-right: 0.8rem;
 
   border: 1px solid ${props => props.theme.colors.light};
   border-right: none;
   border-radius: 2rem 0 0 2rem;
 
   background: ${props => props.theme.colors.primary};
-
-  height: 35.6rem;
-  /* aqui tem q ser fixo porque sendo automático o label nn consegue detectar esse valor automatico */
-
-  flex: 0;
 `;
 
 export const ButtonBar = styled(Button)`
   width: 100%;
-  height: 100%;
+
+  min-height: 32rem;
+
   border-radius: 2rem;
   padding: 0.4rem;
+
+  @media (max-height: 490px) {
+    min-height: 26rem;
+  }
 `;
 
 export const Actions = styled.section`
@@ -110,8 +98,8 @@ export const LikeBar = styled.div`
 
   position: fixed;
 
-  left: 0;
   top: 12rem;
+  left: 0;
 
   height: 5.6rem;
   padding-right: 0.8rem;
@@ -128,5 +116,9 @@ export const LikeBar = styled.div`
   svg {
     width: 3.2rem;
     height: 3.2rem;
+  }
+
+  @media (min-width: ${breakpoint}) {
+    left: 6.4rem;
   }
 `;
