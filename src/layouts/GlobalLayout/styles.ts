@@ -20,18 +20,18 @@ export const Container = styled.main<StyledContainer>`
         `
       : css`
           padding-top: 6.8rem;
-          padding-left: 6.58rem;
+          padding-left: 6.54rem;
         `}
 
   @media (max-width: ${breakpoint}) {
     padding-bottom: 8rem;
 
     ${props =>
-      props.hasPaddingActive
-        ? css`
+    props.hasPaddingActive
+      ? css`
             padding-inline: 2rem;
           `
-        : css`
+      : css`
             padding-inline: 0;
           `}
   }

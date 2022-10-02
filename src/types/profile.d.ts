@@ -1,3 +1,10 @@
+interface socialNetworks {
+  twitter?: string,
+  github?: string,
+  instagram?: string,
+  soundcloud?: string,
+  facebook?: string,
+}
 /* TODO: ter o @ (@Julio) */
 export interface IProfile {
   identification: string;
@@ -10,4 +17,5 @@ export interface IProfile {
   description?: string;
   vip?: boolean;
   verified?: boolean;
+  socialNetworks?: socialNetworks;
 }
