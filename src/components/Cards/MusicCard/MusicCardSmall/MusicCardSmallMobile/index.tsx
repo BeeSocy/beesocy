@@ -99,9 +99,9 @@ export function MusicCardSmallMobile(props: IMusicCardProps) {
             />
             <MusicMenu
               playlist={props.playlist}
-              liked={props.isLiked}
-              reported={props.isReported}
-              saved={props.isSaved}
+              liked={false}
+              reported={false}
+              saved={false}
               track={{
                 name: props.name,
                 artists: props.artists,
@@ -111,11 +111,13 @@ export function MusicCardSmallMobile(props: IMusicCardProps) {
                 identification: props.identification,
                 imageUrl: props.imageUrl,
                 explicit: props.explicit,
-                isLiked: props.isLiked,
-                isReported: props.isReported,
-                isSaved: props.isSaved,
+                usersHasLiked: props.usersHasLiked,
+                usersHasReported: props.usersHasReported,
+                usersHasSaved: props.usersHasSaved,
                 playlist: props.playlist,
-                categoriesId: []
+                categoriesId: props.categoriesId,
+                comments: props.comments,
+                createdAt: props.createdAt
               }}
             />
           </Sheet.Content>

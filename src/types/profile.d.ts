@@ -5,10 +5,11 @@ interface socialNetworks {
   soundcloud?: string,
   facebook?: string,
 }
-/* TODO: ter o @ (@Julio) */
+
 export interface IProfile {
   identification: string;
   name: string;
+  nickname: string;
   follows: IProfile[];
   followers: IProfile[];
   color: string;

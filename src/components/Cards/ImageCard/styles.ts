@@ -39,6 +39,26 @@ export const Container = styled.div<StyledImageCard>`
   ${scaleUpAnimation}
 `;
 
+export const Content = styled.div`
+  display: flex;
+
+  position: relative;
+
+  & > svg {
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+
+    height: 4.2rem;
+
+    padding: 0.8rem;
+
+    border-radius: 50%;
+
+    background: ${props => props.theme.colors.light}80;
+  }
+`;
+
 export const Toolbar = styled.section`
   display: flex;
 
@@ -54,6 +74,8 @@ export const CenterElementContainer = styled.div`
   align-items: center;
 
   position: absolute;
+
+  z-index: 1;
 
   width: 100%;
   height: 100%;
