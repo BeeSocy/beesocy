@@ -61,6 +61,7 @@ export const Profile = styled.div`
 export const UserName = styled(LinkTitle)`
   font-size: 2rem;
   font-weight: bold;
+  width: fit-content;
 `;
 
 export const NickName = styled(LinkTitle)`
