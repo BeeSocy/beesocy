@@ -64,8 +64,6 @@ export const StyledDialogContent = styled(
 
   border-radius: 0.8rem;
 
-  padding: 1.2rem;
-
   position: fixed;
 
   z-index: 200;
@@ -123,18 +121,34 @@ export const StyledDialogContent = styled(
     `};
 `;
 
-export const StyledDialogHeader = styled.section`
+interface IStyledDialogHeaderProps {
+  hasTitle?: boolean;
+}
+
+export const StyledDialogHeader = styled.section<IStyledDialogHeaderProps>`
   display: flex;
 
   align-items: center;
   justify-content: space-between;
 
+  position: relative;
+
   gap: 0.8rem;
 
-  border-bottom: 1px solid ${props => props.theme.colors.light};
-
-  padding-bottom: 0.8rem;
-  margin-bottom: 0.8rem;
+  ${props =>
+    props.hasTitle
+      ? css`
+          border-bottom: 1px solid ${props => props.theme.colors.light};
+          padding-bottom: 0.8rem;
+          margin-bottom: 0.8rem;
+        `
+      : css`
+          & > button[data-dialog-close='true'] {
+            top: 0.8rem;
+            right: 0.8rem;
+            position: absolute;
+          }
+        `}
 `;
 
 export const StyledDialogClose = styled(DialogPrimitive.Close)`

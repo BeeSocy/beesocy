@@ -14,6 +14,8 @@ import { Title } from '../../Title';
 export function ModalDesktop() {
   const { open, handleSetOpen, content, options } = useModal();
 
+  const hasTitle = options.title != null && options.title != '';
+
   return (
     <DialogPrimitive.Root
       open={open}
@@ -29,10 +31,10 @@ export function ModalDesktop() {
             !options.easyClose && event.preventDefault();
           }}
         >
-          <StyledDialogHeader>
-            <Title size="medium">{options.title}</Title>
+          <StyledDialogHeader hasTitle={hasTitle}>
+            {hasTitle && <Title size="medium">{options.title}</Title>}
             {options.easyClose && (
-              <StyledDialogClose>
+              <StyledDialogClose data-dialog-close="true">
                 <MdClose size={18} />
               </StyledDialogClose>
             )}

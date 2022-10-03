@@ -80,12 +80,16 @@ export function Menu() {
     }
   ];
 
-const {handleCallModal, handleSetOpen, open:modalOpen} = useModal()
+  const { handleCallModal, handleSetOpen, open: modalOpen } = useModal();
 
-  const handleOpenChat = ()=> {
-  handleSetOpen (!modalOpen)
-    //handleCallModal( <ModalChat/> ,{easyClose:true, overlay:true, title:"Chat", positionX:105, positionY:83 })
-  }
+  const handleOpenChat = () => {
+    handleCallModal(<ModalChat />, {
+      easyClose: true,
+      overlay: true,
+      positionX: 105,
+      positionY: 83
+    });
+  };
 
   return (
     <Container
@@ -162,7 +166,12 @@ const {handleCallModal, handleSetOpen, open:modalOpen} = useModal()
         <span>Curtidos</span>
       </LinkButton>
 
-      <Button onClick={()=>{handleOpenChat()}} aria-label="Abrir chat">
+      <Button
+        onClick={() => {
+          handleOpenChat();
+        }}
+        aria-label="Abrir chat"
+      >
         {pathname === '/chat' ? (
           <MdChat style={{ fill: themes.colors.bee }} />
         ) : (
