@@ -65,8 +65,87 @@ export function ImageVisualization() {
           ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam numquam quibusdam nesciunt atque odit excepturi fugiat ad at voluptates dignissimos incidunt possimus iste debitis, rerum ex natus necessitatibus exercitationem quisquam? '
       } as IProfile,
 
-      commentedAt: new Date(2022, 9, 3, 16, 0, 0),
-      commentText: 'Legal!'
+      commentedAt: new Date(2022, 9, 2, 16, 0, 0),
+      commentText:
+        ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi soluta quas quos ipsa? Tenetur labore illo quia delectus. Quod facere cum hic magni dolorem blanditiis fuga eius nisi qui. Rerum.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dolor harum placeat dolores velit nisi ad voluptate perspiciatis aliquam doloremque! Aut quos asperiores cumque voluptate saepe in sapiente labore et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt magnam in, dicta minus itaque nulla necessitatibus eum minima consectetur placeat ex numquam corporis esse eos inventore iusto eligendi vero culpa! '
+    },
+    {
+      /* usar a tipagem de usuário */
+      identification: 'e6737b-4d13-4725-a000-18d04e3619d9',
+      user: {
+        identification: '3d2e6d35-590c-48fc-b78b-bf7ff09ce9c9',
+        name: 'Julio',
+        nickname: 'juliao43',
+        imageUrl:
+          'https://images.unsplash.com/photo-1664207251296-569bacae6f04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+        follows: [],
+        followers: [],
+        color: '',
+        description:
+          ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam numquam quibusdam nesciunt atque odit excepturi fugiat ad at voluptates dignissimos incidunt possimus iste debitis, rerum ex natus necessitatibus exercitationem quisquam? '
+      } as IProfile,
+
+      commentedAt: new Date(2022, 9, 1, 14, 0, 0),
+      commentText: 'Fala galera'
+    },
+    {
+      /* usar a tipagem de usuário */
+      identification: '74832ca-1443-440a-a82d-558774b452d4',
+      user: {
+        identification: 'b3977e8c-4ebb-4570-a93b-c048baa74e59',
+        name: 'Marcelasso',
+        nickname: 'marcelocria254346',
+        imageUrl:
+          'https://images.unsplash.com/photo-1664498016501-ff1dcd0bb463?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80',
+        follows: [],
+        followers: [],
+        color: '',
+        description:
+          ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam numquam quibusdam nesciunt atque odit excepturi fugiat ad at voluptates dignissimos incidunt possimus iste debitis, rerum ex natus necessitatibus exercitationem quisquam? '
+      } as IProfile,
+
+      commentedAt: new Date(2022, 9, 2, 16, 0, 0),
+      commentText:
+        ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi soluta quas quos ipsa? Tenetur labore illo quia delectus. Quod facere cum hic magni dolorem blanditiis fuga eius nisi qui. Rerum.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dolor harum placeat dolores velit nisi ad voluptate perspiciatis aliquam doloremque! Aut quos asperiores cumque voluptate saepe in sapiente labore et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt magnam in, dicta minus itaque nulla necessitatibus eum minima consectetur placeat ex numquam corporis esse eos inventore iusto eligendi vero culpa! '
+    },
+    {
+      /* usar a tipagem de usuário */
+      identification: 'e673d9b-4d13-4725-a000-18d04e3619d9',
+      user: {
+        identification: '3d2e6d35-590c-48fc-b78b-bf7ff09ce9c9',
+        name: 'Julio',
+        nickname: 'juliao43',
+        imageUrl:
+          'https://images.unsplash.com/photo-1664207251296-569bacae6f04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+        follows: [],
+        followers: [],
+        color: '',
+        description:
+          ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam numquam quibusdam nesciunt atque odit excepturi fugiat ad at voluptates dignissimos incidunt possimus iste debitis, rerum ex natus necessitatibus exercitationem quisquam? '
+      } as IProfile,
+
+      commentedAt: new Date(2022, 9, 1, 14, 0, 0),
+      commentText: 'Fala galera'
+    },
+    {
+      /* usar a tipagem de usuário */
+      identification: '74832c4a-43-440a-a82d-558774b452d4',
+      user: {
+        identification: 'b3977e8c-4ebb-4570-a93b-c048baa74e59',
+        name: 'Marcelasso',
+        nickname: 'marcelocria254346',
+        imageUrl:
+          'https://images.unsplash.com/photo-1664498016501-ff1dcd0bb463?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80',
+        follows: [],
+        followers: [],
+        color: '',
+        description:
+          ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam numquam quibusdam nesciunt atque odit excepturi fugiat ad at voluptates dignissimos incidunt possimus iste debitis, rerum ex natus necessitatibus exercitationem quisquam? '
+      } as IProfile,
+
+      commentedAt: new Date(2022, 9, 2, 16, 0, 0),
+      commentText:
+        ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi soluta quas quos ipsa? Tenetur labore illo quia delectus. Quod facere cum hic magni dolorem blanditiis fuga eius nisi qui. Rerum.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dolor harum placeat dolores velit nisi ad voluptate perspiciatis aliquam doloremque! Aut quos asperiores cumque voluptate saepe in sapiente labore et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt magnam in, dicta minus itaque nulla necessitatibus eum minima consectetur placeat ex numquam corporis esse eos inventore iusto eligendi vero culpa! '
     }
   ];
 

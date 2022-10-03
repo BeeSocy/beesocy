@@ -8,6 +8,8 @@ export const Container = styled.div`
 
   gap: 0.8rem;
 
+  padding: 0.4rem;
+
   button {
     border-radius: 1.2rem;
   }
