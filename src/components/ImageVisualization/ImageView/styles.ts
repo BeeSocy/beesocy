@@ -7,6 +7,11 @@ export const Container = styled.div`
   justify-content: center;
   margin-bottom: 2rem;
 
+  a {
+    display: flex;
+    justify-content: center;
+  }
+
   img {
     width: 100%;
     height: 100%;
@@ -18,6 +23,12 @@ export const Container = styled.div`
 
     &:hover {
       cursor: zoom-in;
+    }
+
+    @media (max-width: ${breakpoint}) {
+      width: 200%;
+
+      max-width: 80vw;
     }
   }
 `;

@@ -23,6 +23,8 @@ export const Container = styled.div<StyledImageCard>`
     width: 100%;
     height: 40rem;
 
+    object-fit: cover;
+
     &:hover {
       cursor: pointer;
     }

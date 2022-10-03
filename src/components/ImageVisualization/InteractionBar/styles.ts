@@ -13,10 +13,14 @@ export const Bar = styled.div<IStyledBar>`
 
   position: fixed;
 
+  top: 50%;
   right: 0;
-  top: 0;
 
-  height: 100vh;
+  transform: translate(0%, -50%);
+
+  border: 0.1rem solid ${props => props.theme.colors.light};
+
+  border-radius: 2rem 0 0 2rem;
 
   & > div > button > svg,
   & {
@@ -26,13 +30,13 @@ export const Bar = styled.div<IStyledBar>`
   ${props =>
     props.$active
       ? css`
-          transform: translateX(0);
+          transform: translate(0, -50%);
           & > div > button > svg {
             transform: rotate(180deg);
           }
         `
       : css`
-          transform: translateX(6rem);
+          transform: translate(6rem, -50%);
           & > div > button > svg {
             transform: rotate(0deg);
           }
@@ -47,10 +51,6 @@ export const Bar = styled.div<IStyledBar>`
       order: 2;
     }
   }
-
-  @media (max-height: 490px) and (min-width: ${breakpoint}) {
-    top: 4rem;
-  }
 `;
 
 export const ContentUnBodyBar = styled.div`
@@ -63,9 +63,8 @@ export const ContentUnBodyBar = styled.div`
   padding: 0.4rem;
   padding-right: 0.8rem;
 
-  border: 1px solid ${props => props.theme.colors.light};
   border-right: none;
-  border-radius: 2rem 0 0 2rem;
+  border-radius: inherit;
 
   background: ${props => props.theme.colors.primary};
 `;
@@ -91,6 +90,11 @@ export const Actions = styled.section`
   justify-content: space-between;
 
   gap: 1.2rem;
+
+  & div {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
 `;
 
 export const LikeBar = styled.div`
@@ -98,13 +102,12 @@ export const LikeBar = styled.div`
 
   position: fixed;
 
-  top: 12rem;
-  left: 0;
+  bottom: 0;
+  right: 8rem;
 
-  height: 5.6rem;
-  padding-right: 0.8rem;
+  padding: 0.4rem;
 
-  border-radius: 0 2rem 2rem 0;
+  border-radius: 2rem 2rem 0 0;
   border: 1px solid ${props => props.theme.colors.light};
   border-right: none;
 
@@ -118,7 +121,7 @@ export const LikeBar = styled.div`
     height: 3.2rem;
   }
 
-  @media (min-width: ${breakpoint}) {
-    left: 6.4rem;
+  @media (max-width: ${breakpoint}) {
+    bottom: 6.8rem;
   }
 `;
