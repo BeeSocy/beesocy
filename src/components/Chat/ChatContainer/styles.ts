@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const ContChatStyled = styled.section`
 
 display: flex;
-align-items: center;
 
-height: 60rem;
+height: 55rem;
 width: 65rem;
 `
