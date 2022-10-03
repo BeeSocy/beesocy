@@ -8,10 +8,13 @@ import { Container } from '../../components/Profile/Container';
 import { ContentSocialProfile } from '../../components/Profile/ContentSocialProfile';
 import { useLayout } from '../../context/LayoutProvider/useLayout';
 import { useMobile } from '../../hooks/useMobile';
+import { IImagePost } from '../../types/imagePost';
+import { IMusicPost } from '../../types/musicPost';
 import { IProfile } from '../../types/profile';
 import { Content, ContentProfile, MarginLeft } from './styles';
 
 export const user: IProfile = {
+  nickname: 'pikanagaita',
   name: 'Pica na Gaita',
   follows: [],
   followers: [],
@@ -31,6 +34,40 @@ export const user: IProfile = {
     github: 'https://github.com/santosfabin',
     twitter: 'https://twitter.com'
   }
+};
+
+export const music: IMusicPost = {
+  artists: [],
+  categoriesId: [],
+  comments: [],
+  createdAt: new Date(),
+  description: '',
+  duration: 5000,
+  fileUrl:
+    'https://64.media.tumblr.com/6ae2a67ce510029caf6219c6a708f501/60b41a809f52a0b4-8c/s400x600/7e89be3c89e7cd3fdf18e7f6ed9b4639ace24cde.pnj',
+  identification:
+    'https://64.media.tumblr.com/6ae2a67ce510029caf6219c6a708f501/60b41a809f52a0b4-8c/s400x600/7e89be3c89e7cd3fdf18e7f6ed9b4639ace24cde.pnj',
+  imageUrl:
+    'https://64.media.tumblr.com/6ae2a67ce510029caf6219c6a708f501/60b41a809f52a0b4-8c/s400x600/7e89be3c89e7cd3fdf18e7f6ed9b4639ace24cde.pnj',
+  name: 'name',
+  usersHasLiked: [],
+  usersHasReported: [],
+  usersHasSaved: [],
+  explicit: true,
+  playlist: true
+};
+
+export const image: IImagePost = {
+  categoriesId: [],
+  comments: [],
+  createdAt: new Date(),
+  description: '',
+  identification: '',
+  img: [],
+  name: '',
+  usersHasLiked: [],
+  usersHasReported: [],
+  usersHasSaved: []
 };
 
 export function Profile() {
