@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ChatCardStyled = styled.div `
 display: flex;
 align-items: center;
+justify-content: center;
 height: 7.5rem;
 width: 100%;
 background: ${props=>props.theme.colors.primary};

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ChatContainer } from '../ChatContainer';
 import { BoxCards } from '../BoxCards';
-import { ChatCards } from '../ChatCards';
-import { ChatSection } from '../ChatHeader/ChatSection';
+import { ChatCards } from '../ChatCards/CardInterface';
+import { ChatSection } from '../ChatHeader/ChatSectionGeneral';
 import { ChatHeader } from '../ChatBox/ChatHeader';
 export const ChatGeneral = () => {
   return (
