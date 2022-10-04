@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { user } from "../../../../../pages/Profile";
 
 export const CardInfStyled = styled.section`
 display: flex;
-flex-direction: row;
 align-items: center;
 
 gap: 0.8rem;
@@ -19,10 +19,25 @@ display: flex;
 align-items: center;
 justify-content: center;
 
-height: 4.5rem;
-width: 4.5rem;
+height: 4.6rem;
+width: 4.6rem;
 z-index: 1;
 
 border-radius: 100%;
-border: 0.1rem solid green;
+border: 0.4rem solid ${user.color};
+`
+
+export const LastMesege = styled.div`
+display: flex;
+flex-direction: column;
+`
+
+export const AlignSection= styled.section`
+display: flex;
+height: 80%;
+
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+
 `
