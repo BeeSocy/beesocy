@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import { ReactSVG } from 'react-svg';
-import { Container, CarouselContent, Carousel, ArrowButton } from './styles';
+import { Container } from './styles';
 
-import DarkArrow from '../../../assets/icons/dark_arrow.svg';
-import LightArrow from '../../../assets/icons/light_arrow.svg';
-
-import { Button } from '../../Widgets/Buttons/Button';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
+import { useMobile } from '../../../hooks/useMobile';
+import { ImageViewDesktop } from './Desktop';
+import { ImageViewMobile } from './Mobile';
 
-interface IImageViewProps {
+export interface IImageViewProps {
   name: string;
   img: string[];
 }
@@ -16,39 +14,38 @@ interface IImageViewProps {
 export function ImageView({ img, name }: IImageViewProps) {
   const [currentImage, setCurrentImage] = useState<number>(0);
 
-  const { title } = useTheme();
+  const { isMobile } = useMobile();
 
-  function handleChangeCarouselImage(direction: 'left' | 'right'): void {}
+  function handleChangeCarouselImage(direction: 'left' | 'right'): void {
+    if (direction === 'left') {
+      if (currentImage != img.length - 1) {
+        setCurrentImage(state => state + 1);
+      }
+    }
+
+    if (direction === 'right') {
+      if (currentImage != 0) {
+        setCurrentImage(state => state - 1);
+      }
+    }
+  }
 
   return (
     <Container>
-      {img.length > 1 ? (
-        <Carousel>
-          <ArrowButton full={false} rounded={true}>
-            <ReactSVG src={title == 'dark' ? DarkArrow : LightArrow} />
-          </ArrowButton>
-
-          <CarouselContent>
-            <a href={img[currentImage]} target={'_blank'}>
-              <img
-                src={img[currentImage]}
-                alt={`Album ${name} em grande escala`}
-              />
-            </a>
-          </CarouselContent>
-
-          <ArrowButton full={false} rounded={true}>
-            <ReactSVG src={title == 'dark' ? DarkArrow : LightArrow} />
-          </ArrowButton>
-        </Carousel>
+      {isMobile ? (
+        <ImageViewMobile
+          img={img}
+          handleChangeCarouselImage={handleChangeCarouselImage}
+          currentImage={currentImage}
+          name={name}
+        />
       ) : (
-        <a href={img[0]} target={'_blank'}>
-          <img
-            src={img[0]}
-            alt={`Imagem ${name} em grande escala`}
-            loading="lazy"
-          />
-        </a>
+        <ImageViewDesktop
+          img={img}
+          handleChangeCarouselImage={handleChangeCarouselImage}
+          currentImage={currentImage}
+          name={name}
+        />
       )}
     </Container>
   );

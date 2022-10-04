@@ -103,7 +103,7 @@ export const LikeBar = styled.div`
   position: fixed;
 
   bottom: 0;
-  right: 8rem;
+  right: 4.8rem;
 
   padding: 0.4rem;
 
