@@ -18,7 +18,7 @@ interface IDescriptionProps {
 export function Description({ post }: IDescriptionProps) {
   const createdAtDateFormatted = format(
     post.createdAt,
-    "d' de 'MMMM' de 'yyyy'",
+    "dd' de 'MMMM' de 'yyyy'",
     {
       locale: ptBR
     }

@@ -20,6 +20,8 @@ export const Comment = styled.div`
   justify-content: space-between;
 
   gap: 2rem;
+
+  height: fit-content;
 `;
 export const ContainerComment = styled.label`
   border-radius: 1.2rem;

@@ -1,12 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const BottomContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap-reverse;
+  display: flex;
+  flex-wrap: wrap-reverse;
 
-    justify-content: center;
-    align-items: start;
+  justify-content: center;
+  align-items: start;
 
-    gap: 4rem;
-
+  gap: 4rem;
 `;

@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { IconContext } from 'react-icons';
 
@@ -14,11 +14,19 @@ import { Alert } from './components/General/Alert';
 import { AlertProvider } from './context/AlertProvider';
 import { ModalProvider } from './context/ModalProvider';
 import { Modal } from './components/General/Modal';
+import { useEffect } from 'react';
+import { useLayout } from './context/LayoutProvider/useLayout';
 
 export function App() {
   const defaultTheme = dark;
 
   const theme = useTheme();
+
+  const { handleChangePaddingActive } = useLayout();
+
+  useEffect(() => {
+    handleChangePaddingActive(true);
+  }, []);
 
   return (
     <StyledThemeProvider theme={theme ?? defaultTheme}>
