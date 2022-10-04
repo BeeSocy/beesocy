@@ -5,7 +5,6 @@ import {
   Container,
   Wrapper,
   ContainerComment,
-  Divider,
   InputComment
 } from './style';
 
@@ -16,10 +15,14 @@ import { CommentCard } from '../CommentCard/index';
 import { IProfile } from '../../../types/profile';
 import { IComment } from '../../../types/comment';
 import { IconProfile } from '../../General/IconProfile';
+
 interface ICommentsProps {
   loggedUser: IProfile;
   comments: IComment[];
 }
+
+import { Divider } from '../../General/Divider';
+
 
 export function Comments({ loggedUser, comments }: ICommentsProps) {
   return (
@@ -42,7 +45,7 @@ export function Comments({ loggedUser, comments }: ICommentsProps) {
           </ContainerComment>
         </Comment>
 
-        <Divider />
+        <Divider isColumn={false} />
 
         {comments.map(value => (
           <CommentCard

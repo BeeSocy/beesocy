@@ -6,21 +6,24 @@ import { BottomContainer } from './styles';
 import { Comments } from '../../components/ImageVisualization/Comments';
 import { IProfile } from '../../types/profile';
 import { IComment } from '../../types/comment';
+import { ImageView } from '../../components/ImageVisualization/ImageView';
 
 export const fetchedPost: IImagePost = {
-  identification: '8c44a7f8-83df-4cdc-9f9c-f78cc3175ba8',
-  name: 'Gorilasso Roxo',
-  categoriesId: [],
+  identification: 'fb248b1a-47fc-43ba-8da1-1c2a3d60b69d',
+  name: 'Revolucionando',
   description:
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint corporis odit exercitationem. Ea, mollitia laborum? Mollitia sunt odit numquam nihil, incidunt nostrum. In repellat esse beatae illum eaque, ea eos.',
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi reiciendis corporis voluptatum libero quae iusto perspiciatis maiores iste necessitatibus, dolores, commodi sint, nostrum soluta aspernatur facilis nemo architecto veniam exercitationem!',
   img: [
-    'https://images.unsplash.com/photo-1660548312984-8f238a3396d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2MTYzMTQxOQ&ixlib=rb-1.2.1&q=80&w=1080'
+    'https://wallpaperaccess.com/full/343619.jpg',
+    'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1631d294-6e9b-4201-a5a8-2c1aa40baed7/dfc7cmz-5b8db738-57cb-4a39-9edc-1d555250ce85.jpg/v1/fit/w_414,h_311,q_70,strp/commission___57_by_lulusama_dfc7cmz-414w.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTYwIiwicGF0aCI6IlwvZlwvMTYzMWQyOTQtNmU5Yi00MjAxLWE1YTgtMmMxYWE0MGJhZWQ3XC9kZmM3Y216LTViOGRiNzM4LTU3Y2ItNGEzOS05ZWRjLTFkNTU1MjUwY2U4NS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.sJcN-we0asGOIcGUXH_anCytwyZTsJgQRnIyOSz1K20',
+    'https://images.unsplash.com/photo-1547333590-47fae5f58d21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRyYXdpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
   ],
   usersHasLiked: [],
-  usersHasReported: [],
   usersHasSaved: [],
+  usersHasReported: [],
+  categoriesId: [],
   comments: [],
-  createdAt: new Date(2022, 9, 13, 13, 32, 0)
+  createdAt: new Date(2022, 10, 1, 15, 30, 0)
 };
 
 export function ImageVisualization() {
@@ -82,7 +85,7 @@ export function ImageVisualization() {
 
   return (
     <>
-      {/*       <Carousel /> */}
+      <ImageView img={fetchedPost.img} name={fetchedPost.name} />
       <InteractionBar />
 
       <BottomContainer>

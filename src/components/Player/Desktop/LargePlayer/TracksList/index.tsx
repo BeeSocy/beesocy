@@ -106,9 +106,11 @@ export function TracksList() {
             explicit={track.explicit}
             large={false}
             playlist={track.playlist}
-            isLiked={track.isLiked}
-            isReported={track.isReported}
-            isSaved={track.isSaved}
+            comments={track.comments}
+            createdAt={track.createdAt}
+            usersHasLiked={track.usersHasLiked}
+            usersHasReported={track.usersHasReported}
+            usersHasSaved={track.usersHasSaved}
             categoriesId={track.categoriesId}
           />
         </Item>
