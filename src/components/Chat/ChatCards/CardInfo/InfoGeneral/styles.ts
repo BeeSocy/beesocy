@@ -35,9 +35,14 @@ flex-direction: column;
 export const AlignSection= styled.section`
 display: flex;
 height: 80%;
-
+margin-left: 0.1rem;
 flex-direction: column;
 align-items: center;
 justify-content: space-between;
+`
 
+export const SectionLineMessage = styled.section`
+display: flex;
+height: auto;
+width: auto;
 `
