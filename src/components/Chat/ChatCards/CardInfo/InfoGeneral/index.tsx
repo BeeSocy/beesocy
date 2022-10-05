@@ -23,9 +23,10 @@ export const FakeBack: ICardInfoProps = {
 export const CardInfo = () => {
   return (
     <CardInfStyled>
-      <CardPhoto> <PhotoProfile/>  </CardPhoto>
-        <NickName/>
 
+      <CardPhoto> <PhotoProfile/> </CardPhoto>
+        <NickName/>
+        
     </CardInfStyled>
   );
 };
