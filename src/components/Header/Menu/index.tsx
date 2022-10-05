@@ -84,7 +84,6 @@ export function Menu() {
 
   const handleOpenChat = () => {
     handleCallModal(<ModalChat />, {
-      easyClose: true,
       overlay: true,
       positionX: 105,
       positionY: 83

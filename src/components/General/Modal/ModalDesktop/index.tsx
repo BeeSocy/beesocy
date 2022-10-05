@@ -27,9 +27,6 @@ export function ModalDesktop() {
           $xPos={options.positionX}
           $yPos={options.positionY}
           $center={options.center}
-          onInteractOutside={event => {
-            !options.easyClose && event.preventDefault();
-          }}
         >
           <StyledDialogHeader hasTitle={hasTitle}>
             {hasTitle && <Title size="medium">{options.title}</Title>}

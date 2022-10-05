@@ -23,20 +23,13 @@ export const FakeBack: ICardInfoProps = {
 export const CardInfo = () => {
   return (
     <CardInfStyled>
-<<<<<<< HEAD
-
-      <CardPhoto> <PhotoProfile/> </CardPhoto>
-        <NickName/>
-        
-=======
-      <CardPhoto> <PhotoProfile/>  </CardPhoto>
+      <CardPhoto>
+        <PhotoProfile />
+      </CardPhoto>
       <AlignSection>
-      
-        <NickName/> 
-        <LastMesege> {FakeBack.message} </LastMesege> 
-      
+        <NickName />
+        <LastMesege> {FakeBack.message} </LastMesege>
       </AlignSection>
->>>>>>> f03739263da2b8d98ab90677f962130a19a9d512
     </CardInfStyled>
   );
 };
