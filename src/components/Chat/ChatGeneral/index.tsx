@@ -13,6 +13,8 @@ export const ChatGeneral = () => {
         <ChatCards />
         <ChatCards />
         <ChatCards />
+        <ChatCards />
+        <ChatCards />
       </BoxCards>
       
         <ChatSection> 

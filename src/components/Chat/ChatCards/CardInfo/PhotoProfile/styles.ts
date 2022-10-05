@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PhotoProfStyled = styled.img`
-height: 3rem;
-width: 3rem;
+height: 4.2rem;
+width: 4.2rem;
 border-radius: 100%;
 `

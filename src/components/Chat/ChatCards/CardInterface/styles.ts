@@ -6,9 +6,10 @@ align-items: center;
 justify-content: center;
 height: 7.5rem;
 width: 100%;
+flex: none;
 background: ${props=>props.theme.colors.primary};
 margin-top: 0.1rem;
-border-radius: 1.6rem;
+border-radius: 0.5rem;
 
 transition: 0.2s;
 

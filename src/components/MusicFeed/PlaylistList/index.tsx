@@ -28,9 +28,11 @@ export function PlaylistList({ track }: IPlaylistListProps) {
       description: '',
       musics: [{}, {}, {}],
       name: '!É O NINJA',
-      isLiked: true,
-      isReported: false,
-      isSaved: false
+      usersHasLiked: [],
+      usersHasReported: [],
+      usersHasSaved: [],
+      comments: [],
+      createdAt: new Date(2022, 10, 1, 20, 0, 0)
     }
   ];
 
@@ -56,6 +58,11 @@ export function PlaylistList({ track }: IPlaylistListProps) {
             description={playlist.description}
             categoriesId={playlist.categoriesId}
             onClickAction={() => handleClickAction(playlist.name)}
+            comments={playlist.comments}
+            createdAt={playlist.createdAt}
+            usersHasLiked={playlist.usersHasLiked}
+            usersHasReported={playlist.usersHasReported}
+            usersHasSaved={playlist.usersHasSaved}
           />
         ))
       ) : (

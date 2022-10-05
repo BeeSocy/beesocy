@@ -18,9 +18,19 @@ export const LinkTitle = styled(Link)<IStyledLinkTitle>`
     }
   }};
 
-  text-decoration: none;
+  &::after {
+    display: block;
+    content: '';
+    width: 0;
+    border-bottom: 0.2rem solid ${props => props.theme.colors.text};
+    border-radius: 0.8rem;
+
+    transition: all 0.3s;
+  }
 
   &:hover {
-    text-decoration: underline;
+    &::after {
+      width: 80%;
+    }
   }
 `;
