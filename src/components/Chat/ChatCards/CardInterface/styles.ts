@@ -4,7 +4,7 @@ export const ChatCardStyled = styled.div `
 display: flex;
 align-items: center;
 justify-content: center;
-height: 7.5rem;
+height: 7.7rem;
 width: 100%;
 flex: none;
 background: ${props=>props.theme.colors.primary};

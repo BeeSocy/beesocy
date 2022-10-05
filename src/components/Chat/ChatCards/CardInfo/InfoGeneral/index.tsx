@@ -1,4 +1,4 @@
-import { AlignSection, CardInfStyled, LastMesege } from './styles';
+import { AlignSection, CardInfStyled, LastMesege, SectionLineMessage } from './styles';
 import { CardPhoto } from './styles';
 import { PhotoProfile } from '../PhotoProfile';
 import { NickName } from '../CardNickname';
@@ -23,20 +23,21 @@ export const FakeBack: ICardInfoProps = {
 export const CardInfo = () => {
   return (
     <CardInfStyled>
-<<<<<<< HEAD
-
-      <CardPhoto> <PhotoProfile/> </CardPhoto>
-        <NickName/>
         
-=======
       <CardPhoto> <PhotoProfile/>  </CardPhoto>
+      
       <AlignSection>
       
         <NickName/> 
-        <LastMesege> {FakeBack.message} </LastMesege> 
+        
+        <SectionLineMessage> 
+          <LastMesege> 
+            {FakeBack.message}
+          </LastMesege>  
+        </SectionLineMessage>
       
       </AlignSection>
->>>>>>> f03739263da2b8d98ab90677f962130a19a9d512
+
     </CardInfStyled>
   );
 };

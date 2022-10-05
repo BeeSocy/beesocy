@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const NicknameStyled = styled.span`
+export const NickStyled = styled.span`
 color: ${props=>props.theme.colors.text};
 z-index: 1;
 `
 
-export const SectionNickname = styled.section`
+export const SectionNick = styled.section`
 display: flex;
 height: auto;
 width: auto;

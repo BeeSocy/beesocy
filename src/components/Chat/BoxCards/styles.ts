@@ -10,6 +10,6 @@ overflow-y: auto;
 width: 24.5rem;
 height: 100%;
 gap: 0.1rem;
-border-right: 0.1rem solid #343434;
+border-right: 0.1rem solid ${props=>props.theme.colors.light};
 `
 
