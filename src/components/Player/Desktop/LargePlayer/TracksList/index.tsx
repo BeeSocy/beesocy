@@ -111,7 +111,7 @@ export function TracksList() {
             usersHasLiked={track.usersHasLiked}
             usersHasReported={track.usersHasReported}
             usersHasSaved={track.usersHasSaved}
-            categoriesId={track.categoriesId}
+            categories={track.categories}
           />
         </Item>
       ))}

@@ -1,3 +1,4 @@
+import { ICategory } from './category';
 import { IComment } from './comment';
 import { IProfile } from './profile';
 
@@ -8,6 +9,6 @@ export interface IPost {
   usersHasSaved: IProfile[];
   usersHasReported: IProfile[];
   comments: IComment[];
-  categoriesId: string[];
+  categories: ICategory[];
   createdAt: Date;
 }

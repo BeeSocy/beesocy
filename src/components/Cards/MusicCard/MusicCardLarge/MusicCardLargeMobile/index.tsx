@@ -107,7 +107,7 @@ export function MusicCardLargeMobile(props: IMusicCardProps) {
                 usersHasReported: props.usersHasReported,
                 usersHasSaved: props.usersHasSaved,
                 playlist: props.playlist,
-                categoriesId: props.categoriesId,
+                categories: props.categories,
                 comments: props.comments,
                 createdAt: props.createdAt
               }}

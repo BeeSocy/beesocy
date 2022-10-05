@@ -12,7 +12,7 @@ export function Details({ post }: IDetailsProps) {
   return (
     <Container>
       <Description post={post} />
-      <Categories post={post} />
+      {post.categories.length > 0 && <Categories post={post} />}
     </Container>
   );
 }

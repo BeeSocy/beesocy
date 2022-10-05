@@ -25,13 +25,9 @@ export function ImageViewMobile({
     <>
       {img.length > 1 ? (
         <MobileCarousel>
-          <LeftSide
-            onTouchStart={() => handleChangeCarouselImage('right')}
-            onClick={() => handleChangeCarouselImage('right')}
-          />
+          <LeftSide onClick={() => handleChangeCarouselImage('right')} />
           <img src={img[currentImage]} alt={`Album ${name} em grande escala`} />
           <RightSide
-            onTouchStart={() => handleChangeCarouselImage('left')}
             onClick={() => {
               handleChangeCarouselImage('left');
               setTipIsShowing(false);

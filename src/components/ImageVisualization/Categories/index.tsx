@@ -1,11 +1,20 @@
 import { IImagePost } from '../../../types/imagePost';
-import { CategoryTab } from '../../General/CategoryTab';
-import { Container } from './styles';
+import { Container, StyledCategoryTab } from './styles';
 
 interface ICategoriesProps {
   post: IImagePost;
 }
 
 export function Categories({ post }: ICategoriesProps) {
-  return <Container></Container>;
+  return (
+    <Container>
+      {post.categories.map(category => (
+        <StyledCategoryTab
+          key={category.identification}
+          img={category.img}
+          title={category.name}
+        />
+      ))}
+    </Container>
+  );
 }

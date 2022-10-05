@@ -47,7 +47,7 @@ export const TapTip = styled.div`
   width: 100%;
   height: 90%;
 
-  background: ${props => `${props.theme.colors.light}99`};
+  background: ${props => `${props.theme.colors.light}60`};
 
   margin-right: 2.4rem;
   padding: 1.2rem;

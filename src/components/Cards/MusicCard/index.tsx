@@ -30,7 +30,7 @@ export function MusicCard({
   usersHasReported,
   usersHasSaved,
   explicit,
-  categoriesId,
+  categories,
   large,
   comments,
   createdAt,
@@ -59,7 +59,7 @@ export function MusicCard({
       usersHasLiked: usersHasLiked,
       usersHasReported: usersHasReported,
       usersHasSaved: usersHasSaved,
-      categoriesId: categoriesId,
+      categories: categories,
       createdAt: createdAt,
       comments: comments
     };
@@ -101,7 +101,7 @@ export function MusicCard({
           usersHasLiked={usersHasLiked}
           usersHasReported={usersHasReported}
           usersHasSaved={usersHasSaved}
-          categoriesId={categoriesId}
+          categories={categories}
           clickAction={handleClickAction}
           comments={comments}
           createdAt={createdAt}
@@ -125,7 +125,7 @@ export function MusicCard({
           usersHasLiked={usersHasLiked}
           usersHasReported={usersHasReported}
           usersHasSaved={usersHasSaved}
-          categoriesId={categoriesId}
+          categories={categories}
           clickAction={handleClickAction}
           comments={comments}
           createdAt={createdAt}
