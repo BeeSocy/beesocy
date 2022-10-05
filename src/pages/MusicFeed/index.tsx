@@ -26,11 +26,10 @@ export function MusicFeed() {
           identification: 'd1b5a6df-b4b0-4804-bc1b-81c1e5b9bc69',
           name: 'Ghost',
           artists: ['prod.alee'],
-          duration: 200,
+          duration: 170,
           imageUrl: 'https://i.imgur.com/vZOnWk8.jpeg',
-
           fileUrl:
-            'https://www.mboxdrive.com/FREE-GHOST-MATUE-x-YUNKVINO-x-WIU-TYPE-BEAT-prod-alee.mp3',
+            'https://audio.jukehost.co.uk/0EUSa53LI8BWBLJI4AFnS5Jgl78PjX5j',
           description: 'Ghost',
           explicit: false,
           isLiked: true,
@@ -258,6 +257,7 @@ export function MusicFeed() {
               leftArrowPosition={[-6.6, 14]}
               rightArrowPosition={[-6.6, 4.4]}
               key={index + 2}
+              distance={200}
             >
               <AlgorithmContent
                 key={index + 3}

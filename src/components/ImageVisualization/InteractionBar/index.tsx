@@ -40,7 +40,7 @@ export function InteractionBar() {
   function scrollToComments() {
     window.scrollTo({
       left: 0,
-      top: document.body.scrollHeight,
+      top: document.body.scrollHeight - 800,
       behavior: 'smooth'
     });
   }
