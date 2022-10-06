@@ -17,4 +17,6 @@ export const MarginLeft = styled.div`
 
 export const ContentProfile = styled.div`
     padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
 `;
