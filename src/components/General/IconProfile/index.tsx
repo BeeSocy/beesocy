@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { ReactSVG } from 'react-svg';
 import addIcon from '../../../assets/icons/Add.svg';
-import sendIcon from '../../../assets/icons/send.svg';
+import sendIcon from '../../../assets/icons/Send.svg';
 
 import {
   CardIconProfile,
