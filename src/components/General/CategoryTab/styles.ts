@@ -6,7 +6,7 @@ interface IStyledCategoryTab {
   active?: boolean;
 }
 
-export const CategoryTab = styled.div<IStyledCategoryTab>`
+export const StyledCategoryTab = styled.div<IStyledCategoryTab>`
   display: flex;
   justify-content: center;
   align-items: center;

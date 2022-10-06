@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { usePlayer } from '../../../context/PlayerProvider/usePlayer';
 
-import { formatArtists } from '../../Cards/MusicCard';
 import { Container, Details, MusicTitle, Artists } from './styles';
 
 interface IMusicInfoProps {
@@ -10,13 +10,12 @@ interface IMusicInfoProps {
 }
 
 export function MusicInfo({ name, artists, imageUrl }: IMusicInfoProps) {
+  const { formatArtists } = usePlayer();
+
   const DetailsContainerRef = useRef<HTMLDivElement>(null);
-  const TitleSpanRef = useRef<HTMLSpanElement>(null);
   const ArtistSpanRef = useRef<HTMLSpanElement>(null);
 
   const [artistSpanOverflowIsGreaterZero, setArtistSpanOverflowIsGreaterZero] =
-    useState<boolean>(false);
-  const [titleSpanOverflowIsGreaterZero, setTitleSpanOverflowIsGreaterZero] =
     useState<boolean>(false);
 
   useEffect(() => {
@@ -72,9 +71,7 @@ export function MusicInfo({ name, artists, imageUrl }: IMusicInfoProps) {
       <img src={imageUrl} />
 
       <Details ref={DetailsContainerRef}>
-        <MusicTitle ref={TitleSpanRef} size={'small'}>
-          {name}
-        </MusicTitle>
+        <MusicTitle size={'small'}>{name}</MusicTitle>
         <Artists
           ref={ArtistSpanRef}
           overflowIsGreaterZero={artistSpanOverflowIsGreaterZero}

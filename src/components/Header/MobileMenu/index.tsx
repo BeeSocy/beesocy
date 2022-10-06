@@ -37,8 +37,9 @@ import { useLocation } from 'react-router-dom';
 import { Line } from '../Menu/styles';
 
 import { useMenu } from '../../../context/MenuProvider/useMenu';
-import { UserCard } from '../../Widgets/UserCard';
+import { UserCard } from '../../Cards/UserCard';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
+import { IProfile } from '../../../types/profile';
 
 export function MobileMenu() {
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
@@ -53,31 +54,30 @@ export function MobileMenu() {
 
   const themes = useTheme();
 
-  const followUsers = [
+  const followUsers: IProfile[] = [
     {
-      id: 45,
+      identification: 'c475e623-552e-489a-8ee6-a2071eaf747b',
+      nickname: '@jorge',
       name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
+      imageUrl: 'https://source.unsplash.com/random',
+      color: '#FFFFFF',
+      followers: [],
+      follows: [],
+      description: '',
+      verified: false,
+      vip: false
     },
     {
-      id: 6,
+      identification: '8dc15ebc-f951-4315-b568-48f89f7ccf40',
+      nickname: '@jorge',
       name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      id: 7,
-      name: 'Jorge na gaita afaf af af af a f',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      id: 8,
-      name: 'Jorge na gaita afaf af af af a faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-      img: 'https://source.unsplash.com/random'
-    },
-    {
-      id: 3,
-      name: 'Marcelão',
-      img: 'https://source.unsplash.com/random'
+      imageUrl: 'https://source.unsplash.com/random',
+      color: '#FFFFFF',
+      followers: [],
+      follows: [],
+      description: '',
+      verified: false,
+      vip: false
     }
   ];
 
@@ -201,7 +201,7 @@ export function MobileMenu() {
 
         <LinkButton
           to="/list/like"
-          aria-label="Postagens curtidas"
+          aria-label="Postagens curtidentificationas"
           tabIndex={open ? 0 : -1}
           onClick={handleChangeRoute}
         >
@@ -276,7 +276,7 @@ export function MobileMenu() {
           if (isShowMoreFollowing ? index >= 0 : index <= 2) {
             return (
               <UserCard
-                key={user.id}
+                key={user.identification}
                 user={user}
                 aria-label={`Perfil de ${user.name}`}
                 tabIndex={open ? 0 : -1}
@@ -289,7 +289,7 @@ export function MobileMenu() {
           <Button
             aria-label={`${
               isShowMoreFollowing ? 'Mostrar menos' : 'Mostrar mais'
-            } seguidores`}
+            } seguidentificationores`}
             onClick={handleShowMoreFollowing}
             tabIndex={open ? 0 : -1}
           >

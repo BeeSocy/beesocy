@@ -5,6 +5,7 @@ export default {
     primary: '#212121',
     secondary: '#181818',
     light: '#484848',
+    secondaryLight: '#a1a1a1',
     text: '#f7f7f7',
 
     bee: '#ffc834',

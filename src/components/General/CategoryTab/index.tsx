@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { CategoryTab as StyledCategoryTab } from './styles';
+import { StyledCategoryTab } from './styles';
 
 export interface ICategoryTabProps extends HTMLAttributes<HTMLDivElement> {
   title: string;

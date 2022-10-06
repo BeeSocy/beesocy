@@ -27,27 +27,48 @@ export function Carousel({
   ) {
     if (ContainerRef.current) {
       if (direction === 'left') {
+        let scrollAmount = 0;
+        const scrollEnd =
+          ContainerRef.current.scrollWidth - ContainerRef.current.offsetWidth;
+
         if (scrollDistance != 0) {
-          ContainerRef.current.scrollTo({
-            left: (ContainerRef.current.scrollLeft += scrollDistance)
-          });
+          scrollAmount = ContainerRef.current.scrollLeft += scrollDistance;
         } else {
-          ContainerRef.current.scrollTo({
-            left: (ContainerRef.current.scrollLeft +=
-              ContainerRef.current.offsetWidth)
-          });
+          scrollAmount = ContainerRef.current.scrollLeft +=
+            ContainerRef.current.offsetWidth;
         }
+
+        if (scrollAmount >= scrollEnd) {
+          ContainerRef.current.scrollTo({
+            left: scrollEnd
+          });
+
+          return;
+        }
+
+        ContainerRef.current.scrollTo({
+          left: scrollAmount
+        });
       } else {
+        let scrollAmount = 0;
+
         if (scrollDistance != 0) {
-          ContainerRef.current.scrollTo({
-            left: (ContainerRef.current.scrollLeft -= scrollDistance)
-          });
+          scrollAmount = ContainerRef.current.scrollLeft -= scrollDistance;
         } else {
-          ContainerRef.current.scrollTo({
-            left: (ContainerRef.current.scrollLeft -=
-              ContainerRef.current.offsetWidth)
-          });
+          scrollAmount = ContainerRef.current.scrollLeft -=
+            ContainerRef.current.offsetWidth;
         }
+
+        if (scrollAmount <= 0) {
+          ContainerRef.current.scrollTo({
+            left: 0
+          });
+          return;
+        }
+
+        ContainerRef.current.scrollTo({
+          left: scrollAmount
+        });
       }
     }
   }

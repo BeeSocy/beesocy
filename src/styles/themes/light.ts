@@ -7,6 +7,7 @@ export default {
     primary: '#f5f5f5',
     secondary: '#e1e1e1',
     light: '#cecece',
+    secondaryLight: '#929292',
     text: '#0f0f0f',
 
     bee: dark.colors.bee,

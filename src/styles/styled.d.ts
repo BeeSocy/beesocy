@@ -4,6 +4,7 @@ export interface IPaleteColors {
   primary: string;
   secondary: string;
   light: string;
+  secondaryLight: string;
   text: string;
   bee: string;
 

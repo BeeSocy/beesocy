@@ -1,4 +1,3 @@
-import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { breakpoint } from '../../../../hooks/useMobile';
 import { Button } from '../../../Widgets/Buttons/Button';
@@ -7,6 +6,8 @@ import { scaleUpAnimation } from '../../GlobalCard/styles';
 
 import light from '../../../../styles/themes/light';
 import { Title } from '../../../General/Title';
+
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
 const wrapperWidth = '18rem';
 
@@ -28,7 +29,7 @@ export const Card = styled.div`
   background: ${props => props.theme.colors.primary};
 
   &:hover {
-    div[role='button'] {
+    *[role='button'] {
       opacity: 1;
     }
   }
@@ -87,7 +88,7 @@ export const Controls = styled.div`
   }
 
   @media (min-width: ${breakpoint}) {
-    div[role='button'] {
+    *[role='button'] {
       opacity: 0;
       transition: all 0.5s;
     }
@@ -162,5 +163,11 @@ export const Details = styled.section`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+`;
+
+export const StyledDropdownMenuItem = styled(DropdownMenuPrimitive.Item)`
+  &:hover {
+    outline: none;
   }
 `;

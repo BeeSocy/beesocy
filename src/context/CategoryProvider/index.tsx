@@ -7,14 +7,14 @@ export function CategoryProvider({ children }: ICategoryProvider) {
   const [categoryId, setCategoryId] = useState<PossibleIds>('image');
   const [activeCategories, setActiveCategories] = useState<{
     type: PossibleIds;
-    id: number[];
+    id: string[];
   }>({ type: categoryId, id: [] });
 
   function handleSetCategoryId(id: PossibleIds) {
     setCategoryId(id);
   }
 
-  function handleToggleCategoryActive(id: number, type: PossibleIds) {
+  function handleToggleCategoryActive(id: string, type: PossibleIds) {
     if (activeCategories.type === type) {
       if (activeCategories.id.includes(id)) {
         return setActiveCategories(state => {

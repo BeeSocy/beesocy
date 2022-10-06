@@ -1,7 +1,14 @@
+import { ICategory } from './category';
+import { IComment } from './comment';
+import { IProfile } from './profile';
+
 export interface IPost {
-  id: number;
+  identification: string;
   description: string;
-  isLiked?: boolean;
-  isSaved?: boolean;
-  isReported?: boolean;
+  usersHasLiked: IProfile[];
+  usersHasSaved: IProfile[];
+  usersHasReported: IProfile[];
+  comments: IComment[];
+  categories: ICategory[];
+  createdAt: Date;
 }

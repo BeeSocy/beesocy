@@ -1,59 +1,135 @@
 import { IMusicPost } from '../../../types/musicPost';
 import { MusicCardSmall } from './MusicCardSmall';
 import { MusicCardLarge } from './MusicCardLarge';
+import { usePlayer } from '../../../context/PlayerProvider/usePlayer';
+import { HTMLAttributes } from 'react';
 
-export interface IMusicCardProps extends IMusicPost {
+export const longPressOptions = {
+  isPreventDefault: false,
+  delay: 800
+};
+
+export interface IMusicCardProps
+  extends IMusicPost,
+    HTMLAttributes<HTMLDivElement> {
   large?: boolean;
   playing?: boolean;
   showDuration?: boolean;
+  clickAction?: () => void;
 }
 
-export function formatArtists(artists: string[]): string {
-  let formattedString = '';
-  if (artists.length > 1) {
-    artists.map((value, index) => {
-      formattedString += value;
-      if (index == artists.length - 2) {
-        formattedString += ' e ';
-      } else if (index != artists.length - 1) {
-        formattedString += ', ';
-      }
-    });
-  } else {
-    formattedString = artists[0];
+export function MusicCard({
+  name,
+  artists,
+  duration,
+  imageUrl,
+  fileUrl,
+  identification,
+  description,
+  usersHasLiked,
+  usersHasReported,
+  usersHasSaved,
+  explicit,
+  categories,
+  large,
+  comments,
+  createdAt,
+  ...props
+}: IMusicCardProps) {
+  const player = usePlayer();
+
+  function handlePlayMusic(track: IMusicPost) {
+    if (!player.getOpen()) {
+      player.initPlayer(track);
+    } else {
+      player.setCurrentTrack(track);
+    }
   }
 
-  return formattedString;
-}
+  function handleClickAction() {
+    const currentTrack: IMusicPost = {
+      identification: identification,
+      name: name,
+      artists: artists,
+      duration: duration,
+      imageUrl: imageUrl,
+      fileUrl: fileUrl,
+      description: description,
+      explicit: explicit,
+      usersHasLiked: usersHasLiked,
+      usersHasReported: usersHasReported,
+      usersHasSaved: usersHasSaved,
+      categories: categories,
+      createdAt: createdAt,
+      comments: comments
+    };
 
-export function handleMusicCardClick() {
-  //play player
-}
+    handlePlayMusic(currentTrack);
 
-export function MusicCard(props: IMusicCardProps) {
+    if (
+      player
+        .getTrackList()
+        .filter(value => value.fileUrl === currentTrack.fileUrl).length > 0
+    ) {
+      player.setPositionOnTrackList(
+        player
+          .getTrackList()
+          .findIndex(value => value.fileUrl === currentTrack.fileUrl) + 1
+      );
+    } else {
+      player.setTrackList([currentTrack]);
+    }
+  }
+
   return (
     <>
-      {props.large ? (
+      {large ? (
         <MusicCardLarge
-          name={props.name}
-          artists={props.artists}
-          duration={props.duration}
-          imageUrl={props.imageUrl}
-          fileUrl={props.fileUrl}
-          id={props.id}
-          description={props.description}
-          explicit={props.explicit}
+          name={name}
+          artists={artists}
+          duration={duration}
+          imageUrl={imageUrl}
+          fileUrl={fileUrl}
+          identification={identification}
+          playing={
+            player.getCurrentTrack().fileUrl === fileUrl &&
+            player.getOpen() &&
+            player.getPlaying()
+          }
+          description={description}
+          explicit={explicit}
+          usersHasLiked={usersHasLiked}
+          usersHasReported={usersHasReported}
+          usersHasSaved={usersHasSaved}
+          categories={categories}
+          clickAction={handleClickAction}
+          comments={comments}
+          createdAt={createdAt}
+          {...props}
         />
       ) : (
         <MusicCardSmall
-          name={props.name}
-          artists={props.artists}
-          duration={props.duration}
-          imageUrl={props.imageUrl}
-          fileUrl={props.fileUrl}
-          id={props.id}
-          description={props.description}
-          explicit={props.explicit}
+          name={name}
+          artists={artists}
+          duration={duration}
+          imageUrl={imageUrl}
+          fileUrl={fileUrl}
+          identification={identification}
+          playing={
+            player.getCurrentTrack().fileUrl === fileUrl &&
+            player.getOpen() &&
+            player.getPlaying()
+          }
+          description={description}
+          explicit={explicit}
+          usersHasLiked={usersHasLiked}
+          usersHasReported={usersHasReported}
+          usersHasSaved={usersHasSaved}
+          categories={categories}
+          clickAction={handleClickAction}
+          comments={comments}
+          createdAt={createdAt}
+          {...props}
         />
       )}
     </>
