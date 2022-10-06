@@ -48,7 +48,7 @@ export const music: IMusicPost[] = [
     fileUrl: 'https://audio.jukehost.co.uk/kRgsjbaMBaB7ZDoDm4QZRDuqGx05j8c9',
     description: 'Londres Freestyle',
     explicit: true,
-    categoriesId: [],
+    categories: [],
     usersHasLiked: [],
     usersHasSaved: [],
     usersHasReported: [],
@@ -65,7 +65,7 @@ export const music: IMusicPost[] = [
     fileUrl: 'https://audio.jukehost.co.uk/yh03xpsgkuEIZ04ogpInYUhvPhYVW5gQ',
     description: 'Facilitei L7',
     explicit: false,
-    categoriesId: [],
+    categories: [],
     usersHasLiked: [],
     usersHasSaved: [],
     usersHasReported: [],
@@ -89,7 +89,7 @@ export const music: IMusicPost[] = [
     fileUrl: 'https://audio.jukehost.co.uk/DXXwxHGjLq2DHh63tPWxj4TwJBSbrFTJ',
     description: 'Sem pressa',
     explicit: true,
-    categoriesId: [],
+    categories: [],
     usersHasLiked: [],
     usersHasSaved: [],
     usersHasReported: [],
@@ -109,7 +109,7 @@ export const image: IImagePost[] = [
     usersHasLiked: [],
     usersHasSaved: [],
     usersHasReported: [],
-    categoriesId: [],
+    categories: [],
     comments: [],
     createdAt: new Date(2022, 10, 1, 15, 30, 0)
   },
@@ -124,7 +124,7 @@ export const image: IImagePost[] = [
     usersHasLiked: [],
     usersHasSaved: [],
     usersHasReported: [],
-    categoriesId: [],
+    categories: [],
     comments: [],
     createdAt: new Date(2022, 10, 1, 15, 30, 0)
   },
@@ -138,7 +138,7 @@ export const image: IImagePost[] = [
     usersHasLiked: [],
     usersHasSaved: [],
     usersHasReported: [],
-    categoriesId: [],
+    categories: [],
     comments: [],
     createdAt: new Date(2022, 10, 1, 15, 30, 0)
   }
