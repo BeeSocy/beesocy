@@ -29,7 +29,7 @@ export function Carousel({
       if (direction === 'left') {
         let scrollAmount = 0;
         const scrollEnd =
-          ContainerRef.current.offsetWidth - ContainerRef.current.clientWidth;
+          ContainerRef.current.scrollWidth - ContainerRef.current.offsetWidth;
 
         if (scrollDistance != 0) {
           scrollAmount = ContainerRef.current.scrollLeft += scrollDistance;
@@ -42,6 +42,7 @@ export function Carousel({
           ContainerRef.current.scrollTo({
             left: scrollEnd
           });
+
           return;
         }
 

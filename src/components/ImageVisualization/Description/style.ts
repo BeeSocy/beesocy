@@ -7,7 +7,8 @@ export const Container = styled.div`
 
   padding: 2.8rem 2rem 1.2rem;
 
-  width: 40rem;
+  max-width: 40rem;
+  width: fit-content;
 
   display: flex;
   flex-direction: column;

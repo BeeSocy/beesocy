@@ -257,7 +257,6 @@ export function MusicFeed() {
               leftArrowPosition={[-6.6, 14]}
               rightArrowPosition={[-6.6, 4.4]}
               key={index + 2}
-              distance={200}
             >
               <AlgorithmContent
                 key={index + 3}
