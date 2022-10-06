@@ -23,8 +23,6 @@ export function GlobalLayout() {
 
   const { getOpen } = usePlayer();
 
-  elementRef.current = document.documentElement;
-
   return (
     <>
       <Header />
