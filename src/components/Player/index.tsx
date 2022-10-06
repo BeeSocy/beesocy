@@ -4,6 +4,7 @@ import { usePlayer } from '../../context/PlayerProvider/usePlayer';
 import { useMobile } from '../../hooks/useMobile';
 import { DesktopPlayer } from './Desktop';
 import { MobilePlayer } from './Mobile';
+import { useLockBodyScroll } from 'react-use';
 
 export let handleToggleRepeatMode = () => {};
 
@@ -110,6 +111,8 @@ export function Player() {
       audioElementRef.current.currentTime = seconds;
     }
   };
+
+  useLockBodyScroll(player.getLarge());
 
   useEffect(() => {
     if (audioElementRef.current) {

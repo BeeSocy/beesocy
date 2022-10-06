@@ -9,7 +9,7 @@ import {
   MusicCover,
   Divider
 } from './styles';
-import { TracksList } from './TracksList';
+import { TracksList } from '../../TracksList';
 
 interface IDesktopLargePlayer {
   active?: boolean;

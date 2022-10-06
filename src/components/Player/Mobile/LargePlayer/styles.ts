@@ -254,6 +254,8 @@ export const TrackListSheet = styled(Sheet)`
     background: ${props => props.theme.colors.secondary} !important;
 
     border-radius: 1.2rem !important;
+
+    border: 0.1rem solid ${props => props.theme.colors.light};
   }
 
   .react-modal-sheet-content {
@@ -265,7 +267,7 @@ export const TrackListSheet = styled(Sheet)`
 
     gap: 0.8rem;
 
-    padding: 2.4rem !important;
+    padding: 0.8rem !important;
   }
 `;
 

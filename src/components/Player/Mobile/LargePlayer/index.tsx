@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { IconContext } from 'react-icons';
 
 import {
@@ -18,7 +18,12 @@ import {
 } from 'react-icons/md';
 import { SheetRef } from 'react-modal-sheet';
 
-import { useEffectOnce, useHoverDirty } from 'react-use';
+import {
+  useEffectOnce,
+  useHoverDirty,
+  useLifecycles,
+  useLockBodyScroll
+} from 'react-use';
 import {
   handleChangeTimeInSlider,
   handleNextMusic,
@@ -34,6 +39,7 @@ import { PlaylistList } from '../../../MusicFeed/PlaylistList';
 import { SheetMusicMenu } from '../../../MusicFeed/SheetMusicMenu';
 import { LikeButton } from '../../../Widgets/Buttons/ActionButtons/LikeButton';
 import { Button } from '../../../Widgets/Buttons/Button';
+import { TracksList } from '../../TracksList';
 import {
   StyledSheet,
   Header,
@@ -59,7 +65,7 @@ export function MobileLargePlayer() {
 
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 
-  const [trackListIsOpen, setTrackListIsOpen] = useState<boolean>(false);
+  const [trackListIsOpen, setTrackListIsOpen] = useState<boolean>(true);
 
   const [coverActionsIsActive, setCoverActionsIsActive] =
     useState<boolean>(false);
@@ -77,6 +83,8 @@ export function MobileLargePlayer() {
   const TitleSpanRef = useRef<HTMLSpanElement>(null);
 
   const TrackListSheetRef = useRef<SheetRef>(null);
+
+  useLockBodyScroll(player.getLarge());
 
   useEffect(() => {
     if (DetailsContainerRef.current && TitleSpanRef.current) {
@@ -123,6 +131,12 @@ export function MobileLargePlayer() {
   useEffect(() => {
     setCoverActionsIsActive(isHoverMusicCover);
   }, [isHoverMusicCover]);
+
+  useEffect(() => {
+    if (!trackListIsOpen) {
+      setTrackListIsOpen(true);
+    }
+  }, [trackListIsOpen]);
 
   useEffectOnce(() => {
     // player.handleChangeVolume(100);
@@ -292,31 +306,28 @@ export function MobileLargePlayer() {
             </Specs>
           </StyledSheet.Content>
 
-          <TrackListSheet
-            isOpen={true}
-            onClose={() => setTrackListIsOpen(false)}
-            snapPoints={[0.9, 0.1]}
-            initialSnap={1}
-            ref={TrackListSheetRef}
-            onSnap={index => {
-              console.log(index);
-            }}
-          >
-            <TrackListSheet.Container>
-              <TrackListSheet.Header>
-                <TrackListSheetHeader>
-                  <MdMusicNote />
-                  <span>Próximas músicas</span>
-                </TrackListSheetHeader>
-              </TrackListSheet.Header>
+          {player.getLarge() && (
+            <TrackListSheet
+              isOpen={trackListIsOpen}
+              onClose={() => setTrackListIsOpen(false)}
+              snapPoints={[0.9, 0.08]}
+              initialSnap={1}
+              ref={TrackListSheetRef}
+            >
+              <TrackListSheet.Container>
+                <TrackListSheet.Header>
+                  <TrackListSheetHeader>
+                    <MdMusicNote />
+                    <span>Próximas músicas</span>
+                  </TrackListSheetHeader>
+                </TrackListSheet.Header>
 
-              <TrackListSheet.Content>
-                <h1>Alo</h1>
-              </TrackListSheet.Content>
-            </TrackListSheet.Container>
-
-            {/* <TrackListSheet.Backdrop onTap={() => setTrackListIsOpen(false)} /> */}
-          </TrackListSheet>
+                <TrackListSheet.Content>
+                  <TracksList />
+                </TrackListSheet.Content>
+              </TrackListSheet.Container>
+            </TrackListSheet>
+          )}
         </StyledSheet.Container>
       </StyledSheet>
 
