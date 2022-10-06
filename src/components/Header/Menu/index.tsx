@@ -36,7 +36,7 @@ import { useScroll } from '../../../hooks/useScroll';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
 import { IProfile } from '../../../types/profile';
 import { useModal } from '../../../context/ModalProvider/useModal';
-import { ModalChat } from '../../Chat/ModalChat';
+import { ModalChat } from '../../Chat/ChatDesktop/ModalChat';
 
 export function Menu() {
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();

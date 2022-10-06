@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { user } from "../../../../../pages/Profile";
+import { user } from "../../../../../../pages/Profile";
 
 export const CardInfStyled = styled.section`
 display: flex;

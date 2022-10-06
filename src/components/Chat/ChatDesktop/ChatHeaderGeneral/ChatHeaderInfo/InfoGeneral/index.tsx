@@ -5,8 +5,8 @@ import {
   MdOutlinePushPin,
   MdPushPin
 } from 'react-icons/md';
-import { useModal } from '../../../../../context/ModalProvider/useModal';
-import { Button } from '../../../../Widgets/Buttons/Button';
+import { useModal } from '../../../../../../context/ModalProvider/useModal';
+import { Button } from '../../../../../Widgets/Buttons/Button';
 import { NickHeader } from '../NickHeader';
 import { PhotoHeader } from '../PhotoHeader';
 import { AlignIcons, InfoGeneralStyled } from './styles';

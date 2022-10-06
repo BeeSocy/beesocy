@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdMic, MdOutlinePermMedia } from 'react-icons/md';
-import { Button } from '../../../Widgets/Buttons/Button';
+import { Button } from '../../../../Widgets/Buttons/Button';
 import { ContainerInput } from '../ContainerInput';
 import { FakeInput } from '../FakeInput';
 import { InputMsg } from '../InputMsg';

@@ -49,12 +49,6 @@ export function Header() {
       )}
 
       <section className="right">
-        {isMobile && (
-          <Button full={false} rounded aria-label="Pesquisar">
-            <MdSearch />
-          </Button>
-        )}
-
         <Button
           full={false}
           rounded

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { user } from "../../../../../pages/Profile";
+import { user } from "../../../../../../pages/Profile";
 
 export const PhotoHeaderStyled = styled.img`
 height: 4.2rem;
@@ -9,7 +9,7 @@ transition: filter 0.2s;
 
 &:hover{
 cursor: pointer;
-filter: brightness(0.7) ;
+filter: brightness(0.8) ;
 }
 `
 

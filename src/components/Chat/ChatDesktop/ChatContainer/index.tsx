@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { useMobile } from '../../../../hooks/useMobile';
 import { ContChatStyled } from './styles';
 
 interface IContChatProps {
@@ -6,5 +7,7 @@ interface IContChatProps {
 }
 
 export const ChatContainer = ({ children }: IContChatProps) => {
-  return <ContChatStyled> {children} </ContChatStyled>;
+  const { isMobile } = useMobile();
+
+  return <ContChatStyled>{children}</ContChatStyled>;
 };

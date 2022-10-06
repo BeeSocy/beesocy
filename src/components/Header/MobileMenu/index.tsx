@@ -40,6 +40,8 @@ import { useMenu } from '../../../context/MenuProvider/useMenu';
 import { UserCard } from '../../Cards/UserCard';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
 import { IProfile } from '../../../types/profile';
+import { useModal } from '../../../context/ModalProvider/useModal';
+import { ModalChat } from '../../Chat/ChatDesktop/ModalChat';
 
 export function MobileMenu() {
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
@@ -86,6 +88,16 @@ export function MobileMenu() {
       handleToggleMenu();
     }
   }
+
+  const { handleCallModal, handleSetOpen, open: modalOpen } = useModal();
+
+  const handleOpenChat = () => {
+    handleCallModal(<ModalChat />, {
+      overlay: true,
+      positionX: 105,
+      positionY: 83
+    });
+  };
 
   return (
     <>
@@ -213,11 +225,13 @@ export function MobileMenu() {
           <span>Curtidos</span>
         </LinkButton>
 
-        <LinkButton
-          to="/chat"
+        <Button
+          onClick={() => {
+            handleChangeRoute();
+            handleOpenChat();
+          }}
           aria-label="Abrir chat"
           tabIndex={open ? 0 : -1}
-          onClick={handleChangeRoute}
         >
           {pathname === '/chat' ? (
             <MdChat style={{ fill: themes.colors.bee }} />
@@ -225,7 +239,7 @@ export function MobileMenu() {
             <MdOutlineChat />
           )}
           <span>Chat</span>
-        </LinkButton>
+        </Button>
 
         <LinkButton
           to="/jobs"
