@@ -6,6 +6,7 @@ import dark from '../../../../styles/themes/dark';
 
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import { Button } from '../../../Widgets/Buttons/Button';
+import { Title } from '../../../General/Title';
 
 export const StyledSheet = styled(Sheet)`
   z-index: 400 !important;
@@ -214,6 +215,74 @@ export const ShuffleButton = styled(Button)<IStyledShuffleButton>`
   }
 `;
 
+export const StyledTitle = styled(Title)`
+  white-space: nowrap;
+
+  overflow: auto;
+  scrollbar-width: none;
+
+  max-width: 80vw;
+
+  white-space: nowrap;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 export const Artists = styled.span`
   color: ${props => props.theme.colors.secondaryLight};
+
+  max-width: 80vw;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+`;
+
+export const TrackListSheet = styled(Sheet)`
+  z-index: 500 !important;
+
+  .react-modal-sheet-container {
+    width: 100vw !important;
+    height: 100vh !important;
+
+    z-index: 500 !important;
+
+    background: ${props => props.theme.colors.secondary} !important;
+
+    border-radius: 1.2rem !important;
+  }
+
+  .react-modal-sheet-content {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    gap: 0.8rem;
+
+    padding: 2.4rem !important;
+  }
+`;
+
+export const TrackListSheetHeader = styled.section`
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-weight: 700;
+
+  font-size: 1.8rem;
+
+  border-radius: 0.8rem;
+
+  gap: 0.8rem;
+
+  padding-top: 1.8rem;
 `;

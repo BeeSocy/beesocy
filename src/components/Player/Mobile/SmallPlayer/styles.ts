@@ -1,9 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { Button } from '../../../Widgets/Buttons/Button';
-
-import * as SliderPrimitive from '@radix-ui/react-slider';
-
 import { Title } from '../../../General/Title';
 
 export const Container = styled.div`
@@ -115,99 +111,4 @@ export const Specs = styled.section`
 export const Controls = styled.div`
   display: flex;
   gap: 0.2rem;
-`;
-
-interface IStyledShuffleButton {
-  active?: boolean;
-}
-
-export const ShuffleButton = styled(Button)<IStyledShuffleButton>`
-  &:active {
-    svg {
-      animation: rotate 0.5s;
-    }
-  }
-
-  @keyframes rotate {
-    to {
-      transform: rotate3d(1, 0, 0, 460deg);
-    }
-  }
-`;
-
-export const ExtraControls = styled.section`
-  display: flex;
-  gap: 0.4rem;
-
-  align-items: center;
-`;
-
-export const VolumeSlider = styled(SliderPrimitive.Root)`
-  display: flex;
-
-  align-items: center;
-
-  width: 12rem;
-  height: 3.2rem;
-
-  touch-action: none;
-
-  position: relative;
-`;
-
-export const VolumeButton = styled.button`
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-
-  z-index: 1;
-  position: absolute;
-
-  margin-left: 0.8rem;
-
-  background: transparent;
-
-  svg {
-    filter: invert(1);
-  }
-`;
-
-export const VolumeTrack = styled(SliderPrimitive.Track)`
-  background: ${props => props.theme.colors.light};
-
-  position: relative;
-
-  flex: 1;
-
-  overflow: hidden;
-
-  border-radius: 200px;
-
-  height: 3.2rem;
-`;
-
-export const VolumeRange = styled(SliderPrimitive.Range)`
-  background: ${props => props.theme.colors.text};
-
-  height: 100%;
-
-  position: absolute;
-`;
-
-interface IStyledToggleLargeButton {
-  active?: boolean;
-}
-
-export const ToggleLargeButton = styled(Button)<IStyledToggleLargeButton>`
-  transition: transform 0.5s;
-
-  ${props =>
-    props.active
-      ? css`
-          transform: rotate(-180deg);
-        `
-      : css`
-          transform: rotate(0);
-        `}
 `;

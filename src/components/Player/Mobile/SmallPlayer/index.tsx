@@ -1,29 +1,14 @@
-import { useEffect, useRef, WheelEvent } from 'react';
+import { useEffect, useRef } from 'react';
 import {
-  MdArrowDropUp,
   MdExplicit,
   MdPauseCircleFilled,
   MdPlayCircleFilled,
-  MdRepeat,
-  MdRepeatOne,
-  MdShuffle,
   MdSkipNext,
   MdSkipPrevious,
-  MdVolumeOff,
-  MdVolumeUp
 } from 'react-icons/md';
-import { useHoverDirty, useLockBodyScroll } from 'react-use';
-import {
-  handleToggleRepeatMode,
-  handlePreviousMusic,
-  handlePlayMusic,
-  handleNextMusic,
-  handleChangeTimeInSlider
-} from '../..';
+import { handlePreviousMusic, handlePlayMusic, handleNextMusic } from '../..';
 
 import { usePlayer } from '../../../../context/PlayerProvider/usePlayer';
-import { useTheme } from '../../../../context/ThemeProvider/useTheme';
-import { LikeButton } from '../../../Widgets/Buttons/ActionButtons/LikeButton';
 import { Button } from '../../../Widgets/Buttons/Button';
 import {
   Container,
@@ -136,16 +121,6 @@ export function MobileSmallPlayer() {
             </Button>
           </Controls>
         </Specs>
-
-        {/*         <ExtraControls>
-          <div onClick={event => event.stopPropagation()}>
-            <LikeButton />
-          </div>
-
-          <ToggleLargeButton active={player.getLarge()} rounded full={false}>
-            <MdArrowDropUp />
-          </ToggleLargeButton>
-        </ExtraControls> */}
       </Wrapper>
     </Container>
   );

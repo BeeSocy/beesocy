@@ -21,7 +21,6 @@ export function MusicFeed() {
       largeContent: true,
       dataType: 'music',
       tracks: [
-        /* https://i.imgur.com/vZOnWk8.jpeg */
         {
           identification: 'd1b5a6df-b4b0-4804-bc1b-81c1e5b9bc69',
           name: 'Ghost',

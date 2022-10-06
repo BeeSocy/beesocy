@@ -4,6 +4,7 @@ import { IconContext } from 'react-icons';
 import {
   MdExpandMore,
   MdMoreVert,
+  MdMusicNote,
   MdPauseCircleFilled,
   MdPersonAdd,
   MdPlayCircleFilled,
@@ -15,6 +16,7 @@ import {
   MdSkipNext,
   MdSkipPrevious
 } from 'react-icons/md';
+import { SheetRef } from 'react-modal-sheet';
 
 import { useEffectOnce, useHoverDirty } from 'react-use';
 import {
@@ -24,9 +26,11 @@ import {
   handlePreviousMusic,
   handleToggleRepeatMode
 } from '../..';
+import { useModal } from '../../../../context/ModalProvider/useModal';
 import { usePlayer } from '../../../../context/PlayerProvider/usePlayer';
 import { useTheme } from '../../../../context/ThemeProvider/useTheme';
 import { Title } from '../../../General/Title';
+import { PlaylistList } from '../../../MusicFeed/PlaylistList';
 import { SheetMusicMenu } from '../../../MusicFeed/SheetMusicMenu';
 import { LikeButton } from '../../../Widgets/Buttons/ActionButtons/LikeButton';
 import { Button } from '../../../Widgets/Buttons/Button';
@@ -44,7 +48,10 @@ import {
   TimeSeconds,
   Controls,
   ShuffleButton,
-  Artists
+  StyledTitle,
+  Artists,
+  TrackListSheet,
+  TrackListSheetHeader
 } from './styles';
 
 export function MobileLargePlayer() {
@@ -52,14 +59,66 @@ export function MobileLargePlayer() {
 
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 
+  const [trackListIsOpen, setTrackListIsOpen] = useState<boolean>(false);
+
   const [coverActionsIsActive, setCoverActionsIsActive] =
     useState<boolean>(false);
 
   const { colors } = useTheme();
 
+  const { handleCallModal } = useModal();
+
   const MusicCoverRef = useRef<HTMLDivElement>(null);
 
   const isHoverMusicCover = useHoverDirty(MusicCoverRef);
+
+  const DetailsContainerRef = useRef<HTMLDivElement>(null);
+
+  const TitleSpanRef = useRef<HTMLSpanElement>(null);
+
+  const TrackListSheetRef = useRef<SheetRef>(null);
+
+  useEffect(() => {
+    if (DetailsContainerRef.current && TitleSpanRef.current) {
+      if (
+        TitleSpanRef.current?.scrollWidth >
+        DetailsContainerRef.current?.offsetWidth
+      ) {
+        let invertScroll = true;
+
+        setInterval(() => {
+          if (invertScroll) {
+            TitleSpanRef.current?.scrollTo({
+              left: (TitleSpanRef.current.scrollLeft -= 1),
+              behavior: 'smooth'
+            });
+          } else {
+            TitleSpanRef.current?.scrollTo({
+              left: (TitleSpanRef.current.scrollLeft += 1),
+              behavior: 'smooth'
+            });
+          }
+
+          if (TitleSpanRef.current && TitleSpanRef.current.scrollLeft == 0) {
+            setTimeout(() => {
+              invertScroll = false;
+            }, 2000);
+          }
+
+          if (
+            TitleSpanRef.current &&
+            TitleSpanRef.current.offsetWidth +
+              Math.round(TitleSpanRef.current.scrollLeft) ==
+              TitleSpanRef.current.scrollWidth
+          ) {
+            setTimeout(() => {
+              invertScroll = true;
+            }, 1000);
+          }
+        }, 50);
+      }
+    }
+  }, [TitleSpanRef.current]);
 
   useEffect(() => {
     setCoverActionsIsActive(isHoverMusicCover);
@@ -108,7 +167,18 @@ export function MobileLargePlayer() {
                   <Button
                     full={false}
                     rounded
-                    onClick={event => event.stopPropagation()}
+                    onClick={event => {
+                      event.stopPropagation();
+                      handleCallModal(
+                        <PlaylistList track={player.getCurrentTrack()} />,
+                        {
+                          title: 'Escolha uma playlist',
+                          overlay: true,
+                          easyClose: true,
+                          center: true
+                        }
+                      );
+                    }}
                   >
                     <MdPlaylistAdd />
                   </Button>
@@ -132,8 +202,10 @@ export function MobileLargePlayer() {
               />
             </MusicCover>
 
-            <Specs>
-              <Title size="medium">{player.getCurrentTrack().name}</Title>
+            <Specs ref={DetailsContainerRef}>
+              <StyledTitle size="medium" ref={TitleSpanRef}>
+                {player.getCurrentTrack().name}
+              </StyledTitle>
               <Artists>
                 {player.formatArtists(player.getCurrentTrack().artists)}
               </Artists>
@@ -219,9 +291,33 @@ export function MobileLargePlayer() {
               </Controls>
             </Specs>
           </StyledSheet.Content>
-        </StyledSheet.Container>
 
-        <StyledSheet.Backdrop onTap={() => player.handleChangeLarge(false)} />
+          <TrackListSheet
+            isOpen={true}
+            onClose={() => setTrackListIsOpen(false)}
+            snapPoints={[0.9, 0.1]}
+            initialSnap={1}
+            ref={TrackListSheetRef}
+            onSnap={index => {
+              console.log(index);
+            }}
+          >
+            <TrackListSheet.Container>
+              <TrackListSheet.Header>
+                <TrackListSheetHeader>
+                  <MdMusicNote />
+                  <span>Próximas músicas</span>
+                </TrackListSheetHeader>
+              </TrackListSheet.Header>
+
+              <TrackListSheet.Content>
+                <h1>Alo</h1>
+              </TrackListSheet.Content>
+            </TrackListSheet.Container>
+
+            {/* <TrackListSheet.Backdrop onTap={() => setTrackListIsOpen(false)} /> */}
+          </TrackListSheet>
+        </StyledSheet.Container>
       </StyledSheet>
 
       <SheetMusicMenu
