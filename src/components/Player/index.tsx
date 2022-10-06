@@ -2,7 +2,9 @@ import { useEffect, useRef } from 'react';
 import MediaSession from '@mebtte/react-media-session';
 import { usePlayer } from '../../context/PlayerProvider/usePlayer';
 import { useMobile } from '../../hooks/useMobile';
-import { DesktopPlayer } from './Desktop/DesktopPlayer';
+import { DesktopPlayer } from './Desktop';
+import { MobilePlayer } from './Mobile';
+import { useLockBodyScroll } from 'react-use';
 
 export let handleToggleRepeatMode = () => {};
 
@@ -54,15 +56,27 @@ export function Player() {
           player.getPositionOnTrackList() - 1
         )
       );
+
       player.setPositionOnTrackList(player.getPositionOnTrackList() - 1);
+
+      if (player.getRepeat() === 'single') {
+        player.handleChangeRepeat('all');
+      }
     }
   };
 
   handleNextMusic = () => {
     if (audioElementRef.current) {
+      if (player.getRepeat() === 'single') {
+        player.handleChangeRepeat('all');
+      }
+
       if (player.getPositionOnTrackList() >= player.getTrackListLength()) {
         player.setCurrentTrack(player.getTrackInSpecificPositionOfTrackList(1));
         player.setPositionOnTrackList(1);
+        audioElementRef.current.currentTime = 0;
+        player.handleChangePlaying(true);
+        audioElementRef.current.play();
         return;
       }
 
@@ -72,10 +86,6 @@ export function Player() {
         )
       );
       player.setPositionOnTrackList(player.getPositionOnTrackList() + 1);
-
-      if (player.getRepeat() === 'single') {
-        player.handleChangeRepeat('all');
-      }
     }
   };
 
@@ -101,6 +111,8 @@ export function Player() {
       audioElementRef.current.currentTime = seconds;
     }
   };
+
+  useLockBodyScroll(player.getLarge());
 
   useEffect(() => {
     if (audioElementRef.current) {
@@ -153,10 +165,12 @@ export function Player() {
   if (player.getOpen()) {
     return (
       <>
-        {isMobile ? <></> : <DesktopPlayer />}
+        {isMobile ? <MobilePlayer /> : <DesktopPlayer />}
+
         <audio ref={audioElementRef} preload="metadata">
           <source src={player.getCurrentTrack().fileUrl} type="audio/mpeg" />
         </audio>
+
         <MediaSession
           title={player.getCurrentTrack().name}
           artwork={[

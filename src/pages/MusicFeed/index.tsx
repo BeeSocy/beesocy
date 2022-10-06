@@ -22,6 +22,24 @@ export function MusicFeed() {
       dataType: 'music',
       tracks: [
         {
+          identification: 'd1b5a6df-b4b0-4804-bc1b-81c1e5b9bc69',
+          name: 'Ghost',
+          artists: ['prod.alee'],
+          duration: 170,
+          imageUrl: 'https://i.imgur.com/vZOnWk8.jpeg',
+          fileUrl:
+            'https://audio.jukehost.co.uk/0EUSa53LI8BWBLJI4AFnS5Jgl78PjX5j',
+          description: 'Ghost',
+          explicit: false,
+          isLiked: true,
+          categories: [],
+          usersHasLiked: [],
+          usersHasSaved: [],
+          usersHasReported: [],
+          comments: [],
+          createdAt: new Date(2022, 10, 5, 14, 32, 0)
+        },
+        {
           identification: '88a261d4-09ba-45fe-81cc-ff10c0eb1052',
           name: 'Londres Freestyle',
           artists: ['Veigh', 'Nagalli', 'Supernova Ent'],
@@ -34,7 +52,7 @@ export function MusicFeed() {
           description: 'Londres Freestyle',
           explicit: true,
           isLiked: true,
-          categoriesId: [],
+          categories: [],
           usersHasLiked: [],
           usersHasSaved: [],
           usersHasReported: [],
@@ -53,7 +71,7 @@ export function MusicFeed() {
           description: 'Facilitei L7',
           explicit: false,
           isReported: true,
-          categoriesId: [],
+          categories: [],
           usersHasLiked: [],
           usersHasSaved: [],
           usersHasReported: [],
@@ -78,7 +96,7 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/DXXwxHGjLq2DHh63tPWxj4TwJBSbrFTJ',
           description: 'Sem pressa',
           explicit: true,
-          categoriesId: [],
+          categories: [],
           usersHasLiked: [],
           usersHasSaved: [],
           usersHasReported: [],
@@ -106,7 +124,7 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/kRgsjbaMBaB7ZDoDm4QZRDuqGx05j8c9',
           description: 'Londres Freestyle',
           explicit: true,
-          categoriesId: [],
+          categories: [],
           usersHasLiked: [],
           usersHasSaved: [],
           usersHasReported: [],
@@ -124,7 +142,7 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/yh03xpsgkuEIZ04ogpInYUhvPhYVW5gQ',
           description: 'Facilitei L7',
           explicit: false,
-          categoriesId: [],
+          categories: [],
           usersHasLiked: [],
           usersHasSaved: [],
           usersHasReported: [],
@@ -149,7 +167,7 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/DXXwxHGjLq2DHh63tPWxj4TwJBSbrFTJ',
           description: 'Sem pressa',
           explicit: true,
-          categoriesId: [],
+          categories: [],
           usersHasLiked: [],
           usersHasSaved: [],
           usersHasReported: [],
@@ -167,7 +185,7 @@ export function MusicFeed() {
             'https://audio.jukehost.co.uk/BW8KB0iBaQMWXx478ZLYbWLovkddazD2',
           description: 'ye',
           explicit: true,
-          categoriesId: [],
+          categories: [],
           usersHasLiked: [],
           usersHasSaved: [],
           usersHasReported: [],
@@ -260,7 +278,7 @@ export function MusicFeed() {
                       usersHasLiked={track.usersHasLiked}
                       usersHasReported={track.usersHasReported}
                       usersHasSaved={track.usersHasSaved}
-                      categoriesId={track.categoriesId}
+                      categories={track.categories}
                       comments={track.comments}
                       createdAt={track.createdAt}
                     />

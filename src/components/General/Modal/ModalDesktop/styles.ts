@@ -66,7 +66,7 @@ export const StyledDialogContent = styled(
 
   position: fixed;
 
-  z-index: 200;
+  z-index: 400;
 
   top: ${props => (props.$yPos ? `${props.$yPos}px` : 0)};
   left: ${props => (props.$xPos ? `${props.$xPos}px` : 0)};

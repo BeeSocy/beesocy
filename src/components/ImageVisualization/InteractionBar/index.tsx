@@ -1,6 +1,11 @@
 import { useMobile } from '../../../hooks/useMobile';
 import { Bar, Actions, ButtonBar, ContentUnBodyBar, LikeBar } from './styles';
-import { MdChevronLeft, MdOutlineChat, MdOutlineShare } from 'react-icons/md';
+import {
+  MdChevronLeft,
+  MdChevronRight,
+  MdOutlineChat,
+  MdOutlineShare
+} from 'react-icons/md';
 import { IconProfile } from '../../General/IconProfile';
 import { Button } from '../../Widgets/Buttons/Button';
 import { LikeButton } from '../../Widgets/Buttons/ActionButtons/LikeButton';
@@ -32,6 +37,14 @@ export function InteractionBar() {
 
   const isBarHover = useHoverDirty(barRef);
 
+  function scrollToComments() {
+    window.scrollTo({
+      left: 0,
+      top: document.body.scrollHeight - 800,
+      behavior: 'smooth'
+    });
+  }
+
   useEffect(() => {
     setInteractionBarActive(isBarHover);
   }, [isBarHover]);
@@ -47,7 +60,7 @@ export function InteractionBar() {
           <Actions>
             <IconContext.Provider value={{ size: '32' }}>
               <IconProfile user={user} />
-              <Button full={false} rounded>
+              <Button full={false} rounded onClick={scrollToComments}>
                 <MdOutlineChat />
               </Button>
               <Button full={false} rounded>

@@ -14,8 +14,17 @@ export function Router() {
 
   const { handleChangePaddingActive } = useLayout();
 
-  useEffect(() => {
+  function scrollToTop() {
+    window.scrollTo({ left: 0, top: 0 });
+  }
+
+  function onRouteChange() {
     handleChangePaddingActive(true);
+    scrollToTop();
+  }
+
+  useEffect(() => {
+    onRouteChange();
   }, [location]);
 
   return (

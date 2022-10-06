@@ -1,7 +1,12 @@
 import { useState } from 'react';
-import { Container, CarouselContent, Carousel } from './styles';
+import { Container } from './styles';
 
-interface IImageViewProps {
+import { useTheme } from '../../../context/ThemeProvider/useTheme';
+import { useMobile } from '../../../hooks/useMobile';
+import { ImageViewDesktop } from './Desktop';
+import { ImageViewMobile } from './Mobile';
+
+export interface IImageViewProps {
   name: string;
   img: string[];
 }
@@ -9,23 +14,38 @@ interface IImageViewProps {
 export function ImageView({ img, name }: IImageViewProps) {
   const [currentImage, setCurrentImage] = useState<number>(0);
 
+  const { isMobile } = useMobile();
+
+  function handleChangeCarouselImage(direction: 'left' | 'right'): void {
+    if (direction === 'left') {
+      if (currentImage != img.length - 1) {
+        setCurrentImage(state => state + 1);
+      }
+    }
+
+    if (direction === 'right') {
+      if (currentImage != 0) {
+        setCurrentImage(state => state - 1);
+      }
+    }
+  }
+
   return (
     <Container>
-      {img.length > 1 ? (
-        <Carousel>
-          <CarouselContent>
-            <a href={img[currentImage]} target={'_blank'}>
-              <img
-                src={img[currentImage]}
-                alt={`Album ${name} em grande escala`}
-              />
-            </a>
-          </CarouselContent>
-        </Carousel>
+      {isMobile ? (
+        <ImageViewMobile
+          img={img}
+          handleChangeCarouselImage={handleChangeCarouselImage}
+          currentImage={currentImage}
+          name={name}
+        />
       ) : (
-        <a href={img[0]} target={'_blank'}>
-          <img src={img[0]} alt={`Imagem ${name} em grande escala`} />
-        </a>
+        <ImageViewDesktop
+          img={img}
+          handleChangeCarouselImage={handleChangeCarouselImage}
+          currentImage={currentImage}
+          name={name}
+        />
       )}
     </Container>
   );

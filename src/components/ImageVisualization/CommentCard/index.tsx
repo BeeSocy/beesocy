@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { format, formatDistanceToNow, intervalToDuration } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
@@ -27,6 +27,8 @@ export function CommentCard({ user, comment }: ProfileComment) {
   const commentElementRef = useRef<HTMLDivElement>(null);
 
   const [commentIsViewingMore, setCommentIsViewingMore] = useState(false);
+  const [commentViewingMoreButtonActive, setCommentViewingMoreButtonActive] =
+    useState<boolean>(false);
 
   function formatCommentedAt(date: Date): string {
     const distanceToNow = intervalToDuration({ start: date, end: Date.now() });
@@ -46,6 +48,16 @@ export function CommentCard({ user, comment }: ProfileComment) {
 
     return distanceToNowFormatted;
   }
+
+  useLayoutEffect(() => {
+    if (commentElementRef.current) {
+      if (commentElementRef.current.offsetHeight > 63) {
+        setCommentViewingMoreButtonActive(true);
+      } else {
+        setCommentViewingMoreButtonActive(false);
+      }
+    }
+  }, [commentElementRef.current]);
 
   return (
     <Container>
@@ -67,12 +79,11 @@ export function CommentCard({ user, comment }: ProfileComment) {
           {comment.commentText}
         </Comment>
 
-        {commentElementRef.current &&
-          commentElementRef.current?.offsetHeight > 63 && (
-            <ViewMore onClick={() => setCommentIsViewingMore(state => !state)}>
-              {commentIsViewingMore ? 'Ver menos' : 'Ver mais'}
-            </ViewMore>
-          )}
+        {commentViewingMoreButtonActive && (
+          <ViewMore onClick={() => setCommentIsViewingMore(state => !state)}>
+            {commentIsViewingMore ? 'Ver menos' : 'Ver mais'}
+          </ViewMore>
+        )}
       </RightContainer>
     </Container>
   );

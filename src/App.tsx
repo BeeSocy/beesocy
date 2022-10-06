@@ -16,6 +16,8 @@ import { ModalProvider } from './context/ModalProvider';
 import { Modal } from './components/General/Modal';
 import { useEffect } from 'react';
 import { useLayout } from './context/LayoutProvider/useLayout';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 export function App() {
   const defaultTheme = dark;
@@ -34,11 +36,13 @@ export function App() {
         <IconContext.Provider value={{ size: '28' }}>
           <ModalProvider>
             <AlertProvider>
-              <MenuProvider>
-                <CategoryProvider>
-                  <Router />
-                </CategoryProvider>
-              </MenuProvider>
+              <DndProvider backend={HTML5Backend}>
+                <MenuProvider>
+                  <CategoryProvider>
+                    <Router />
+                  </CategoryProvider>
+                </MenuProvider>
+              </DndProvider>
 
               <Alert />
               <Modal />

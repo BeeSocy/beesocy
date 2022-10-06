@@ -154,7 +154,7 @@ export const TimeContainer = styled.div`
 `;
 
 export const TimeSeconds = styled.span`
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.secondaryLight};
 
   letter-spacing: 0.08rem;
 

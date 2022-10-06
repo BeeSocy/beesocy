@@ -4,6 +4,7 @@ import { breakpoint } from '../../hooks/useMobile';
 interface StyledContainer {
   hasVerticalScroll?: boolean;
   hasPaddingActive?: boolean;
+  hasPlayerActive?: boolean;
 }
 
 export const Container = styled.main<StyledContainer>`
@@ -17,6 +18,11 @@ export const Container = styled.main<StyledContainer>`
           padding-left: 8rem;
           padding-right: ${props.hasVerticalScroll ? '2rem' : '1.2rem'};
           padding-bottom: 1.4rem;
+
+          ${props.hasPlayerActive &&
+          css`
+            padding-bottom: 11.4rem;
+          `}
         `
       : css`
           padding-top: 6.8rem;
@@ -27,11 +33,17 @@ export const Container = styled.main<StyledContainer>`
     padding-bottom: 8rem;
 
     ${props =>
-    props.hasPaddingActive
-      ? css`
+      props.hasPlayerActive &&
+      css`
+        padding-bottom: calc(8rem + 10rem);
+      `}
+
+    ${props =>
+      props.hasPaddingActive
+        ? css`
             padding-inline: 2rem;
           `
-      : css`
+        : css`
             padding-inline: 0;
           `}
   }

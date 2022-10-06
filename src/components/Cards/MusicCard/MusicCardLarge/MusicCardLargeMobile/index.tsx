@@ -21,6 +21,7 @@ import {
   MusicName,
   Details
 } from '../styles';
+import { SheetMusicMenu } from '../../../../MusicFeed/SheetMusicMenu';
 
 export function MusicCardLargeMobile(props: IMusicCardProps) {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
@@ -82,45 +83,11 @@ export function MusicCardLargeMobile(props: IMusicCardProps) {
         </Card>
       </Container>
 
-      <Sheet isOpen={menuIsOpen} onClose={() => setMenuIsOpen(false)}>
-        <Sheet.Container
-          style={{ background: colors.primary, height: 'fit-content' }}
-        >
-          <Sheet.Header style={{ color: colors.light }} />
-          <Sheet.Content onTap={() => setMenuIsOpen(false)}>
-            <MusicInfo
-              name={props.name}
-              imageUrl={props.imageUrl}
-              artists={props.artists}
-            />
-            <MusicMenu
-              track={{
-                name: props.name,
-                artists: props.artists,
-                description: props.description,
-                duration: props.duration,
-                fileUrl: props.fileUrl,
-                identification: props.identification,
-                imageUrl: props.imageUrl,
-                explicit: props.explicit,
-                usersHasLiked: props.usersHasLiked,
-                usersHasReported: props.usersHasReported,
-                usersHasSaved: props.usersHasSaved,
-                playlist: props.playlist,
-                categoriesId: props.categoriesId,
-                comments: props.comments,
-                createdAt: props.createdAt
-              }}
-              playlist={props.playlist}
-              liked={false}
-              reported={false}
-              saved={false}
-            />
-          </Sheet.Content>
-        </Sheet.Container>
-
-        <Sheet.Backdrop onTap={() => setMenuIsOpen(false)} />
-      </Sheet>
+      <SheetMusicMenu
+        open={menuIsOpen}
+        onClose={() => setMenuIsOpen(false)}
+        track={props}
+      />
     </>
   );
 }

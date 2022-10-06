@@ -7,6 +7,7 @@ import { MobileMenu } from '../../components/Header/MobileMenu';
 import { Player } from '../../components/Player';
 import { LayoutContext } from '../../context/LayoutProvider';
 import { useLayout } from '../../context/LayoutProvider/useLayout';
+import { usePlayer } from '../../context/PlayerProvider/usePlayer';
 
 import { useMobile } from '../../hooks/useMobile';
 import { useScroll } from '../../hooks/useScroll';
@@ -18,17 +19,22 @@ export function GlobalLayout() {
 
   const { elementRef, hasVerticalScroll } = useScroll();
 
-  const { paddingActive, handleChangePaddingActive } = useLayout();
+  const { paddingActive } = useLayout();
+
+  const { getOpen } = usePlayer();
 
   elementRef.current = document.documentElement;
 
   return (
     <>
       <Header />
+
       {isMobile ? <MobileMenu /> : <Menu />}
+
       <Container
         hasVerticalScroll={hasVerticalScroll}
         hasPaddingActive={paddingActive}
+        hasPlayerActive={getOpen()}
       >
         <Outlet />
       </Container>

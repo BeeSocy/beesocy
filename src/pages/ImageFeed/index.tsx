@@ -26,7 +26,7 @@ export const ImageFeed = React.memo(() => {
       usersHasLiked: [],
       usersHasSaved: [],
       usersHasReported: [],
-      categoriesId: [],
+      categories: [],
       comments: [],
       createdAt: new Date(2022, 10, 1, 15, 30, 0)
     },
@@ -41,7 +41,7 @@ export const ImageFeed = React.memo(() => {
       usersHasLiked: [],
       usersHasSaved: [],
       usersHasReported: [],
-      categoriesId: [],
+      categories: [],
       comments: [],
       createdAt: new Date(2022, 10, 1, 15, 30, 0)
     },
@@ -55,7 +55,7 @@ export const ImageFeed = React.memo(() => {
       usersHasLiked: [],
       usersHasSaved: [],
       usersHasReported: [],
-      categoriesId: [],
+      categories: [],
       comments: [],
       createdAt: new Date(2022, 10, 1, 15, 30, 0)
     }

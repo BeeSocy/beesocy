@@ -35,8 +35,12 @@ import { UserCard } from '../../Cards/UserCard';
 import { useScroll } from '../../../hooks/useScroll';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
 import { IProfile } from '../../../types/profile';
+
 import { useModal } from '../../../context/ModalProvider/useModal';
 import { ModalChat } from '../../Chat/ChatDesktop/ModalChat';
+
+import { usePlayer } from '../../../context/PlayerProvider/usePlayer';
+
 
 export function Menu() {
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
@@ -47,10 +51,17 @@ export function Menu() {
 
   const themes = useTheme();
 
+  const { handleChangeLarge } = usePlayer();
+
   const { pathname } = useLocation();
 
   function handleShowMoreFollowing() {
     setIsShowMoreFollowing(state => !state);
+  }
+
+  function handleOnClickMenu() {
+    handleSetOpenMenu(false);
+    handleChangeLarge(false);
   }
 
   const followUsers: IProfile[] = [
@@ -97,7 +108,7 @@ export function Menu() {
       hasVerticalScroll={hasVerticalScroll}
       ref={menuRef}
       onClick={() => {
-        handleSetOpenMenu(false);
+        handleOnClickMenu();
       }}
     >
       <LinkButton to="/" aria-label="Página Início">

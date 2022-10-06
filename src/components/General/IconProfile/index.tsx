@@ -37,7 +37,7 @@ export function IconProfile({ user }: IIconProfileProps) {
         {/*
           aqui eu vou pegar o Id dentro de fetched dentro de ImagesVisualization para entrar no perfil
         */}
-        <Link to={`/user/${user.identification}}`}>
+        <Link to={`/profile/${user.identification}}`}>
           <CardIconProfile>
             <img src={user.imageUrl} alt={`Foto de perfil de ${user.name}`} />
           </CardIconProfile>

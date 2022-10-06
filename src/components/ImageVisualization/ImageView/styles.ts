@@ -1,33 +1,34 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { breakpoint } from '../../../hooks/useMobile';
+import { Button } from '../../Widgets/Buttons/Button';
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
 
+  a {
+    display: flex;
+    justify-content: center;
+  }
+
   img {
     width: 100%;
     height: 100%;
 
-    object-fit: contain;
-
     max-width: 70vw;
-    max-height: 120vh;
+    max-height: 75vh;
+
+    object-fit: contain;
 
     &:hover {
       cursor: zoom-in;
     }
-  }
-`;
 
-export const Carousel = styled.div``;
+    @media (max-width: ${breakpoint}) {
+      width: 200%;
 
-export const CarouselContent = styled.section`
-  display: flex;
-
-  height: fit-content;
-
-  a {
-    margin-inline: 10rem;
+      max-width: 80vw;
+    }
   }
 `;

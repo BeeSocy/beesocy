@@ -23,7 +23,7 @@ export function PlaylistList({ track }: IPlaylistListProps) {
       identification: '7f95bd63-d82c-40ab-a5f6-beb506b1786e',
       bannerUrl:
         'https://pbs.twimg.com/profile_images/2068072926/julio_400x400.jpg',
-      categoriesId: [],
+      categories: [],
       author: {} as IProfile,
       description: '',
       musics: [{}, {}, {}],
@@ -56,7 +56,7 @@ export function PlaylistList({ track }: IPlaylistListProps) {
             author={playlist.author}
             identification={playlist.identification}
             description={playlist.description}
-            categoriesId={playlist.categoriesId}
+            categories={playlist.categories}
             onClickAction={() => handleClickAction(playlist.name)}
             comments={playlist.comments}
             createdAt={playlist.createdAt}

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '../../Widgets/Buttons/Button';
 
 export const Container = styled.div`
   display: flex;
@@ -7,6 +8,9 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
 
   background: ${props => props.theme.colors.primary};
@@ -69,4 +73,12 @@ export const Divider = styled.div`
 
   background: ${props => props.theme.colors.light};
   margin: 2rem 0;
+`;
+
+export const ShowingMoreButton = styled(Button)`
+  border-radius: 2rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+
+  align-self: center;
 `;

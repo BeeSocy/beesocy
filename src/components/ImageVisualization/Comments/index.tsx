@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Button } from '../../Widgets/Buttons/Button';
 import {
   ButtonSend,
@@ -5,10 +7,11 @@ import {
   Container,
   Wrapper,
   ContainerComment,
-  InputComment
+  InputComment,
+  ShowingMoreButton
 } from './style';
 
-import { MdSend } from 'react-icons/md';
+import { MdOutlineAssignmentReturn, MdSend } from 'react-icons/md';
 
 import { CommentCard } from '../CommentCard/index';
 
@@ -23,8 +26,10 @@ interface ICommentsProps {
 
 import { Divider } from '../../General/Divider';
 
-
 export function Comments({ loggedUser, comments }: ICommentsProps) {
+  const [isCommentsShowingMore, setIsCommentsShowingMore] =
+    useState<boolean>(false);
+
   return (
     <Container>
       <Wrapper>
@@ -47,13 +52,34 @@ export function Comments({ loggedUser, comments }: ICommentsProps) {
 
         <Divider isColumn={false} />
 
-        {comments.map(value => (
-          <CommentCard
-            key={value.identification}
-            comment={value}
-            user={value.user}
-          />
-        ))}
+        {comments.map((value, index) => {
+          if (!isCommentsShowingMore && index <= 2) {
+            return (
+              <CommentCard
+                key={value.identification}
+                comment={value}
+                user={value.user}
+              />
+            );
+          } else if (isCommentsShowingMore) {
+            return (
+              <CommentCard
+                key={value.identification}
+                comment={value}
+                user={value.user}
+              />
+            );
+          }
+        })}
+
+        {comments.length > 3 && (
+          <ShowingMoreButton
+            full={false}
+            onClick={() => setIsCommentsShowingMore(state => !state)}
+          >
+            Ver {isCommentsShowingMore ? 'menos' : 'mais'}
+          </ShowingMoreButton>
+        )}
       </Wrapper>
     </Container>
   );
