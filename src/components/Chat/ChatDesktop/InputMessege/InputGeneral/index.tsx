@@ -13,12 +13,12 @@ export const InputMessege = () => {
         <SectionInput>
           <InputMsg />
         </SectionInput>
-        <Button rounded>
+        <Button rounded full={false}>
           <MdMic />
         </Button>
       </FakeInput>
 
-      <Button rounded>
+      <Button rounded full={false}>
         <MdOutlinePermMedia />
       </Button>
     </ContainerInput>

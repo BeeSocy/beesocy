@@ -15,6 +15,10 @@ export const BoxCardStyled = styled.div`
 
 export const ContainerSla = styled.section`
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: red;
+`
+
+export const SectionBoxChat = styled.section`
+    display: flex;
 `

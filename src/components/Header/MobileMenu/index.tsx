@@ -95,7 +95,8 @@ export function MobileMenu() {
     handleCallModal(<ModalChat />, {
       overlay: true,
       positionX: 105,
-      positionY: 83
+      positionY: 83,
+      fullHeight: true
     });
   };
 

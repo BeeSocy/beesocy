@@ -11,7 +11,7 @@ background: ${props => `${props.theme.colors.light}30`};
 color: ${props => props.theme.title};
 border: 0.1rem solid ${props => props.theme.colors.light};
 
-padding-left: 2.2rem;
+padding-left: 3rem;
 border-radius: 2.6rem;
 gap:10rem;
 `

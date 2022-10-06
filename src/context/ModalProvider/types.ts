@@ -6,6 +6,7 @@ export interface IModalProps {
   positionX?: number;
   positionY?: number;
   center?: boolean;
+  fullHeight?: boolean;
   title?: string;
 }
 

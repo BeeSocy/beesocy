@@ -22,7 +22,7 @@ export function ModalMobile() {
       <Sheet.Container
         style={{
           background: colors.primary,
-          height: 'fit-content'
+          height: options.fullHeight ? '100vh' : 'fit-content'
         }}
         onTap={() => handleSetOpen(false)}
       >

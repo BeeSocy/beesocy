@@ -9,7 +9,7 @@ import { ContainerInput } from '../InputMessege/ContainerInput';
 import { InputMessege } from '../InputMessege/InputGeneral';
 import { useMobile } from '../../../../hooks/useMobile';
 import { MobileCards } from '../../ChatMobile/MobileCards';
-import { ContainerSla } from '../../BoxCard/styles';
+import { ContainerSla, SectionBoxChat } from '../../BoxCard/styles';
 
 export const ChatGeneral = () => {
   const { isMobile } = useMobile();
@@ -37,7 +37,9 @@ export const ChatGeneral = () => {
       ) : (
         <>
           <ChatContainer>
-            <ContainerSla></ContainerSla>
+            <BoxCards>
+              <ChatCards />
+            </BoxCards>
           </ChatContainer>
         </>
       )}
