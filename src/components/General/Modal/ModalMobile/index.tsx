@@ -13,6 +13,8 @@ export function ModalMobile() {
 
   const { colors } = useTheme();
 
+  const hasTitle = options.title != null && options.title != '';
+
   useLockBodyScroll(open);
 
   return (
@@ -20,16 +22,15 @@ export function ModalMobile() {
       <Sheet.Container
         style={{
           background: colors.primary,
-          height: 'fit-content',
-          padding: '0.8rem'
+          height: options.fullHeight ? '100vh' : 'fit-content'
         }}
         onTap={() => handleSetOpen(false)}
       >
         <Sheet.Header style={{ color: colors.light }}>
-          <StyledHeader>
+          <StyledHeader hasTitle={hasTitle}>
             <Title size="medium">{options.title}</Title>
             {options.easyClose && (
-              <Button rounded full={false}>
+              <Button rounded full={false} data-dialog-close="true">
                 <MdClose size={18} />
               </Button>
             )}
