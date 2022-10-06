@@ -13,10 +13,10 @@ export interface ICardInfoProps {
 }
 
 export const FakeBack: ICardInfoProps = {
-  img: 'https://pm1.narvii.com/7875/8cae09ff868763cd7142a591a866b021b293e271r1-602-610v2_hq.jpg',
-  nickname: 'Kira Soca Fofo',
+  img: 'https://i.pinimg.com/564x/1c/3f/43/1c3f43ce30c8ba4e699d20fef8ba8548.jpg',
+  nickname: 'Carti Malvadão',
   available: false,
-  message: 'hello kirinha',
+  message: 'hello carti',
   messagetime: false
 };
 

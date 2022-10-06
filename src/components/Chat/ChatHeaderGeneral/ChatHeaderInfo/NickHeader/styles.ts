@@ -7,5 +7,6 @@ z-index: 1;
 
 export const SectionNick = styled.section`
 display: flex;
-padding-right: 9rem;
+flex-direction: row;
+flex-wrap: nowrap;
 `

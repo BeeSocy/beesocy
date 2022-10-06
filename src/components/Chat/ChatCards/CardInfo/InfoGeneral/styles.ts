@@ -34,7 +34,8 @@ flex-direction: column;
 
 export const AlignSection = styled.section`
 display: flex;
-height: 80%;
+flex-direction: column;
+gap: 0.8rem;
 margin-left: 0.1rem;
 flex-direction: column;
 align-items: center;

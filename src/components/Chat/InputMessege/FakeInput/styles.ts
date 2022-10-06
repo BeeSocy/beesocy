@@ -6,7 +6,7 @@ flex-direction: row;
 justify-content: space-between;
 align-items: center;
 
-padding-left: 2.2rem;
+padding-left: 1.8rem;
 
 background: ${props => `${props.theme.colors.light}30`};
 color: ${props => props.theme.title};
