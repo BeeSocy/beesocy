@@ -1,12 +1,10 @@
-import React, { ReactNode } from "react";
-import { BoxCardStyled } from "./styles";
+import React, { ReactNode } from 'react';
+import { BoxCardStyled } from './styles';
 
 interface IBoxCardsProps {
-children:ReactNode
+  children: ReactNode;
 }
 
-export const BoxCards = ({children}:IBoxCardsProps)=> {
-
-return <BoxCardStyled> {children} </BoxCardStyled>
-
-}
+export const BoxCards = ({ children }: IBoxCardsProps) => {
+  return <BoxCardStyled> {children} </BoxCardStyled>;
+};

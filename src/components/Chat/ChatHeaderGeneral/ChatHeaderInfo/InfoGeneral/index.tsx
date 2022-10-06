@@ -1,5 +1,10 @@
 import react, { ReactNode } from 'react';
-import { MdDeleteOutline, MdOutlinePushPin, MdPushPin } from 'react-icons/md';
+import {
+  MdClose,
+  MdDeleteOutline,
+  MdOutlinePushPin,
+  MdPushPin
+} from 'react-icons/md';
 import { useModal } from '../../../../../context/ModalProvider/useModal';
 import { Button } from '../../../../Widgets/Buttons/Button';
 import { NickHeader } from '../NickHeader';
@@ -16,13 +21,18 @@ export const InfoGeneral = () => {
         <Button rounded>
           <MdOutlinePushPin />
         </Button>
+
+        <Button rounded>
+          <MdDeleteOutline />
+        </Button>
+
         <Button
           rounded
           onClick={() => {
             handleSetOpen(false);
           }}
         >
-          <MdDeleteOutline />
+          <MdClose />
         </Button>
       </AlignIcons>
     </InfoGeneralStyled>

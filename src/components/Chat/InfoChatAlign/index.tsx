@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
-import { InfoChatAlignStyled } from "./styles";
-import { NickName } from "../../General/IconProfile/styles";
+import React, { ReactNode } from 'react';
+import { InfoChatAlignStyled } from './styles';
+import { NickName } from '../../General/IconProfile/styles';
 
 interface IAlignProps {
-children:ReactNode;
+  children: ReactNode;
 }
 
-export const InfoChatAlign = ({children}:IAlignProps)=> {
-return <InfoChatAlignStyled> {children} </InfoChatAlignStyled>
-}
+export const InfoChatAlign = ({ children }: IAlignProps) => {
+  return <InfoChatAlignStyled> {children} </InfoChatAlignStyled>;
+};

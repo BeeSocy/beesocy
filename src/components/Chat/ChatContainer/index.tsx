@@ -1,12 +1,10 @@
-import React, { ReactNode } from "react";
-import { ContChatStyled } from "./styles";
+import React, { ReactNode } from 'react';
+import { ContChatStyled } from './styles';
 
 interface IContChatProps {
-children:ReactNode;
+  children: ReactNode;
 }
 
-export const ChatContainer = ({children}:IContChatProps)=> {
-
-return <ContChatStyled> {children} </ContChatStyled> 
-
-}
+export const ChatContainer = ({ children }: IContChatProps) => {
+  return <ContChatStyled> {children} </ContChatStyled>;
+};
