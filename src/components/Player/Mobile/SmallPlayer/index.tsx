@@ -33,19 +33,6 @@ import {
   Wrapper,
   Specs,
   Controls,
-  ShuffleButton,
-  TimeContainer,
-  TimeSeconds,
-  TimebarSlider,
-  TimebarTrack,
-  TimebarRange,
-  TimebarThumb,
-  ExtraControls,
-  VolumeSlider,
-  VolumeTrack,
-  VolumeRange,
-  ToggleLargeButton,
-  VolumeButton,
   StyledTitle
 } from './styles';
 
@@ -132,20 +119,6 @@ export function MobileSmallPlayer() {
               event.stopPropagation();
             }}
           >
-            {/* <Button onClick={handleToggleRepeatMode} rounded full={false}>
-              {player.getRepeat() != 'single' ? (
-                <MdRepeat
-                  style={
-                    player.getRepeat() == 'all'
-                      ? { fill: colors.bee }
-                      : { fill: colors.text }
-                  }
-                />
-              ) : (
-                <MdRepeatOne style={{ fill: colors.bee }} />
-              )}
-            </Button> */}
-
             <Button onClick={handlePreviousMusic} rounded full={false}>
               <MdSkipPrevious />
             </Button>
@@ -161,47 +134,7 @@ export function MobileSmallPlayer() {
             <Button onClick={handleNextMusic} rounded full={false}>
               <MdSkipNext />
             </Button>
-
-            {/*             <ShuffleButton
-              onClick={player.shuffleTrackList}
-              rounded
-              full={false}
-            >
-              <MdShuffle />
-            </ShuffleButton> */}
           </Controls>
-
-          {/* <TimeContainer
-            onClick={event => {
-              event.stopPropagation();
-            }}
-          >
-            <TimeSeconds>
-              {player.formatSeconds(player.getCurrentSeconds())}
-            </TimeSeconds>
-
-            <TimebarSlider
-              max={player.getCurrentTrack().duration}
-              onValueChange={value => {
-                handleChangeTimeInSlider(value[0]);
-              }}
-              value={[player.getCurrentSeconds()]}
-            >
-              <TimebarTrack>
-                <TimebarRange />
-              </TimebarTrack>
-
-              <TimebarThumb />
-            </TimebarSlider>
-
-            <TimeSeconds>
-              {player.formatSeconds(
-                player.getCurrentTrack().duration
-                  ? player.getCurrentTrack().duration
-                  : 0
-              )}
-            </TimeSeconds>
-          </TimeContainer> */}
         </Specs>
 
         {/*         <ExtraControls>

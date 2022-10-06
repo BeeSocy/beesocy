@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { Button } from '../../../Widgets/Buttons/Button';
 
 import * as SliderPrimitive from '@radix-ui/react-slider';
+
 import { Title } from '../../../General/Title';
 
 export const Container = styled.div`
@@ -132,77 +133,6 @@ export const ShuffleButton = styled(Button)<IStyledShuffleButton>`
       transform: rotate3d(1, 0, 0, 460deg);
     }
   }
-`;
-
-export const TimeContainer = styled.div`
-  display: flex;
-
-  gap: 0.8rem;
-
-  width: 100%;
-
-  white-space: nowrap;
-`;
-
-export const TimeSeconds = styled.span`
-  color: ${props => props.theme.colors.light};
-
-  letter-spacing: 0.08rem;
-
-  font-weight: 500;
-`;
-
-export const TimebarSlider = styled(SliderPrimitive.Root)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  min-width: 20rem;
-  max-width: 40rem;
-  width: 100%;
-
-  height: 2rem;
-
-  touch-action: none;
-
-  position: relative;
-`;
-
-export const TimebarTrack = styled(SliderPrimitive.Track)`
-  background: ${props => props.theme.colors.light};
-
-  position: relative;
-
-  flex: 1;
-
-  border-radius: 200px;
-
-  height: 0.4rem;
-`;
-
-export const TimebarRange = styled(SliderPrimitive.Range)`
-  background: ${props => props.theme.colors.bee};
-
-  border-radius: inherit;
-
-  height: 100%;
-
-  position: absolute;
-`;
-
-export const TimebarThumb = styled(SliderPrimitive.Thumb)`
-  all: unset;
-
-  display: block;
-
-  width: 1.2rem;
-  height: 1.2rem;
-
-  border-radius: 200px;
-
-  background: white;
-
-  border: 0.1rem solid ${props => props.theme.colors.light};
 `;
 
 export const ExtraControls = styled.section`

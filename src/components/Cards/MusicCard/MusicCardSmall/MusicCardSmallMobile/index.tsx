@@ -21,6 +21,7 @@ import {
   DropdownTrigger
 } from '../styles';
 import { useTheme } from '../../../../../context/ThemeProvider/useTheme';
+import { SheetMusicMenu } from '../../../../MusicFeed/SheetMusicMenu';
 
 export function MusicCardSmallMobile(props: IMusicCardProps) {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
@@ -85,46 +86,11 @@ export function MusicCardSmallMobile(props: IMusicCardProps) {
         </Card>
       </Container>
 
-      <Sheet isOpen={menuIsOpen} onClose={() => setMenuIsOpen(false)}>
-        <Sheet.Container
-          style={{ background: colors.primary, height: 'fit-content' }}
-          onTap={() => setMenuIsOpen(false)}
-        >
-          <Sheet.Header style={{ color: colors.light }} />
-          <Sheet.Content>
-            <MusicInfo
-              name={props.name}
-              imageUrl={props.imageUrl}
-              artists={props.artists}
-            />
-            <MusicMenu
-              playlist={props.playlist}
-              liked={false}
-              reported={false}
-              saved={false}
-              track={{
-                name: props.name,
-                artists: props.artists,
-                description: props.description,
-                duration: props.duration,
-                fileUrl: props.fileUrl,
-                identification: props.identification,
-                imageUrl: props.imageUrl,
-                explicit: props.explicit,
-                usersHasLiked: props.usersHasLiked,
-                usersHasReported: props.usersHasReported,
-                usersHasSaved: props.usersHasSaved,
-                playlist: props.playlist,
-                categories: props.categories,
-                comments: props.comments,
-                createdAt: props.createdAt
-              }}
-            />
-          </Sheet.Content>
-        </Sheet.Container>
-
-        <Sheet.Backdrop onTap={() => setMenuIsOpen(false)} />
-      </Sheet>
+      <SheetMusicMenu
+        open={menuIsOpen}
+        onClose={() => setMenuIsOpen(false)}
+        track={props}
+      />
     </>
   );
 }

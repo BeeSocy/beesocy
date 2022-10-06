@@ -28,7 +28,9 @@ export function GlobalLayout() {
   return (
     <>
       <Header />
+
       {isMobile ? <MobileMenu /> : <Menu />}
+
       <Container
         hasVerticalScroll={hasVerticalScroll}
         hasPaddingActive={paddingActive}

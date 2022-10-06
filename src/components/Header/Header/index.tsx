@@ -16,7 +16,6 @@ import { SearchBar } from '../SearchBar';
 import { useMobile } from '../../../hooks/useMobile';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
 import { useMenu } from '../../../context/MenuProvider/useMenu';
-import { LinkButton } from '../../Widgets/Buttons/LinkButton';
 
 export function Header() {
   const { isMobile } = useMobile();
