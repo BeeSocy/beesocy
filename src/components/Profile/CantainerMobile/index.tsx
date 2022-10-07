@@ -15,6 +15,7 @@ import { ButtonFollow } from '../ButtonFollow';
 import { MdVerified } from 'react-icons/md';
 import { InfoProfile } from '../InforProfile';
 import { ContentSocial } from '../../General/ContentSocial';
+import { NickName } from '../NickName';
 
 export function BannerMobile() {
   return (
@@ -31,7 +32,7 @@ export function BannerMobile() {
       </ContainerProfile>
       <Format>
         <NameProfile>
-          <span>@minhapika {user.verified && <MdVerified size={20} />}</span>
+          <NickName />
         </NameProfile>
         <ContainerFollow>
           <ButtonFollow></ButtonFollow>

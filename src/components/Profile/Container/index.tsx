@@ -16,6 +16,7 @@ import { ButtonFollow } from '../ButtonFollow';
 import { ContentSocialProfile } from '../ContentSocialProfile';
 import { IconProfile } from '../IconProfile';
 import { InfoProfile } from '../InforProfile';
+import { NickName } from '../NickName';
 import { SendMensagem } from '../SendMensagem';
 import {
   Content,
@@ -34,7 +35,7 @@ export function Container() {
           <IconProfile color={user.color} />
           <TitleName>{user.name}</TitleName>
           <NameUser>
-            <span>@minhapika {user.verified && <MdVerified size={20} />}</span>
+            <NickName />
           </NameUser>
           <ButtonFollow />
           <SendMensagem />

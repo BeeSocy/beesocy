@@ -9,7 +9,7 @@ interface IStyledDialogOverlayProps {
 
 export const StyledDialogOverlay = styled(
   DialogPrimitive.Overlay
-)<IStyledDialogOverlayProps>`
+) <IStyledDialogOverlayProps>`
   position: fixed;
   z-index: 150;
   inset: 0;
@@ -55,7 +55,7 @@ interface IStyledDialogContentProps {
 
 export const StyledDialogContent = styled(
   DialogPrimitive.Content
-)<IStyledDialogContentProps>`
+) <IStyledDialogContentProps>`
   display: flex;
 
   flex-direction: column;
@@ -63,8 +63,6 @@ export const StyledDialogContent = styled(
   background: ${props => props.theme.colors.primary};
 
   border-radius: 0.8rem;
-
-  padding: 1.2rem;
 
   position: fixed;
 
@@ -93,8 +91,8 @@ export const StyledDialogContent = styled(
       transform: translateY(50%);
 
       ${props =>
-        props.$center &&
-        css`
+    props.$center &&
+    css`
           transform: translate(-50%, 0%);
         `}
     }
@@ -107,8 +105,8 @@ export const StyledDialogContent = styled(
       transform: translateY(50%);
 
       ${props =>
-        props.$center &&
-        css`
+    props.$center &&
+    css`
           transform: translate(-50%, 0%);
         `}
     }
@@ -123,18 +121,34 @@ export const StyledDialogContent = styled(
     `};
 `;
 
-export const StyledDialogHeader = styled.section`
+interface IStyledDialogHeaderProps {
+  hasTitle?: boolean;
+}
+
+export const StyledDialogHeader = styled.section<IStyledDialogHeaderProps>`
   display: flex;
 
   align-items: center;
   justify-content: space-between;
 
+  position: relative;
+
   gap: 0.8rem;
 
-  border-bottom: 1px solid ${props => props.theme.colors.light};
-
-  padding-bottom: 0.8rem;
-  margin-bottom: 0.8rem;
+  ${props =>
+    props.hasTitle
+      ? css`
+          border-bottom: 1px solid ${props => props.theme.colors.light};
+          padding-bottom: 0.8rem;
+          margin-bottom: 0.8rem;
+        `
+      : css`
+          & > button[data-dialog-close='true'] {
+            top: 0.8rem;
+            right: 0.8rem;
+            position: absolute;
+          }
+        `}
 `;
 
 export const StyledDialogClose = styled(DialogPrimitive.Close)`
