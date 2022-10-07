@@ -5,16 +5,12 @@ import { SaveButton } from '../../Widgets/Buttons/ActionButtons/SaveButton';
 import { ShareButton } from '../../Widgets/Buttons/ActionButtons/ShareButton';
 
 import { CenterElementContainer, Container, Toolbar, Content } from './styles';
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, useState } from 'react';
 import { MdBurstMode } from 'react-icons/md';
+import { IImagePost } from '../../../types/imagePost';
 
-export interface IImageCard extends HTMLAttributes<HTMLDivElement> {
+export interface IImageCard extends HTMLAttributes<HTMLDivElement>, IImagePost {
   large?: boolean;
-  isLiked: boolean;
-  isSaved: boolean;
-  isReported: boolean;
-  description: string;
-  img: string;
   centerElement?: ReactNode;
   multiple?: boolean;
 }
@@ -23,9 +19,9 @@ export function ImageCard({
   large,
   img,
   description,
-  isLiked,
-  isSaved,
-  isReported,
+  usersHasLiked,
+  usersHasSaved,
+  usersHasReported,
   centerElement,
   multiple,
   ...props
@@ -36,15 +32,15 @@ export function ImageCard({
 
       <Content>
         {multiple && <MdBurstMode size={42} />}
-        <img src={img} alt={description} {...props} />
+        <img src={img[0]} alt={description} {...props} />
       </Content>
 
       <Toolbar>
-        <SaveButton isSaved={isSaved} />
+        <SaveButton isSaved={false} />
         <ShareButton />
-        <LikeButton isLiked={isLiked} />
+        <LikeButton isLiked={false} />
         <CommentButton />
-        <ReportButton isReported={isReported} />
+        <ReportButton isReported={false} />
       </Toolbar>
     </Container>
   );

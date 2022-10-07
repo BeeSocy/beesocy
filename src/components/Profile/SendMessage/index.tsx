@@ -1,7 +1,7 @@
 import { MdSend } from 'react-icons/md';
 import { Content } from './styles';
 
-export function SendMensagem() {
+export function SendMessage() {
   return (
     <Content>
       <MdSend size={20} />

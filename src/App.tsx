@@ -18,6 +18,7 @@ import { useEffect } from 'react';
 import { useLayout } from './context/LayoutProvider/useLayout';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { ProfileCategoryProvider } from './context/ProfileCategoryProvider';
 
 export function App() {
   const defaultTheme = dark;
@@ -38,9 +39,11 @@ export function App() {
             <AlertProvider>
               <DndProvider backend={HTML5Backend}>
                 <MenuProvider>
-                  <CategoryProvider>
-                    <Router />
-                  </CategoryProvider>
+                  <ProfileCategoryProvider>
+                    <CategoryProvider>
+                      <Router />
+                    </CategoryProvider>
+                  </ProfileCategoryProvider>
                 </MenuProvider>
               </DndProvider>
 

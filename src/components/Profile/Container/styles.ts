@@ -1,94 +1,93 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const distance = 28;
 
 export const ContentProfile = styled.div`
-    background: ${props => props.theme.colors.primary};
+  background: ${props => props.theme.colors.primary};
 
-    position: fixed;
-    margin-top: 6.8rem;
-    top: 4%;
-    left: 8rem;
+  position: fixed;
 
-    width: ${distance}rem;
-    height: 80vh;
+  top: 10rem;
+  left: 8rem;
 
-    display: flex;
-    flex-direction: column;
+  width: ${distance}rem;
+  max-height: 55rem;
 
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
 
-    flex: 0;
+  gap: 0.8rem;
 
-    padding-block: 2rem;
-    padding-inline: 2rem;
+  justify-content: space-evenly;
 
-    border-radius: 2rem;
+  padding-block: 2rem;
+  padding-inline: 2rem;
 
-    overflow-y: auto;
+  border-radius: 2rem;
 
+  overflow-y: auto;
 `;
 
 export const Content = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.8rem;
 `;
 
 export const TitleName = styled.span`
-    font-weight: bold;
-    font-size: 2rem;
+  font-weight: bold;
+  font-size: 2rem;
 
-    max-width: 100%;
+  max-width: 100%;
 
-    display: -webkit-box;
-    display: -moz-box;
+  display: -webkit-box;
+  display: -moz-box;
 
-    -webkit-line-clamp: 3;
+  -webkit-line-clamp: 3;
 
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
 
-    white-space: normal;
+  white-space: normal;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    text-overflow: ellipsis;
+  text-overflow: ellipsis;
 
-    text-align: center;
+  text-align: center;
 `;
 
 export const NameUser = styled.div`
-    span{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: .4rem;
-    }
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
 `;
 
 export const Description = styled.span`
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 
-    text-align: center;
+  text-align: center;
 
-    display: -webkit-box;
-    display: -moz-box;
+  display: -webkit-box;
+  display: -moz-box;
 
-    -webkit-line-clamp: 8;
+  -webkit-line-clamp: 4;
 
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
 
-    white-space: normal;
+  white-space: normal;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    text-overflow: ellipsis;
+  text-overflow: ellipsis;
 
-    color: ${props => props.theme.colors.secondaryLight};
+  color: ${props => props.theme.colors.secondaryLight};
 `;
 
 /*  */

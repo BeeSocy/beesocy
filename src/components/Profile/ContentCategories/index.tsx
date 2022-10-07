@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { useProfileCategory } from '../../../context/ProfileCategoryProvider/useProfileCategory';
 import { user } from '../../../pages/Profile';
 import { BreadCrump, Content, Header, Margin } from './styles';
 
-export function ContentSocialProfile() {
-  const [breadCrumpActive, setBreadCrumpActive] = useState(0);
+export function ContentCategories() {
+  const { activeCategory, handleChangeActive } = useProfileCategory();
 
   return (
     <Content>
@@ -12,29 +13,31 @@ export function ContentSocialProfile() {
           <BreadCrump
             color={user.color}
             onClick={() => {
-              setBreadCrumpActive(0);
+              handleChangeActive('music');
             }}
-            active={breadCrumpActive === 0}
+            active={activeCategory === 'music'}
           >
             Músicas
           </BreadCrump>
+
           <BreadCrump
             color={user.color}
             onClick={() => {
-              setBreadCrumpActive(1);
+              handleChangeActive('image');
             }}
-            active={breadCrumpActive === 1}
-          >
-            Códigos
-          </BreadCrump>
-          <BreadCrump
-            color={user.color}
-            onClick={() => {
-              setBreadCrumpActive(2);
-            }}
-            active={breadCrumpActive === 2}
+            active={activeCategory === 'image'}
           >
             Imagens
+          </BreadCrump>
+
+          <BreadCrump
+            color={user.color}
+            onClick={() => {
+              handleChangeActive('code');
+            }}
+            active={activeCategory === 'code'}
+          >
+            Códigos
           </BreadCrump>
         </Header>
       </Margin>
