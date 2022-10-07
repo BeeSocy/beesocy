@@ -19,7 +19,8 @@ export const HeaderCards = ({ title }: IHeaderCardsProps) => {
           handleSetOpen(false);
         }}
       >
-        <MdClose />
+        {' '}
+        <MdClose />{' '}
       </Button>
     </HeaderCard>
   );

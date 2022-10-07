@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoint } from '../../../hooks/useMobile';
+import { breakpoint } from '../../../../hooks/useMobile';
 
 export const BoxCardStyled = styled.div`
   display: flex;
@@ -15,6 +15,7 @@ export const BoxCardStyled = styled.div`
 
   @media (max-width: ${breakpoint}) {
     border-right: none;
+    width: 100%;
   }
 `;
 
