@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContChatStyled = styled.section`
-display: flex;
-flex-direction: row;
-height: 100vh;
-`
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  max-height: 85vh;
+`;

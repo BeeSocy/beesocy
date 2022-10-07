@@ -1,10 +1,12 @@
-import { BoxCards } from '../../BoxCard';
+import { ReactNode } from 'react';
+import { BoxCards } from '../../RecentMessege/BoxCard';
+import { ContainerMobile } from '../../RecentMessege/BoxCard/styles';
 import { ChatCards } from '../../ChatDesktop/ChatCards/CardInterface';
 
-export function MobileCards() {
-  return (
-    <>
-      <BoxCards> </BoxCards>
-    </>
-  );
+interface IMobileCardProps {
+  children: ReactNode;
+}
+
+export function MobileCards({ children }: IMobileCardProps) {
+  return <ContainerMobile>{children}</ContainerMobile>;
 }

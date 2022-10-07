@@ -16,7 +16,7 @@ export const FakeBack: ICardInfoProps = {
   img: 'https://i.pinimg.com/564x/1c/3f/43/1c3f43ce30c8ba4e699d20fef8ba8548.jpg',
   nickname: 'Carti Malvadão',
   available: false,
-  message: 'hello carti',
+  message: 'gang gang ?',
   messagetime: false
 };
 
