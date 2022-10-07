@@ -18,7 +18,8 @@ export const Container = styled.nav<StyledMenu>`
 
   background: ${props => props.theme.colors.primary};
 
-  width: ${props => (props.open ? '20rem' : '7rem')};
+  width: ${props =>
+    props.open ? '20rem' : props.hasVerticalScroll ? '7rem' : '6.4rem'};
   height: 100vh;
 
   overflow-y: auto;

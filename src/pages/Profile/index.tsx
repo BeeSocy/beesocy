@@ -1,24 +1,21 @@
 import { useEffect } from 'react';
-import { ReactSVG } from 'react-svg';
-import { css } from 'styled-components';
-import VerifiedSvg from '../../assets/icons/Verified.svg';
-import { Divider } from '../../components/General/Divider';
-import { BannerMobile } from '../../components/Profile/CantainerMobile';
+import { MobileContainer } from '../../components/Profile/MobileContainer';
 import { Container } from '../../components/Profile/Container';
-import { ContentSocialProfile } from '../../components/Profile/ContentSocialProfile';
+import { ContentCategories } from '../../components/Profile/ContentCategories';
 import { useLayout } from '../../context/LayoutProvider/useLayout';
 import { useMobile } from '../../hooks/useMobile';
 import { IImagePost } from '../../types/imagePost';
 import { IMusicPost } from '../../types/musicPost';
 import { IProfile } from '../../types/profile';
-import { Content, ContentProfile, MarginLeft } from './styles';
+import { Content } from './styles';
+import { ProfileContent } from '../../components/Profile/ProfileContent';
 
 export const user: IProfile = {
   nickname: 'pikanagaita',
   name: 'Pica na Gaita',
   follows: [],
   followers: [],
-  color: '#8011a1 ',
+  color: '#b53bdb',
   identification: '97a02c78-5800-423d-96e1-1fe1db595442',
   imageUrl:
     'https://64.media.tumblr.com/6ae2a67ce510029caf6219c6a708f501/60b41a809f52a0b4-8c/s400x600/7e89be3c89e7cd3fdf18e7f6ed9b4639ace24cde.pnj',
@@ -154,26 +151,14 @@ export function Profile() {
 
   return (
     <>
-      {!isMobile ? <Container /> : <BannerMobile />}
+      {!isMobile ? (
+        <Container profile={user} />
+      ) : (
+        <MobileContainer profile={user} />
+      )}
 
       <Content>
-        {!isMobile ? (
-          <>
-            <MarginLeft />
-          </>
-        ) : (
-          <>
-            <ContentSocialProfile />
-          </>
-        )}
-
-        <ContentProfile>
-          Conteudo muitoo pika, além do sistema solar, bem lá, lá longe, peto da
-          casa do Gu. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Inventore ex, impedit soluta saepe voluptates pariatur quod.
-          Laboriosam, harum veritatis ex ut eos aspernatur itaque in atque
-          libero possimus, vitae et?
-        </ContentProfile>
+        <ProfileContent userImage={image} userMusic={music} />
       </Content>
     </>
   );

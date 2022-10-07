@@ -6,10 +6,10 @@ import {
   FaTwitter
 } from 'react-icons/fa';
 import { user } from '../../../pages/Profile';
-import { SocialNetworkButton } from '../SocialNetworkButton';
+import { SocialNetworkButton } from '../../General/SocialNetworkButton';
 import { Content } from './styles';
 
-export function ContentSocial() {
+export function SocialNetworks() {
   return (
     <Content>
       {user.socialNetworks?.twitter && (

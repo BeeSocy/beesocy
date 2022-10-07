@@ -1,23 +1,11 @@
-import { useState } from 'react';
-import {
-  FaFacebook,
-  FaGithub,
-  FaInstagram,
-  FaSoundcloud,
-  FaTwitter
-} from 'react-icons/fa';
-import { MdVerified } from 'react-icons/md';
-import { user } from '../../../pages/Profile';
-import { ContentSocial } from '../../General/ContentSocial';
-import { Divider } from '../../General/Divider';
-import { SocialNetworkButton } from '../../General/SocialNetworkButton';
+import { SocialNetworks } from '../SocialNetworks';
 import { Banner } from '../Banner';
-import { ButtonFollow } from '../ButtonFollow';
-import { ContentSocialProfile } from '../ContentSocialProfile';
+import { FollowButton } from '../FollowButton';
+import { ContentCategories } from '../ContentCategories';
 import { IconProfile } from '../IconProfile';
-import { InfoProfile } from '../InforProfile';
+import { InfoProfile } from '../InfoProfile';
 import { NickName } from '../NickName';
-import { SendMensagem } from '../SendMensagem';
+import { SendMessage } from '../SendMessage';
 import {
   Content,
   ContentProfile,
@@ -25,27 +13,34 @@ import {
   NameUser,
   TitleName
 } from './styles';
+import { IProfile } from '../../../types/profile';
 
-export function Container() {
+interface IContainerProps {
+  profile: IProfile;
+}
+
+export function Container({ profile }: IContainerProps) {
   return (
     <>
       <Banner />
       <ContentProfile>
         <Content>
-          <IconProfile color={user.color} />
-          <TitleName>{user.name}</TitleName>
+          <IconProfile color={profile.color} />
+          <TitleName>{profile.name}</TitleName>
           <NameUser>
             <NickName />
           </NameUser>
-          <ButtonFollow />
-          <SendMensagem />
+          <FollowButton />
+          <SendMessage />
         </Content>
+
         <InfoProfile />
-        <ContentSocial />
-        <Description>{user.description}</Description>
+
+        <SocialNetworks />
+
+        <Description>{profile.description}</Description>
       </ContentProfile>
-      {/*  */}
-      <ContentSocialProfile />
+      <ContentCategories />
     </>
   );
 }

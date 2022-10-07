@@ -138,10 +138,6 @@ export function MobileLargePlayer() {
     }
   }, [trackListIsOpen]);
 
-  useEffectOnce(() => {
-    // player.handleChangeVolume(100);
-  });
-
   return (
     <>
       <StyledSheet

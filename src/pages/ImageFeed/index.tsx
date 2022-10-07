@@ -104,7 +104,7 @@ export const ImageFeed = React.memo(() => {
   function handleDoubleClick(postId: string) {
     posts.map(post => {
       if (post.identification === postId) {
-        if (/* !post.isLiked */ false) {
+        if (/* !post.usersHasLiked */ false) {
           //backend like
         }
       }
@@ -159,16 +159,21 @@ export const ImageFeed = React.memo(() => {
             <ImageCard
               key={post.identification}
               description={post.description}
-              img={post.img[0]}
+              img={post.img}
               large={randomLargePosts[index]}
-              isLiked={false}
-              isSaved={false}
-              isReported={false}
+              usersHasLiked={post.usersHasLiked}
+              usersHasSaved={post.usersHasSaved}
+              usersHasReported={post.usersHasSaved}
               onClick={() => handlePostClick(post.identification)}
               centerElement={
                 isAnimationId === post.identification && <LikeAnimation />
               }
               multiple={post.img.length > 1}
+              name={post.name}
+              identification={post.identification}
+              comments={post.comments}
+              categories={post.categories}
+              createdAt={post.createdAt}
             />
           );
         })}
