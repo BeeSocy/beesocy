@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 export function useScroll() {
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLElement | null>(null);
 
   const [hasVerticalScroll, setHasVerticalScroll] = useState<boolean>();
   const [hasHorizontalScroll, setHasHorizontalScroll] = useState<boolean>();
@@ -52,7 +52,7 @@ export function useScroll() {
         );
       }
     });
-  }, []);
+  });
 
   return {
     elementRef,

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Header } from '../../components/Header/Header';
@@ -22,6 +22,8 @@ export function GlobalLayout() {
   const { paddingActive } = useLayout();
 
   const { getOpen } = usePlayer();
+
+  elementRef.current = document.documentElement;
 
   return (
     <>

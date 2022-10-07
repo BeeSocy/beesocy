@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import MediaSession, { useMediaSession } from '@mebtte/react-media-session';
+
 import { usePlayer } from '../../context/PlayerProvider/usePlayer';
 import { useMobile } from '../../hooks/useMobile';
 import { DesktopPlayer } from './Desktop';
@@ -114,27 +114,6 @@ export function Player() {
 
   useLockBodyScroll(player.getLarge());
 
-  /*   useMediaSession({
-    title: player.getCurrentTrack().name,
-    artwork: [
-      {
-        src: player.getCurrentTrack().imageUrl,
-        sizes: '256x256,384x384,512x512',
-        type: 'image/png'
-      },
-      {
-        src: player.getCurrentTrack().imageUrl,
-        sizes: '96x96,128x128,192x192',
-        type: 'image/png'
-      }
-    ],
-    artist: player.formatArtists(player.getCurrentTrack().artists),
-    onPlay: () => handlePlayMusic,
-    onPause: () => handlePlayMusic,
-    onNextTrack: () => handleNextMusic,
-    onPreviousTrack: () => handlePreviousMusic
-  }); */
-
   useEffect(() => {
     if (audioElementRef.current) {
       if (
@@ -148,6 +127,59 @@ export function Player() {
         return;
       }
       player.handleChangePlaying(true);
+
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: player.getCurrentTrack().name,
+          artist: player.formatArtists(player.getCurrentTrack().artists),
+          album: player.getCurrentTrack().playlist ? 'Playlist' : 'Single',
+          artwork: [
+            {
+              src: player.getCurrentTrack().imageUrl,
+              sizes: '96x96',
+              type: 'image/png'
+            },
+            {
+              src: player.getCurrentTrack().imageUrl,
+              sizes: '128x128',
+              type: 'image/png'
+            },
+            {
+              src: player.getCurrentTrack().imageUrl,
+              sizes: '192x192',
+              type: 'image/png'
+            },
+            {
+              src: player.getCurrentTrack().imageUrl,
+              sizes: '256x256',
+              type: 'image/png'
+            },
+            {
+              src: player.getCurrentTrack().imageUrl,
+              sizes: '384x384',
+              type: 'image/png'
+            },
+            {
+              src: player.getCurrentTrack().imageUrl,
+              sizes: '512x512',
+              type: 'image/png'
+            }
+          ]
+        });
+
+        navigator.mediaSession.setActionHandler('play', () => {
+          handlePlayMusic();
+        });
+        navigator.mediaSession.setActionHandler('pause', () => {
+          handlePlayMusic();
+        });
+        navigator.mediaSession.setActionHandler('previoustrack', () => {
+          handlePreviousMusic();
+        });
+        navigator.mediaSession.setActionHandler('nexttrack', () => {
+          handleNextMusic();
+        });
+      }
     }
   }, [player.getCurrentTrack()]);
 
@@ -191,27 +223,6 @@ export function Player() {
         <audio ref={audioElementRef} preload="metadata">
           <source src={player.getCurrentTrack().fileUrl} type="audio/mpeg" />
         </audio>
-
-        <MediaSession
-          title={player.getCurrentTrack().name}
-          artwork={[
-            {
-              src: player.getCurrentTrack().imageUrl,
-              sizes: '256x256,384x384,512x512',
-              type: 'image/png'
-            },
-            {
-              src: player.getCurrentTrack().imageUrl,
-              sizes: '96x96,128x128,192x192',
-              type: 'image/png'
-            }
-          ]}
-          artist={player.formatArtists(player.getCurrentTrack().artists)}
-          onPlay={handlePlayMusic}
-          onPause={handlePlayMusic}
-          onNextTrack={handleNextMusic}
-          onPreviousTrack={handlePreviousMusic}
-        ></MediaSession>
       </>
     );
   } else {

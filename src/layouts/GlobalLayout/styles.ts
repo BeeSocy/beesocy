@@ -16,7 +16,7 @@ export const Container = styled.main<StyledContainer>`
       ? css`
           padding-top: 8.6rem;
           padding-left: 8rem;
-          padding-right: ${props.hasVerticalScroll ? '2rem' : '1.2rem'};
+          padding-right: ${props.hasVerticalScroll ? '2rem' : '1.48rem'};
           padding-bottom: 1.4rem;
 
           ${props.hasPlayerActive &&
