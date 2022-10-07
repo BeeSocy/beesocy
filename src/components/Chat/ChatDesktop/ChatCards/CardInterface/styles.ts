@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const ChatCardStyled = styled.div`
+export const ChatCardStyled = styled.button`
 display: flex;
 align-items: center;
-justify-content: center;
+justify-content: start;
 height: 7.7rem;
 width: 100%;
 flex: none;

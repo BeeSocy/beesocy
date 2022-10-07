@@ -5,12 +5,11 @@ export const CardInfStyled = styled.section`
     display: flex;
     align-items: center;
 
-    gap: 0.8rem;
-    width: 97%;
-    height: 96%;
+    gap: 1.4rem;
+   
     margin-left: 0.5rem;
 
-    border: 0rem solid black;
+   
     border-radius: inherit;
 `
 
@@ -35,7 +34,7 @@ export const LastMesege = styled.div`
 export const AlignSection = styled.section`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.6rem;
     margin-left: 0.1rem;
     flex-direction: column;
     align-items: center;

@@ -9,7 +9,9 @@ import { ContainerInput } from '../InputMessege/ContainerInput';
 import { InputMessege } from '../InputMessege/InputGeneral';
 import { useMobile } from '../../../../hooks/useMobile';
 import { MobileCards } from '../../ChatMobile/MobileCards';
-import { ContainerSla, SectionBoxChat } from '../../BoxCard/styles';
+import { ContainerMobile, SectionBoxChat } from '../../BoxCard/styles';
+import { HeaderCards } from '../../ChatMobile/HeaderCardGeneral';
+import { ContainerMessege } from '../ContainerMessegers';
 
 export const ChatGeneral = () => {
   const { isMobile } = useMobile();
@@ -18,29 +20,33 @@ export const ChatGeneral = () => {
     <>
       {!isMobile ? (
         <ChatContainer>
-          <BoxCards>
-            <ChatCards />
-            <ChatCards />
-            <ChatCards />
-            <ChatCards />
-            <ChatCards />
-          </BoxCards>
+          <SectionBoxChat>
+            <BoxCards>
+              <ChatCards />
+              <ChatCards />
+              <ChatCards />
+              <ChatCards />
+              <ChatCards />
+              <ChatCards />
+              <ChatCards />
+              <ChatCards />
+              <ChatCards />
+            </BoxCards>
+          </SectionBoxChat>
 
           <ChatSection>
             <ChatHeader />
-
-            <ContainerMessegers> </ContainerMessegers>
-
+            <ContainerMessege />
             <InputMessege />
           </ChatSection>
         </ChatContainer>
       ) : (
         <>
-          <ChatContainer>
-            <BoxCards>
-              <ChatCards />
-            </BoxCards>
-          </ChatContainer>
+          {' '}
+          <MobileCards>
+            <HeaderCards title={'Chat BeeSocy'} />
+            <BoxCards> </BoxCards>
+          </MobileCards>
         </>
       )}
     </>
