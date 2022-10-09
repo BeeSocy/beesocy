@@ -14,6 +14,7 @@ export const StyledSheet = styled(Sheet)`
   .react-modal-sheet-container {
     width: 100vw !important;
     height: 100vh !important;
+    max-height: -webkit-fill-available;
 
     z-index: 400 !important;
 
