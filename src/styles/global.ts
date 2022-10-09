@@ -7,6 +7,11 @@ export default createGlobalStyle`
         font-size: 62.5%;
     }
     
+    html {
+        overflow: hidden;
+        width: 100%;
+    }
+
     body {
         background: ${props => props.theme.colors.secondary};
 
@@ -16,7 +21,15 @@ export default createGlobalStyle`
         font-size: 1.6rem;
         font-weight: 400;
 
+        width: 100%;
+        height: 100%;
+
+
+        position: fixed;
+
         overflow: overlay;
+
+        -webkit-overflow-scrolling: touch;
     }
     
     * {
