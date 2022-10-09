@@ -10,7 +10,7 @@ export const Container = styled(Link)`
   font-size: 2.8rem;
   font-weight: 700;
 
-  img {
+  & *:not(span) {
     height: 4.4rem;
     width: 4.4rem;
   }
