@@ -36,7 +36,6 @@ import { usePlayer } from '../../../../context/PlayerProvider/usePlayer';
 import { useTheme } from '../../../../context/ThemeProvider/useTheme';
 import { Title } from '../../../General/Title';
 import { PlaylistList } from '../../../MusicFeed/PlaylistList';
-import { SheetMusicMenu } from '../../../MusicFeed/SheetMusicMenu';
 import { LikeButton } from '../../../Widgets/Buttons/ActionButtons/LikeButton';
 import { Button } from '../../../Widgets/Buttons/Button';
 import { TracksList } from '../../TracksList';
@@ -326,12 +325,6 @@ export function MobileLargePlayer() {
           )}
         </StyledSheet.Container>
       </StyledSheet>
-
-      <SheetMusicMenu
-        open={menuIsOpen}
-        onClose={() => setMenuIsOpen(false)}
-        track={player.getCurrentTrack()}
-      />
     </>
   );
 }
