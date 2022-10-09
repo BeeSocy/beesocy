@@ -56,7 +56,8 @@ import {
   StyledTitle,
   Artists,
   TrackListSheet,
-  TrackListSheetHeader
+  TrackListSheetHeader,
+  TrackListButton
 } from './styles';
 
 export function MobileLargePlayer() {
@@ -64,7 +65,7 @@ export function MobileLargePlayer() {
 
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 
-  const [trackListIsOpen, setTrackListIsOpen] = useState<boolean>(true);
+  const [trackListIsOpen, setTrackListIsOpen] = useState<boolean>(false);
 
   const [coverActionsIsActive, setCoverActionsIsActive] =
     useState<boolean>(false);
@@ -130,12 +131,6 @@ export function MobileLargePlayer() {
   useEffect(() => {
     setCoverActionsIsActive(isHoverMusicCover);
   }, [isHoverMusicCover]);
-
-  useEffect(() => {
-    if (!trackListIsOpen) {
-      setTrackListIsOpen(true);
-    }
-  }, [trackListIsOpen]);
 
   return (
     <>
@@ -301,12 +296,15 @@ export function MobileLargePlayer() {
             </Specs>
           </StyledSheet.Content>
 
+          <TrackListButton onClick={() => setTrackListIsOpen(true)}>
+            <MdMusicNote />
+            <span>Próximas músicas</span>
+          </TrackListButton>
+
           {player.getLarge() && (
             <TrackListSheet
               isOpen={trackListIsOpen}
               onClose={() => setTrackListIsOpen(false)}
-              snapPoints={[0.9, 0.08]}
-              initialSnap={1}
               ref={TrackListSheetRef}
             >
               <TrackListSheet.Container>
@@ -321,6 +319,10 @@ export function MobileLargePlayer() {
                   <TracksList />
                 </TrackListSheet.Content>
               </TrackListSheet.Container>
+
+              <TrackListSheet.Backdrop
+                onTap={() => setTrackListIsOpen(false)}
+              />
             </TrackListSheet>
           )}
         </StyledSheet.Container>
