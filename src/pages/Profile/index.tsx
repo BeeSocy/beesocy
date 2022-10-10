@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { MobileContainer } from '../../components/Profile/MobileContainer';
 import { Container } from '../../components/Profile/Container';
 import { ContentCategories } from '../../components/Profile/ContentCategories';
@@ -145,7 +145,7 @@ export function Profile() {
   const { isMobile } = useMobile();
   const { handleChangePaddingActive } = useLayout();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     handleChangePaddingActive(false);
   });
 
