@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../../Widgets/Buttons/Button';
+import { Input } from '../../Widgets/Input';
 
 export const Container = styled.div`
   display: flex;
@@ -28,44 +29,24 @@ export const Comment = styled.div`
   height: fit-content;
 `;
 export const ContainerComment = styled.label`
-  border-radius: 1.2rem;
-  border: 1px solid ${props => props.theme.colors.light};
-
   width: 100%;
   height: 10rem;
-  padding: 0.4rem;
 
   position: relative;
 `;
 
-export const InputComment = styled.textarea`
-  &:focus {
-    outline: none;
-  }
-
-  background: none;
-
-  padding: 1rem;
-
+export const InputComment = styled(Input)`
   width: 100%;
-  height: 100%;
-
-  white-space: pre-line;
-
-  overflow-y: auto;
-
-  resize: none;
-
-  outline: none;
-  border: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
+  height: 10rem;
 `;
-export const ButtonSend = styled.div`
+export const ButtonSend = styled(Button)`
   position: absolute;
   right: 0;
   bottom: 0;
+
+  padding: 0.8rem;
+
+  margin: 0 0.4rem 0.4rem 0;
 `;
 export const Divider = styled.div`
   width: 100%;

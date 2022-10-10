@@ -17,6 +17,8 @@ import { useMobile } from '../../../hooks/useMobile';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
 import { useMenu } from '../../../context/MenuProvider/useMenu';
 import { LinkButton } from '../../Widgets/Buttons/LinkButton';
+import { useModal } from '../../../context/ModalProvider/useModal';
+import { Login } from '../../Login';
 
 export function Header() {
   const { isMobile } = useMobile();
@@ -24,6 +26,15 @@ export function Header() {
   const menu = useMenu();
 
   const { handleChangeTheme, title } = useTheme();
+
+  const { handleCallModal } = useModal();
+
+  function handleCallLoginModal() {
+    handleCallModal(<Login />, {
+      center: true,
+      overlay: true
+    });
+  }
 
   return (
     <HeaderContainer>
@@ -58,14 +69,14 @@ export function Header() {
           {title === 'dark' ? <MdLightMode /> : <MdDarkMode />}
         </Button>
 
-        <LinkButton
-          to={'/profile/123435'}
+        <Button
           full={false}
           rounded
           aria-label="Seu perfil"
+          onClick={handleCallLoginModal}
         >
           <MdAccountCircle />
-        </LinkButton>
+        </Button>
 
         <SubmitButton>Enviar</SubmitButton>
       </section>

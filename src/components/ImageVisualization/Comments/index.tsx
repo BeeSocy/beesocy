@@ -39,13 +39,11 @@ export function Comments({ loggedUser, comments }: ICommentsProps) {
           <ContainerComment htmlFor="inputComment">
             <InputComment
               id="inputComment"
-              autoComplete="off"
-              placeholder="Digite seu comentário"
+              title="Digite seu comentário"
+              type="textarea"
             />
-            <ButtonSend>
-              <Button rounded>
-                <MdSend size={20} />
-              </Button>
+            <ButtonSend full={false} rounded>
+              <MdSend size={20} />
             </ButtonSend>
           </ContainerComment>
         </Comment>
