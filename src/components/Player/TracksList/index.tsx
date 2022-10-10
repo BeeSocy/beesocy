@@ -110,6 +110,12 @@ export function TracksList() {
     if (result.source.index + 1 === player.getPositionOnTrackList()) {
       player.setPositionOnTrackList(result.destination.index + 1);
     }
+
+    if (result.source.index + 1 < player.getPositionOnTrackList()) {
+      if (result.destination.index + 1 >= player.getPositionOnTrackList()) {
+        player.setPositionOnTrackList(player.getPositionOnTrackList() - 1);
+      }
+    }
   }
 
   return (
