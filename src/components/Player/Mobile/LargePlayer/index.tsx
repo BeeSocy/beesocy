@@ -34,7 +34,9 @@ import {
 import { useModal } from '../../../../context/ModalProvider/useModal';
 import { usePlayer } from '../../../../context/PlayerProvider/usePlayer';
 import { useTheme } from '../../../../context/ThemeProvider/useTheme';
+import { IMusicPost } from '../../../../types/musicPost';
 import { Title } from '../../../General/Title';
+import { MobileMusicMenu } from '../../../MusicFeed/MobileMusicMenu';
 import { PlaylistList } from '../../../MusicFeed/PlaylistList';
 import { LikeButton } from '../../../Widgets/Buttons/ActionButtons/LikeButton';
 import { Button } from '../../../Widgets/Buttons/Button';
@@ -63,8 +65,6 @@ import {
 export function MobileLargePlayer() {
   const player = usePlayer();
 
-  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
-
   const [trackListIsOpen, setTrackListIsOpen] = useState<boolean>(false);
 
   const [coverActionsIsActive, setCoverActionsIsActive] =
@@ -83,6 +83,13 @@ export function MobileLargePlayer() {
   const TitleSpanRef = useRef<HTMLSpanElement>(null);
 
   const TrackListSheetRef = useRef<SheetRef>(null);
+
+  function handleSetMusicMenuOpen(track: IMusicPost) {
+    handleCallModal(<MobileMusicMenu track={track} />, {
+      easyClose: true,
+      overlay: true
+    });
+  }
 
   useLockBodyScroll(player.getLarge());
 
@@ -132,6 +139,14 @@ export function MobileLargePlayer() {
     setCoverActionsIsActive(isHoverMusicCover);
   }, [isHoverMusicCover]);
 
+  useLayoutEffect(() => {
+    if (trackListIsOpen) {
+      document.body.style.setProperty('overflow', 'hidden');
+    } else if (!player.getLarge()) {
+      document.body.style.setProperty('overflow', 'overlay');
+    }
+  }, [player.getLarge(), trackListIsOpen]);
+
   return (
     <>
       <StyledSheet
@@ -149,7 +164,11 @@ export function MobileLargePlayer() {
                 <MdExpandMore />
               </Button>
 
-              <Button onClick={() => setMenuIsOpen(true)} full={false} rounded>
+              <Button
+                onClick={() => handleSetMusicMenuOpen(player.getCurrentTrack())}
+                full={false}
+                rounded
+              >
                 <MdMoreVert />
               </Button>
             </Header>
@@ -306,6 +325,7 @@ export function MobileLargePlayer() {
               isOpen={trackListIsOpen}
               onClose={() => setTrackListIsOpen(false)}
               ref={TrackListSheetRef}
+              disableDrag={true}
             >
               <TrackListSheet.Container>
                 <TrackListSheet.Header>

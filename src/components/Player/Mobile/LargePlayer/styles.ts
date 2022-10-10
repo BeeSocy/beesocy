@@ -56,6 +56,9 @@ export const MusicCover = styled.div`
     width: 100%;
     height: 100%;
 
+    min-width: 27rem;
+    min-height: 27rem;
+
     border-radius: inherit;
 
     max-width: 32rem;

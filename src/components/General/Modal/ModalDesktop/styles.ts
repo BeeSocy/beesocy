@@ -9,7 +9,7 @@ interface IStyledDialogOverlayProps {
 
 export const StyledDialogOverlay = styled(
   DialogPrimitive.Overlay
-) <IStyledDialogOverlayProps>`
+)<IStyledDialogOverlayProps>`
   position: fixed;
   z-index: 150;
   inset: 0;
@@ -55,7 +55,7 @@ interface IStyledDialogContentProps {
 
 export const StyledDialogContent = styled(
   DialogPrimitive.Content
-) <IStyledDialogContentProps>`
+)<IStyledDialogContentProps>`
   display: flex;
 
   flex-direction: column;
@@ -91,8 +91,8 @@ export const StyledDialogContent = styled(
       transform: translateY(50%);
 
       ${props =>
-    props.$center &&
-    css`
+        props.$center &&
+        css`
           transform: translate(-50%, 0%);
         `}
     }
@@ -105,8 +105,8 @@ export const StyledDialogContent = styled(
       transform: translateY(50%);
 
       ${props =>
-    props.$center &&
-    css`
+        props.$center &&
+        css`
           transform: translate(-50%, 0%);
         `}
     }
@@ -139,7 +139,7 @@ export const StyledDialogHeader = styled.section<IStyledDialogHeaderProps>`
     props.hasTitle
       ? css`
           border-bottom: 1px solid ${props => props.theme.colors.light};
-          padding-bottom: 0.8rem;
+          padding: 0.8rem;
           margin-bottom: 0.8rem;
         `
       : css`

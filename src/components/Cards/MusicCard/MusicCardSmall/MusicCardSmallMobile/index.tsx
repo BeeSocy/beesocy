@@ -25,10 +25,6 @@ import { useModal } from '../../../../../context/ModalProvider/useModal';
 import { MobileMusicMenu } from '../../../../MusicFeed/MobileMusicMenu';
 
 export function MusicCardSmallMobile(props: IMusicCardProps) {
-  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
-
-  const { colors } = useTheme();
-
   const longPressEvent = useLongPress(onLongPress, longPressOptions);
 
   const { formatArtists } = usePlayer();
@@ -41,7 +37,9 @@ export function MusicCardSmallMobile(props: IMusicCardProps) {
   }
 
   function onLongPress() {
-    handleSetMusicMenuOpen();
+    if (props.longPressActive) {
+      handleSetMusicMenuOpen();
+    }
   }
 
   const { handleCallModal, open } = useModal();
