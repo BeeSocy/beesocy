@@ -18,7 +18,7 @@ export const StyledHeader = styled.section<IStyledHeaderProps>`
     props.hasTitle
       ? css`
           border-bottom: 0.1rem solid ${props => props.theme.colors.light};
-          padding: 0.8rem 0;
+          padding: 0.8rem;
           margin-bottom: 0.8rem;
         `
       : css`

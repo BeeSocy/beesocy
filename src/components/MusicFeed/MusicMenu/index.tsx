@@ -42,28 +42,29 @@ export function MusicMenu({
 
   const { handleCallAlert } = useAlert();
 
-  const { handleCallModal } = useModal();
+  const { handleCallModal, handleSetOpen } = useModal();
 
-  function handleClickAction(message: string) {
-    handleCallAlert(message);
+  function handleClickAction() {
+    handleSetOpen(false);
   }
 
   return (
     <Container>
-      <Button>
+      <Button onClick={() => handleClickAction()}>
         <MdGraphicEq />
         <span>Iniciar radio</span>
       </Button>
 
       <Button
         onClick={() => {
+          handleClickAction();
           if (!player.getOpen()) {
             player.initPlayer(track);
             return;
           }
 
           if (player.getCurrentTrack().fileUrl != track.fileUrl) {
-            handleClickAction(`**${track.name}** será tocado a seguir`);
+            handleCallAlert(`**${track.name}** será tocado a seguir`);
             if (
               player
                 .getTrackList()
@@ -97,6 +98,7 @@ export function MusicMenu({
 
       <Button
         onClick={() => {
+          handleClickAction();
           handleCallModal(<PlaylistList track={track} />, {
             title: 'Escolha uma playlist',
             overlay: true,
@@ -116,13 +118,14 @@ export function MusicMenu({
 
       <Button
         onClick={() => {
+          handleClickAction();
           if (!player.getOpen()) {
             player.initPlayer(track);
             return;
           }
 
           if (player.getCurrentTrack().fileUrl != track.fileUrl) {
-            handleClickAction(`**${track.name}** foi adicionado a fila`);
+            handleCallAlert(`**${track.name}** foi adicionado a fila`);
             player.setTrackInLastPositionOfTrackList(track);
           }
         }}
@@ -133,7 +136,8 @@ export function MusicMenu({
 
       <Button
         onClick={() => {
-          handleClickAction(`**${track.name}** adicionado aos curtidos`);
+          handleClickAction();
+          handleCallAlert(`**${track.name}** adicionado aos curtidos`);
         }}
       >
         {liked ? (
@@ -151,7 +155,8 @@ export function MusicMenu({
 
       <Button
         onClick={() => {
-          handleClickAction(`**${track.name}** adicionado aos salvos`);
+          handleClickAction();
+          handleCallAlert(`**${track.name}** adicionado aos salvos`);
         }}
       >
         {saved ? (
@@ -162,7 +167,11 @@ export function MusicMenu({
         <span>Salvar</span>
       </Button>
 
-      <Button>
+      <Button
+        onClick={() => {
+          handleClickAction();
+        }}
+      >
         {reported ? (
           <MdFlag style={{ fill: dark.colors.bee }} />
         ) : (

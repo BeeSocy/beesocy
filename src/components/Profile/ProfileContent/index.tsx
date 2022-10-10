@@ -23,11 +23,14 @@ export function ProfileContent({ userMusic, userImage }: IProfileContentProps) {
   return (
     <Container activeCategory={activeCategory}>
       {activeCategory === 'music' &&
-        userMusic.map(music => <MusicCard large {...music} />)}
+        userMusic.map(music => (
+          <MusicCard key={music.identification} large {...music} />
+        ))}
 
       {activeCategory === 'image' &&
         userImage.map(image => (
           <ImageCard
+            key={image.identification}
             multiple={image.img.length > 1}
             onClick={() => handleImagePostClick(image.identification)}
             {...image}

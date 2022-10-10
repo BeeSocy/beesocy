@@ -5,7 +5,7 @@ export const Container = styled.div`
   background-color: ${props => props.theme.colors.primary};
 
   height: 100vh;
-  
+
   max-height: 47.2rem;
   overflow: auto;
 

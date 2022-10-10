@@ -281,6 +281,7 @@ export function MusicFeed() {
                       categories={track.categories}
                       comments={track.comments}
                       createdAt={track.createdAt}
+                      longPressActive
                     />
                   );
                 })}

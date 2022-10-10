@@ -56,6 +56,9 @@ export const MusicCover = styled.div`
     width: 100%;
     height: 100%;
 
+    min-width: 27rem;
+    min-height: 27rem;
+
     border-radius: inherit;
 
     max-width: 32rem;
@@ -248,7 +251,7 @@ export const TrackListSheet = styled(Sheet)`
 
   .react-modal-sheet-container {
     width: 100vw !important;
-    height: 100vh !important;
+    height: 80vh !important;
 
     z-index: 500 !important;
 
@@ -288,4 +291,26 @@ export const TrackListSheetHeader = styled.section`
   gap: 0.8rem;
 
   padding-top: 1.8rem;
+`;
+
+export const TrackListButton = styled.section`
+  display: flex;
+
+  background: ${props => props.theme.colors.primary};
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.8rem;
+
+  font-weight: 700;
+  font-size: 1.8rem;
+
+  width: 100%;
+
+  border-radius: 2rem 2rem 0 0;
+
+  padding-block: 1.8rem;
+
+  box-shadow: 0px -10px 50px -20px rgba(0, 0, 0, 0.64);
 `;

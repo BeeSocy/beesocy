@@ -16,6 +16,7 @@ export interface IMusicCardProps
   playing?: boolean;
   showDuration?: boolean;
   clickAction?: () => void;
+  longPressActive?: boolean;
 }
 
 export function MusicCard({

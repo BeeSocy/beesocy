@@ -21,26 +21,30 @@ import {
   DropdownTrigger
 } from '../styles';
 import { useTheme } from '../../../../../context/ThemeProvider/useTheme';
-import { SheetMusicMenu } from '../../../../MusicFeed/SheetMusicMenu';
+import { useModal } from '../../../../../context/ModalProvider/useModal';
+import { MobileMusicMenu } from '../../../../MusicFeed/MobileMusicMenu';
 
 export function MusicCardSmallMobile(props: IMusicCardProps) {
-  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
-
-  const { colors } = useTheme();
-
   const longPressEvent = useLongPress(onLongPress, longPressOptions);
 
   const { formatArtists } = usePlayer();
 
-  useLockBodyScroll(menuIsOpen);
-
-  function handleSetMusicBottomSheetOpen() {
-    setMenuIsOpen(true);
+  function handleSetMusicMenuOpen() {
+    handleCallModal(<MobileMusicMenu track={{ ...props }} />, {
+      easyClose: true,
+      overlay: true
+    });
   }
 
   function onLongPress() {
-    handleSetMusicBottomSheetOpen();
+    if (props.longPressActive) {
+      handleSetMusicMenuOpen();
+    }
   }
+
+  const { handleCallModal, open } = useModal();
+
+  useLockBodyScroll(open);
 
   return (
     <>
@@ -75,7 +79,7 @@ export function MusicCardSmallMobile(props: IMusicCardProps) {
               <DropdownTrigger
                 role={'button'}
                 onClick={event => {
-                  handleSetMusicBottomSheetOpen();
+                  handleSetMusicMenuOpen();
                   event.stopPropagation();
                 }}
               >
@@ -85,12 +89,6 @@ export function MusicCardSmallMobile(props: IMusicCardProps) {
           </Wrapper>
         </Card>
       </Container>
-
-      <SheetMusicMenu
-        open={menuIsOpen}
-        onClose={() => setMenuIsOpen(false)}
-        track={props}
-      />
     </>
   );
 }

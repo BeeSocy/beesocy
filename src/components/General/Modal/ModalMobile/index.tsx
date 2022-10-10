@@ -24,7 +24,6 @@ export function ModalMobile() {
           background: colors.primary,
           height: options.fullHeight ? '100vh' : 'fit-content'
         }}
-        onTap={() => handleSetOpen(false)}
       >
         <Sheet.Header style={{ color: colors.light }}>
           <StyledHeader hasTitle={hasTitle}>
@@ -36,6 +35,7 @@ export function ModalMobile() {
             )}
           </StyledHeader>
         </Sheet.Header>
+
         <Sheet.Content>{content}</Sheet.Content>
       </Sheet.Container>
 
