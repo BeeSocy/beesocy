@@ -17,7 +17,7 @@ export function ProfileContent({ userMusic, userImage }: IProfileContentProps) {
   const navigate = useNavigate();
 
   function handleImagePostClick(postId: string) {
-    return navigate(`/image/post/${postId}`);
+    return navigate(`/imagens/publicacao/${postId}`);
   }
 
   return (

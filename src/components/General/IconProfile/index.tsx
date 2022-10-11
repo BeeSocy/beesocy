@@ -37,7 +37,7 @@ export function IconProfile({ user }: IIconProfileProps) {
         {/*
           aqui eu vou pegar o Id dentro de fetched dentro de ImagesVisualization para entrar no perfil
         */}
-        <Link to={`/profile/${user.identification}}`}>
+        <Link to={`/perfil/${user.identification}}`}>
           <CardIconProfile>
             <img src={user.imageUrl} alt={`Foto de perfil de ${user.name}`} />
           </CardIconProfile>
@@ -57,10 +57,10 @@ export function IconProfile({ user }: IIconProfileProps) {
                   alt={`Foto de perfil de ${user.name}`}
                 />
               </CardIconProfile>
-              <UserName to={`/profile/${user.identification}`}>
+              <UserName to={`/perfil/${user.identification}`}>
                 {user.name}
               </UserName>
-              <NickName to={`/profile/${user.identification}`}>
+              <NickName to={`/perfil/${user.identification}`}>
                 @{user.nickname}
               </NickName>
               {/*TODO: verificação se é vip */}

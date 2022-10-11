@@ -31,10 +31,13 @@ export function Router() {
     <Routes>
       <Route path="/" element={<GlobalLayout />}>
         <Route path="/" element={<GlobalFeed />} />
-        <Route path="/image" element={<ImageFeed />} />
-        <Route path="/image/post/:id" element={<ImageVisualization />} />
-        <Route path="/profile/:id" element={<Profile />} />
-        <Route path="/music" element={<MusicFeed />} />
+        <Route path="/imagens" element={<ImageFeed />} />
+        <Route
+          path="/imagens/publicacao/:id"
+          element={<ImageVisualization />}
+        />
+        <Route path="/perfil/:id" element={<Profile />} />
+        <Route path="/musicas" element={<MusicFeed />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Route>

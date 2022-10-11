@@ -14,13 +14,11 @@ export const Container = styled.div<IContainerProps>`
   ${props =>
     props.$active
       ? css`
-          border: 0.2rem solid ${props => props.theme.colors.bee};
+          border-bottom: 0.2rem solid ${props => props.theme.colors.bee};
         `
       : css`
-          border: 0.2rem solid ${props => props.theme.colors.text};
+          border-bottom: 0.2rem solid ${props => props.theme.colors.text};
         `}
-
-  border-radius: 0.8rem;
 
   width: 100%;
   height: 100%;
@@ -29,6 +27,8 @@ export const Container = styled.div<IContainerProps>`
 
   display: flex;
 
+  border-radius: 0.2rem 0.2rem 0 0;
+
   &:hover,
   & *:hover {
     cursor: text;
@@ -36,7 +36,7 @@ export const Container = styled.div<IContainerProps>`
 
   label {
     position: absolute;
-    top: 1rem;
+    top: 1.4rem;
     left: 1.2rem;
 
     color: ${props => props.theme.colors.secondaryLight};
@@ -53,20 +53,19 @@ export const Container = styled.div<IContainerProps>`
       props.$active &&
       css`
         color: ${props => props.theme.colors.bee};
-        padding-top: 0.4rem;
       `}
 
     ${props =>
       (props.$hasContent || props.$active) &&
       css`
         font-size: 1.2rem;
-        transform: translateY(-1.04rem);
+        transform: translateY(-1.2rem);
       `}
   }
 
   input,
   textarea {
-    padding: 1.8rem 1.2rem;
+    padding: 2.2rem 1.2rem;
     padding-bottom: 0.6rem;
 
     width: 100%;

@@ -116,7 +116,7 @@ export const ImageFeed = React.memo(() => {
   }
 
   function handleSingleClick(postId: string) {
-    return navigate(`/image/post/${postId}`);
+    return navigate(`/imagens/publicacao/${postId}`);
   }
 
   let clickTimeout: ReturnType<typeof setTimeout> = 0;
