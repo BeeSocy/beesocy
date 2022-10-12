@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from 'react';
+import { forwardRef, HTMLAttributes, useState } from 'react';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { Container, EyeButton } from './styles';
 
@@ -41,9 +41,9 @@ export function Input({ type, title, ...props }: IInputProps) {
         <input
           id={title}
           type={inputType}
-          onFocus={() => setIsInputActive(true)}
-          onBlur={() => setIsInputActive(false)}
-          onChange={event =>
+          onFocusCapture={() => setIsInputActive(true)}
+          onBlurCapture={() => setIsInputActive(false)}
+          onChangeCapture={event =>
             setIsInputHasContent(event.currentTarget.value.length > 0)
           }
           {...props}
@@ -62,6 +62,7 @@ export function Input({ type, title, ...props }: IInputProps) {
 
       {type === 'password' && (
         <EyeButton
+          type="button"
           full={false}
           rounded
           onClick={handleTogglePasswordVisibility}
