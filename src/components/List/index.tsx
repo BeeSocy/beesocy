@@ -10,6 +10,7 @@ import {
   Header,
   ImageContent,
   MusicContent,
+  NotFound,
   Title
 } from './styles';
 
@@ -51,21 +52,29 @@ export function List({ title, musics, images }: IListProps) {
 
       {activeCategory === 'music' && (
         <MusicContent>
-          {musics.map(value => (
-            <>
-              <MusicCard large {...value} />
-            </>
-          ))}
+          {musics.length > 0 ? (
+            musics.map(value => (
+              <>
+                <MusicCard large {...value} />
+              </>
+            ))
+          ) : (
+            <NotFound>Nenhuma música encontrada</NotFound>
+          )}
         </MusicContent>
       )}
 
       {activeCategory === 'image' && (
         <ImageContent>
-          {images.map(value => (
-            <>
-              <ImageCard {...value} />
-            </>
-          ))}
+          {images.length > 0 ? (
+            images.map(value => (
+              <>
+                <ImageCard {...value} />
+              </>
+            ))
+          ) : (
+            <NotFound>Nenhuma imagem encontrada</NotFound>
+          )}
         </ImageContent>
       )}
     </Container>

@@ -3,7 +3,9 @@ import { breakpoint } from "../../hooks/useMobile";
 
 export const Container = styled.div`
     width: 100%;
-    min-height: 40vh;
+
+    display: flex;
+    flex-direction: column;
 
     background: ${props => props.theme.colors.primary};
 
@@ -11,8 +13,7 @@ export const Container = styled.div`
 
     border-radius: 2rem;
 
-
-    `;
+`;
 
 export const Header = styled.section`
     width: 100%;
@@ -87,5 +88,19 @@ export const ImageContent = styled.div`
     justify-content: center;
 
     gap: 2rem;
+
+`;
+
+export const NotFound = styled.span`
+    display: flex;
+
+    height: 20vh;
+    width: 100%;
+
+    font-weight: bold;
+    font-size: 2rem;
+
+    justify-content: center;
+    align-items: center;
 
 `;
