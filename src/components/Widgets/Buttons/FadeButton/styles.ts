@@ -59,6 +59,10 @@ export const Container = styled(Button)<IContainerProps>`
     background: linear-gradient(90deg, #fee227, #ef6a3d);
   }
 
+  & * {
+    color: ${dark.colors.text};
+  }
+
   ${props =>
     props.full &&
     css`

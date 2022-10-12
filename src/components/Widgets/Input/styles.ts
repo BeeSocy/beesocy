@@ -41,7 +41,11 @@ export const Container = styled.div<IContainerProps>`
 
     color: ${props => props.theme.colors.secondaryLight};
 
-    background: ${props => props.theme.colors.secondary};
+    ${props =>
+      props.$inputType === 'textarea' &&
+      css`
+        background: ${props => props.theme.colors.secondary};
+      `}
 
     width: calc(100% - 2.2rem);
 
@@ -87,4 +91,14 @@ export const Container = styled.div<IContainerProps>`
 export const EyeButton = styled(Button)`
   padding: 0.8rem;
   margin-right: 0.4rem;
+
+  height: fit-content;
+  width: fit-content;
+
+  align-self: center;
+
+  &:hover,
+  & *:hover {
+    cursor: pointer;
+  }
 `;

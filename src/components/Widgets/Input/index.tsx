@@ -5,7 +5,9 @@ import { Container, EyeButton } from './styles';
 export type InputTypes = 'text' | 'password' | 'textarea';
 
 interface IInputProps
-  extends HTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+  extends HTMLAttributes<
+    HTMLInputElement | HTMLTextAreaElement | HTMLDivElement
+  > {
   title: string;
   type: InputTypes;
 }
@@ -31,6 +33,7 @@ export function Input({ type, title, ...props }: IInputProps) {
       $active={isInputActive}
       $hasContent={isInputHasContent}
       $inputType={type}
+      {...props}
     >
       <label htmlFor={title}>{title}</label>
 
