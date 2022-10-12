@@ -8,6 +8,9 @@ import { ImageVisualization } from '../pages/ImageVisualization';
 import { Profile } from '../pages/Profile';
 import { useLayout } from '../context/LayoutProvider/useLayout';
 import { useEffect } from 'react';
+import { SavedList } from '../pages/SavedList';
+import { HistoryList } from '../pages/HistoryList';
+import { LikedList } from '../pages/LikedList';
 
 export function Router() {
   const location = useLocation();
@@ -31,10 +34,16 @@ export function Router() {
     <Routes>
       <Route path="/" element={<GlobalLayout />}>
         <Route path="/" element={<GlobalFeed />} />
-        <Route path="/image" element={<ImageFeed />} />
-        <Route path="/image/post/:id" element={<ImageVisualization />} />
-        <Route path="/profile/:id" element={<Profile />} />
-        <Route path="/music" element={<MusicFeed />} />
+        <Route path="/imagens" element={<ImageFeed />} />
+        <Route
+          path="/imagens/publicacao/:id"
+          element={<ImageVisualization />}
+        />
+        <Route path="/perfil/:id" element={<Profile />} />
+        <Route path="/musicas" element={<MusicFeed />} />
+        <Route path="/salvos" element={<SavedList />} />
+        <Route path="/curtidos" element={<LikedList />} />
+        <Route path="/historico" element={<HistoryList />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Route>
