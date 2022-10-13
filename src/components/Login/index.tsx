@@ -7,7 +7,9 @@ import {
   FaSoundcloud,
   FaTwitter
 } from 'react-icons/fa';
+import { useModal } from '../../context/ModalProvider/useModal';
 import { Title } from '../General/Title';
+import { SignupFirstStep } from '../Signup/FirstStep';
 import {
   Container,
   StyledLogo,
@@ -40,6 +42,18 @@ export function Login() {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+
+  const { handleSetOpen, handleCallModal } = useModal();
+
+  function openSignupModal() {
+    handleSetOpen(false);
+    handleCallModal(<SignupFirstStep />, {
+      center: true,
+      overlay: true,
+      easyClose: false,
+      fullHeight: false
+    });
+  }
 
   return (
     <Container>
@@ -135,7 +149,7 @@ export function Login() {
           <Title size="medium">
             Não possuí uma <YellowTitle size="medium">conta</YellowTitle>?
           </Title>
-          <StyledFadeButton content="Cadastre-se">
+          <StyledFadeButton content="Cadastre-se" onClick={openSignupModal}>
             <span>Cadastre-se</span>
           </StyledFadeButton>
         </SignupContainer>
