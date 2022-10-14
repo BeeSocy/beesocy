@@ -1,4 +1,5 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { useSignup } from '../../../context/SignupProvider/useSignup';
 import { Title } from '../../General/Title';
 import {
   Container,
@@ -29,7 +30,10 @@ export function SignupFirstStep() {
     formState: { errors }
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+  const { handleSetInputsData } = useSignup();
+
+  const onSubmit: SubmitHandler<Inputs> = data =>
+    handleSetInputsData({ ...data });
 
   return (
     <Container>
