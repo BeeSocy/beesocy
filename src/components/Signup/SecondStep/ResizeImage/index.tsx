@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   CircleStencil,
   FixedCropperRef,
@@ -8,48 +8,71 @@ import 'react-advanced-cropper/dist/style.css';
 import { SignupSecondStep } from '..';
 import { useModal } from '../../../../context/ModalProvider/useModal';
 import { useSignup } from '../../../../context/SignupProvider/useSignup';
+import { SpiralLoading } from '../../../General/Loading/Spiral';
 import { Button } from '../../../Widgets/Buttons/Button';
 
-import { Container, StyledFixedCropper } from './styles';
+import { Container, StyledFixedCropper, StyledSpiralLoading } from './styles';
 
 interface IResizeImageProps {
   image: string;
   profileImage: 'picture' | 'banner';
+  stencilSize: { width: number; height: number };
 }
 
-export function ResizeImage({ image, profileImage }: IResizeImageProps) {
+export function ResizeImage({
+  image,
+  profileImage,
+  stencilSize
+}: IResizeImageProps) {
+  const [isLoading, setIsLoading] = useState(false);
+
   const fixedCropperRef = useRef<FixedCropperRef>(null);
 
   const { handleCallModal, handleSetOptions, options } = useModal();
   const { handleSetInputsData, inputsData } = useSignup();
 
-  function applyResize() {
-    handleCallModal(<SignupSecondStep />, {
-      center: true,
-      overlay: true,
-      easyClose: false,
-      fullHeight: false
-    });
+  async function applyResize() {
+    setIsLoading(true);
 
     if (fixedCropperRef.current) {
-      if (profileImage === 'picture') {
-        const imageWithoutCrop = inputsData.profilePicture;
+      const canvas = fixedCropperRef.current?.getCanvas();
 
-        handleSetInputsData({
-          ...inputsData,
-          profilePicture: fixedCropperRef.current.getCanvas()?.toBlob(blob => {
+      if (canvas) {
+        if (profileImage === 'picture') {
+          const imageWithoutCrop = inputsData.profilePicture;
+
+          canvas.toBlob(blob => {
             if (blob && imageWithoutCrop) {
-              let file = new File([blob], imageWithoutCrop?.name, {
-                type: imageWithoutCrop?.type
-              });
-              return file;
+              let file = new File([blob], imageWithoutCrop?.name);
+              handleSetInputsData({ ...inputsData, profilePicture: file });
             }
-          }, imageWithoutCrop?.type) as unknown as File
-        });
-      } else {
-        /* handleSetInputsData({...inputsData, profileBanner: }); */
+          });
+        } else {
+          const imageWithoutCrop = inputsData.profileBanner;
+
+          canvas.toBlob(blob => {
+            if (blob && imageWithoutCrop) {
+              let file = new File([blob], imageWithoutCrop?.name);
+              handleSetInputsData({
+                ...inputsData,
+                profileBanner: file
+              });
+            }
+          });
+        }
       }
     }
+
+    setTimeout(() => {
+      setIsLoading(false);
+
+      handleCallModal(<SignupSecondStep />, {
+        center: true,
+        overlay: true,
+        easyClose: false,
+        fullHeight: false
+      });
+    }, 500);
   }
 
   useEffect(() => {
@@ -76,14 +99,18 @@ export function ResizeImage({ image, profileImage }: IResizeImageProps) {
           }
         }}
         stencilSize={{
-          width: 300,
-          height: 300
+          width: stencilSize.width,
+          height: stencilSize.height
         }}
-        stencilComponent={CircleStencil}
+        stencilComponent={
+          stencilSize.width === stencilSize.height ? CircleStencil : undefined
+        }
         imageRestriction={ImageRestriction.stencil}
       />
 
-      <Button onClick={applyResize}>Aplicar</Button>
+      <Button onClick={applyResize} disabled={isLoading}>
+        {isLoading ? <StyledSpiralLoading /> : 'Aplicar'}
+      </Button>
     </Container>
   );
 }

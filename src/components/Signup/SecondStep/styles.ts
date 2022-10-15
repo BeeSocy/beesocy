@@ -106,6 +106,8 @@ export const FieldContainer = styled.div<IFieldContainerProps>`
       height: fit-content;
       width: fit-content;
 
+      background: ${props => `${props.theme.colors.light}70`};
+
       user-select: none;
     }
   }
@@ -138,7 +140,8 @@ export const ProfilePictureContainer = styled.div<IProfilePictureContainerProps>
     props.background &&
     css`
       background-image: url(${props.background});
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
     `}
 `;
 
@@ -148,7 +151,7 @@ export const ProfileBannerContainer = styled.div<IProfilePictureContainerProps>`
   align-items: center;
 
   width: 100%;
-  height: 14rem;
+  height: 9rem;
 
   border-radius: 0.8rem;
 
@@ -158,7 +161,8 @@ export const ProfileBannerContainer = styled.div<IProfilePictureContainerProps>`
     props.background &&
     css`
       background-image: url(${props.background});
-      background-size: cover;
+      background-repeat: no-repeat;
+      background-size: 100% 9rem;
     `}
 `;
 

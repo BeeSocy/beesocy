@@ -1,8 +1,9 @@
-import { useState, FormEvent } from 'react';
+import { useState, useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useModal } from '../../../context/ModalProvider/useModal';
 
 import { useSignup } from '../../../context/SignupProvider/useSignup';
+import { SpiralLoading } from '../../General/Loading/Spiral';
 import { Title } from '../../General/Title';
 import { ResizeImage } from './ResizeImage';
 
@@ -28,7 +29,6 @@ interface Inputs {
 }
 
 export function SignupSecondStep() {
-  const [profilePicturePreview, setProfilePicturePreview] = useState<string>();
   const [profileBannerPreview, setProfileBannerPreview] = useState<string>();
 
   const {
@@ -62,13 +62,21 @@ export function SignupSecondStep() {
 
   function handleOpenResizeModal(
     image: string,
-    profileImage: 'picture' | 'banner'
+    profileImage: 'picture' | 'banner',
+    stencilSize: { width: number; height: number }
   ) {
-    handleCallModal(<ResizeImage image={image} profileImage={profileImage} />, {
-      center: true,
-      overlay: true,
-      disableDrag: true
-    });
+    handleCallModal(
+      <ResizeImage
+        image={image}
+        profileImage={profileImage}
+        stencilSize={stencilSize}
+      />,
+      {
+        center: true,
+        overlay: true,
+        disableDrag: true
+      }
+    );
   }
 
   return (
@@ -98,11 +106,6 @@ export function SignupSecondStep() {
                 accept="image/png, image/jpeg"
                 onChangeCapture={event => {
                   const target = event.target as HTMLInputElement;
-                  /* setProfilePicturePreview(
-                    target.files !== null
-                      ? URL.createObjectURL(target.files[0])
-                      : ''
-                  ); */
                   handleSetInputsData({
                     ...inputsData,
                     profilePicture:
@@ -113,7 +116,8 @@ export function SignupSecondStep() {
                     target.files !== null
                       ? URL.createObjectURL(target.files[0])
                       : '',
-                    'picture'
+                    'picture',
+                    { width: 300, height: 300 }
                   );
                 }}
                 {...register('profilePicture')}
@@ -130,17 +134,31 @@ export function SignupSecondStep() {
           <FieldContainer center>
             <span>Capa</span>
 
-            <ProfileBannerContainer background={profileBannerPreview}>
+            <ProfileBannerContainer
+              background={
+                inputsData.profileBanner
+                  ? URL.createObjectURL(inputsData.profileBanner)
+                  : ''
+              }
+            >
               <input
                 type="file"
                 id="profileBanner"
                 accept="image/png, image/jpeg"
                 onChangeCapture={event => {
                   const target = event.target as HTMLInputElement;
-                  setProfileBannerPreview(
+                  handleSetInputsData({
+                    ...inputsData,
+                    profileBanner:
+                      target.files !== null ? target.files[0] : undefined
+                  });
+
+                  handleOpenResizeModal(
                     target.files !== null
                       ? URL.createObjectURL(target.files[0])
-                      : ''
+                      : '',
+                    'banner',
+                    { width: 1440, height: 400 }
                   );
                 }}
                 {...register('profileBanner')}
