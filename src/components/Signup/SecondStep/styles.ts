@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Title } from '../../General/Title';
 import { Logo } from '../../Header/Logo';
 import { Button } from '../../Widgets/Buttons/Button';
@@ -6,6 +6,7 @@ import { FadeButton } from '../../Widgets/Buttons/FadeButton';
 
 import { breakpoint } from '../../../hooks/useMobile';
 import { Input } from '../../Widgets/Input';
+import { ButtonStyle } from '../../Widgets/Buttons/Button/styles';
 
 export const Container = styled.div`
   display: flex;
@@ -79,11 +80,86 @@ export const NextStepButton = styled(Button)`
   height: fit-content;
 `;
 
-export const FieldContainer = styled.div`
+interface IFieldContainerProps {
+  center?: boolean;
+}
+
+export const FieldContainer = styled.div<IFieldContainerProps>`
   display: flex;
   flex-direction: column;
 
   gap: 0.4rem;
+
+  span {
+    color: ${props => props.theme.colors.secondaryLight};
+  }
+
+  input[type='file'] {
+    display: none;
+
+    & + label {
+      ${ButtonStyle};
+
+      border: 0.1rem solid ${props => props.theme.colors.text};
+      border-radius: 20rem;
+
+      height: fit-content;
+      width: fit-content;
+
+      user-select: none;
+    }
+  }
+
+  ${props =>
+    props.center &&
+    css`
+      justify-content: center;
+      align-items: center;
+    `}
+`;
+
+interface IProfilePictureContainerProps {
+  background?: string;
+}
+
+export const ProfilePictureContainer = styled.div<IProfilePictureContainerProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 18rem;
+  height: 18rem;
+
+  border-radius: 100%;
+
+  border: 0.1rem solid ${props => props.theme.colors.text};
+
+  ${props =>
+    props.background &&
+    css`
+      background-image: url(${props.background});
+      background-size: cover;
+    `}
+`;
+
+export const ProfileBannerContainer = styled.div<IProfilePictureContainerProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 14rem;
+
+  border-radius: 0.8rem;
+
+  border: 0.1rem solid ${props => props.theme.colors.text};
+
+  ${props =>
+    props.background &&
+    css`
+      background-image: url(${props.background});
+      background-size: cover;
+    `}
 `;
 
 export const StyledInput = styled(Input)`

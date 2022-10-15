@@ -5,8 +5,8 @@ export interface IInputs {
   username: string;
   email: string;
   password: string;
-  profilePicture: string;
-  profileBanner: string;
+  profilePicture?: File;
+  profileBanner?: File;
   color: string;
   description: string;
 }

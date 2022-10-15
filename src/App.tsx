@@ -34,22 +34,22 @@ export function App() {
     <StyledThemeProvider theme={theme ?? defaultTheme}>
       <BrowserRouter>
         <IconContext.Provider value={{ size: '28' }}>
-          <ModalProvider>
-            <AlertProvider>
-              <MenuProvider>
-                <SignupProvider>
+          <SignupProvider>
+            <ModalProvider>
+              <AlertProvider>
+                <MenuProvider>
                   <ProfileCategoryProvider>
                     <CategoryProvider>
                       <Router />
                     </CategoryProvider>
                   </ProfileCategoryProvider>
-                </SignupProvider>
-              </MenuProvider>
+                </MenuProvider>
 
-              <Alert />
-              <Modal />
-            </AlertProvider>
-          </ModalProvider>
+                <Alert />
+                <Modal />
+              </AlertProvider>
+            </ModalProvider>
+          </SignupProvider>
         </IconContext.Provider>
 
         <GlobalStyle />

@@ -19,6 +19,10 @@ export function ModalProvider({ children }: IModalProvider) {
     setOpen(value);
   }
 
+  function handleSetOptions(value: IModalProps): void {
+    setOptionsState(value);
+  }
+
   return (
     <ModalContext.Provider
       value={{
@@ -26,7 +30,8 @@ export function ModalProvider({ children }: IModalProvider) {
         handleSetOpen,
         handleCallModal,
         content: contentState,
-        options: optionsState
+        options: optionsState,
+        handleSetOptions
       }}
     >
       {children}

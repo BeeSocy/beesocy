@@ -19,7 +19,13 @@ export function ModalDesktop() {
   return (
     <DialogPrimitive.Root
       open={open}
-      onOpenChange={value => handleSetOpen(value)}
+      onOpenChange={value => {
+        if (!value && options.onClose) {
+          options.onClose();
+          return;
+        }
+        handleSetOpen(value);
+      }}
     >
       <DialogPrimitive.Portal>
         <StyledDialogOverlay $active={options.overlay} />

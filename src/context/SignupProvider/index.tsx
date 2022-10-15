@@ -9,14 +9,12 @@ export function SignupProvider({ children }: ISignupProvider) {
     username: '',
     email: '',
     password: '',
-    profilePicture: '',
-    profileBanner: '',
     color: '',
     description: ''
   });
 
   function handleSetInputsData(inputsData: IInputs): void {
-    setInputsDataState({ ...inputsDataState, ...inputsData });
+    setInputsDataState(inputsData);
   }
 
   return (

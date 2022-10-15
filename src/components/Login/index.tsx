@@ -10,6 +10,7 @@ import {
 import { useModal } from '../../context/ModalProvider/useModal';
 import { Title } from '../General/Title';
 import { SignupFirstStep } from '../Signup/FirstStep';
+import { SignupSecondStep } from '../Signup/SecondStep';
 import {
   Container,
   StyledLogo,
@@ -47,7 +48,7 @@ export function Login() {
 
   function openSignupModal() {
     handleSetOpen(false);
-    handleCallModal(<SignupFirstStep />, {
+    handleCallModal(<SignupSecondStep />, {
       center: true,
       overlay: true,
       easyClose: false,

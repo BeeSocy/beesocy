@@ -18,7 +18,17 @@ export function ModalMobile() {
   useLockBodyScroll(open);
 
   return (
-    <StyledSheet isOpen={open ?? false} onClose={() => handleSetOpen(false)}>
+    <StyledSheet
+      isOpen={open ?? false}
+      onClose={() => {
+        if (options.onClose) {
+          options.onClose();
+          return;
+        }
+        handleSetOpen(false);
+      }}
+      disableDrag={options.disableDrag}
+    >
       <StyledSheet.Container>
         <StyledSheet.Header style={{ color: colors.light }}>
           <StyledHeader hasTitle={hasTitle}>
@@ -34,7 +44,15 @@ export function ModalMobile() {
         <StyledSheet.Content>{content}</StyledSheet.Content>
       </StyledSheet.Container>
 
-      <StyledSheet.Backdrop onTap={() => handleSetOpen(false)} />
+      <StyledSheet.Backdrop
+        onTap={() => {
+          if (options.onClose) {
+            options.onClose();
+            return;
+          }
+          handleSetOpen(false);
+        }}
+      />
     </StyledSheet>
   );
 }

@@ -1,6 +1,8 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { useModal } from '../../../context/ModalProvider/useModal';
 import { useSignup } from '../../../context/SignupProvider/useSignup';
 import { Title } from '../../General/Title';
+import { SignupSecondStep } from '../SecondStep';
 import {
   Container,
   StyledLogo,
@@ -10,7 +12,6 @@ import {
   ErrorSpan,
   FieldContainer,
   Content,
-  Footer,
   NextStepButton
 } from './styles';
 
@@ -30,10 +31,31 @@ export function SignupFirstStep() {
     formState: { errors }
   } = useForm<Inputs>();
 
-  const { handleSetInputsData } = useSignup();
+  const { handleSetInputsData, inputsData } = useSignup();
 
-  const onSubmit: SubmitHandler<Inputs> = data =>
-    handleSetInputsData({ ...data });
+  const { handleSetOpen, handleCallModal } = useModal();
+
+  function openNextStepModal() {
+    handleSetOpen(false);
+    handleCallModal(<SignupSecondStep />, {
+      center: true,
+      overlay: true,
+      easyClose: false,
+      fullHeight: false
+    });
+  }
+
+  const onSubmit: SubmitHandler<Inputs> = data => {
+    handleSetInputsData({
+      ...inputsData,
+      username: data.username,
+      password: data.password,
+      email: data.email,
+      nickname: data.nickname
+    });
+
+    openNextStepModal();
+  };
 
   return (
     <Container>
