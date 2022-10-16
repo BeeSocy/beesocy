@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { CirclePicker } from 'react-color';
 import { Title } from '../../General/Title';
 import { Logo } from '../../Header/Logo';
 import { Button } from '../../Widgets/Buttons/Button';
@@ -21,7 +22,9 @@ export const Container = styled.div`
 
   gap: 2rem;
 
-  height: fit-content;
+  max-height: 90vh;
+
+  overflow-y: auto;
 
   background: linear-gradient(
     0deg,
@@ -78,6 +81,10 @@ export const NextStepButton = styled(Button)`
   justify-content: center;
 
   height: fit-content;
+
+  @media (min-width: ${breakpoint}) {
+    grid-column: span 2;
+  }
 `;
 
 interface IFieldContainerProps {
@@ -90,7 +97,7 @@ export const FieldContainer = styled.div<IFieldContainerProps>`
 
   gap: 0.4rem;
 
-  span {
+  span:nth-child(1) {
     color: ${props => props.theme.colors.secondaryLight};
   }
 
@@ -122,6 +129,7 @@ export const FieldContainer = styled.div<IFieldContainerProps>`
 
 interface IProfilePictureContainerProps {
   background?: string;
+  color?: string;
 }
 
 export const ProfilePictureContainer = styled.div<IProfilePictureContainerProps>`
@@ -134,7 +142,7 @@ export const ProfilePictureContainer = styled.div<IProfilePictureContainerProps>
 
   border-radius: 100%;
 
-  border: 0.1rem solid ${props => props.theme.colors.text};
+  border: 0.3rem solid ${props => props.color};
 
   ${props =>
     props.background &&
@@ -168,6 +176,12 @@ export const ProfileBannerContainer = styled.div<IProfilePictureContainerProps>`
 
 export const StyledInput = styled(Input)`
   height: fit-content;
+
+  ${props =>
+    props.type === 'textarea' &&
+    css`
+      height: 10rem;
+    `};
 `;
 
 export const StyledFadeButton = styled(FadeButton)`
@@ -182,6 +196,19 @@ export const ErrorSpan = styled.span`
   color: #eb4034;
 `;
 
-export const YellowTitle = styled(Title)`
-  color: ${props => props.theme.colors.bee};
+interface IYellowTitleProps {
+  color?: string;
+}
+
+export const YellowTitle = styled(Title)<IYellowTitleProps>`
+  ${props =>
+    props.color
+      ? css`
+          color: ${props.color};
+        `
+      : css`
+          color: ${props.theme.colors.bee};
+        `}
 `;
+
+export const StyledCirclePicker = styled(CirclePicker)``;

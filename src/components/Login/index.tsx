@@ -48,7 +48,7 @@ export function Login() {
 
   function openSignupModal() {
     handleSetOpen(false);
-    handleCallModal(<SignupSecondStep />, {
+    handleCallModal(<SignupFirstStep />, {
       center: true,
       overlay: true,
       easyClose: false,

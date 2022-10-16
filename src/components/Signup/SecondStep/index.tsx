@@ -3,7 +3,6 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useModal } from '../../../context/ModalProvider/useModal';
 
 import { useSignup } from '../../../context/SignupProvider/useSignup';
-import { SpiralLoading } from '../../General/Loading/Spiral';
 import { Title } from '../../General/Title';
 import { ResizeImage } from './ResizeImage';
 
@@ -18,7 +17,8 @@ import {
   Content,
   NextStepButton,
   ProfilePictureContainer,
-  ProfileBannerContainer
+  ProfileBannerContainer,
+  StyledCirclePicker
 } from './styles';
 
 interface Inputs {
@@ -29,34 +29,39 @@ interface Inputs {
 }
 
 export function SignupSecondStep() {
-  const [profileBannerPreview, setProfileBannerPreview] = useState<string>();
+  const [selectedColor, setSelectedColor] = useState<string>('');
 
   const {
     control,
     register,
     handleSubmit,
-    setValue,
-    setError,
-    clearErrors,
     getValues,
+    setError,
     formState: { errors }
   } = useForm<Inputs>();
 
   const { handleSetInputsData, inputsData } = useSignup();
 
   const onSubmit: SubmitHandler<Inputs> = data => {
-    console.log(data);
+    if (inputsData.profilePicture == null) {
+      setError('profilePicture', {
+        type: 'required',
+        message: 'Campo obrigatório'
+      });
+      return;
+    }
+    handleSetInputsData({
+      ...inputsData,
+      color: selectedColor,
+      description: data.description || '',
+      profileBanner: inputsData.profileBanner,
+      profilePicture: inputsData.profilePicture
+    });
   };
-  /* handleSetInputsData({
-      username: '',
-      password: '',
-      email: '',
-      nickname: '',
-      color: '',
-      description: '',
-      profileBanner: '',
-      profilePicture: ''
-    }) */
+
+  useEffect(() => {
+    console.log(inputsData);
+  }, [inputsData]);
 
   const { handleCallModal } = useModal();
 
@@ -79,12 +84,36 @@ export function SignupSecondStep() {
     );
   }
 
+  const colors = [
+    '#f44336',
+    '#e91e63',
+    '#9c27b0',
+    '#673ab7',
+    '#3f51b5',
+    '#2196f3',
+    '#03a9f4',
+    '#00bcd4',
+    '#009688',
+    '#4caf50',
+    '#8bc34a',
+    '#cddc39',
+    '#c2af07',
+    '#ffc107',
+    '#ff9800',
+    '#ff5722',
+    '#795548',
+    '#607d8b'
+  ];
+
   return (
     <Container>
       <StyledLogo to="" titleIsVisible={false} />
       <Header>
         <Title size="medium">
-          Junte-se ao <YellowTitle size="medium">BeeSocy</YellowTitle>
+          Junte-se ao{' '}
+          <YellowTitle size="medium" color={selectedColor}>
+            BeeSocy
+          </YellowTitle>
         </Title>
       </Header>
 
@@ -99,6 +128,7 @@ export function SignupSecondStep() {
                   ? URL.createObjectURL(inputsData.profilePicture)
                   : ''
               }
+              color={selectedColor}
             >
               <input
                 type="file"
@@ -170,6 +200,38 @@ export function SignupSecondStep() {
             {errors.profileBanner && !getValues('profileBanner').type && (
               <ErrorSpan>{errors.profileBanner.message}</ErrorSpan>
             )}
+          </FieldContainer>
+
+          <FieldContainer center>
+            <Controller
+              name="description"
+              control={control}
+              render={({ field }) => (
+                <StyledInput type="textarea" title="Descrição" {...field} />
+              )}
+            />
+
+            {errors.description && (
+              <ErrorSpan>{errors.description.message}</ErrorSpan>
+            )}
+          </FieldContainer>
+
+          <FieldContainer center>
+            <span>Cor favorita</span>
+            <Controller
+              name="color"
+              rules={{ required: 'Campo obrigatório' }}
+              control={control}
+              render={({ field }) => (
+                <StyledCirclePicker
+                  colors={colors}
+                  onChangeComplete={color => setSelectedColor(color.hex)}
+                  {...field}
+                />
+              )}
+            />
+
+            {errors.color && <ErrorSpan>{errors.color.message}</ErrorSpan>}
           </FieldContainer>
 
           <NextStepButton type="submit">Próximo passo</NextStepButton>

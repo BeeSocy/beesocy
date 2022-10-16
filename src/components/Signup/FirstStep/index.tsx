@@ -12,7 +12,10 @@ import {
   ErrorSpan,
   FieldContainer,
   Content,
-  NextStepButton
+  NextStepButton,
+  StepIndicatorContainer,
+  StepIndicator,
+  StepWay
 } from './styles';
 
 interface Inputs {
@@ -55,12 +58,28 @@ export function SignupFirstStep() {
     });
 
     openNextStepModal();
+    console.log(data);
   };
 
   return (
     <Container>
       <StyledLogo to="" titleIsVisible={false} />
       <Header>
+        <StepIndicatorContainer>
+          <StepIndicator>1</StepIndicator>
+
+          <StepWay />
+          <StepWay />
+          <StepWay />
+
+          <StepIndicator>2</StepIndicator>
+
+          <StepWay />
+          <StepWay />
+          <StepWay />
+
+          <StepIndicator>3</StepIndicator>
+        </StepIndicatorContainer>
         <Title size="medium">
           Junte-se ao <YellowTitle size="medium">BeeSocy</YellowTitle>
         </Title>

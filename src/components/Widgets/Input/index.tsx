@@ -51,9 +51,9 @@ export function Input({ type, title, ...props }: IInputProps) {
       ) : (
         <textarea
           id={title}
-          onFocus={() => setIsInputActive(true)}
-          onBlur={() => setIsInputActive(false)}
-          onChange={event =>
+          onFocusCapture={() => setIsInputActive(true)}
+          onBlurCapture={() => setIsInputActive(false)}
+          onChangeCapture={event =>
             setIsInputHasContent(event.currentTarget.value.length > 0)
           }
           {...props}

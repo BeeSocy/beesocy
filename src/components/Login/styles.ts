@@ -16,6 +16,10 @@ export const Container = styled.div`
 
   border-radius: 0.8rem;
 
+  max-height: 90vh;
+
+  overflow-y: auto;
+
   background: linear-gradient(
     0deg,
     ${props => props.theme.colors.primary},
