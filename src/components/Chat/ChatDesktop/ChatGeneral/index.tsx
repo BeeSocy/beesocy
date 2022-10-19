@@ -8,13 +8,13 @@ import { ContainerMessegers } from '../ContainerMessegers/ContainerGeneral';
 import { ContainerInput } from '../InputMessege/ContainerInput';
 import { InputMessege } from '../InputMessege/InputGeneral';
 import { useMobile } from '../../../../hooks/useMobile';
-import { MobileCards } from '../../ChatMobile/MobileCards';
+import { MobileCards } from '../../ChatMobile/CardsMobile/MobileCards';
 import {
   ContainerMobile,
   SectionBoxChat
 } from '../../RecentMessege/BoxCard/styles';
-import { HeaderCards } from '../../ChatMobile/HeaderCardGeneral';
-import { ContainerMessege } from '../ContainerMessegers';
+import { HeaderCards } from '../../ChatMobile/CardsMobile/HeaderCardGeneral';
+import { SectionMessege } from '../ContainerMessegers';
 import { RecentMessage } from '../../RecentMessege/General';
 
 export const ChatGeneral = () => {
@@ -30,7 +30,7 @@ export const ChatGeneral = () => {
 
           <ChatSection>
             <ChatHeader />
-            <ContainerMessege />
+            <SectionMessege />
             <InputMessege />
           </ChatSection>
         </ChatContainer>

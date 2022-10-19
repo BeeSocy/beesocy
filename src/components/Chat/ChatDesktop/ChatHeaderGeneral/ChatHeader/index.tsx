@@ -2,7 +2,11 @@ import React, { ReactNode } from 'react';
 import { HeaderStyled } from './styles';
 import { InfoGeneral } from '../ChatHeaderInfo/InfoGeneral';
 
-export const ChatHeader = () => {
+interface IChatHeaderProps {
+  children?: ReactNode;
+}
+
+export const ChatHeader = ({ children }: IChatHeaderProps) => {
   return (
     <HeaderStyled>
       <InfoGeneral />

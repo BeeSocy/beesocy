@@ -19,12 +19,6 @@ export const CardPhoto = styled.div`
   border: 0.4rem solid ${user.color};
 `;
 
-export const LastMesege = styled.div`
-  display: flex;
-  flex-direction: column;
-  color: ${props => props.theme.colors.secondaryLight};
-`;
-
 export const AlignSection = styled.section`
   display: flex;
   flex-direction: column;
