@@ -6,6 +6,7 @@ import { FadeButton } from '../../Widgets/Buttons/FadeButton';
 
 import { breakpoint } from '../../../hooks/useMobile';
 import { Input } from '../../Widgets/Input';
+import { StepIndicator } from '../StepIndicator';
 
 export const Container = styled.div`
   display: flex;
@@ -89,59 +90,15 @@ export const NextStepButton = styled(Button)`
   height: fit-content;
 `;
 
+export const StyledStepIndicator = styled(StepIndicator)`
+  position: absolute;
+`;
+
 export const FieldContainer = styled.div`
   display: flex;
   flex-direction: column;
 
   gap: 0.4rem;
-`;
-
-export const StepIndicatorContainer = styled.div`
-  display: flex;
-
-  align-items: center;
-
-  position: absolute;
-
-  width: 100%;
-  height: 100%;
-
-  gap: 0.4rem;
-
-  @media (max-width: ${breakpoint}) {
-    justify-content: center;
-    top: 2.4rem;
-  }
-`;
-
-export const StepIndicator = styled.span`
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-
-  border: 0.1rem solid ${props => props.theme.colors.text};
-  border-radius: 100%;
-
-  padding: 1.4rem;
-
-  width: 0.1rem;
-  height: 0.1rem;
-`;
-
-export const StepWay = styled.span`
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-
-  border: 0.1rem solid ${props => props.theme.colors.text};
-  border-radius: 100%;
-
-  padding: 0.24rem;
-
-  width: 0.1rem;
-  height: 0.1rem;
 `;
 
 export const StyledInput = styled(Input)`

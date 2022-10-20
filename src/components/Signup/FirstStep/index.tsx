@@ -13,9 +13,7 @@ import {
   FieldContainer,
   Content,
   NextStepButton,
-  StepIndicatorContainer,
-  StepIndicator,
-  StepWay
+  StyledStepIndicator
 } from './styles';
 
 interface Inputs {
@@ -65,21 +63,7 @@ export function SignupFirstStep() {
     <Container>
       <StyledLogo to="" titleIsVisible={false} />
       <Header>
-        <StepIndicatorContainer>
-          <StepIndicator>1</StepIndicator>
-
-          <StepWay />
-          <StepWay />
-          <StepWay />
-
-          <StepIndicator>2</StepIndicator>
-
-          <StepWay />
-          <StepWay />
-          <StepWay />
-
-          <StepIndicator>3</StepIndicator>
-        </StepIndicatorContainer>
+        <StyledStepIndicator steps={[1, 2, 3]} />
         <Title size="medium">
           Junte-se ao <YellowTitle size="medium">BeeSocy</YellowTitle>
         </Title>
