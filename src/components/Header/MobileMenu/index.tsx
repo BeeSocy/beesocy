@@ -118,13 +118,13 @@ export function MobileMenu() {
         </LinkButton>
 
         <LinkButton
-          to="/music"
+          to="/musicas"
           aria-label="Página Músicas"
           full={false}
           rounded
           onClick={handleChangeRoute}
         >
-          {pathname === '/music' ? (
+          {pathname === '/musicas' ? (
             <MdMusicNote style={{ fill: themes.colors.bee }} />
           ) : (
             <MdOutlineMusicNote />
@@ -145,13 +145,13 @@ export function MobileMenu() {
         </Button>
 
         <LinkButton
-          to="/image"
+          to="/imagens"
           aria-label="Página Imagens"
           full={false}
           rounded
           onClick={handleChangeRoute}
         >
-          {pathname === '/image' ? (
+          {pathname === '/imagens' ? (
             <MdImage style={{ fill: themes.colors.bee }} />
           ) : (
             <MdOutlineImage />
@@ -159,7 +159,7 @@ export function MobileMenu() {
         </LinkButton>
 
         <LinkButton
-          to="/code"
+          to="/codigos"
           aria-label="Página Código"
           full={false}
           rounded
@@ -168,7 +168,7 @@ export function MobileMenu() {
           <MdCode
             style={{
               fill:
-                pathname === '/code' ? themes.colors.bee : themes.colors.text
+                pathname === '/codigos' ? themes.colors.bee : themes.colors.text
             }}
           />
         </LinkButton>
@@ -185,12 +185,12 @@ export function MobileMenu() {
         </Button>
 
         <LinkButton
-          to="/list/save"
+          to="/salvos"
           aria-label="Postagens salvas"
           tabIndex={open ? 0 : -1}
           onClick={handleChangeRoute}
         >
-          {pathname === '/list/save' ? (
+          {pathname === '/salvos' ? (
             <MdBookmark style={{ fill: themes.colors.bee }} />
           ) : (
             <MdBookmarkBorder />
@@ -199,12 +199,12 @@ export function MobileMenu() {
         </LinkButton>
 
         <LinkButton
-          to="/list/history"
+          to="/historico"
           aria-label="Postagens vistas"
           tabIndex={open ? 0 : -1}
           onClick={handleChangeRoute}
         >
-          {pathname === '/list/history' ? (
+          {pathname === '/historico' ? (
             <MdHistory style={{ fill: themes.colors.bee }} />
           ) : (
             <MdOutlineHistory />
@@ -213,12 +213,12 @@ export function MobileMenu() {
         </LinkButton>
 
         <LinkButton
-          to="/list/like"
+          to="/curtidos"
           aria-label="Postagens curtidentificationas"
           tabIndex={open ? 0 : -1}
           onClick={handleChangeRoute}
         >
-          {pathname === '/list/like' ? (
+          {pathname === '/curtidos' ? (
             <MdFavorite style={{ fill: themes.colors.bee }} />
           ) : (
             <MdFavoriteBorder />
@@ -243,12 +243,12 @@ export function MobileMenu() {
         </Button>
 
         <LinkButton
-          to="/jobs"
+          to="/vagas"
           aria-label="Página Trabalhos"
           tabIndex={open ? 0 : -1}
           onClick={handleChangeRoute}
         >
-          {pathname === '/jobs' ? (
+          {pathname === '/vagas' ? (
             <MdWork style={{ fill: themes.colors.bee }} />
           ) : (
             <MdWorkOutline />
@@ -257,12 +257,12 @@ export function MobileMenu() {
         </LinkButton>
 
         <LinkButton
-          to="/learn"
+          to="/aulas"
           aria-label="Página Aulas"
           tabIndex={open ? 0 : -1}
           onClick={handleChangeRoute}
         >
-          {pathname === '/learn' ? (
+          {pathname === '/aulas' ? (
             <MdSchool style={{ fill: themes.colors.bee }} />
           ) : (
             <MdOutlineSchool />
@@ -273,12 +273,12 @@ export function MobileMenu() {
         <Line />
 
         <LinkButton
-          to="/follow"
+          to="/seguindo"
           aria-label="Seguindo"
           tabIndex={open ? 0 : -1}
           onClick={handleChangeRoute}
         >
-          {pathname === '/follow' ? (
+          {pathname === '/seguindo' ? (
             <MdPermIdentity style={{ fill: themes.colors.bee }} />
           ) : (
             <MdOutlinePermIdentity />

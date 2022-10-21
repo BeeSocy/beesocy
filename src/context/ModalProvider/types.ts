@@ -8,6 +8,8 @@ export interface IModalProps {
   center?: boolean;
   fullHeight?: boolean;
   title?: string;
+  disableDrag?: boolean;
+  onClose?(): void;
 }
 
 interface IModal {
@@ -19,6 +21,7 @@ interface IModal {
 export interface IModalContext extends IModal {
   handleCallModal(content: ReactNode, options: IModalProps): void;
   handleSetOpen(value: boolean): void;
+  handleSetOptions(value: IModalProps): void;
 }
 
 export interface IModalProvider {

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-
+import Sheet from 'react-modal-sheet';
 interface IStyledHeaderProps {
   hasTitle?: boolean;
 }
@@ -28,4 +28,15 @@ export const StyledHeader = styled.section<IStyledHeaderProps>`
             position: absolute;
           }
         `}
+`;
+
+interface IStyledSheetProps {
+  fullHeight?: boolean;
+}
+
+export const StyledSheet = styled(Sheet)<IStyledSheetProps>`
+  .react-modal-sheet-container {
+    background: ${props => props.theme.colors.primary} !important;
+    height: ${props => (props.fullHeight ? '100vh' : 'fit-content')} !important;
+  }
 `;

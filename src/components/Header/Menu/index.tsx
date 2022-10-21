@@ -41,7 +41,6 @@ import { ModalChat } from '../../Chat/ChatDesktop/ModalChat';
 
 import { usePlayer } from '../../../context/PlayerProvider/usePlayer';
 
-
 export function Menu() {
   const [isShowMoreFollowing, setIsShowMoreFollowing] = useState<boolean>();
 
@@ -120,8 +119,8 @@ export function Menu() {
         <span>Início</span>
       </LinkButton>
 
-      <LinkButton to="/music" aria-label="Página Músicas">
-        {pathname === '/music' ? (
+      <LinkButton to="/musicas" aria-label="Página Músicas">
+        {pathname === '/musicas' ? (
           <MdMusicNote style={{ fill: themes.colors.bee }} />
         ) : (
           <MdOutlineMusicNote />
@@ -129,8 +128,8 @@ export function Menu() {
         <span>Músicas</span>
       </LinkButton>
 
-      <LinkButton to="/image" aria-label="Página Imagens">
-        {pathname === '/image' ? (
+      <LinkButton to="/imagens" aria-label="Página Imagens">
+        {pathname === '/imagens' ? (
           <MdImage style={{ fill: themes.colors.bee }} />
         ) : (
           <MdOutlineImage />
@@ -138,10 +137,11 @@ export function Menu() {
         <span>Imagens</span>
       </LinkButton>
 
-      <LinkButton to="/code" aria-label="Página Código">
+      <LinkButton to="/codigos" aria-label="Página Código">
         <MdCode
           style={{
-            fill: pathname === '/code' ? themes.colors.bee : themes.colors.text
+            fill:
+              pathname === '/codigos' ? themes.colors.bee : themes.colors.text
           }}
         />
         <span>Códigos</span>
@@ -149,8 +149,8 @@ export function Menu() {
 
       <Line />
 
-      <LinkButton to="/list/save" aria-label="Postagens salvas">
-        {pathname === '/list/save' ? (
+      <LinkButton to="/salvos" aria-label="Postagens salvas">
+        {pathname === '/salvos' ? (
           <MdBookmark style={{ fill: themes.colors.bee }} />
         ) : (
           <MdBookmarkBorder />
@@ -158,8 +158,8 @@ export function Menu() {
         <span>Salvos</span>
       </LinkButton>
 
-      <LinkButton to="/list/history" aria-label="Postagens vistas">
-        {pathname === '/list/history' ? (
+      <LinkButton to="/historico" aria-label="Postagens vistas">
+        {pathname === '/historico' ? (
           <MdHistory style={{ fill: themes.colors.bee }} />
         ) : (
           <MdOutlineHistory />
@@ -167,8 +167,8 @@ export function Menu() {
         <span>Histórico</span>
       </LinkButton>
 
-      <LinkButton to="/list/like" aria-label="Postagens curtidas">
-        {pathname === '/list/like' ? (
+      <LinkButton to="/curtidos" aria-label="Postagens curtidas">
+        {pathname === '/curtidos' ? (
           <MdFavorite style={{ fill: themes.colors.bee }} />
         ) : (
           <MdFavoriteBorder />
@@ -190,8 +190,8 @@ export function Menu() {
         <span>Chat</span>
       </Button>
 
-      <LinkButton to="/jobs" aria-label="Página Trabalhos">
-        {pathname === '/jobs' ? (
+      <LinkButton to="/vagas" aria-label="Página Trabalhos">
+        {pathname === '/vagas' ? (
           <MdWork style={{ fill: themes.colors.bee }} />
         ) : (
           <MdWorkOutline />
@@ -199,8 +199,8 @@ export function Menu() {
         <span>Vagas</span>
       </LinkButton>
 
-      <LinkButton to="/learn" aria-label="Página Aulas">
-        {pathname === '/learn' ? (
+      <LinkButton to="/aulas" aria-label="Página Aulas">
+        {pathname === '/aulas' ? (
           <MdSchool style={{ fill: themes.colors.bee }} />
         ) : (
           <MdOutlineSchool />
@@ -210,8 +210,8 @@ export function Menu() {
 
       <Line />
 
-      <LinkButton to="/follow" aria-label="Seguindo">
-        {pathname === '/follow' ? (
+      <LinkButton to="/seguindo" aria-label="Seguindo">
+        {pathname === '/seguindo' ? (
           <MdPermIdentity style={{ fill: themes.colors.bee }} />
         ) : (
           <MdOutlinePermIdentity />

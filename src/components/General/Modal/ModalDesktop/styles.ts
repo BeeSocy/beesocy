@@ -71,8 +71,6 @@ export const StyledDialogContent = styled(
   top: ${props => (props.$yPos ? `${props.$yPos}px` : 0)};
   left: ${props => (props.$xPos ? `${props.$xPos}px` : 0)};
 
-  overflow: auto;
-
   max-height: 85vh;
   max-width: 70rem;
 

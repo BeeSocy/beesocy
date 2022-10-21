@@ -64,9 +64,7 @@ export function CommentCard({ user, comment }: ProfileComment) {
       <IconProfile user={user} />
       <RightContainer>
         <InfoProfile>
-          <UserName to={`/profile/${user.identification}`}>
-            {user.name}
-          </UserName>
+          <UserName to={`/perfil/${user.identification}`}>{user.name}</UserName>
 
           <PostDate>{formatCommentedAt(comment.commentedAt)}</PostDate>
 

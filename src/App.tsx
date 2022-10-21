@@ -17,6 +17,7 @@ import { ModalProvider } from './context/ModalProvider';
 import { Modal } from './components/General/Modal';
 import { useLayout } from './context/LayoutProvider/useLayout';
 import { ProfileCategoryProvider } from './context/ProfileCategoryProvider';
+import { SignupProvider } from './context/SignupProvider';
 
 export function App() {
   const defaultTheme = dark;
@@ -33,20 +34,22 @@ export function App() {
     <StyledThemeProvider theme={theme ?? defaultTheme}>
       <BrowserRouter>
         <IconContext.Provider value={{ size: '28' }}>
-          <ModalProvider>
-            <AlertProvider>
-              <MenuProvider>
-                <ProfileCategoryProvider>
-                  <CategoryProvider>
-                    <Router />
-                  </CategoryProvider>
-                </ProfileCategoryProvider>
-              </MenuProvider>
+          <SignupProvider>
+            <ModalProvider>
+              <AlertProvider>
+                <MenuProvider>
+                  <ProfileCategoryProvider>
+                    <CategoryProvider>
+                      <Router />
+                    </CategoryProvider>
+                  </ProfileCategoryProvider>
+                </MenuProvider>
 
-              <Alert />
-              <Modal />
-            </AlertProvider>
-          </ModalProvider>
+                <Alert />
+                <Modal />
+              </AlertProvider>
+            </ModalProvider>
+          </SignupProvider>
         </IconContext.Provider>
 
         <GlobalStyle />

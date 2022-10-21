@@ -6,7 +6,7 @@ import { useModal } from '../../../../context/ModalProvider/useModal';
 import { useTheme } from '../../../../context/ThemeProvider/useTheme';
 import { Button } from '../../../Widgets/Buttons/Button';
 import { Title } from '../../Title';
-import { StyledHeader } from './styles';
+import { StyledHeader, StyledSheet } from './styles';
 
 export function ModalMobile() {
   const { open, handleSetOpen, content, options } = useModal();
@@ -18,14 +18,19 @@ export function ModalMobile() {
   useLockBodyScroll(open);
 
   return (
-    <Sheet isOpen={open ?? false} onClose={() => handleSetOpen(false)}>
-      <Sheet.Container
-        style={{
-          background: colors.primary,
-          height: options.fullHeight ? '100vh' : 'fit-content'
-        }}
-      >
-        <Sheet.Header style={{ color: colors.light }}>
+    <StyledSheet
+      isOpen={open ?? false}
+      onClose={() => {
+        if (options.onClose) {
+          options.onClose();
+          return;
+        }
+        handleSetOpen(false);
+      }}
+      disableDrag={options.disableDrag}
+    >
+      <StyledSheet.Container>
+        <StyledSheet.Header style={{ color: colors.light }}>
           <StyledHeader hasTitle={hasTitle}>
             <Title size="medium">{options.title}</Title>
             {options.easyClose && (
@@ -34,12 +39,20 @@ export function ModalMobile() {
               </Button>
             )}
           </StyledHeader>
-        </Sheet.Header>
+        </StyledSheet.Header>
 
-        <Sheet.Content>{content}</Sheet.Content>
-      </Sheet.Container>
+        <StyledSheet.Content>{content}</StyledSheet.Content>
+      </StyledSheet.Container>
 
-      <Sheet.Backdrop onTap={() => handleSetOpen(false)} />
-    </Sheet>
+      <StyledSheet.Backdrop
+        onTap={() => {
+          if (options.onClose) {
+            options.onClose();
+            return;
+          }
+          handleSetOpen(false);
+        }}
+      />
+    </StyledSheet>
   );
 }
