@@ -11,15 +11,15 @@ import { Content } from './styles';
 import { ProfileContent } from '../../components/Profile/ProfileContent';
 
 export const user: IProfile = {
-  nickname: 'pikanagaita',
-  name: 'Pica na Gaita',
+  nickname: 'picapau2022',
+  name: 'Pica-Pau',
   follows: [],
   followers: [],
   color: '#ffc107',
   identification: '97a02c78-5800-423d-96e1-1fe1db595442',
   imageUrl:
     'https://64.media.tumblr.com/6ae2a67ce510029caf6219c6a708f501/60b41a809f52a0b4-8c/s400x600/7e89be3c89e7cd3fdf18e7f6ed9b4639ace24cde.pnj',
-  bannerUrl: 'https://i.ytimg.com/vi/kvV0pyEv8IY/mqdefault.jpg',
+  bannerUrl: 'https://s1.dmcdn.net/v/HRVWi1Vhg1SRhOaK6/x1080',
   description:
     'Melhor que cupim, melhor que o mano piveta, melhor que qualquer mandrake que você ja viu, chegou hoje dos Estado Unidos, Picas-Longas. Então cuidao casadas, ele também pode voar, segure-se em seu banquinho, e saia de mansinho.',
   verified: true,
