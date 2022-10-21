@@ -24,7 +24,12 @@ export const InfoGeneral = () => {
           <PhotoHeader />
           <NickHeader />
           <AlignIcons>
-            <Button rounded>
+            <Button
+              rounded
+              onClick={() => {
+                handleSetOpen(false);
+              }}
+            >
               <MdOutlinePushPin />
             </Button>
 
