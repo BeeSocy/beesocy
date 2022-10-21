@@ -1,10 +1,5 @@
 import { ContainerMessegers } from './ContainerGeneral';
 
-export const ContainerMessege = () => {
-  return (
-    <ContainerMessegers>
-      {' '}
-      <> </>
-    </ContainerMessegers>
-  );
+export const SectionMessege = () => {
+  return <ContainerMessegers> </ContainerMessegers>;
 };

@@ -1,6 +1,6 @@
 import { MdClose } from 'react-icons/md';
-import { useModal } from '../../../../context/ModalProvider/useModal';
-import { Button } from '../../../Widgets/Buttons/Button';
+import { useModal } from '../../../../../context/ModalProvider/useModal';
+import { Button } from '../../../../Widgets/Buttons/Button';
 import { HeaderCard } from '../HeaderCards';
 
 interface IHeaderCardsProps {

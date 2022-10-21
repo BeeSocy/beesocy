@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { BoxCards } from '../../RecentMessege/BoxCard';
-import { ContainerMobile } from '../../RecentMessege/BoxCard/styles';
-import { ChatCards } from '../../ChatDesktop/ChatCards/CardInterface';
+import { BoxCards } from '../../../RecentMessege/BoxCard';
+import { ContainerMobile } from '../../../RecentMessege/BoxCard/styles';
+import { ChatCards } from '../../../ChatDesktop/ChatCards/CardInterface';
 
 interface IMobileCardProps {
   children: ReactNode;

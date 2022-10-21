@@ -1,8 +1,9 @@
-import { AlignSection, CardInfStyled, LastMesege } from './styles';
+import { AlignSection, CardInfStyled } from './styles';
 import { CardPhoto } from './styles';
 import { PhotoProfile } from '../PhotoProfile';
 import { NickName } from '../CardNickname';
 import { InfoChatAlign } from '../../../InfoChatAlign';
+import { LastMessege } from '../LastMessege';
 
 export interface ICardInfoProps {
   img: string;
@@ -16,7 +17,7 @@ export const FakeBack: ICardInfoProps = {
   img: 'https://i.pinimg.com/564x/1c/3f/43/1c3f43ce30c8ba4e699d20fef8ba8548.jpg',
   nickname: 'Carti Malvadão',
   available: false,
-  message: 'gang gang ?',
+  message: 'gang ?',
   messagetime: false
 };
 
@@ -28,7 +29,7 @@ export const CardInfo = () => {
       </CardPhoto>
       <AlignSection>
         <NickName />
-        <LastMesege> {FakeBack.message} </LastMesege>
+        <LastMessege />
       </AlignSection>
     </CardInfStyled>
   );
