@@ -67,20 +67,9 @@ export function Menu() {
     {
       identification: 'c475e623-552e-489a-8ee6-a2071eaf747b',
       nickname: '@jorge',
-      name: 'Jorge na gaita afaf af af af a f',
-      imageUrl: 'https://source.unsplash.com/random',
-      color: '#FFFFFF',
-      followers: [],
-      follows: [],
-      description: '',
-      verified: false,
-      vip: false
-    },
-    {
-      identification: '8dc15ebc-f951-4315-b568-48f89f7ccf40',
-      nickname: '@jorge',
-      name: 'Jorge na gaita afaf af af af a f',
-      imageUrl: 'https://source.unsplash.com/random',
+      name: 'Pica-Pau',
+      imageUrl:
+        'https://64.media.tumblr.com/6ae2a67ce510029caf6219c6a708f501/60b41a809f52a0b4-8c/s400x600/7e89be3c89e7cd3fdf18e7f6ed9b4639ace24cde.pnj',
       color: '#FFFFFF',
       followers: [],
       follows: [],

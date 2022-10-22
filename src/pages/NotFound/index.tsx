@@ -1,4 +1,4 @@
-import { BackButton, Container, Title } from './styles';
+import { Container, Title } from './styles';
 
 import NotFoundSrc from '../../assets/NotFound.webp';
 import { FadeButton } from '../../components/Widgets/Buttons/FadeButton';

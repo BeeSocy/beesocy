@@ -12,7 +12,7 @@ export function UserCard({ user, full }: IUserCard) {
   return (
     <LinkButton
       key={user.identification}
-      to={`/profile/${user.identification}`}
+      to={`/perfil/${user.identification}`}
       full={full}
     >
       <Container>
