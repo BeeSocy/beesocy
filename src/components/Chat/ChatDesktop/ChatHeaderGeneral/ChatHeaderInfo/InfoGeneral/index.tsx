@@ -11,7 +11,7 @@ import { useMobile } from '../../../../../../hooks/useMobile';
 import { Button } from '../../../../../Widgets/Buttons/Button';
 import { NickHeader } from '../NickHeader';
 import { PhotoHeader } from '../PhotoHeader';
-import { AlignIcons, InfoGeneralStyled } from './styles';
+import { AlignIcons, AlignInfo, InfoGeneralStyled } from './styles';
 
 export const InfoGeneral = () => {
   const { handleSetOpen } = useModal();
@@ -21,8 +21,11 @@ export const InfoGeneral = () => {
     <>
       {!isMobile ? (
         <InfoGeneralStyled>
-          <PhotoHeader />
-          <NickHeader />
+          <AlignInfo>
+            <PhotoHeader />
+            <NickHeader />
+          </AlignInfo>
+
           <AlignIcons>
             <Button rounded>
               <MdOutlinePushPin />

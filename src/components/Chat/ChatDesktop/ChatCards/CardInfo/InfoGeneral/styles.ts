@@ -25,7 +25,6 @@ export const AlignSection = styled.section`
   gap: 0.8rem;
 
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
 `;
 

@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const InputStyled = styled.input`
-border: none;
-background: none;
-height: 3.2rem;
-outline: none;
-`
+  border: none;
+  background: none;
+  width: 100%;
+  outline: none;
+`;
