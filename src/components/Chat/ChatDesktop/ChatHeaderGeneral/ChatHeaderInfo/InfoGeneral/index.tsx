@@ -27,7 +27,12 @@ export const InfoGeneral = () => {
           </AlignInfo>
 
           <AlignIcons>
-            <Button rounded>
+            <Button
+              rounded
+              onClick={() => {
+                handleSetOpen(false);
+              }}
+            >
               <MdOutlinePushPin />
             </Button>
 
