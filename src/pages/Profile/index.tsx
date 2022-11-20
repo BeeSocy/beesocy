@@ -9,6 +9,7 @@ import { IMusicPost } from '../../types/musicPost';
 import { IProfile } from '../../types/profile';
 import { Content } from './styles';
 import { ProfileContent } from '../../components/Profile/ProfileContent';
+import { api } from '../../utils/api';
 
 export const user: IProfile = {
   nickname: 'picapau2022',
@@ -144,6 +145,13 @@ export const image: IImagePost[] = [
 export function Profile() {
   const { isMobile } = useMobile();
   const { handleChangePaddingActive } = useLayout();
+
+  async function getUser(nickname: string) {
+    const request = await api.get(`/user/${nickname}`);
+    const response = await request.data;
+
+    return response.data as IProfile;
+  }
 
   useLayoutEffect(() => {
     handleChangePaddingActive(false);
