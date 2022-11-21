@@ -1,11 +1,11 @@
 import React from 'react';
 import { NicknameStyled, SectionNickname } from './styles';
-import { FakeBack, ICardInfoProps } from '../InfoGeneral';
+import { fakeback, ICardInfoProps } from '../InfoGeneral';
 
 export const NickName = () => {
   return (
     <SectionNickname>
-      <NicknameStyled> {FakeBack.nickname} </NicknameStyled>
+      <NicknameStyled> {fakeback[0].nickname} </NicknameStyled>
     </SectionNickname>
   );
 };

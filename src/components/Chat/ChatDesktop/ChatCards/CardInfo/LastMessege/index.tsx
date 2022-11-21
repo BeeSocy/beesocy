@@ -1,6 +1,6 @@
-import { FakeBack } from "../InfoGeneral";
-import { LastMsgStyled } from "./styles";
+import { fakeback } from '../InfoGeneral';
+import { LastMsgStyled } from './styles';
 
 export const LastMessege = () => {
-  return <LastMsgStyled>{FakeBack.message}</LastMsgStyled>
+  return <LastMsgStyled>{fakeback[0].lastmessage}</LastMsgStyled>;
 };

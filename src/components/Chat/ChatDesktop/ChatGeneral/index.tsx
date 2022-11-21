@@ -1,11 +1,7 @@
 import React from 'react';
 import { ChatContainer } from '../ChatContainer';
-import { BoxCards } from '../../RecentMessege/BoxCard';
-import { ChatCards } from '../ChatCards/CardInterface';
 import { ChatSection } from '../ChatSection/ChatSectionGeneral';
 import { ChatHeader } from '../ChatHeaderGeneral/ChatHeader';
-import { ContainerMessegers } from '../ContainerMessegers/ContainerGeneral';
-import { ContainerInput } from '../InputMessege/ContainerInput';
 import { InputMessege } from '../InputMessege/InputGeneral';
 import { useMobile } from '../../../../hooks/useMobile';
 import { MobileCards } from '../../ChatMobile/CardsMobile/MobileCards';
@@ -16,6 +12,7 @@ import {
 import { HeaderCards } from '../../ChatMobile/CardsMobile/HeaderCardGeneral';
 import { SectionMessege } from '../ContainerMessegers';
 import { RecentMessage } from '../../RecentMessege/General';
+import { MessageCardGeneral } from '../ChatMesssage/MessageGeneral';
 
 export const ChatGeneral = () => {
   const { isMobile } = useMobile();
@@ -30,7 +27,9 @@ export const ChatGeneral = () => {
 
           <ChatSection>
             <ChatHeader />
-            <SectionMessege />
+            <SectionMessege>
+              <MessageCardGeneral />
+            </SectionMessege>
             <InputMessege />
           </ChatSection>
         </ChatContainer>

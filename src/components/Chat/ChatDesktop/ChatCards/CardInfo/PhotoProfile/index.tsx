@@ -1,7 +1,7 @@
 import React from 'react';
-import { FakeBack } from '../InfoGeneral';
+import { fakeback } from '../InfoGeneral';
 import { PhotoProfStyled } from './styles';
 
 export const PhotoProfile = () => {
-  return <PhotoProfStyled src={FakeBack.img} />;
+  return <PhotoProfStyled src={fakeback[0].imgUrl} />;
 };

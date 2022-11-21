@@ -1,5 +1,10 @@
+import { ReactNode } from 'react';
 import { ContainerMessegers } from './ContainerGeneral';
 
-export const SectionMessege = () => {
-  return <ContainerMessegers> </ContainerMessegers>;
+interface ISectionProps {
+  children: ReactNode;
+}
+
+export const SectionMessege = ({ children }: ISectionProps) => {
+  return <ContainerMessegers> {children} </ContainerMessegers>;
 };

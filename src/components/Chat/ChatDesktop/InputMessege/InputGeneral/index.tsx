@@ -1,7 +1,9 @@
+import { isFirstDayOfMonth } from 'date-fns/fp';
 import React, {
   ChangeEvent,
   FormEvent,
   HtmlHTMLAttributes,
+  InputHTMLAttributes,
   ReactHTMLElement,
   StyleHTMLAttributes,
   useEffect,
@@ -45,7 +47,10 @@ export const InputMessege = () => {
           <ContainerInput>
             <FakeInput>
               <SectionInput>
-                <InputMsg />
+                <InputMsg
+                  name={'inpt-msg'}
+                  children={isRecording ? <MdSend /> : <MdMic />}
+                />
               </SectionInput>
               <Button
                 type="button"
@@ -68,7 +73,10 @@ export const InputMessege = () => {
             <ContainerInput>
               <FakeInput>
                 <SectionInput>
-                  <InputMsg />
+                  <InputMsg
+                    name={'inpt-msg'}
+                    children={isRecording ? <MdSend /> : <MdMic />}
+                  />
                 </SectionInput>
                 <Button rounded full={false}>
                   <MdMic />

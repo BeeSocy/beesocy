@@ -1,6 +1,9 @@
 import { useModal } from '../../../../context/ModalProvider/useModal';
 import { useMobile } from '../../../../hooks/useMobile';
-import { ChatCards } from '../../ChatDesktop/ChatCards/CardInterface';
+import {
+  ChatCards,
+  ChatCardsSecondary
+} from '../../ChatDesktop/ChatCards/CardInterface';
 import { ChatHeader } from '../../ChatDesktop/ChatHeaderGeneral/ChatHeader';
 import { ChatSection } from '../../ChatDesktop/ChatSection/ChatSectionGeneral';
 import { SectionMessege } from '../../ChatDesktop/ContainerMessegers';

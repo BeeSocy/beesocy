@@ -9,6 +9,9 @@ import {
 import { useModal } from '../../../../../../context/ModalProvider/useModal';
 import { useMobile } from '../../../../../../hooks/useMobile';
 import { Button } from '../../../../../Widgets/Buttons/Button';
+import { HeaderCards } from '../../../../ChatMobile/CardsMobile/HeaderCardGeneral';
+import { MobileCards } from '../../../../ChatMobile/CardsMobile/MobileCards';
+import { RecentMessage } from '../../../../RecentMessege/General';
 import { NickHeader } from '../NickHeader';
 import { PhotoHeader } from '../PhotoHeader';
 import { AlignIcons, AlignInfo, InfoGeneralStyled } from './styles';
@@ -16,6 +19,24 @@ import { AlignIcons, AlignInfo, InfoGeneralStyled } from './styles';
 export const InfoGeneral = () => {
   const { handleSetOpen } = useModal();
   const { isMobile } = useMobile();
+
+  const { handleCallModal } = useModal();
+
+  const handleOpenCards = () => {
+    if (isMobile) {
+      handleCallModal(
+        <MobileCards>
+          <HeaderCards title={'Chat BeeSocy'} />
+          <RecentMessage />
+        </MobileCards>,
+        {
+          overlay: true,
+          positionX: 50,
+          positionY: 50
+        }
+      );
+    }
+  };
 
   return (
     <>
@@ -27,12 +48,7 @@ export const InfoGeneral = () => {
           </AlignInfo>
 
           <AlignIcons>
-            <Button
-              rounded
-              onClick={() => {
-                handleSetOpen(false);
-              }}
-            >
+            <Button rounded>
               <MdOutlinePushPin />
             </Button>
 
@@ -52,11 +68,19 @@ export const InfoGeneral = () => {
         </InfoGeneralStyled>
       ) : (
         <InfoGeneralStyled>
-          <Button rounded full={false}>
-            <MdOutlineChevronLeft />
-          </Button>
-          <PhotoHeader />
-          <NickHeader />
+          <AlignInfo>
+            <Button
+              rounded
+              full={false}
+              onClick={() => {
+                handleOpenCards();
+              }}
+            >
+              <MdOutlineChevronLeft />
+            </Button>
+            <PhotoHeader />
+            <NickHeader />
+          </AlignInfo>
           <AlignIcons>
             <Button rounded>
               <MdOutlinePushPin />

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { longPressOptions } from '../../../../Cards/MusicCard';
 
 export const ContainerStyled = styled.section`
   display: flex;

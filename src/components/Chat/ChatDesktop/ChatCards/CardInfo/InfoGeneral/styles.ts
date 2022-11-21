@@ -4,7 +4,7 @@ import { user } from '../../../../../../pages/Profile';
 export const CardInfStyled = styled.section`
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 0.4rem;
   border-radius: inherit;
 `;
 

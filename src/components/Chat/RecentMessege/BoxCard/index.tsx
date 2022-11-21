@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { BoxCardStyled } from './styles';
 
 interface IBoxCardsProps {
@@ -6,5 +6,11 @@ interface IBoxCardsProps {
 }
 
 export const BoxCards = ({ children }: IBoxCardsProps) => {
-  return <BoxCardStyled> {children} </BoxCardStyled>;
+  const boxlist = [{ children }];
+
+  /*return boxlist.map(boxlist => (
+    <BoxCardStyled>{boxlist.children}</BoxCardStyled>
+  ));*/
+
+  return <BoxCardStyled>{boxlist[0].children}</BoxCardStyled>;
 };

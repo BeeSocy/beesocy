@@ -1,11 +1,10 @@
 import { HTMLAttributes, ReactNode } from 'react';
 import { ChatCardStyled } from './styles';
-import { CardInfo } from '../CardInfo/InfoGeneral';
-import { ChatSection } from '../../ChatSection/ChatSectionGeneral';
+import { CardInfo, CardInfoSecondary } from '../CardInfo/InfoGeneral';
 
-interface ICardProps extends HTMLAttributes <HTMLButtonElement> {}
+interface ICardProps extends HTMLAttributes<HTMLButtonElement> {}
 
-export const ChatCards = ({...props}:ICardProps) => {
+export const ChatCards = ({ ...props }: ICardProps) => {
   return (
     <ChatCardStyled {...props}>
       <CardInfo />
@@ -13,6 +12,10 @@ export const ChatCards = ({...props}:ICardProps) => {
   );
 };
 
-function handleOpenSection() {
-  return <ChatSection> </ChatSection>;
-}
+export const ChatCardsSecondary = ({ ...props }: ICardProps) => {
+  return (
+    <ChatCardStyled {...props}>
+      <CardInfoSecondary />
+    </ChatCardStyled>
+  );
+};

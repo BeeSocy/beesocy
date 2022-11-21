@@ -6,7 +6,7 @@ interface IChatHeaderProps {
   children?: ReactNode;
 }
 
-export const ChatHeader = ({ children }: IChatHeaderProps) => {
+export const ChatHeader = ({}: IChatHeaderProps) => {
   return (
     <HeaderStyled>
       <InfoGeneral />
