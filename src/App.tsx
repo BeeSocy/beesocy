@@ -18,6 +18,7 @@ import { Modal } from './components/General/Modal';
 import { useLayout } from './context/LayoutProvider/useLayout';
 import { ProfileCategoryProvider } from './context/ProfileCategoryProvider';
 import { SignupProvider } from './context/SignupProvider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export function App() {
   const defaultTheme = dark;
@@ -25,6 +26,8 @@ export function App() {
   const theme = useTheme();
 
   const { handleChangePaddingActive } = useLayout();
+
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     handleChangePaddingActive(true);
@@ -34,22 +37,24 @@ export function App() {
     <StyledThemeProvider theme={theme ?? defaultTheme}>
       <BrowserRouter>
         <IconContext.Provider value={{ size: '28' }}>
-          <SignupProvider>
-            <ModalProvider>
-              <AlertProvider>
-                <MenuProvider>
-                  <ProfileCategoryProvider>
-                    <CategoryProvider>
-                      <Router />
-                    </CategoryProvider>
-                  </ProfileCategoryProvider>
-                </MenuProvider>
+          <QueryClientProvider client={queryClient}>
+            <SignupProvider>
+              <ModalProvider>
+                <AlertProvider>
+                  <MenuProvider>
+                    <ProfileCategoryProvider>
+                      <CategoryProvider>
+                        <Router />
+                      </CategoryProvider>
+                    </ProfileCategoryProvider>
+                  </MenuProvider>
 
-                <Alert />
-                <Modal />
-              </AlertProvider>
-            </ModalProvider>
-          </SignupProvider>
+                  <Alert />
+                  <Modal />
+                </AlertProvider>
+              </ModalProvider>
+            </SignupProvider>
+          </QueryClientProvider>
         </IconContext.Provider>
 
         <GlobalStyle />

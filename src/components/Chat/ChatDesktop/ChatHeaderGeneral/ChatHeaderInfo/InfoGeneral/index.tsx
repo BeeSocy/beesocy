@@ -13,7 +13,11 @@ import { NickHeader } from '../NickHeader';
 import { PhotoHeader } from '../PhotoHeader';
 import { AlignIcons, InfoGeneralStyled } from './styles';
 
-export const InfoGeneral = () => {
+interface IInfoGeneralProps {
+  color: string;
+}
+
+export const InfoGeneral = ({ color }: IInfoGeneralProps) => {
   const { handleSetOpen } = useModal();
   const { isMobile } = useMobile();
 
@@ -21,7 +25,7 @@ export const InfoGeneral = () => {
     <>
       {!isMobile ? (
         <InfoGeneralStyled>
-          <PhotoHeader />
+          <PhotoHeader color={color} />
           <NickHeader />
           <AlignIcons>
             <Button rounded>
@@ -47,7 +51,7 @@ export const InfoGeneral = () => {
           <Button rounded full={false}>
             <MdOutlineChevronLeft />
           </Button>
-          <PhotoHeader />
+          <PhotoHeader color={color} />
           <NickHeader />
           <AlignIcons>
             <Button rounded>

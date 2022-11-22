@@ -1,11 +1,3 @@
-interface socialNetworks {
-  twitter?: string,
-  github?: string,
-  instagram?: string,
-  soundcloud?: string,
-  facebook?: string,
-}
-
 export interface IProfile {
   identification: string;
   name: string;
@@ -18,5 +10,5 @@ export interface IProfile {
   description?: string;
   vip?: boolean;
   verified?: boolean;
-  socialNetworks?: socialNetworks;
+  socialNetworks?: [{ description: string; url: string }];
 }

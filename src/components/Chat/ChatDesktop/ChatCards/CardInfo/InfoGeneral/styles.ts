@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { user } from '../../../../../../pages/Profile';
 
 export const CardInfStyled = styled.section`
   display: flex;
@@ -8,7 +7,11 @@ export const CardInfStyled = styled.section`
   border-radius: inherit;
 `;
 
-export const CardPhoto = styled.div`
+interface ICardPhotoProps {
+  color: string;
+}
+
+export const CardPhoto = styled.div<ICardPhotoProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +19,7 @@ export const CardPhoto = styled.div`
   z-index: 1;
 
   border-radius: 100%;
-  border: 0.4rem solid ${user.color};
+  border: 0.4rem solid ${props => props.color};
 `;
 
 export const AlignSection = styled.section`

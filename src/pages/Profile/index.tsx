@@ -10,29 +10,8 @@ import { IProfile } from '../../types/profile';
 import { Content } from './styles';
 import { ProfileContent } from '../../components/Profile/ProfileContent';
 import { api } from '../../utils/api';
-
-export const user: IProfile = {
-  nickname: 'picapau2022',
-  name: 'Pica-Pau',
-  follows: [],
-  followers: [],
-  color: '#ffc107',
-  identification: '97a02c78-5800-423d-96e1-1fe1db595442',
-  imageUrl:
-    'https://64.media.tumblr.com/6ae2a67ce510029caf6219c6a708f501/60b41a809f52a0b4-8c/s400x600/7e89be3c89e7cd3fdf18e7f6ed9b4639ace24cde.pnj',
-  bannerUrl: 'https://s1.dmcdn.net/v/HRVWi1Vhg1SRhOaK6/x1080',
-  description:
-    'Melhor que cupim, melhor que o mano piveta, melhor que qualquer mandrake que você ja viu, chegou hoje dos Estado Unidos, Picas-Longas. Então cuidao casadas, ele também pode voar, segure-se em seu banquinho, e saia de mansinho.',
-  verified: true,
-  vip: true,
-  socialNetworks: {
-    instagram: 'https://www.instagram.com/fasneg',
-    facebook: 'https://www.facebook.com',
-    soundcloud: 'https://soundcloud.com',
-    github: 'https://github.com/santosfabin',
-    twitter: 'https://twitter.com'
-  }
-};
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
 
 export const music: IMusicPost[] = [
   {
@@ -146,28 +125,44 @@ export function Profile() {
   const { isMobile } = useMobile();
   const { handleChangePaddingActive } = useLayout();
 
+  const { nickname } = useParams();
+
   async function getUser(nickname: string) {
     const request = await api.get(`/user/${nickname}`);
-    const response = await request.data;
+    const data = await request.data;
 
-    return response.data as IProfile;
+    return data as IProfile;
   }
+
+  const { data, isError, error, isLoading } = useQuery(
+    ['fetchedUser', nickname ?? ''],
+    () => {
+      return getUser(nickname ?? '');
+    },
+    {
+      staleTime: 1800000,
+      refetchOnWindowFocus: false
+    }
+  );
 
   useLayoutEffect(() => {
     handleChangePaddingActive(false);
   });
-
   return (
     <>
-      {!isMobile ? (
-        <Container profile={user} />
-      ) : (
-        <MobileContainer profile={user} />
-      )}
+      {data && (
+        <>
+          {!isMobile ? (
+            <Container profile={data} />
+          ) : (
+            <MobileContainer profile={data} />
+          )}
 
-      <Content>
-        <ProfileContent userImage={image} userMusic={music} />
-      </Content>
+          <Content>
+            <ProfileContent userImage={image} userMusic={music} />
+          </Content>
+        </>
+      )}
     </>
   );
 }

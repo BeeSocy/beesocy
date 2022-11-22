@@ -1,10 +1,14 @@
 import { MdVerified } from 'react-icons/md';
-import { user } from '../../../pages/Profile';
 
-export function NickName() {
+interface INicknameProps {
+  nickname: string;
+  verified?: boolean;
+}
+
+export function NickName({ nickname, verified }: INicknameProps) {
   return (
     <span>
-      @{user.nickname} {user.verified && <MdVerified size={20} />}
+      @{nickname} {verified && <MdVerified size={20} />}
     </span>
   );
 }

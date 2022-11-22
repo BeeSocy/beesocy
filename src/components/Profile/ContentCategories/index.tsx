@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { useProfileCategory } from '../../../context/ProfileCategoryProvider/useProfileCategory';
-import { user } from '../../../pages/Profile';
 import { BreadCrump, Content, Header, Margin } from './styles';
 
-export function ContentCategories() {
+interface IContentCategoriesProps {
+  color: string;
+}
+
+export function ContentCategories({ color }: IContentCategoriesProps) {
   const { activeCategory, handleChangeActive } = useProfileCategory();
 
   return (
@@ -11,7 +14,7 @@ export function ContentCategories() {
       <Margin>
         <Header>
           <BreadCrump
-            color={user.color}
+            color={color}
             onClick={() => {
               handleChangeActive('music');
             }}
@@ -21,7 +24,7 @@ export function ContentCategories() {
           </BreadCrump>
 
           <BreadCrump
-            color={user.color}
+            color={color}
             onClick={() => {
               handleChangeActive('image');
             }}
@@ -31,7 +34,7 @@ export function ContentCategories() {
           </BreadCrump>
 
           <BreadCrump
-            color={user.color}
+            color={color}
             onClick={() => {
               handleChangeActive('code');
             }}

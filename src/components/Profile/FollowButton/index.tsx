@@ -1,10 +1,13 @@
 import { MdAdd } from 'react-icons/md';
-import { user } from '../../../pages/Profile';
 import { Content } from './styles';
 
-export function FollowButton() {
+interface IFollowButtonProps {
+  color: string;
+}
+
+export function FollowButton({ color }: IFollowButtonProps) {
   return (
-    <Content color={user.color}>
+    <Content color={color}>
       <MdAdd size={20} /> <span> Seguir </span>
     </Content>
   );

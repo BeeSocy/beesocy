@@ -1,19 +1,23 @@
-import { user } from '../../../pages/Profile';
+import { IProfile } from '../../../types/profile';
 import { ContentFollow, Follow } from './styles';
 
-export function InfoProfile() {
+interface IInfoProfileProps {
+  follows: IProfile[];
+  followers: IProfile[];
+}
+
+export function InfoProfile({ follows, followers }: IInfoProfileProps) {
   return (
     <ContentFollow>
       <Follow>
-        Seguindo: <span>{user.follows.length}</span>
+        Seguindo: <span>{follows.length}</span>
       </Follow>
       <Follow>
-        Seguidores: <span>{user.followers.length}</span>
+        Seguidores: <span>{followers.length}</span>
       </Follow>
       <Follow>
         Postagens: <span>0</span>
       </Follow>
-      <></>
     </ContentFollow>
   );
 }

@@ -1,10 +1,8 @@
-import { user } from '../../../pages/Profile';
 import { Img } from './styles';
+interface IBannerProps {
+  bannerUrl: string;
+}
 
-export function Banner() {
-  return (
-    <>
-      <Img src={user.bannerUrl} />
-    </>
-  );
+export function Banner({ bannerUrl }: IBannerProps) {
+  return <>{bannerUrl && <Img src={bannerUrl} />}</>;
 }

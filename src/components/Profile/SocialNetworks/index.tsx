@@ -1,61 +1,50 @@
+import { ReactNode } from 'react';
 import {
   FaFacebook,
   FaGithub,
   FaInstagram,
+  FaSpotify,
   FaSoundcloud,
   FaTwitter
 } from 'react-icons/fa';
-import { user } from '../../../pages/Profile';
 import { SocialNetworkButton } from '../../General/SocialNetworkButton';
 import { Content } from './styles';
 
-export function SocialNetworks() {
+interface ISocialNetworkProps {
+  socialNetworks?: [{ description: string; url: string }];
+}
+
+export function SocialNetworks({ socialNetworks }: ISocialNetworkProps) {
+  function returnIcon(description: string): ReactNode {
+    switch (description) {
+      case 'facebook':
+        return <FaFacebook key={description} size={20} />;
+      case 'github':
+        return <FaGithub key={description} size={20} />;
+      case 'instagram':
+        return <FaInstagram key={description} size={20} />;
+      case 'spotify':
+        return <FaSpotify key={description} size={20} />;
+      case 'soundcloud':
+        return <FaSoundcloud key={description} size={20} />;
+      case 'twitter':
+        return <FaTwitter key={description} size={20} />;
+    }
+  }
+
   return (
     <Content>
-      {user.socialNetworks?.twitter && (
-        <SocialNetworkButton
-          href={user.socialNetworks?.twitter}
-          target={'_blank'}
-        >
-          <FaTwitter size={20} />
-        </SocialNetworkButton>
-      )}
-
-      {user.socialNetworks?.instagram && (
-        <SocialNetworkButton
-          href={user.socialNetworks?.instagram}
-          target={'_blank'}
-        >
-          <FaInstagram size={20} />
-        </SocialNetworkButton>
-      )}
-
-      {user.socialNetworks?.github && (
-        <SocialNetworkButton
-          href={user.socialNetworks?.github}
-          target={'_blank'}
-        >
-          <FaGithub size={20} />
-        </SocialNetworkButton>
-      )}
-
-      {user.socialNetworks?.soundcloud && (
-        <SocialNetworkButton
-          href={user.socialNetworks?.soundcloud}
-          target={'_blank'}
-        >
-          <FaSoundcloud size={20} />
-        </SocialNetworkButton>
-      )}
-
-      {user.socialNetworks?.facebook && (
-        <SocialNetworkButton
-          href={user.socialNetworks?.facebook}
-          target={'_blank'}
-        >
-          <FaFacebook size={20} />
-        </SocialNetworkButton>
-      )}
+      <>
+        {socialNetworks?.map(value => (
+          <SocialNetworkButton
+            key={value.description}
+            href={value.url}
+            target={'_blank'}
+          >
+            {returnIcon(value.description)}
+          </SocialNetworkButton>
+        ))}
+      </>
     </Content>
   );
 }

@@ -27,7 +27,11 @@ export function MobileContainer({ profile }: IMobileContainerProps) {
     <>
       <Content>
         <ContentProfile>
-          <IconProfile color={profile.color} />
+          <IconProfile
+            color={profile.color}
+            imageUrl={profile.imageUrl}
+            name={profile.name}
+          />
         </ContentProfile>
         <Img src={profile.bannerUrl} />
       </Content>
@@ -38,22 +42,22 @@ export function MobileContainer({ profile }: IMobileContainerProps) {
 
       <ProfileInfo>
         <NameProfile>
-          <NickName />
+          <NickName nickname={profile.nickname} />
         </NameProfile>
 
         <ContainerFollow>
-          <FollowButton />
+          <FollowButton color={profile.color} />
           <SendMessage />
         </ContainerFollow>
 
-        <InfoProfile />
+        <InfoProfile follows={profile.follows} followers={profile.followers} />
 
         <SocialNetworks />
 
         <Description>{profile.description}</Description>
       </ProfileInfo>
 
-      <ContentCategories />
+      <ContentCategories color={profile.color} />
     </>
   );
 }

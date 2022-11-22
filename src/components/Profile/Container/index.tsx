@@ -22,25 +22,29 @@ interface IContainerProps {
 export function Container({ profile }: IContainerProps) {
   return (
     <>
-      <Banner />
+      <Banner bannerUrl={profile.bannerUrl ?? ''} />
       <ContentProfile>
         <Content>
-          <IconProfile color={profile.color} />
+          <IconProfile
+            color={profile.color}
+            imageUrl={profile.imageUrl}
+            name={profile.name}
+          />
           <TitleName>{profile.name}</TitleName>
           <NameUser>
-            <NickName />
+            <NickName nickname={profile.nickname} verified={profile.verified} />
           </NameUser>
-          <FollowButton />
+          <FollowButton color={profile.color} />
           <SendMessage />
         </Content>
 
-        <InfoProfile />
+        <InfoProfile followers={profile.followers} follows={profile.follows} />
 
-        <SocialNetworks />
+        <SocialNetworks socialNetworks={profile.socialNetworks} />
 
         <Description>{profile.description}</Description>
       </ContentProfile>
-      <ContentCategories />
+      <ContentCategories color={profile.color} />
     </>
   );
 }

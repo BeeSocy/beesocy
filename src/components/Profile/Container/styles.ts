@@ -7,7 +7,7 @@ export const ContentProfile = styled.div`
 
   position: fixed;
 
-  top: 10rem;
+  top: 12rem;
   left: 8rem;
 
   width: ${distance}rem;

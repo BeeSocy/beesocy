@@ -1,49 +1,50 @@
-import styled from "styled-components";
-import { IIconProfileProps } from ".";
-import { breakpoint } from "../../../hooks/useMobile";
+import styled from 'styled-components';
+import { breakpoint } from '../../../hooks/useMobile';
 
-export const Container = styled.div`
-    position: relative;
-    width: fit-content;
-`;
-
-interface IIconProps {
-    color: string;
+interface IContainerProps {
+  color: string;
 }
 
-export const Icon = styled.img<IIconProps>`
-    height: 10rem;
-    width: 10rem;
+export const Container = styled.div<IContainerProps>`
+  position: relative;
+  height: 10rem;
+  width: 10rem;
+  border: 0.4rem solid ${props => props.color};
+  border-radius: 50%;
 
-    border-radius: 50%;
-    border: 0.4rem solid ${props => props.color};
-
-
-    padding: .8rem;
-    @media(max-width: ${breakpoint}){
-        padding: 0;
-        border: 0.8rem solid ${props => props.theme.colors.secondary};
-    }
-
+  @media (max-width: ${breakpoint}) {
+    border: 0.8rem solid ${props => props.theme.colors.secondary};
+  }
 `;
 
+export const Icon = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  padding: 0.8rem;
+  @media (max-width: ${breakpoint}) {
+    padding: 0;
+    border: 0.8rem solid ${props => props.theme.colors.secondary};
+  }
+`;
 
 interface IVipProps {
-    color: string;
+  color: string;
 }
-export const Vip = styled.div`
-    width: 4rem;
-    height: 4rem;
-    background: ${props => props.color};
+export const Vip = styled.div<IVipProps>`
+  width: 4rem;
+  height: 4rem;
+  background: ${props => props.color};
 
-    position: absolute;
+  position: absolute;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    border-radius: 50%;
+  border-radius: 50%;
 
-    right: 0;
-    bottom: 0;
+  right: 0;
+  bottom: 0;
 `;
