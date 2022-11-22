@@ -1,11 +1,14 @@
 import React from 'react';
-import { fakeback } from '../../../ChatCards/CardInfo/InfoGeneral';
 import { SectionNick, NickStyled } from './styles';
 
-export const NickHeader = () => {
+interface INickHeaderProps {
+  nickname: string;
+}
+
+export const NickHeader = ({ nickname }: INickHeaderProps) => {
   return (
     <SectionNick>
-      <NickStyled> {fakeback[0].nickname} </NickStyled>
+      <NickStyled> {nickname} </NickStyled>
     </SectionNick>
   );
 };

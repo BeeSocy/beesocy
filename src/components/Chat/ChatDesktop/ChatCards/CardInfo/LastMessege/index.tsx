@@ -1,6 +1,8 @@
-import { fakeback } from '../InfoGeneral';
 import { LastMsgStyled } from './styles';
 
-export const LastMessege = () => {
-  return <LastMsgStyled>{fakeback[0].lastmessage}</LastMsgStyled>;
+interface ILastMessageProps {
+  lastmessage: string;
+}
+export const LastMessege = ({ lastmessage }: ILastMessageProps) => {
+  return <LastMsgStyled>{lastmessage}</LastMsgStyled>;
 };

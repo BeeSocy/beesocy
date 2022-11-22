@@ -1,11 +1,14 @@
 import React from 'react';
-import { fakeback } from '../../../ChatCards/CardInfo/InfoGeneral';
 import { BoxPhoto, PhotoHeaderStyled } from './styled';
 
-export const PhotoHeader = () => {
+interface IPhotoHeaderProps {
+  imageUrl: string;
+}
+
+export const PhotoHeader = ({ imageUrl }: IPhotoHeaderProps) => {
   return (
     <BoxPhoto>
-      <PhotoHeaderStyled src={fakeback[0].imgUrl} />
+      <PhotoHeaderStyled src={imageUrl} />
     </BoxPhoto>
   );
 };

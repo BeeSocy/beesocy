@@ -9,12 +9,19 @@ export const ContainerSecondaryCard = styled.div`
 export const SecondaryCardStyled = styled.section`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+
+  max-width: 22rem;
 
   border-radius: 1.6rem;
   padding: 0.8rem 1.2rem;
-  max-width: 22rem;
 
   font-size: 1.4rem;
+  background: #656565;
+`;
 
-  background: ${props => props.theme.colors.light};
+export const MessageSecondary = styled.span`
+  display: flex;
+  flex-wrap: wrap;
+  word-break: break-all;
 `;

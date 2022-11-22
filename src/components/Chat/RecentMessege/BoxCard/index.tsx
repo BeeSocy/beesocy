@@ -6,7 +6,7 @@ interface IBoxCardsProps {
 }
 
 export const BoxCards = ({ children }: IBoxCardsProps) => {
-  const boxlist = [{ children }];
+  const boxlist: IBoxCardsProps[] = [{ children }];
 
   /*return boxlist.map(boxlist => (
     <BoxCardStyled>{boxlist.children}</BoxCardStyled>

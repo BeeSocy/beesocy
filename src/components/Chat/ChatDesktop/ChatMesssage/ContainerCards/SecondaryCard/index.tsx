@@ -1,12 +1,14 @@
-import react from 'react';
-import { fakeback } from '../../../ChatCards/CardInfo/InfoGeneral';
-import { ContainerSecondaryCard, SecondaryCardStyled } from './styles';
+import {
+  ContainerSecondaryCard,
+  MessageSecondary,
+  SecondaryCardStyled
+} from './styles';
 
 export const SecondaryCard = () => {
   return (
     <ContainerSecondaryCard>
       <SecondaryCardStyled>
-        <>{fakeback[0].lastmessage}</>
+        <MessageSecondary> Gang ? </MessageSecondary>
       </SecondaryCardStyled>
     </ContainerSecondaryCard>
   );

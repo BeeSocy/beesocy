@@ -1,22 +1,13 @@
 import { useModal } from '../../../../context/ModalProvider/useModal';
 import { useMobile } from '../../../../hooks/useMobile';
-import {
-  ChatCards,
-  ChatCardsSecondary
-} from '../../ChatDesktop/ChatCards/CardInterface';
-import { ChatHeader } from '../../ChatDesktop/ChatHeaderGeneral/ChatHeader';
-import { ChatSection } from '../../ChatDesktop/ChatSection/ChatSectionGeneral';
-import { SectionMessege } from '../../ChatDesktop/ContainerMessegers';
-import { InputMessege } from '../../ChatDesktop/InputMessege/InputGeneral';
-import { ModalChat } from '../../ChatDesktop/ModalChat';
+import { ChatCards } from '../../ChatDesktop/ChatCards/CardInterface';
 import { MessageGeneral } from '../../ChatMobile/MessageMobile/General';
 import { BoxCards } from '../BoxCard';
-import { SectionBoxChat } from '../BoxCard/styles';
 
 export const RecentMessage = () => {
   const { isMobile } = useMobile();
 
-  const { handleCallModal, handleSetOpen, open: modalOpen } = useModal();
+  const { handleCallModal } = useModal();
 
   const handleOpenMessage = () => {
     if (isMobile) {
@@ -28,13 +19,13 @@ export const RecentMessage = () => {
     }
   };
 
-  return (
-    <BoxCards>
-      <ChatCards
-        onClick={() => {
-          handleOpenMessage();
-        }}
-      />
-    </BoxCards>
-  );
+  const ListContacts = [
+    <ChatCards
+      onClick={() => {
+        handleOpenMessage();
+      }}
+    />
+  ];
+
+  return <BoxCards> {ListContacts} </BoxCards>;
 };

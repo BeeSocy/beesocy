@@ -43,8 +43,8 @@ export const InfoGeneral = () => {
       {!isMobile ? (
         <InfoGeneralStyled>
           <AlignInfo>
-            <PhotoHeader />
-            <NickHeader />
+            <PhotoHeader imageUrl={'aqqqqqqqqqqqqq'} />
+            <NickHeader nickname={'undefined'} />
           </AlignInfo>
 
           <AlignIcons>
@@ -78,8 +78,8 @@ export const InfoGeneral = () => {
             >
               <MdOutlineChevronLeft />
             </Button>
-            <PhotoHeader />
-            <NickHeader />
+            <PhotoHeader imageUrl={''} />
+            <NickHeader nickname={'undefined'} />
           </AlignInfo>
           <AlignIcons>
             <Button rounded>
