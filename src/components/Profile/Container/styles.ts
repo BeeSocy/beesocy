@@ -26,6 +26,7 @@ export const ContentProfile = styled.div`
   border-radius: 2rem;
 
   overflow-y: auto;
+  z-index: 1;
 `;
 
 export const Content = styled.div`

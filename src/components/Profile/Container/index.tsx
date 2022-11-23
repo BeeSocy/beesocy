@@ -14,37 +14,69 @@ import {
   TitleName
 } from './styles';
 import { IProfile } from '../../../types/profile';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 interface IContainerProps {
-  profile: IProfile;
+  profile?: IProfile;
+  loading?: boolean;
 }
 
-export function Container({ profile }: IContainerProps) {
+export function Container({ profile, loading }: IContainerProps) {
   return (
     <>
-      <Banner bannerUrl={profile.bannerUrl ?? ''} />
+      {loading || !profile ? (
+        <Skeleton height={200} />
+      ) : (
+        <Banner bannerUrl={profile.bannerUrl ?? ''} />
+      )}
       <ContentProfile>
         <Content>
-          <IconProfile
-            color={profile.color}
-            imageUrl={profile.imageUrl}
-            name={profile.name}
-          />
-          <TitleName>{profile.name}</TitleName>
-          <NameUser>
-            <NickName nickname={profile.nickname} verified={profile.verified} />
-          </NameUser>
-          <FollowButton color={profile.color} />
-          <SendMessage />
+          {loading || !profile ? (
+            <>
+              <Skeleton circle width={100} height={100} />
+              <Skeleton width={120} />
+              <Skeleton width={80} height={10} />
+              <Skeleton width={220} height={40} borderRadius={50} />
+              <Skeleton width={220} height={40} borderRadius={50} />
+              <Skeleton count={3} height={15} width={220} />
+              <Skeleton
+                count={5}
+                circle
+                height={40}
+                width={40}
+                inline
+                style={{ marginInline: 4 }}
+              />
+              <Skeleton count={3} height={8} width={150} />
+            </>
+          ) : (
+            <>
+              <IconProfile
+                color={profile.color}
+                imageUrl={profile.imageUrl}
+                name={profile.name}
+              />
+              <TitleName>{profile.name}</TitleName>
+              <NameUser>
+                <NickName
+                  nickname={profile.nickname}
+                  verified={profile.verified}
+                />
+              </NameUser>
+              <FollowButton color={profile.color} />
+              <SendMessage />
+              <InfoProfile
+                followers={profile.followers}
+                follows={profile.follows}
+              />
+              <SocialNetworks socialNetworks={profile.socialNetworks} />
+              <Description>{profile.description}</Description>
+            </>
+          )}
         </Content>
-
-        <InfoProfile followers={profile.followers} follows={profile.follows} />
-
-        <SocialNetworks socialNetworks={profile.socialNetworks} />
-
-        <Description>{profile.description}</Description>
       </ContentProfile>
-      <ContentCategories color={profile.color} />
+      <ContentCategories color={profile?.color ?? ''} />
     </>
   );
 }

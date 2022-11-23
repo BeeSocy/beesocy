@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 import light from './themes/light';
 
@@ -77,4 +78,8 @@ export default createGlobalStyle`
     button:hover {
         cursor: pointer;
     }
+`;
+
+export const StyledSkeletonTheme = styled(SkeletonTheme)`
+  z-index: unset;
 `;

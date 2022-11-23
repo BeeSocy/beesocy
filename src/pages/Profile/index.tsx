@@ -7,11 +7,12 @@ import { useMobile } from '../../hooks/useMobile';
 import { IImagePost } from '../../types/imagePost';
 import { IMusicPost } from '../../types/musicPost';
 import { IProfile } from '../../types/profile';
-import { Content } from './styles';
+import { Content, NotFoundContainer } from './styles';
 import { ProfileContent } from '../../components/Profile/ProfileContent';
 import { api } from '../../utils/api';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
+import { MdPersonOff } from 'react-icons/md';
 
 export const music: IMusicPost[] = [
   {
@@ -148,12 +149,18 @@ export function Profile() {
   useLayoutEffect(() => {
     handleChangePaddingActive(false);
   });
+
   return (
     <>
-      {data && (
+      {isError ? (
+        <NotFoundContainer>
+          <MdPersonOff size={80} />
+          <span>Nenhum usuário encontrado</span>
+        </NotFoundContainer>
+      ) : (
         <>
           {!isMobile ? (
-            <Container profile={data} />
+            <Container profile={data} loading={isLoading} />
           ) : (
             <MobileContainer profile={data} />
           )}

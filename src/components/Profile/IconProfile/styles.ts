@@ -12,6 +12,8 @@ export const Container = styled.div<IContainerProps>`
   border: 0.4rem solid ${props => props.color};
   border-radius: 50%;
 
+  background: ${props => props.theme.colors.secondary};
+
   @media (max-width: ${breakpoint}) {
     border: 0.8rem solid ${props => props.theme.colors.secondary};
   }

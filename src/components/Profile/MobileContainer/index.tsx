@@ -19,45 +19,52 @@ import { IProfile } from '../../../types/profile';
 import { ContentCategories } from '../ContentCategories';
 
 interface IMobileContainerProps {
-  profile: IProfile;
+  profile?: IProfile;
 }
 
 export function MobileContainer({ profile }: IMobileContainerProps) {
   return (
     <>
-      <Content>
-        <ContentProfile>
-          <IconProfile
-            color={profile.color}
-            imageUrl={profile.imageUrl}
-            name={profile.name}
-          />
-        </ContentProfile>
-        <Img src={profile.bannerUrl} />
-      </Content>
+      {profile && (
+        <>
+          <Content>
+            <ContentProfile>
+              <IconProfile
+                color={profile.color}
+                imageUrl={profile.imageUrl}
+                name={profile.name}
+              />
+            </ContentProfile>
+            {profile.bannerUrl && <Img src={profile.bannerUrl} />}
+          </Content>
 
-      <ContainerProfile>
-        <TitleName color={profile.color}>{profile.name}</TitleName>
-      </ContainerProfile>
+          <ContainerProfile>
+            <TitleName color={profile.color}>{profile.name}</TitleName>
+          </ContainerProfile>
 
-      <ProfileInfo>
-        <NameProfile>
-          <NickName nickname={profile.nickname} />
-        </NameProfile>
+          <ProfileInfo>
+            <NameProfile>
+              <NickName nickname={profile.nickname} />
+            </NameProfile>
 
-        <ContainerFollow>
-          <FollowButton color={profile.color} />
-          <SendMessage />
-        </ContainerFollow>
+            <ContainerFollow>
+              <FollowButton color={profile.color} />
+              <SendMessage />
+            </ContainerFollow>
 
-        <InfoProfile follows={profile.follows} followers={profile.followers} />
+            <InfoProfile
+              follows={profile.follows}
+              followers={profile.followers}
+            />
 
-        <SocialNetworks />
+            <SocialNetworks />
 
-        <Description>{profile.description}</Description>
-      </ProfileInfo>
+            <Description>{profile.description}</Description>
+          </ProfileInfo>
 
-      <ContentCategories color={profile.color} />
+          <ContentCategories color={profile.color} />
+        </>
+      )}
     </>
   );
 }
