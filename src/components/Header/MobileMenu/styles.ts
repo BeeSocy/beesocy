@@ -40,5 +40,5 @@ export const MenuContainer = styled.nav<StyledMenu>`
   transition: all 0.1s;
 
   overflow-y: auto;
-  z-index: 80;
+  z-index: 81;
 `;

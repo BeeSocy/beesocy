@@ -4,6 +4,7 @@ import { useModal } from '../../../context/ModalProvider/useModal';
 
 import { useSignup } from '../../../context/SignupProvider/useSignup';
 import { Title } from '../../General/Title';
+import { SignupThirdStep } from '../ThridStep';
 import { ResizeImage } from './ResizeImage';
 
 import {
@@ -42,6 +43,16 @@ export function SignupSecondStep() {
 
   const { handleSetInputsData, inputsData } = useSignup();
 
+  function openNextStepModal() {
+    handleSetOpen(false);
+    handleCallModal(<SignupThirdStep />, {
+      center: true,
+      overlay: true,
+      easyClose: false,
+      fullHeight: false
+    });
+  }
+
   const onSubmit: SubmitHandler<Inputs> = data => {
     if (inputsData.profilePicture == null) {
       setError('profilePicture', {
@@ -57,13 +68,10 @@ export function SignupSecondStep() {
       profileBanner: inputsData.profileBanner,
       profilePicture: inputsData.profilePicture
     });
+    openNextStepModal();
   };
 
-  useEffect(() => {
-    console.log(inputsData);
-  }, [inputsData]);
-
-  const { handleCallModal } = useModal();
+  const { handleCallModal, handleSetOpen } = useModal();
 
   function handleOpenResizeModal(
     image: string,

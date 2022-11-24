@@ -40,7 +40,7 @@ export function Router() {
           path="/imagens/publicacao/:id"
           element={<ImageVisualization />}
         />
-        <Route path="/perfil/:nickname" element={<Profile />} />
+        <Route path="/:nickname" element={<Profile />} />
         <Route path="/musicas" element={<MusicFeed />} />
         <Route path="/salvos" element={<SavedList />} />
         <Route path="/curtidos" element={<LikedList />} />

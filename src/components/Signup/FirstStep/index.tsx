@@ -1,6 +1,9 @@
+import { useQuery } from '@tanstack/react-query';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useModal } from '../../../context/ModalProvider/useModal';
 import { useSignup } from '../../../context/SignupProvider/useSignup';
+import { api } from '../../../utils/api';
+import { SpiralLoading } from '../../General/Loading/Spiral';
 import { Title } from '../../General/Title';
 import { SignupSecondStep } from '../SecondStep';
 import {
@@ -29,8 +32,9 @@ export function SignupFirstStep() {
     control,
     handleSubmit,
     getValues,
-    formState: { errors }
-  } = useForm<Inputs>();
+    formState: { errors },
+    setError
+  } = useForm<Inputs>({ mode: 'all' });
 
   const { handleSetInputsData, inputsData } = useSignup();
 
@@ -46,7 +50,7 @@ export function SignupFirstStep() {
     });
   }
 
-  const onSubmit: SubmitHandler<Inputs> = data => {
+  const onSubmit: SubmitHandler<Inputs> = async data => {
     handleSetInputsData({
       ...inputsData,
       username: data.username,
@@ -56,7 +60,6 @@ export function SignupFirstStep() {
     });
 
     openNextStepModal();
-    console.log(data);
   };
 
   return (

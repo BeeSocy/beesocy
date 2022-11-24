@@ -8,15 +8,15 @@ interface IStepIndicatorProps extends HTMLAttributes<HTMLDivElement> {
 export function StepIndicator({ steps, ...props }: IStepIndicatorProps) {
   return (
     <StepIndicatorContainer {...props}>
-      {steps.map(step => (
+      {steps.map((step, index) => (
         <>
-          <StyledStepIndicator>{step}</StyledStepIndicator>
+          <StyledStepIndicator key={step}>{step}</StyledStepIndicator>
 
           {steps.indexOf(step) < steps.length - 1 && (
             <>
-              <StepWay />
-              <StepWay />
-              <StepWay />
+              <StepWay key={Math.random()} />
+              <StepWay key={Math.random()} />
+              <StepWay key={Math.random()} />
             </>
           )}
         </>

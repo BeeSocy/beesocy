@@ -19,12 +19,11 @@ export const NotFoundContainer = styled.div`
   flex-direction: column;
   gap: 0.8rem;
 
-  width: 100%;
-
   position: absolute;
   top: 50%;
+  left: 50%;
 
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
 
   justify-content: center;
   align-items: center;
