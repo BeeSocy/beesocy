@@ -20,7 +20,11 @@ export const NotFoundContainer = styled.div`
   gap: 0.8rem;
 
   width: 100%;
-  height: 89vh;
+
+  position: absolute;
+  top: 50%;
+
+  transform: translateY(-50%);
 
   justify-content: center;
   align-items: center;

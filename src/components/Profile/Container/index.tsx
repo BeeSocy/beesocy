@@ -15,7 +15,6 @@ import {
 } from './styles';
 import { IProfile } from '../../../types/profile';
 import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 
 interface IContainerProps {
   profile?: IProfile;

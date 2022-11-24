@@ -108,3 +108,18 @@ export const Description = styled.span`
 
   text-overflow: ellipsis;
 `;
+
+export const LoadingContainer = styled.div`
+  text-align: center;
+`;
+
+export const LoadingContent = styled.div`
+  padding-inline: 4rem;
+`;
+
+export const LoadingButtonContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 3.2rem;
+`;

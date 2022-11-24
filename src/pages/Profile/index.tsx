@@ -162,12 +162,14 @@ export function Profile() {
           {!isMobile ? (
             <Container profile={data} loading={isLoading} />
           ) : (
-            <MobileContainer profile={data} />
+            <MobileContainer profile={data} loading={isLoading} />
           )}
 
-          <Content>
-            <ProfileContent userImage={image} userMusic={music} />
-          </Content>
+          {!isLoading && (
+            <Content>
+              <ProfileContent userImage={image} userMusic={music} />
+            </Content>
+          )}
         </>
       )}
     </>
