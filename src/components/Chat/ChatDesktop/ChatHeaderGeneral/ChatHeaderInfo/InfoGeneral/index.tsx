@@ -43,7 +43,7 @@ export const InfoGeneral = () => {
       {!isMobile ? (
         <InfoGeneralStyled>
           <AlignInfo>
-            <PhotoHeader imageUrl={'aqqqqqqqqqqqqq'} />
+            <PhotoHeader imageUrl={''} />
             <NickHeader nickname={'undefined'} />
           </AlignInfo>
 

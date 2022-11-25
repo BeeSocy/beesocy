@@ -1,3 +1,4 @@
+import { HTMLAttributes } from 'react';
 import { ChatHeader } from '../../../ChatDesktop/ChatHeaderGeneral/ChatHeader';
 import { InfoGeneral } from '../../../ChatDesktop/ChatHeaderGeneral/ChatHeaderInfo/InfoGeneral';
 import { MessageCardGeneral } from '../../../ChatDesktop/ChatMesssage/MessageGeneral';
@@ -10,7 +11,7 @@ export const MessageGeneral = () => {
     <ContainerMessage>
       <ChatHeader>
         {' '}
-        <InfoGeneral />{' '}
+        <InfoGeneral />
       </ChatHeader>
       <SectionMessege>
         <MessageCardGeneral />

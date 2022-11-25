@@ -3,8 +3,10 @@ import { CardPhoto } from './styles';
 import { PhotoProfile } from '../PhotoProfile';
 import { NickName } from '../CardNickname';
 import { LastMessege } from '../LastMessege';
+import { Online } from '../Online';
 
 export interface ICardInfoProps {
+  id: string;
   imgUrl: string;
   nickname: string;
   online: boolean;
@@ -17,7 +19,8 @@ export const CardInfo = ({
   nickname,
   online,
   lastmessage,
-  messagetime
+  messagetime,
+  id
 }: ICardInfoProps) => {
   return (
     <CardInfStyled>
@@ -27,6 +30,7 @@ export const CardInfo = ({
       <AlignSection>
         <NickName nickname={nickname} />
         <LastMessege lastmessage={lastmessage} />
+        <Online online={online ? 'online' : 'ofline'} />
       </AlignSection>
     </CardInfStyled>
   );

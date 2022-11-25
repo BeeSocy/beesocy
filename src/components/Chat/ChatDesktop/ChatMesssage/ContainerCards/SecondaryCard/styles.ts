@@ -17,7 +17,8 @@ export const SecondaryCardStyled = styled.section`
   padding: 0.8rem 1.2rem;
 
   font-size: 1.4rem;
-  background: #656565;
+  background: ${props => props.theme.colors.primary};
+  border: 0.1rem solid ${props => props.theme.colors.light};
 `;
 
 export const MessageSecondary = styled.span`

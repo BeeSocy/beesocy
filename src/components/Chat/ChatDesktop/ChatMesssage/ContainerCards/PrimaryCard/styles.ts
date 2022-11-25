@@ -15,9 +15,8 @@ export const PrimaryCardStyled = styled.section`
 
   border-radius: 1.6rem;
   padding: 0.8rem 1.2rem;
-
+  background: ${props => props.theme.colors.light};
   font-size: 1.4rem;
-  background: #656565;
 `;
 
 export const MessagePrimary = styled.span`
