@@ -22,12 +22,60 @@ export function SignupThirdStep() {
   const { inputsData } = useSignup();
 
   async function sendInputData() {
+    const profileImageFile = inputsData.profilePicture;
+    const profileBannerFile = inputsData.profileBanner;
+
+    let profileImageFileName;
+    let profileBannerFileName;
+
+    const formData = new FormData();
+
+    const imageHeaders = {
+      'Content-Type': 'multipart/form-data'
+    };
+
+    if (profileImageFile) {
+      formData.append('profileImageFile', profileImageFile);
+
+      await api
+        .post(
+          '/upload/profile/image',
+          {
+            file: formData.get('profileImageFile')
+          },
+          { headers: imageHeaders }
+        )
+        .then(response => {
+          console.log(response.data);
+          profileImageFileName = response.data;
+        });
+    }
+
+    if (profileBannerFile) {
+      formData.append('profileBannerFile', profileBannerFile);
+
+      await api
+        .post(
+          '/upload/profile/banner',
+          {
+            file: formData.get('profileBannerFile')
+          },
+          { headers: imageHeaders }
+        )
+        .then(response => {
+          console.log(response.data);
+          profileBannerFileName = response.data;
+        });
+    }
+
     await api.post('/user', {
       name: inputsData.nickname,
       nickname: inputsData.username,
       color: inputsData.color,
       email: inputsData.email,
-      password: inputsData.password
+      password: inputsData.password,
+      imageFileName: profileImageFileName,
+      bannerFileName: profileBannerFileName
     });
   }
 
@@ -46,6 +94,7 @@ export function SignupThirdStep() {
   const { mutate, isSuccess, isLoading, isError } = useMutation(sendInputData);
 
   useLayoutEffect(() => {
+    console.log(inputsData);
     mutate();
   }, []);
 

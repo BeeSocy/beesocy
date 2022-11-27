@@ -43,8 +43,8 @@ export function ResizeImage({
 
           canvas.toBlob(blob => {
             if (blob && imageWithoutCrop) {
-              let file = new File([blob], imageWithoutCrop?.name, {type: imageWithoutCrop.type});
-              handleSetInputsData({ ...inputsData, profilePicture: file });
+              // let file = new File([blob], imageWithoutCrop?.name, {type: imageWithoutCrop.type});
+              handleSetInputsData({ ...inputsData, profilePicture: blob });
             }
           });
         } else {
@@ -52,12 +52,12 @@ export function ResizeImage({
 
           canvas.toBlob(blob => {
             if (blob && imageWithoutCrop) {
-              let file = new File([blob], imageWithoutCrop?.name, {
+              /*  let file = new File([blob], imageWithoutCrop?.name, {
                 type: imageWithoutCrop.type
-              });
+              }); */
               handleSetInputsData({
                 ...inputsData,
-                profileBanner: file
+                profileBanner: blob
               });
             }
           });

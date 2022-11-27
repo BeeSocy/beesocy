@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useModal } from '../../../context/ModalProvider/useModal';
 import { useSignup } from '../../../context/SignupProvider/useSignup';
@@ -40,6 +41,20 @@ export function SignupFirstStep() {
 
   const { handleSetOpen, handleCallModal } = useModal();
 
+  async function getNicknameCount(nickname: string) {
+    const request = await api.get(`/user/count/nickname/${nickname}`);
+    const response = await request.data;
+
+    return response as number;
+  }
+
+  async function getEmailCount(email: string) {
+    const request = await api.get(`/user/count/email/${email}`);
+    const response = await request.data;
+
+    return response as number;
+  }
+
   function openNextStepModal() {
     handleSetOpen(false);
     handleCallModal(<SignupSecondStep />, {
@@ -50,7 +65,10 @@ export function SignupFirstStep() {
     });
   }
 
+  const [signupChecksIsFetching, setSignupChecksIsFetching] = useState(false);
+
   const onSubmit: SubmitHandler<Inputs> = async data => {
+    setSignupChecksIsFetching(true);
     handleSetInputsData({
       ...inputsData,
       username: data.username,
@@ -59,7 +77,28 @@ export function SignupFirstStep() {
       nickname: data.nickname
     });
 
+    const nicknameCount = await getNicknameCount(getValues('username'));
+    const emailCount = await getEmailCount(getValues('email')).finally(() => {
+      setSignupChecksIsFetching(false);
+    });
+
+    const isRepeatNickname = Boolean(nicknameCount);
+    const isRepeatEmail = Boolean(emailCount);
+
+    if (isRepeatNickname) {
+      setError('username', { message: 'Nome de usuário já em uso' });
+    }
+
+    if (isRepeatEmail) {
+      setError('email', { message: 'Endereço de email já em uso' });
+    }
+
+    if (isRepeatEmail || isRepeatNickname) {
+      return;
+    }
+
     openNextStepModal();
+    setSignupChecksIsFetching(false);
   };
 
   return (
@@ -184,7 +223,9 @@ export function SignupFirstStep() {
             )}
           </FieldContainer>
 
-          <NextStepButton type="submit">Próximo passo</NextStepButton>
+          <NextStepButton type="submit" disabled={signupChecksIsFetching}>
+            {signupChecksIsFetching ? <SpiralLoading /> : 'Próximo passo'}
+          </NextStepButton>
         </form>
       </Content>
     </Container>
