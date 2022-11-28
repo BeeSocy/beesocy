@@ -17,9 +17,11 @@ import {
   Content,
   NextStepButton
 } from './styles';
+import { useNavigate } from 'react-router-dom';
+import { IInputs } from '../../../context/SignupProvider/types';
 
 export function SignupThirdStep() {
-  const { inputsData } = useSignup();
+  const { inputsData, handleSetInputsData } = useSignup();
 
   async function sendInputData() {
     const profileImageFile = inputsData.profilePicture;
@@ -46,7 +48,6 @@ export function SignupThirdStep() {
           { headers: imageHeaders }
         )
         .then(response => {
-          console.log(response.data);
           profileImageFileName = response.data;
         });
     }
@@ -63,7 +64,6 @@ export function SignupThirdStep() {
           { headers: imageHeaders }
         )
         .then(response => {
-          console.log(response.data);
           profileBannerFileName = response.data;
         });
     }
@@ -81,6 +81,8 @@ export function SignupThirdStep() {
 
   const { handleSetOpen, handleCallModal } = useModal();
 
+  const navigate = useNavigate();
+
   function openSignupModal() {
     handleSetOpen(false);
     handleCallModal(<SignupFirstStep />, {
@@ -91,10 +93,15 @@ export function SignupThirdStep() {
     });
   }
 
+  function closeThirdStep(nickname: string) {
+    handleSetOpen(false);
+    navigate(`/${nickname}`);
+    handleSetInputsData({} as IInputs);
+  }
+
   const { mutate, isSuccess, isLoading, isError } = useMutation(sendInputData);
 
   useLayoutEffect(() => {
-    console.log(inputsData);
     mutate();
   }, []);
 
@@ -114,7 +121,9 @@ export function SignupThirdStep() {
             <>
               <MdCheckCircle size={80} />
               <Title size="medium">Cadastro finalizado</Title>
-              <NextStepButton onClick={() => handleSetOpen(false)}>
+              <NextStepButton
+                onClick={() => closeThirdStep(inputsData.username)}
+              >
                 Fechar
               </NextStepButton>
             </>

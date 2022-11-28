@@ -4,7 +4,7 @@ import { useModal } from '../../../context/ModalProvider/useModal';
 
 import { useSignup } from '../../../context/SignupProvider/useSignup';
 import { Title } from '../../General/Title';
-import { SignupThirdStep } from '../ThridStep';
+import { SignupThirdStep } from '../ThirdStep';
 import { ResizeImage } from './ResizeImage';
 
 import {
@@ -141,7 +141,7 @@ export function SignupSecondStep() {
               <input
                 type="file"
                 id="profilePicture"
-                accept="image/png, image/jpeg"
+                accept="image/png, image/jpeg, image/webp, image/jfif"
                 onChangeCapture={event => {
                   const target = event.target as HTMLInputElement;
                   handleSetInputsData({
@@ -182,7 +182,7 @@ export function SignupSecondStep() {
               <input
                 type="file"
                 id="profileBanner"
-                accept="image/png, image/jpeg"
+                accept="image/png, image/jpeg, image/webp, image/jfif"
                 onChangeCapture={event => {
                   const target = event.target as HTMLInputElement;
                   handleSetInputsData({
