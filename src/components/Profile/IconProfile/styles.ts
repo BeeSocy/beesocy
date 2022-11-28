@@ -7,12 +7,12 @@ interface IContainerProps {
 
 export const Container = styled.div<IContainerProps>`
   position: relative;
-  height: 10rem;
-  width: 10rem;
+  height: 12rem;
+  width: 12rem;
   border: 0.4rem solid ${props => props.color};
   border-radius: 50%;
 
-  background: ${props => props.theme.colors.secondary};
+  background: ${props => props.theme.colors.primary};
 
   @media (max-width: ${breakpoint}) {
     border: 0.8rem solid ${props => props.theme.colors.secondary};

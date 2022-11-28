@@ -9,7 +9,7 @@ import { IMusicPost } from '../../types/musicPost';
 import { IProfile } from '../../types/profile';
 import { Content, NotFoundContainer } from './styles';
 import { ProfileContent } from '../../components/Profile/ProfileContent';
-import { api } from '../../utils/api';
+import { api, baseURL } from '../../utils/api';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { MdPersonOff } from 'react-icons/md';
@@ -122,28 +122,20 @@ export const image: IImagePost[] = [
   }
 ];
 
+export const profileImageBaseUrl = `${baseURL}/cdn/profile/image/`;
+export const profileBannerBaseUrl = `${baseURL}/cdn/profile/banner/`;
+
 export function Profile() {
   const { isMobile } = useMobile();
   const { handleChangePaddingActive } = useLayout();
 
   const { nickname } = useParams();
 
-  const [profileImageFileName, setProfileImageFileName] = useState('');
-
   async function getUser(nickname: string) {
     const request = await api.get(`/user/${nickname}`);
     const data: IProfile = await request.data;
 
-    setProfileImageFileName(data.imageFileName ?? '');
-
     return data as IProfile;
-  }
-
-  async function getUserImage(imageName: string) {
-    const request = await api.get(`/cdn/profile/image/${imageName}`);
-    const data = await request.data;
-
-    return data;
   }
 
   const { data, isError, error, isLoading } = useQuery(
@@ -157,19 +149,9 @@ export function Profile() {
     }
   );
 
-  const userImageQuery = useQuery(['userImage'], () => {
-    return getUserImage(
-      '1669581902812_2ebc383a-0807-4151-9c73-73e7a8840d56.webp'
-    );
-  });
-
   useLayoutEffect(() => {
     handleChangePaddingActive(false);
   });
-
-  useEffect(() => {
-    console.log(URL.createObjectURL(userImageQuery.data));
-  }, [userImageQuery.isFetched]);
 
   return (
     <>

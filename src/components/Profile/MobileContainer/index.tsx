@@ -22,6 +22,10 @@ import { IProfile } from '../../../types/profile';
 import { ContentCategories } from '../ContentCategories';
 import Skeleton from 'react-loading-skeleton';
 import { useTheme } from '../../../context/ThemeProvider/useTheme';
+import {
+  profileBannerBaseUrl,
+  profileImageBaseUrl
+} from '../../../pages/Profile';
 
 interface IMobileContainerProps {
   profile?: IProfile;
@@ -79,11 +83,22 @@ export function MobileContainer({ profile, loading }: IMobileContainerProps) {
             <ContentProfile>
               <IconProfile
                 color={profile.color}
-                imageUrl={profile.imageUrl}
+                imageUrl={
+                  profile.imageUrl ||
+                  `${profileImageBaseUrl}${profile.imageFileName}`
+                }
                 name={profile.name}
               />
             </ContentProfile>
-            {profile.bannerUrl && <Img src={profile.bannerUrl} />}
+            {profile.bannerUrl ||
+              (profile.bannerFileName && (
+                <Img
+                  src={
+                    profile.bannerUrl ||
+                    `${profileBannerBaseUrl}${profile.bannerFileName}`
+                  }
+                />
+              ))}
           </Content>
 
           <ContainerProfile>

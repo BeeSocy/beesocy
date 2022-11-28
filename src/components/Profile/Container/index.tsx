@@ -15,6 +15,11 @@ import {
 } from './styles';
 import { IProfile } from '../../../types/profile';
 import Skeleton from 'react-loading-skeleton';
+import { baseURL } from '../../../utils/api';
+import {
+  profileBannerBaseUrl,
+  profileImageBaseUrl
+} from '../../../pages/Profile';
 
 interface IContainerProps {
   profile?: IProfile;
@@ -27,7 +32,14 @@ export function Container({ profile, loading }: IContainerProps) {
       {loading || !profile ? (
         <Skeleton height={200} />
       ) : (
-        <Banner bannerUrl={profile.bannerUrl ?? ''} />
+        (profile.bannerFileName || profile.bannerUrl) && (
+          <Banner
+            bannerUrl={
+              profile.bannerUrl ||
+              `${profileBannerBaseUrl}${profile.bannerFileName}`
+            }
+          />
+        )
       )}
       <ContentProfile>
         <Content>
@@ -53,7 +65,10 @@ export function Container({ profile, loading }: IContainerProps) {
             <>
               <IconProfile
                 color={profile.color}
-                imageUrl={profile.imageUrl}
+                imageUrl={
+                  profile.imageUrl ||
+                  `${profileImageBaseUrl}${profile.imageFileName}`
+                }
                 name={profile.name}
               />
               <TitleName>{profile.name}</TitleName>

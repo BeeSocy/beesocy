@@ -9,7 +9,6 @@ export const Content = styled.div`
 export const Img = styled.img`
   height: 100%;
   width: 100%;
-  object-fit: cover;
 `;
 
 export const ContentProfile = styled.div`
@@ -20,7 +19,7 @@ export const ContentProfile = styled.div`
 
   display: flex;
   justify-content: center;
-  transform: translateY(5rem);
+  transform: translateY(8rem);
 `;
 
 export const NameProfile = styled.div`
@@ -44,7 +43,7 @@ export const ContainerProfile = styled.span`
   flex-direction: column;
   align-items: center;
 
-  margin-top: 6rem;
+  margin-top: 8rem;
 `;
 export const TitleName = styled.span<ITitleNameProps>`
   border-bottom: 0.3rem solid ${props => props.color};
@@ -107,6 +106,8 @@ export const Description = styled.span`
   overflow: hidden;
 
   text-overflow: ellipsis;
+
+  color: ${props => props.theme.colors.secondaryLight};
 `;
 
 export const LoadingContainer = styled.div`
