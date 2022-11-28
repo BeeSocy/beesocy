@@ -5,8 +5,10 @@ export interface IProfile {
   follows: IProfile[];
   followers: IProfile[];
   color: string;
-  imageUrl: string;
+  imageUrl?: string;
   bannerUrl?: string;
+  imageFileName?: string;
+  bannerFileName?: string;
   description?: string;
   vip?: boolean;
   verified?: boolean;

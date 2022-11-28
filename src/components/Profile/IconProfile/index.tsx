@@ -3,7 +3,8 @@ import { Container, Icon, Vip } from './styles';
 
 export interface IIconProfileProps {
   color: string;
-  imageUrl: string;
+  imageUrl?: string;
+  imageFileName?: string;
   vip?: boolean;
   name: string;
 }

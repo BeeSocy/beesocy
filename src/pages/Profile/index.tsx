@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { MobileContainer } from '../../components/Profile/MobileContainer';
 import { Container } from '../../components/Profile/Container';
 import { ContentCategories } from '../../components/Profile/ContentCategories';
@@ -128,11 +128,22 @@ export function Profile() {
 
   const { nickname } = useParams();
 
+  const [profileImageFileName, setProfileImageFileName] = useState('');
+
   async function getUser(nickname: string) {
     const request = await api.get(`/user/${nickname}`);
-    const data = await request.data;
+    const data: IProfile = await request.data;
+
+    setProfileImageFileName(data.imageFileName ?? '');
 
     return data as IProfile;
+  }
+
+  async function getUserImage(imageName: string) {
+    const request = await api.get(`/cdn/profile/image/${imageName}`);
+    const data = await request.data;
+
+    return data;
   }
 
   const { data, isError, error, isLoading } = useQuery(
@@ -146,9 +157,19 @@ export function Profile() {
     }
   );
 
+  const userImageQuery = useQuery(['userImage'], () => {
+    return getUserImage(
+      '1669581902812_2ebc383a-0807-4151-9c73-73e7a8840d56.webp'
+    );
+  });
+
   useLayoutEffect(() => {
     handleChangePaddingActive(false);
   });
+
+  useEffect(() => {
+    console.log(URL.createObjectURL(userImageQuery.data));
+  }, [userImageQuery.isFetched]);
 
   return (
     <>
