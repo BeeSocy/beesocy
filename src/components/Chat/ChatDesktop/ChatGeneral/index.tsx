@@ -54,14 +54,7 @@ const fakeback: ICardInfoProps[] = [
   }
 ];
 
-export const ChatGeneral = ({
-  imgUrl,
-  nickname,
-  online,
-  lastmessage,
-  messagetime,
-  id
-}: ICardInfoProps) => {
+export const ChatGeneral = () => {
   const { isMobile } = useMobile();
 
   return (
@@ -69,11 +62,21 @@ export const ChatGeneral = ({
       {!isMobile ? (
         <ChatContainer>
           <SectionBoxChat>
-            <RecentMessage />
+            <RecentMessage
+              imgUrl={fakeback[length].imgUrl}
+              nickname={fakeback[length].nickname}
+              id={fakeback[length].id}
+              lastmessage={fakeback[length].lastmessage}
+            />
           </SectionBoxChat>
 
           <ChatSection>
-            <ChatHeader />
+            <ChatHeader
+              imgUser={fakeback[length].imgUrl}
+              nick={fakeback[length].nickname}
+              identification={fakeback[length].id}
+              lastmessage={fakeback[length].lastmessage}
+            />
             <SectionMessege>
               <MessageCardGeneral />
             </SectionMessege>
@@ -85,7 +88,12 @@ export const ChatGeneral = ({
           {' '}
           <MobileCards>
             <HeaderCards title={'Chat BeeSocy'} />
-            <RecentMessage />
+            <RecentMessage
+              imgUrl={fakeback[length].imgUrl}
+              nickname={fakeback[length].nickname}
+              id={fakeback[length].id}
+              lastmessage={fakeback[length].lastmessage}
+            />
           </MobileCards>
         </>
       )}

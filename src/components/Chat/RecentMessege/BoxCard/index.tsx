@@ -3,14 +3,18 @@ import { BoxCardStyled } from './styles';
 
 interface IBoxCardsProps {
   children: ReactNode;
+  imgUser: string;
+  nick: string;
+  identification: string;
+  lastMessage: string;
 }
 
-export const BoxCards = ({ children }: IBoxCardsProps) => {
-  const boxlist: IBoxCardsProps[] = [{ children }];
-
-  /*return boxlist.map(boxlist => (
-    <BoxCardStyled>{boxlist.children}</BoxCardStyled>
-  ));*/
-
-  return <BoxCardStyled>{boxlist[0].children}</BoxCardStyled>;
+export const BoxCards = ({
+  children,
+  identification,
+  imgUser,
+  lastMessage,
+  nick
+}: IBoxCardsProps) => {
+  return <BoxCardStyled>{children}</BoxCardStyled>;
 };

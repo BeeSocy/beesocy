@@ -12,11 +12,32 @@ import { Button } from '../../../../../Widgets/Buttons/Button';
 import { HeaderCards } from '../../../../ChatMobile/CardsMobile/HeaderCardGeneral';
 import { MobileCards } from '../../../../ChatMobile/CardsMobile/MobileCards';
 import { RecentMessage } from '../../../../RecentMessege/General';
+import { Online } from '../../../ChatCards/CardInfo/Online';
+import { ICardInfoProps } from '../../../ChatGeneral';
 import { NickHeader } from '../NickHeader';
 import { PhotoHeader } from '../PhotoHeader';
-import { AlignIcons, AlignInfo, InfoGeneralStyled } from './styles';
+import {
+  AlignIcons,
+  AlignInfo,
+  AlignOnline,
+  InfoGeneralStyled
+} from './styles';
 
-export const InfoGeneral = () => {
+interface InfoProps {
+  children?: ReactNode;
+  imgUrl: string;
+  nickname: string;
+  id: string;
+  online: boolean;
+  lastmessage: string;
+}
+
+export const InfoGeneral = ({
+  imgUrl,
+  nickname,
+  id,
+  lastmessage
+}: InfoProps) => {
   const { handleSetOpen } = useModal();
   const { isMobile } = useMobile();
 
@@ -27,7 +48,12 @@ export const InfoGeneral = () => {
       handleCallModal(
         <MobileCards>
           <HeaderCards title={'Chat BeeSocy'} />
-          <RecentMessage />
+          <RecentMessage
+            imgUrl={imgUrl}
+            nickname={nickname}
+            id={id}
+            lastmessage={lastmessage}
+          />
         </MobileCards>,
         {
           overlay: true,
@@ -43,8 +69,11 @@ export const InfoGeneral = () => {
       {!isMobile ? (
         <InfoGeneralStyled>
           <AlignInfo>
-            <PhotoHeader imageUrl={''} />
-            <NickHeader nickname={'undefined'} />
+            <PhotoHeader imageUrl={imgUrl} />
+            <AlignOnline>
+              <NickHeader nickname={nickname} />
+              <Online online={'online'} />
+            </AlignOnline>
           </AlignInfo>
 
           <AlignIcons>
@@ -78,9 +107,13 @@ export const InfoGeneral = () => {
             >
               <MdOutlineChevronLeft />
             </Button>
-            <PhotoHeader imageUrl={''} />
-            <NickHeader nickname={'undefined'} />
+            <PhotoHeader imageUrl={imgUrl} />
+            <AlignOnline>
+              <NickHeader nickname={nickname} />
+              <Online online={'online'} />
+            </AlignOnline>
           </AlignInfo>
+
           <AlignIcons>
             <Button rounded>
               <MdOutlinePushPin />

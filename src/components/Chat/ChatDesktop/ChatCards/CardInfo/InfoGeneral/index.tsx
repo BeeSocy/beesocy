@@ -30,7 +30,7 @@ export const CardInfo = ({
       <AlignSection>
         <NickName nickname={nickname} />
         <LastMessege lastmessage={lastmessage} />
-        <Online online={online ? 'online' : 'ofline'} />
+        
       </AlignSection>
     </CardInfStyled>
   );

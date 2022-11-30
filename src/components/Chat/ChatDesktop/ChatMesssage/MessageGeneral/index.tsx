@@ -1,3 +1,4 @@
+import { ICardInfoProps } from '../../ChatGeneral';
 import { CardsChat } from '../ContainerCards/CardsChat';
 import { ContainerMsg } from '../ContainerMsg';
 

@@ -11,7 +11,6 @@ export const InfoGeneralStyled = styled.div`
   @media (max-width: ${breakpoint}) {
     display: flex;
     align-items: center;
-
     justify-content: space-between;
   }
 `;
@@ -23,6 +22,11 @@ export const AlignIcons = styled.section`
 
 export const AlignInfo = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
+`;
+
+export const AlignOnline = styled.section`
+  display: flex;
+  gap: 0.6rem;
+  flex-direction: column;
 `;
