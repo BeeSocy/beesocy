@@ -83,3 +83,15 @@ export const SubmitButton = styled.button`
     }
   }
 `;
+
+export const UserProfileImage = styled.img`
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+`;
