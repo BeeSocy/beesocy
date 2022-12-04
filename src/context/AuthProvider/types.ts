@@ -2,16 +2,15 @@ import { ReactNode } from 'react';
 
 interface IAuth {
   userId: string;
+  isAuthLoading: boolean;
+  isAuthError: boolean;
+  authError: string;
 }
 
 export interface IAuthContext extends IAuth {
-  authenticate(
-    password: string,
-    email?: string,
-    nickname?: string
-  ): Promise<string>;
+  authenticate(input: string, password: string): Promise<boolean | string>;
   logout(): void;
-  handleGetUserIdOnCookie(): string;
+  isLogged(): boolean;
 }
 
 export interface IAuthProvider {

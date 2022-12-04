@@ -20,6 +20,7 @@ import { ProfileCategoryProvider } from './context/ProfileCategoryProvider';
 import { SignupProvider } from './context/SignupProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { AuthProvider } from './context/AuthProvider';
 
 export function App() {
   const defaultTheme = dark;
@@ -46,16 +47,18 @@ export function App() {
               <SignupProvider>
                 <ModalProvider>
                   <AlertProvider>
-                    <MenuProvider>
-                      <ProfileCategoryProvider>
-                        <CategoryProvider>
-                          <Router />
-                        </CategoryProvider>
-                      </ProfileCategoryProvider>
-                    </MenuProvider>
+                    <AuthProvider>
+                      <MenuProvider>
+                        <ProfileCategoryProvider>
+                          <CategoryProvider>
+                            <Router />
+                          </CategoryProvider>
+                        </ProfileCategoryProvider>
+                      </MenuProvider>
 
-                    <Alert />
-                    <Modal />
+                      <Alert />
+                      <Modal />
+                    </AuthProvider>
                   </AlertProvider>
                 </ModalProvider>
               </SignupProvider>

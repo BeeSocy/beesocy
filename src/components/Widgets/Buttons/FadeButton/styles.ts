@@ -26,6 +26,8 @@ export const Container = styled(Button)<IContainerProps>`
   position: relative;
   z-index: 0;
 
+  transition: opacity 0.2s;
+
   &:before {
     display: flex;
     justify-content: center;
@@ -57,6 +59,21 @@ export const Container = styled(Button)<IContainerProps>`
   &:hover,
   &:active {
     background: linear-gradient(90deg, #fee227, #ef6a3d);
+  }
+
+  &:disabled {
+    & > * {
+      font-size: 1.7rem;
+      margin: 0.2rem;
+    }
+
+    &:hover {
+      &:before {
+        opacity: 0;
+      }
+    }
+
+    opacity: 0.9;
   }
 
   & * {

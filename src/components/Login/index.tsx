@@ -7,7 +7,9 @@ import {
   FaSoundcloud,
   FaTwitter
 } from 'react-icons/fa';
+import { useAuth } from '../../context/AuthProvider/useAuth';
 import { useModal } from '../../context/ModalProvider/useModal';
+import { api } from '../../utils/api';
 import { Title } from '../General/Title';
 import { SignupFirstStep } from '../Signup/FirstStep';
 import { SignupSecondStep } from '../Signup/SecondStep';
@@ -42,7 +44,15 @@ export function Login() {
     formState: { errors }
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+  const { authenticate, isAuthLoading, authError } = useAuth();
+
+  const onSubmit: SubmitHandler<Inputs> = async data => {
+    const auth = await authenticate(data.username, data.password);
+    if (auth === true) {
+      window.location.reload();
+    }
+    return;
+  };
 
   const { handleSetOpen, handleCallModal } = useModal();
 
@@ -102,11 +112,24 @@ export function Login() {
               )}
             </FieldContainer>
 
+            {authError && (
+              <ErrorSpan>
+                {authError.includes('inválidos')
+                  ? 'Identificação ou senha inválida(s)'
+                  : 'Alguma falha ocorreu, tente novamente...'}
+              </ErrorSpan>
+            )}
+
             <span>
               Esqueceu sua <YellowTitle>senha</YellowTitle>?
             </span>
 
-            <StyledFadeButton type="submit" full content="Entrar">
+            <StyledFadeButton
+              loading={isAuthLoading}
+              type="submit"
+              full
+              content="Entrar"
+            >
               <span>Entrar</span>
             </StyledFadeButton>
           </form>

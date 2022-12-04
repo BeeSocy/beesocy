@@ -75,7 +75,8 @@ export function SignupThirdStep() {
       email: inputsData.email,
       password: inputsData.password,
       imageFileName: profileImageFileName,
-      bannerFileName: profileBannerFileName
+      bannerFileName: profileBannerFileName,
+      description: inputsData.description
     });
   }
 
