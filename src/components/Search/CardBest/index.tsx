@@ -1,19 +1,11 @@
 import { IImagePost } from '../../../types/imagePost';
 import { IMusicPost } from '../../../types/musicPost';
 import { IProfile } from '../../../types/profile';
-import { ImageCard } from '../../Cards/ImageCard';
 import { MusicCard } from '../../Cards/MusicCard';
-import { Carousel } from '../../General/Carousel';
-import { CardBest } from '../CardBest';
 import { CardProfile } from '../CardProfile';
-import { Container } from './styles';
+import { ComponentMusic, Container } from './styles';
 
-interface ICards {
-  title: 'music' | 'image' | 'profile' | 'best';
-  highlight?: boolean;
-}
-
-export function Cards({ title, highlight }: ICards) {
+export function CardBest() {
   const music: IMusicPost[] = [
     {
       identification: '88a261d4-09ba-45fe-81cc-ff10c0eb1052',
@@ -143,26 +135,14 @@ export function Cards({ title, highlight }: ICards) {
       twitter: 'https://twitter.com'
     }
   };
-
   return (
-    <>
-      <div>
-        <Carousel
-          leftArrowPosition={[-5.6, 14]}
-          rightArrowPosition={[-5.6, 4.4]}
-          smooth
-        >
-          <Container>
-            {title === 'best' && <CardBest />}
-            {title === 'music' &&
-              music.map(value => <MusicCard large {...value} />)}
-            {title === 'image' && image.map(value => <ImageCard {...value} />)}
-            {title === 'profile' && (
-              <CardProfile highlight={highlight} profile={user} />
-            )}
-          </Container>
-        </Carousel>
-      </div>
-    </>
+    <Container>
+      <CardProfile highlight profile={user} />
+      <ComponentMusic>
+        {music.map(value => (
+          <MusicCard large={false} {...value} />
+        ))}
+      </ComponentMusic>
+    </Container>
   );
 }

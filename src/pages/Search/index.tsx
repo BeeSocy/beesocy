@@ -4,9 +4,8 @@ import { Content } from './styles';
 export function Search() {
   return (
     <Content>
-      <Component title="best" />
+      <Component highlight title="best" />
       <Component title="profile" />
-      <Component title="code" />
       <Component title="image" />
       <Component title="music" />
     </Content>

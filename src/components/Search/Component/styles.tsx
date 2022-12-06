@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { IComponent } from '.';
 
 interface IBodyComponent {
   title: 'code' | 'music' | 'image' | 'profile' | 'best';

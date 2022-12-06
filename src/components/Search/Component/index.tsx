@@ -2,19 +2,19 @@ import { Cards } from '../Cards';
 import { BodyComponent, Title } from './styles';
 
 export interface IComponent {
-  title: 'code' | 'music' | 'image' | 'profile' | 'best';
+  title: 'music' | 'image' | 'profile' | 'best';
+  highlight?: boolean;
 }
-export function Component({ title }: IComponent) {
+export function Component({ title, highlight }: IComponent) {
   return (
     <BodyComponent title={title}>
       <Title>
-        {(title === 'best' && 'Melhores') ||
-          (title === 'code' && 'Códigos') ||
+        {(title === 'best' && 'Melhores resultados') ||
           (title === 'image' && 'Imagens') ||
           (title === 'music' && 'Músicas') ||
           (title === 'profile' && 'Perfis')}
       </Title>
-      <Cards title={title} />
+      <Cards highlight={highlight} title={title} />
     </BodyComponent>
   );
 }
