@@ -1,11 +1,14 @@
-import { TopResult } from '../../components/Search/TopResult';
-import { user } from '../Profile';
+import { Component } from '../../components/Search/Component';
+import { Content } from './styles';
 
 export function Search() {
   return (
-    <>
-      {/* <>user.name</> */}
-      <TopResult></TopResult>
-    </>
+    <Content>
+      <Component title="best" />
+      <Component title="profile" />
+      <Component title="code" />
+      <Component title="image" />
+      <Component title="music" />
+    </Content>
   );
 }

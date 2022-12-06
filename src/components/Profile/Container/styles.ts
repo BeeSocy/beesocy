@@ -89,6 +89,3 @@ export const Description = styled.span`
 
   color: ${props => props.theme.colors.secondaryLight};
 `;
-
-/*  */
-/*  */
