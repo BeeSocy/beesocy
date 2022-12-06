@@ -43,13 +43,19 @@ export const InputMessege = () => {
   return (
     <>
       {!isMobile ? (
-        <FormMessage>
+        <FormMessage
+          onSubmit={event => {
+            event.preventDefault();
+          }}
+        >
           <ContainerInput>
             <FakeInput>
               <SectionInput>
                 <InputMsg
                   name={'inpt-msg'}
                   children={isRecording ? <MdSend /> : <MdMic />}
+                  onEnter={() => {}}
+                  value=""
                 />
               </SectionInput>
               <Button
@@ -76,6 +82,9 @@ export const InputMessege = () => {
                   <InputMsg
                     name={'inpt-msg'}
                     children={isRecording ? <MdSend /> : <MdMic />}
+                    onEnter={function (taskName: string): void {
+                      throw new Error('Function not implemented.');
+                    }}
                   />
                 </SectionInput>
                 <Button rounded full={false}>
@@ -93,3 +102,6 @@ export const InputMessege = () => {
     </>
   );
 };
+function onEnter(inputText: any) {
+  throw new Error('Function not implemented.');
+}

@@ -8,7 +8,7 @@ export const SecondaryCard = () => {
   return (
     <ContainerSecondaryCard>
       <SecondaryCardStyled>
-        <MessageSecondary> Gang ? </MessageSecondary>
+        <MessageSecondary></MessageSecondary>
       </SecondaryCardStyled>
     </ContainerSecondaryCard>
   );

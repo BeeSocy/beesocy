@@ -20,8 +20,6 @@ export interface ICardInfoProps {
   messagetime: boolean;
 }
 
-interface ICardProps extends HTMLAttributes<HTMLButtonElement> {}
-
 const fakeback: ICardInfoProps[] = [
   {
     id: '120393x-66428dd-00y2',
