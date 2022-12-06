@@ -5,6 +5,7 @@ import {
   FaGoogle,
   FaInstagram,
   FaSoundcloud,
+  FaSpotify,
   FaTwitter
 } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthProvider/useAuth';
@@ -148,7 +149,7 @@ export function Login() {
             </SocialButton>
 
             <SocialButton full={false} rounded>
-              <FaSoundcloud />
+              <FaSpotify />
             </SocialButton>
 
             <SocialButton full={false} rounded>

@@ -26,6 +26,7 @@
     "react-beautiful-dnd": "^13.1.1",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.37.0",
     "react-icons": "^4.4.0",
     "react-loading-skeleton": "^3.1.0",

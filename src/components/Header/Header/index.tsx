@@ -28,11 +28,12 @@ import { IProfile } from '../../../types/profile';
 import Skeleton from 'react-loading-skeleton';
 import { profileImageBaseUrl } from '../../../pages/Profile';
 import { Link } from 'react-router-dom';
+import { UploadFirstStep } from '../../Upload/FirstStep';
 
 export function Header() {
   const { isMobile } = useMobile();
 
-  const { userId, logout } = useAuth();
+  const { userId, logout, isLogged } = useAuth();
 
   const loggedUserQuery = useQuery(['loggedUser'], () => {
     return getUserById(userId);
@@ -49,6 +50,17 @@ export function Header() {
       center: true,
       overlay: true
     });
+  }
+
+  function handleCallUploadModal() {
+    if (isLogged()) {
+      handleCallModal(<UploadFirstStep />, {
+        center: true,
+        overlay: true
+      });
+      return;
+    }
+    handleCallLoginModal();
   }
 
   async function handleLogout() {
@@ -135,7 +147,7 @@ export function Header() {
           </Button>
         )}
 
-        <SubmitButton>Enviar</SubmitButton>
+        <SubmitButton onClick={handleCallUploadModal}>Enviar</SubmitButton>
       </section>
     </HeaderContainer>
   );
