@@ -30,51 +30,101 @@ export const Content = styled.div<IContentProps>`
   width: 100%;
   height: 100%;
 
-  justify-content: center;
-  align-items: center;
-
-  border: 0.2rem dashed ${props => props.theme.colors.secondaryLight};
-
   ${props =>
     props.isDragAccept &&
     css`
-      border-color: ${props => props.theme.colors.bee};
+      & *[aria-label='add-button'] {
+        border-color: ${props => props.theme.colors.bee};
+      }
     `};
 
   ${props =>
     props.isDragReject &&
     css`
-      border-color: #ff1744;
+      & *[aria-label='add-button'] {
+        border-color: #ff1744;
+      }
     `};
 `;
 
-export const LineTitle = styled.span`
+export const FilesContainer = styled.section`
+  display: grid;
+  grid-auto-flow: row dense;
+
+  justify-content: center;
+
+  grid-template-columns: repeat(auto-fit, 14rem);
+
+  gap: 2rem;
+
+  max-height: 35rem;
+  overflow-y: auto;
+`;
+
+export const ImageCard = styled.div`
   display: flex;
+  justify-content: flex-end;
 
-  gap: 0.8rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  position: relative;
 
-  align-items: center;
-
-  font-size: 1.8rem;
-
-  &::after,
-  &::before {
-    display: block;
-    content: '';
-    background: ${props => props.theme.colors.light};
+  &,
+  & > img {
     width: 14rem;
-    height: 0.2rem;
+    height: 7rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  & > button {
+    padding: 0.4rem;
+    position: absolute;
+    margin: 0.4rem;
   }
 `;
 
-export const FileButton = styled.button`
+export const AddButton = styled.button`
+  display: flex;
+  background: none;
+
+  width: 14rem;
+  height: 7rem;
+
+  border-radius: 0.8rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 0.2rem dashed ${props => props.theme.colors.secondaryLight};
+`;
+
+export const NextStepButton = styled.button`
   border-radius: 200rem;
   padding: 0.8rem 8rem;
 
   background: ${props => props.theme.colors.bee};
   color: ${props => props.theme.colors.primary};
 
+  max-width: 40rem;
+  align-self: center;
+
+  margin-top: 2rem;
+
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
+
+  transition: opacity 0.2s;
+
+  &:disabled:hover {
+    cursor: not-allowed;
+  }
+
+  &:disabled {
+    opacity: 0.8;
+  }
 `;
