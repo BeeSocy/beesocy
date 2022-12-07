@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { MdAddCircleOutline, MdClose, MdDelete } from 'react-icons/md';
+import { useModal } from '../../../context/ModalProvider/useModal';
 import { Button } from '../../Widgets/Buttons/Button';
+import { UploadThirdStep } from '../ThirdStep';
 import {
   AddButton,
   Container,
@@ -32,6 +34,18 @@ export function UploadSecondStep({ firstStepFiles }: IUploadSecondStep) {
         )
     });
 
+  const { handleCallModal } = useModal();
+
+  function handleCallUploadThirdStep() {
+    handleCallModal(
+      <UploadThirdStep secondStepFiles={files ?? []} type={'image'} />,
+      {
+        center: true,
+        overlay: true
+      }
+    );
+  }
+
   useEffect(() => {
     setFiles(firstStepFiles);
   }, []);
@@ -60,7 +74,13 @@ export function UploadSecondStep({ firstStepFiles }: IUploadSecondStep) {
         </FilesContainer>
 
         <input {...getInputProps()} />
-        <NextStepButton disabled={(files ?? []).length < 1}>
+        <NextStepButton
+          disabled={(files ?? []).length < 1}
+          onClick={event => {
+            event.stopPropagation();
+            handleCallUploadThirdStep();
+          }}
+        >
           Continuar envio
         </NextStepButton>
       </Content>
