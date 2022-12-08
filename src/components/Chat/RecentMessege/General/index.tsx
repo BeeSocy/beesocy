@@ -5,7 +5,7 @@ import { ICardInfoProps } from '../../ChatDesktop/ChatGeneral';
 import { MessageGeneral } from '../../ChatMobile/MessageMobile/General';
 import { BoxCards } from '../BoxCard';
 
-interface IRecentMessageProps {
+export interface IRecentMessageProps {
   imgUrl: string;
   nickname: string;
   id: string;

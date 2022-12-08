@@ -1,4 +1,3 @@
-import React, { HTMLAttributes } from 'react';
 import { ChatContainer } from '../ChatContainer';
 import { ChatSection } from '../ChatSection/ChatSectionGeneral';
 import { ChatHeader } from '../ChatHeaderGeneral/ChatHeader';

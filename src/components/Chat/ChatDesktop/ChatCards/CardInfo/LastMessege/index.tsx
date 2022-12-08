@@ -1,8 +1,13 @@
-import { LastMsgStyled } from './styles';
+import { LastMsgStyled, SectionLastMessage } from './styles';
 
 interface ILastMessageProps {
   lastmessage: string;
 }
 export const LastMessege = ({ lastmessage }: ILastMessageProps) => {
-  return <LastMsgStyled>{lastmessage}</LastMsgStyled>;
+  return (
+    <SectionLastMessage>
+      {' '}
+      <LastMsgStyled>{lastmessage}</LastMsgStyled>
+    </SectionLastMessage>
+  );
 };

@@ -3,9 +3,7 @@ import { HeaderStyled } from './styles';
 import { InfoGeneral } from '../ChatHeaderInfo/InfoGeneral';
 import { ICardInfoProps } from '../../ChatGeneral';
 
-interface IChatHeaderProps {
-  children?: ReactNode;
-  userInfo?: ICardInfoProps;
+export interface IChatHeaderProps {
   imgUser: string;
   nick: string;
   identification: string;

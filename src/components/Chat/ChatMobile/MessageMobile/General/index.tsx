@@ -9,9 +9,15 @@ import { ContainerMessage } from '../ContainerMessage';
 export const MessageGeneral = () => {
   return (
     <ContainerMessage>
-      <ChatHeader>
+      <ChatHeader imgUser={''} nick={''} identification={''} lastmessage={''}>
         {' '}
-        <InfoGeneral />
+        <InfoGeneral
+          imgUrl={''}
+          nickname={''}
+          id={''}
+          online={false}
+          lastmessage={''}
+        />
       </ChatHeader>
       <SectionMessege>
         <MessageCardGeneral />

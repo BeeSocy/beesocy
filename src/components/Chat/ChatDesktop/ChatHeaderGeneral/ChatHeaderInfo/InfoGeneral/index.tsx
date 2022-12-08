@@ -14,6 +14,7 @@ import { MobileCards } from '../../../../ChatMobile/CardsMobile/MobileCards';
 import { RecentMessage } from '../../../../RecentMessege/General';
 import { Online } from '../../../ChatCards/CardInfo/Online';
 import { ICardInfoProps } from '../../../ChatGeneral';
+import { IChatHeaderProps } from '../../ChatHeader';
 import { NickHeader } from '../NickHeader';
 import { PhotoHeader } from '../PhotoHeader';
 import {
@@ -23,13 +24,12 @@ import {
   InfoGeneralStyled
 } from './styles';
 
-interface InfoProps {
-  children?: ReactNode;
+interface InfoGeneralProps {
   imgUrl: string;
   nickname: string;
   id: string;
-  online: boolean;
   lastmessage: string;
+  online: boolean;
 }
 
 export const InfoGeneral = ({
@@ -37,7 +37,7 @@ export const InfoGeneral = ({
   nickname,
   id,
   lastmessage
-}: InfoProps) => {
+}: InfoGeneralProps) => {
   const { handleSetOpen } = useModal();
   const { isMobile } = useMobile();
 
@@ -50,7 +50,7 @@ export const InfoGeneral = ({
           <HeaderCards title={'Chat BeeSocy'} />
           <RecentMessage
             imgUrl={imgUrl}
-            nickname={nickname}
+            nickname={'Carti Play'}
             id={id}
             lastmessage={lastmessage}
           />
@@ -69,9 +69,13 @@ export const InfoGeneral = ({
       {!isMobile ? (
         <InfoGeneralStyled>
           <AlignInfo>
-            <PhotoHeader imageUrl={imgUrl} />
+            <PhotoHeader
+              imageUrl={
+                'https://i.pinimg.com/564x/1c/3f/43/1c3f43ce30c8ba4e699d20fef8ba8548.jpg'
+              }
+            />
             <AlignOnline>
-              <NickHeader nickname={nickname} />
+              <NickHeader nickname={'Carti Play'} />
               <Online online={'online'} />
             </AlignOnline>
           </AlignInfo>
@@ -107,9 +111,13 @@ export const InfoGeneral = ({
             >
               <MdOutlineChevronLeft />
             </Button>
-            <PhotoHeader imageUrl={imgUrl} />
+            <PhotoHeader
+              imageUrl={
+                'https://i.pinimg.com/564x/1c/3f/43/1c3f43ce30c8ba4e699d20fef8ba8548.jpg'
+              }
+            />
             <AlignOnline>
-              <NickHeader nickname={nickname} />
+              <NickHeader nickname={'Carti Play'} />
               <Online online={'online'} />
             </AlignOnline>
           </AlignInfo>
